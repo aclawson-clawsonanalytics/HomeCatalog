@@ -10,10 +10,7 @@ namespace AndroidHomeCatalog
 		{
 		}
 
-		public Dictionary<string,string> Data = new Dictionary<string,string> ();
-		public Dictionary<string,bool> roomLabels = new Dictionary<string,string> ();
-		public Dictionary<string,string> categoryLabels = new Dictionary<string,string> ();
-		public List<Item> itemList = new List<Item> ();
+	
 	// Class methods
 		public static ItemContainer initializeProperty (ItemContainer newProperty)
 		{
