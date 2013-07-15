@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCatalog.iOS", "HomeCatalog.iOS\HomeCatalog.iOS.csproj", "{7478015F-2453-40B4-944C-9895AA512580}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCatalog.Core", "..\HomeCatalog.Core\HomeCatalog.Core.csproj", "{70315D31-DD40-4F70-8634-90AA482DD87F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.Ad-Hoc|iPhone.ActiveCfg = Release|iPhone
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.Ad-Hoc|iPhone.Build.0 = Release|iPhone
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.AppStore|iPhone.ActiveCfg = Release|iPhone
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.AppStore|iPhone.Build.0 = Release|iPhone
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.Debug|iPhone.Build.0 = Debug|iPhone
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhone
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.Debug|iPhoneSimulator.Build.0 = Debug|iPhone
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.Release|iPhone.ActiveCfg = Release|iPhone
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.Release|iPhone.Build.0 = Release|iPhone
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.Release|iPhoneSimulator.ActiveCfg = Release|iPhone
+		{70315D31-DD40-4F70-8634-90AA482DD87F}.Release|iPhoneSimulator.Build.0 = Release|iPhone
+		{7478015F-2453-40B4-944C-9895AA512580}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{7478015F-2453-40B4-944C-9895AA512580}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{7478015F-2453-40B4-944C-9895AA512580}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{7478015F-2453-40B4-944C-9895AA512580}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{7478015F-2453-40B4-944C-9895AA512580}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{7478015F-2453-40B4-944C-9895AA512580}.Debug|iPhone.Build.0 = Debug|iPhone
+		{7478015F-2453-40B4-944C-9895AA512580}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{7478015F-2453-40B4-944C-9895AA512580}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{7478015F-2453-40B4-944C-9895AA512580}.Release|iPhone.ActiveCfg = Release|iPhone
+		{7478015F-2453-40B4-944C-9895AA512580}.Release|iPhone.Build.0 = Release|iPhone
+		{7478015F-2453-40B4-944C-9895AA512580}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{7478015F-2453-40B4-944C-9895AA512580}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = HomeCatalog.iOS\HomeCatalog.iOS.csproj
+	EndGlobalSection
+EndGlobal
