@@ -575,8 +575,8 @@ namespace AndroidHomeCatalog
 			// aapt resource value: 0x7f070018
 			public const int BedQTYLabel = 2131165208;
 			
-			// aapt resource value: 0x7f070025
-			public const int ChangePropertyButton = 2131165221;
+			// aapt resource value: 0x7f070027
+			public const int ChangePropertyButton = 2131165223;
 			
 			// aapt resource value: 0x7f07001f
 			public const int CostumRoom3 = 2131165215;
@@ -593,17 +593,17 @@ namespace AndroidHomeCatalog
 			// aapt resource value: 0x7f070005
 			public const int ExitButton = 2131165189;
 			
-			// aapt resource value: 0x7f070022
-			public const int GoToCollectionsButton = 2131165218;
-			
 			// aapt resource value: 0x7f070024
-			public const int GoToContactsButton = 2131165220;
+			public const int GoToCollectionsButton = 2131165220;
+			
+			// aapt resource value: 0x7f070026
+			public const int GoToContactsButton = 2131165222;
+			
+			// aapt resource value: 0x7f070025
+			public const int GoToDocumentsButton = 2131165221;
 			
 			// aapt resource value: 0x7f070023
-			public const int GoToDocumentsButton = 2131165219;
-			
-			// aapt resource value: 0x7f070021
-			public const int GoToItemsButton = 2131165217;
+			public const int GoToItemsButton = 2131165219;
 			
 			// aapt resource value: 0x7f070006
 			public const int HelpButton = 2131165190;
@@ -611,8 +611,8 @@ namespace AndroidHomeCatalog
 			// aapt resource value: 0x7f070000
 			public const int HomeCatalogMainMenuLabel = 2131165184;
 			
-			// aapt resource value: 0x7f070020
-			public const int PropertyAddressLabel = 2131165216;
+			// aapt resource value: 0x7f070022
+			public const int PropertyAddressLabel = 2131165218;
 			
 			// aapt resource value: 0x7f070003
 			public const int PropertySelector = 2131165187;
@@ -631,6 +631,9 @@ namespace AndroidHomeCatalog
 			
 			// aapt resource value: 0x7f070017
 			public const int basementCheckBox = 2131165207;
+			
+			// aapt resource value: 0x7f070020
+			public const int cancelButton = 2131165216;
 			
 			// aapt resource value: 0x7f070013
 			public const int kitCheckBox = 2131165203;
@@ -664,6 +667,9 @@ namespace AndroidHomeCatalog
 			
 			// aapt resource value: 0x7f070010
 			public const int propZipLabel = 2131165200;
+			
+			// aapt resource value: 0x7f070021
+			public const int saveButton = 2131165217;
 			
 			// aapt resource value: 0x7f070016
 			public const int storageCheckBox = 2131165206;

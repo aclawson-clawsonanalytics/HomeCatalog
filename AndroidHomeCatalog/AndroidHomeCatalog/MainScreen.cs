@@ -24,27 +24,35 @@ namespace AndroidHomeCatalog
 
 
 
+
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			Dictionary<int,ItemContainer> propertyList = new Dictionary<int,ItemContainer> ();
-			ItemContainer property1 = new ItemContainer ();
+
 
 
 
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.MainView);
 
-			// Get our button from the layout resource,
-			// and attach an event to it
-			Button button = FindViewById<Button> (Resource.Id.myButton);
+			// AddPropertyButton
+			Button AddPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
 			
-			button.Click += delegate {
-				button.Text = string.Format ("{0} clicks!", count++);
+			AddPropertyButton.Click += (sender,e) =>
+			{
+				ItemContainer NewProperty = new ItemContainer();
+				NewProperty = ItemContainer.InitializeProperty (NewProperty);
+				Intent SendNewProperty = new Intent(this,typeof(PropertyAddEditScreen));
+				SendNewProperty.PutExtras ("NewProperty",NewProperty);
 			};
 		}
-	}
 
+		protected override void OnResume ()
+		{
+
+		}
+	}
 
 }
 

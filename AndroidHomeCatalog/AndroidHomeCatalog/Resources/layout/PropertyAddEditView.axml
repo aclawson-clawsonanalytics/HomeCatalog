@@ -237,4 +237,19 @@
         android:text="Custom Room 3"
         android:textColor="@color/gray"
         android:background="@color/white" />
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_below="@id/basementCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@string/stdLeftMargin"
+        android:layout_marginTop="@string/stdTopMargin"
+        android:text="Cancel" />
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_toRightOf="@id/cancelButton"
+        android:layout_alignBottom="@id/cancelButton"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@string/stdRightMargin"
+        android:text="Save" />
 </RelativeLayout>
