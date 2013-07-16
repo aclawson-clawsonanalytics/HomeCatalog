@@ -8,16 +8,27 @@ namespace HomeCatalog.Core
 	{
 		public PropertyCollection ()
 		{
-			Properties = new List<Property> (); 
 		}
 
-		public List<Property> Properties { get; private set;}
+		private List<Property> properties = new List<Property> (); 
+		public List<Property> Properties { 
+			get{
+				return new List<Property>(properties);
+			}
+		}
 
 
 		public void AddProperty (Property property)
 		{
-			Properties.Add (property);
+			properties.Add (property);
 		}
+
+		public void RemoveProperty (Property property)
+		{
+			properties.Remove (property);
+		}
+
+
 
 
 
