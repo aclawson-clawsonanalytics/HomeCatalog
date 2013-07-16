@@ -1,7 +1,7 @@
 using System.Reflection;
 using Android.App;
 using Android.OS;
-using Mono.Android.Test;
+using Xamarin.Android.NUnitLite;
 
 namespace HomeCatalog.Android.Tests
 {
