@@ -544,6 +544,9 @@ namespace HomeCatalog.Android
 			// aapt resource value: 0x7f020000
 			public const int Icon = 2130837504;
 			
+			// aapt resource value: 0x7f020001
+			public const int monoandroidsplash = 2130837505;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -557,20 +560,20 @@ namespace HomeCatalog.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070004
-			public const int AddPropertyButton = 2131165188;
+			// aapt resource value: 0x7f080004
+			public const int AddPropertyButton = 2131230724;
 			
-			// aapt resource value: 0x7f070000
-			public const int HomeCatalogMainMenuLabel = 2131165184;
+			// aapt resource value: 0x7f080000
+			public const int HomeCatalogMainMenuLabel = 2131230720;
 			
-			// aapt resource value: 0x7f070002
-			public const int SelectPropertyPrompt = 2131165186;
+			// aapt resource value: 0x7f080002
+			public const int SelectPropertyPrompt = 2131230722;
 			
-			// aapt resource value: 0x7f070001
-			public const int WelcomeLabel = 2131165185;
+			// aapt resource value: 0x7f080001
+			public const int WelcomeLabel = 2131230721;
 			
-			// aapt resource value: 0x7f070003
-			public const int listView1 = 2131165187;
+			// aapt resource value: 0x7f080003
+			public const int listView1 = 2131230723;
 			
 			static Id()
 			{
@@ -640,6 +643,22 @@ namespace HomeCatalog.Android
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f070000
+			public const int Mono_Android_Theme_Splash = 2131165184;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}

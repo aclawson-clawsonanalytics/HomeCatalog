@@ -20,7 +20,7 @@ namespace HomeCatalog.Android.Tests
 
 		protected override void OnDestroy ()
 		{
-			//Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+			Process.KillProcess(Process.MyPid());
 			base.OnDestroy ();
 		}
 	}

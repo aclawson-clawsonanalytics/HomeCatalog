@@ -1,7 +1,10 @@
 using System;
 using NUnit.Framework;
+using HomeCatalog.Android;
+using Android.Test;
+using Android.App;
 
-namespace HomeCatalog.Android
+namespace HomeCatalog.Android.Tests
 {
 	[TestFixture]
 	public class BrowsePropertyActivityTests
@@ -19,7 +22,7 @@ namespace HomeCatalog.Android
 
 		[Test]
 		public void itShouldHaveAddPropertyButton () {
-			BrowsePropertyActivity sut = new BrowsePropertyActivity ();
+
 		}
 
 //		[Test]

@@ -9,7 +9,7 @@ using Android.OS;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "HomeCatalog.Android", MainLauncher = true)]
-	public class Activity1 : Activity
+	public class BrowsePropertyActivity : Activity
 	{
 		int count = 1;
 

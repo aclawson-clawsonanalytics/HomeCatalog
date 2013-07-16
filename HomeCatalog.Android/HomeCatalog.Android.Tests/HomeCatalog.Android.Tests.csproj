@@ -45,26 +45,43 @@
     <Reference Include="Xamarin.Android.NUnitLite">
       <HintPath>NUnitLite\Xamarin.Android.NUnitLite.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Android.Export" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BrowsePropertyActivityTests.cs" />
     <Compile Include="..\HomeCatalog.Android\BrowseProperty\BrowsePropertyActivity.cs">
       <Link>BrowseProperty\BrowsePropertyActivity.cs</Link>
     </Compile>
+    <Compile Include="..\HomeCatalog.Android\Resources\Resource.designer.cs">
+      <Link>Resources\Resource.designer.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <None Include="..\HomeCatalog.Android\Resources\AboutResources.txt">
+      <Link>Resources\AboutResources.txt</Link>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <Folder Include="BrowseProperty\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\HomeCatalog.Android\Resources\drawable\Icon.png">
+      <Link>Resources\drawable\Icon.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\HomeCatalog.Android\Resources\layout\MainView.axml">
+      <Link>Resources\layout\MainView.axml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\HomeCatalog.Android\Resources\values\Strings.xml">
+      <Link>Resources\values\Strings.xml</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\HomeCatalog.Android\Resources\values\color.xml">
+      <Link>Resources\values\color.xml</Link>
+    </AndroidResource>
   </ItemGroup>
 </Project>
