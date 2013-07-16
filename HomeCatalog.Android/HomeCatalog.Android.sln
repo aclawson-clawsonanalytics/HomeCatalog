@@ -3,18 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCatalog.Android", "HomeCatalog.Android\HomeCatalog.Android.csproj", "{59E0BBB7-D53D-448D-BE76-78866DB9EAE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCatalog.Android.Tests", "HomeCatalog.Android.Tests\HomeCatalog.Android.Tests.csproj", "{2CD374E8-905C-46F6-921F-0B32A3D9C078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCatelog.Core.Tests", "HomeCatelog.Core.Tests\HomeCatelog.Core.Tests.csproj", "{F4376F1F-646F-4E71-A4B9-F41F0561C3DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CD374E8-905C-46F6-921F-0B32A3D9C078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CD374E8-905C-46F6-921F-0B32A3D9C078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CD374E8-905C-46F6-921F-0B32A3D9C078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CD374E8-905C-46F6-921F-0B32A3D9C078}.Release|Any CPU.Build.0 = Release|Any CPU
 		{59E0BBB7-D53D-448D-BE76-78866DB9EAE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{59E0BBB7-D53D-448D-BE76-78866DB9EAE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E0BBB7-D53D-448D-BE76-78866DB9EAE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E0BBB7-D53D-448D-BE76-78866DB9EAE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4376F1F-646F-4E71-A4B9-F41F0561C3DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4376F1F-646F-4E71-A4B9-F41F0561C3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4376F1F-646F-4E71-A4B9-F41F0561C3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4376F1F-646F-4E71-A4B9-F41F0561C3DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = HomeCatalog.Android\HomeCatalog.Android.csproj
+		StartupItem = HomeCatalog.Android.Tests\HomeCatalog.Android.Tests.csproj
 	EndGlobalSection
 EndGlobal
