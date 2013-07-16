@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
-    <Reference Include="Xamarin.Android.NUnitLite" />
+    <Reference Include="Xamarin.Android.NUnitLite">
+      <HintPath>NUnitLite\Xamarin.Android.NUnitLite.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
