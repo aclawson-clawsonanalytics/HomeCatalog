@@ -1,6 +1,8 @@
 using System.Reflection;
 using Android.App;
 using Android.OS;
+using Android.Views;
+using Android.Widget;
 using Xamarin.Android.NUnitLite;
 
 namespace HomeCatalog.Android.Tests
@@ -10,13 +12,16 @@ namespace HomeCatalog.Android.Tests
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
-			// tests can be inside the main assembly
+			this.Intent.PutExtra ("automated", true);
 			AddTest (Assembly.GetExecutingAssembly ());
-			// or in any reference assemblies
 			// AddTest (typeof (Your.Library.TestClass).Assembly);
-
-			// Once you called base.OnCreate(), you cannot add more assemblies.
 			base.OnCreate (bundle);
+		}
+
+		protected override void OnDestroy ()
+		{
+			//Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+			base.OnDestroy ();
 		}
 	}
 }
