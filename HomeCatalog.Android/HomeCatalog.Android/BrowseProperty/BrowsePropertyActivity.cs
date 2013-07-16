@@ -13,16 +13,18 @@ namespace HomeCatalog.Android
 	{
 		int count = 1;
 
+		public Button AddButton { get; set; }
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
 			// Set our view from the "main" layout resource
-			SetContentView (Resource.Layout.Main);
+			SetContentView (Resource.Layout.MainView);
 
 			// Get our button from the layout resource,
 			// and attach an event to it
-			Button button = FindViewById<Button> (Resource.Id.myButton);
+			Button button = FindViewById<Button> (Resource.Id.AddPropertyButton);
 			
 			button.Click += delegate {
 				button.Text = string.Format ("{0} clicks!", count++);
