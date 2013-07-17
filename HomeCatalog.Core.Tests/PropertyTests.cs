@@ -21,6 +21,13 @@ namespace HomeCatalog.Core.Tests
 			sut.PropertyName = "Name";
 			Assert.That (sut.PropertyName == "Name");
 		}
+
+		[Test]
+		public void PropertyHasID()
+		{
+			Property sut = new Property ();
+			Assert.That (sut.PropertyID != null);
+		}
 	}
 }
 
