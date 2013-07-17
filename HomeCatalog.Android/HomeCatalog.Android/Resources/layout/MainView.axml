@@ -10,30 +10,6 @@
         android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:text="Home Catalog" />
-    <TextView
-        android:id="@+id/WelcomeLabel"
-        android:layout_below="@id/HomeCatalogMainMenuLabel"
-        android:layout_marginTop="@string/stdTopMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="30dp" />
-    <TextView
-        android:id="@+id/SelectPropertyPrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/WelcomeLabel"
-        android:layout_marginTop="@string/stdTopMargin"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:layout_alignParentLeft="true"
-        android:text="Select a property from the list below:" />
-    <ListView
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/SelectPropertyPrompt"
-        android:id="@+id/listView1" />
     <Button
         android:text="Add Property"
         android:layout_width="wrap_content"

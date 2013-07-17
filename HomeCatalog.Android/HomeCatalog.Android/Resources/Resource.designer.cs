@@ -557,122 +557,113 @@ namespace HomeCatalog.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070004
-			public const int AddPropertyButton = 2131165188;
+			// aapt resource value: 0x7f070001
+			public const int AddPropertyButton = 2131165185;
 			
-			// aapt resource value: 0x7f070005
-			public const int AddPropertyLabel = 2131165189;
-			
-			// aapt resource value: 0x7f070019
-			public const int BathQTYField = 2131165209;
-			
-			// aapt resource value: 0x7f070018
-			public const int BathQTYLabel = 2131165208;
-			
-			// aapt resource value: 0x7f070017
-			public const int BedQTYField = 2131165207;
+			// aapt resource value: 0x7f070002
+			public const int AddPropertyLabel = 2131165186;
 			
 			// aapt resource value: 0x7f070016
-			public const int BedQTYLabel = 2131165206;
+			public const int BathQTYField = 2131165206;
 			
-			// aapt resource value: 0x7f070025
-			public const int ChangePropertyButton = 2131165221;
+			// aapt resource value: 0x7f070015
+			public const int BathQTYLabel = 2131165205;
 			
-			// aapt resource value: 0x7f07001d
-			public const int CostumRoom3 = 2131165213;
+			// aapt resource value: 0x7f070014
+			public const int BedQTYField = 2131165204;
 			
-			// aapt resource value: 0x7f07001a
-			public const int CustomLabel = 2131165210;
-			
-			// aapt resource value: 0x7f07001b
-			public const int CustomRoom1 = 2131165211;
-			
-			// aapt resource value: 0x7f07001c
-			public const int CustomRoom2 = 2131165212;
-			
-			// aapt resource value: 0x7f070026
-			public const int ExitButton = 2131165222;
+			// aapt resource value: 0x7f070013
+			public const int BedQTYLabel = 2131165203;
 			
 			// aapt resource value: 0x7f070022
-			public const int GoToCollectionsButton = 2131165218;
+			public const int ChangePropertyButton = 2131165218;
 			
-			// aapt resource value: 0x7f070024
-			public const int GoToContactsButton = 2131165220;
+			// aapt resource value: 0x7f07001a
+			public const int CostumRoom3 = 2131165210;
+			
+			// aapt resource value: 0x7f070017
+			public const int CustomLabel = 2131165207;
+			
+			// aapt resource value: 0x7f070018
+			public const int CustomRoom1 = 2131165208;
+			
+			// aapt resource value: 0x7f070019
+			public const int CustomRoom2 = 2131165209;
 			
 			// aapt resource value: 0x7f070023
-			public const int GoToDocumentsButton = 2131165219;
+			public const int ExitButton = 2131165219;
+			
+			// aapt resource value: 0x7f07001f
+			public const int GoToCollectionsButton = 2131165215;
 			
 			// aapt resource value: 0x7f070021
-			public const int GoToItemsButton = 2131165217;
+			public const int GoToContactsButton = 2131165217;
+			
+			// aapt resource value: 0x7f070020
+			public const int GoToDocumentsButton = 2131165216;
+			
+			// aapt resource value: 0x7f07001e
+			public const int GoToItemsButton = 2131165214;
 			
 			// aapt resource value: 0x7f070000
 			public const int HomeCatalogMainMenuLabel = 2131165184;
 			
-			// aapt resource value: 0x7f070020
-			public const int PropertyAddressLabel = 2131165216;
-			
-			// aapt resource value: 0x7f070010
-			public const int RoomLabel = 2131165200;
-			
-			// aapt resource value: 0x7f070002
-			public const int SelectPropertyPrompt = 2131165186;
+			// aapt resource value: 0x7f07001d
+			public const int PropertyAddressLabel = 2131165213;
 			
 			// aapt resource value: 0x7f07000d
-			public const int StateSelector = 2131165197;
-			
-			// aapt resource value: 0x7f070001
-			public const int WelcomeLabel = 2131165185;
-			
-			// aapt resource value: 0x7f070015
-			public const int basementCheckBox = 2131165205;
-			
-			// aapt resource value: 0x7f07001e
-			public const int cancelButton = 2131165214;
-			
-			// aapt resource value: 0x7f070011
-			public const int kitCheckBox = 2131165201;
-			
-			// aapt resource value: 0x7f070003
-			public const int listView1 = 2131165187;
-			
-			// aapt resource value: 0x7f070012
-			public const int livingCheckBox = 2131165202;
-			
-			// aapt resource value: 0x7f070009
-			public const int propAddressField = 2131165193;
-			
-			// aapt resource value: 0x7f070008
-			public const int propAddressLabel = 2131165192;
-			
-			// aapt resource value: 0x7f07000b
-			public const int propCityField = 2131165195;
+			public const int RoomLabel = 2131165197;
 			
 			// aapt resource value: 0x7f07000a
-			public const int propCityLabel = 2131165194;
+			public const int StateSelector = 2131165194;
 			
-			// aapt resource value: 0x7f070007
-			public const int propNameField = 2131165191;
+			// aapt resource value: 0x7f070012
+			public const int basementCheckBox = 2131165202;
 			
-			// aapt resource value: 0x7f070006
-			public const int propNameLabel = 2131165190;
-			
-			// aapt resource value: 0x7f07000c
-			public const int propStateLabel = 2131165196;
-			
-			// aapt resource value: 0x7f07000f
-			public const int propZipField = 2131165199;
+			// aapt resource value: 0x7f07001b
+			public const int cancelButton = 2131165211;
 			
 			// aapt resource value: 0x7f07000e
-			public const int propZipLabel = 2131165198;
+			public const int kitCheckBox = 2131165198;
 			
-			// aapt resource value: 0x7f07001f
-			public const int saveButton = 2131165215;
+			// aapt resource value: 0x7f07000f
+			public const int livingCheckBox = 2131165199;
 			
-			// aapt resource value: 0x7f070014
-			public const int storageCheckBox = 2131165204;
+			// aapt resource value: 0x7f070006
+			public const int propAddressField = 2131165190;
 			
-			// aapt resource value: 0x7f070013
-			public const int studyCheckBox = 2131165203;
+			// aapt resource value: 0x7f070005
+			public const int propAddressLabel = 2131165189;
+			
+			// aapt resource value: 0x7f070008
+			public const int propCityField = 2131165192;
+			
+			// aapt resource value: 0x7f070007
+			public const int propCityLabel = 2131165191;
+			
+			// aapt resource value: 0x7f070004
+			public const int propNameField = 2131165188;
+			
+			// aapt resource value: 0x7f070003
+			public const int propNameLabel = 2131165187;
+			
+			// aapt resource value: 0x7f070009
+			public const int propStateLabel = 2131165193;
+			
+			// aapt resource value: 0x7f07000c
+			public const int propZipField = 2131165196;
+			
+			// aapt resource value: 0x7f07000b
+			public const int propZipLabel = 2131165195;
+			
+			// aapt resource value: 0x7f07001c
+			public const int saveButton = 2131165212;
+			
+			// aapt resource value: 0x7f070011
+			public const int storageCheckBox = 2131165201;
+			
+			// aapt resource value: 0x7f070010
+			public const int studyCheckBox = 2131165200;
 			
 			static Id()
 			{
