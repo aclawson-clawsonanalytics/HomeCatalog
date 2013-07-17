@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BrowseProperty\BrowsePropertyActivity.cs" />
+    <Compile Include="Activities\BrowsePropertyActivity.cs" />
+    <Compile Include="Activities\AddEditProperty.cs" />
+    <Compile Include="..\..\HomeCatalog.Core\Property.cs">
+      <Link>Activities\Property.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -54,9 +58,11 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\layout\MainView.axml" />
     <AndroidResource Include="Resources\values\color.xml" />
+    <AndroidResource Include="Resources\layout\PropertyAddEditView.axml" />
+    <AndroidResource Include="Resources\layout\PropertyDetailView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="BrowseProperty\" />
+    <Folder Include="Activities\" />
   </ItemGroup>
 </Project>

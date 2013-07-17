@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TextView
+        android:id="@+id/PropertyAddressLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="PROPERTY ADDRESS HERE:" />
+    <Button
+        android:id="@+id/GoToItemsButton"
+        android:layout_below="@id/PropertyAddressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Items" />
+    <Button
+        android:id="@+id/GoToCollectionsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/GoToItemsButton"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="Collections" />
+    <Button
+        android:id="@+id/GoToDocumentsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GoToItemsButton"
+        android:layout_marginLeft="10dp"
+        android:text="Documents" />
+    <Button
+        android:id="@+id/GoToContactsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GoToCollectionsButton"
+        android:layout_alignTop="@id/GoToDocumentsButton"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="Contacts" />
+    <Button
+        android:id="@+id/ChangePropertyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GoToDocumentsButton"
+        android:layout_marginTop="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:text="Change Property" />
+    <Button
+        android:id="@+id/ExitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/ChangePropertyButton"
+        android:layout_marginRight="10dp"
+        android:text="Exit" />
+</RelativeLayout>

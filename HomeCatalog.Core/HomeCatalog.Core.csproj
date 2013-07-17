@@ -30,9 +30,9 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="Property.cs" />
     <Compile Include="PropertyCollection.cs">
       <DependentUpon>Property.cs</DependentUpon>
     </Compile>
+    <Compile Include="Property.cs" />
   </ItemGroup>
 </Project>

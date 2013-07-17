@@ -11,9 +11,7 @@ namespace HomeCatalog.Android
 	[Activity (Label = "HomeCatalog.Android", MainLauncher = true)]
 	public class BrowsePropertyActivity : Activity
 	{
-		int count = 1;
-
-		public Button AddButton { get; set; }
+		public Button AddPropertyButton { get; set; }
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -24,10 +22,10 @@ namespace HomeCatalog.Android
 
 			// Get our button from the layout resource,
 			// and attach an event to it
-			Button button = FindViewById<Button> (Resource.Id.AddPropertyButton);
+			Button AddPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
 			
-			button.Click += delegate {
-				button.Text = string.Format ("{0} clicks!", count++);
+			AddPropertyButton.Click += (sender,e) => {
+				StartActivity (typeof(AddEditProperty));
 			};
 		}
 	}

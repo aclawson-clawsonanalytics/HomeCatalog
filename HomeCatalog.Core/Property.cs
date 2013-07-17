@@ -8,6 +8,7 @@ namespace HomeCatalog.Core
 		{
 		}
 
+		public string PropertyName { get; set;}
 	}
 }
 

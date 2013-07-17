@@ -42,6 +42,7 @@
     <Compile Include="..\HomeCatalog.Core\PropertyCollection.cs">
       <Link>PropertyCollection.cs</Link>
     </Compile>
+    <Compile Include="PropertyTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
