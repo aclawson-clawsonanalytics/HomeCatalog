@@ -5,7 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-
+using HomeCatalog.Core;
 
 
 namespace HomeCatalog.Android
@@ -27,7 +27,12 @@ namespace HomeCatalog.Android
 			Button addPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
 			
 			addPropertyButton.Click += (sender,e) => {
-				StartActivityForResult (typeof(AddEditPropertyActivity), (int)PropertyRequest.ADD_PROPERTY);
+
+				Property property = new Property();
+				PropertyCollection.SharedCollection.AddProperty(property);
+				Intent PassPropertyID = new Intent(this,typeof(AddEditPropertyActivity));
+				PassPropertyID.PutExtra ("propertyID",property.PropertyID);
+				StartActivityForResult (PassPropertyID, (int)PropertyRequest.ADD_PROPERTY);
 			};
 		}
 

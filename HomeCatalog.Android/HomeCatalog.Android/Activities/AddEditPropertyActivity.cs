@@ -22,7 +22,7 @@ namespace HomeCatalog.Android
 			Property = new Property ();
 			SetContentView (Resource.Layout.PropertyAddEditView);
 			EditText propNameField = FindViewById<EditText> (Resource.Id.propNameField);
-			propNameField.Text = Property.PropertyName;
+			propNameField.Text = Property.PropertyID;
 			Button saveButton = FindViewById<Button> (Resource.Id.SaveButton);
 			saveButton.Click += (sender,e) => {
 				Intent returnIntent = new Intent();
