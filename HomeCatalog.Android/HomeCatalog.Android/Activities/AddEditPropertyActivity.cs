@@ -19,10 +19,16 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
+			Property = new Property ();
 			SetContentView (Resource.Layout.PropertyAddEditView);
 			EditText propNameField = FindViewById<EditText> (Resource.Id.propNameField);
 			propNameField.Text = Property.PropertyName;
+			Button saveButton = FindViewById<Button> (Resource.Id.SaveButton);
+			saveButton.Click += (sender,e) => {
+				Intent returnIntent = new Intent();
+				SetResult(Result.Ok, returnIntent);     
+				Finish();
+			}; 
 		}
 	}
 }
