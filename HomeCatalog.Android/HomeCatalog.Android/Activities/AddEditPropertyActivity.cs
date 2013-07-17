@@ -13,23 +13,16 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "AddEditProperty")]			
-	public class AddEditProperty : Activity
+	public class AddEditPropertyActivity : Activity
 	{
-		Property Property = new Property ();
+		private Property Property { get; set; }
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
-			Property.PropertyName = "Home";
-
 			SetContentView (Resource.Layout.PropertyAddEditView);
 			EditText propNameField = FindViewById<EditText> (Resource.Id.propNameField);
 			propNameField.Text = Property.PropertyName;
-
-
-
-
-			// Create your application here
 		}
 	}
 }

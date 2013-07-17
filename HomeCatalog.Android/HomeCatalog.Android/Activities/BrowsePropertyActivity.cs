@@ -25,7 +25,7 @@ namespace HomeCatalog.Android
 			Button AddPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
 			
 			AddPropertyButton.Click += (sender,e) => {
-				StartActivity (typeof(AddEditProperty));
+				StartActivity (typeof(AddEditPropertyActivity));
 			};
 		}
 	}
