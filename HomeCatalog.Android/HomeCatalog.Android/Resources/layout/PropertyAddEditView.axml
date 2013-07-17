@@ -4,252 +4,29 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <TextView
-        android:id="@+id/AddPropertyLabel"
+        android:text="@string/createPropertyTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:text="Create Property"
-        android:textSize="@string/stdMainLabelSize" />
-<!--Name-->
+        android:id="@+id/AddEditPropertyTitle"
+        android:textSize="30dp" />
     <TextView
         android:id="@+id/propNameLabel"
-        android:layout_below="@id/AddPropertyLabel"
+        android:layout_below="@id/AddEditPropertyTitle"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="@string/stdTopMargin"
+        android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@string/stdRightMargin"
+        android:layout_marginLeft="10dp"
         android:text="Property Name:"
-        android:textSize="@string/stdPromptSize" />
+        android:textSize="10dp" />
     <EditText
         android:id="@+id/propNameField"
         android:layout_toRightOf="@id/propNameLabel"
         android:layout_alignBottom="@id/propNameLabel"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@string/stdRightMargin"
-        android:background="@color/white"
-        android:layout_alignParentRight="true" />
-<!--Address-->
-    <TextView
-        android:id="@+id/propAddressLabel"
-        android:layout_below="@id/propNameField"
-        android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@string/stdTopMargin"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:text="Address: "
-        android:textSize="@string/stdPromptSize" />
-    <EditText
-        android:id="@+id/propAddressField"
-        android:layout_toRightOf="@id/propAddressLabel"
-        android:layout_alignBottom="@id/propAddressLabel"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@string/stdRightMargin"
-        android:background="@color/white"
-        android:layout_alignParentRight="true" />
-<!--City-->
-    <TextView
-        android:id="@+id/propCityLabel"
-        android:layout_below="@id/propAddressLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@string/stdTopMargin"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:text="City: "
-        android:textSize="@string/stdPromptSize" />
-    <EditText
-        android:id="@+id/propCityField"
-        android:layout_toRightOf="@id/propCityLabel"
-        android:layout_alignBottom="@id/propCityLabel"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@string/stdRightMargin"
-        android:background="@color/white"
-        android:layout_alignParentRight="true" />
-<!--State-->
-    <TextView
-        android:id="@+id/propStateLabel"
-        android:layout_below="@id/propCityField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:layout_marginTop="@string/stdTopMargin"
-        android:text="State: "
-        android:textSize="@string/stdPromptSize" />
-    <Spinner
-        android:id="@+id/StateSelector"
-        android:layout_toRightOf="@id/propStateLabel"
-        android:layout_alignBottom="@id/propStateLabel"
-        android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:background="@color/white"
-        android:layout_alignParentRight="true"
-        android:text="@string/StateOptions" />
-<!--Zip Code-->
-    <TextView
-        android:id="@+id/propZipLabel"
-        android:layout_below="@id/propStateLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:layout_marginTop="@string/stdTopMargin"
-        android:text="Zip Code: "
-        android:textSize="@string/stdPromptSize" />
-    <EditText
-        android:id="@+id/propZipField"
-        android:layout_toRightOf="@id/propZipLabel"
-        android:layout_alignBottom="@id/propZipLabel"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_marginRight="@string/stdRightMargin"
         android:layout_alignParentRight="true" />
-<!--Room Set Up Wizard-->
-    <TextView
-        android:id="@+id/RoomLabel"
-        android:layout_below="@id/propZipLabel"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:layout_marginTop="@string/stdTopMargin"
-        android:text="Rooms on Property"
-        android:textSize="@string/stdSubLabelSize" />
-<!--CheckBox selectors-->
-    <CheckBox
-        android:id="@+id/kitCheckBox"
-        android:layout_below="@id/RoomLabel"
-        android:layout_marginTop="@string/smallTopMargin"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kitchen"
-        android:textSize="@string/stdPromptSize" />
-    <CheckBox
-        android:id="@+id/livingCheckBox"
-        android:layout_below="@id/kitCheckBox"
-        android:layout_marginTop="@string/smallTopMargin"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Living Room"
-        android:textSize="@string/stdPromptSize" />
-    <CheckBox
-        android:id="@+id/studyCheckBox"
-        android:layout_below="@id/livingCheckBox"
-        android:layout_marginTop="@string/smallTopMargin"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Study"
-        android:textSize="@string/stdPromptSize" />
-    <CheckBox
-        android:id="@+id/storageCheckBox"
-        android:layout_below="@id/studyCheckBox"
-        android:layout_marginTop="@string/smallTopMargin"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Storage"
-        android:textSize="@string/stdPromptSize" />
-    <CheckBox
-        android:id="@+id/basementCheckBox"
-        android:layout_below="@id/storageCheckBox"
-        android:layout_marginTop="@string/smallTopMargin"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Basement"
-        android:textSize="@string/stdPromptSize" />
-<!--Custom Rooms-->
-    <TextView
-        android:id="@+id/BedQTYLabel"
-        android:layout_alignBottom="@id/kitCheckBox"
-        android:layout_toRightOf="@id/kitCheckBox"
-        android:layout_marginLeft="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bedrooms: "
-        android:textSize="@string/stdPromptSize" />
-    <EditText
-        android:id="@+id/BedQTYField"
-        android:layout_toRightOf="@id/BedQTYLabel"
-        android:layout_alignBottom="@id/BedQTYLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:text="Quantity"
-        android:textColor="@string/EditTextGray" />
-    <TextView
-        android:id="@+id/BathQTYLabel"
-        android:layout_below="@id/BedQTYLabel"
-        android:layout_alignLeft="@id/BedQTYLabel"
-        android:layout_marginTop="@string/stdTopMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bathrooms: "
-        android:textSize="@string/stdPromptSize" />
-    <EditText
-        android:id="@+id/BathQTYField"
-        android:layout_toRightOf="@id/BathQTYLabel"
-        android:layout_alignBottom="@id/BathQTYLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:text="Quantity"
-        android:textColor="@string/EditTextGray" />
-    <TextView
-        android:id="@+id/CustomLabel"
-        android:layout_below="@id/BathQTYLabel"
-        android:layout_alignLeft="@id/BathQTYLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@string/stdTopMargin"
-        android:text="Custom Rooms"
-        android:textSize="20dp" />
-    <EditText
-        android:id="@+id/CustomRoom1"
-        android:layout_below="@id/CustomLabel"
-        android:layout_alignLeft="@id/CustomLabel"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@string/stdRightMargin"
-        android:layout_marginTop="@string/stdTopMargin"
-        android:text="Custom Room 1"
-        android:textColor="@string/EditTextGray"
-        android:background="@color/white" />
-    <EditText
-        android:id="@+id/CustomRoom2"
-        android:layout_below="@id/CustomRoom1"
-        android:layout_alignLeft="@id/CustomRoom1"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@string/stdRightMargin"
-        android:layout_marginTop="5dp"
-        android:text="Custom Room 2"
-        android:textColor="@string/EditTextGray"
-        android:background="@color/white" />
-    <EditText
-        android:id="@+id/CostumRoom3"
-        android:layout_below="@id/CustomRoom2"
-        android:layout_alignLeft="@id/CustomRoom2"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@string/stdRightMargin"
-        android:layout_marginTop="5dp"
-        android:text="Custom Room 3"
-        android:textColor="@color/gray"
-        android:background="@color/white" />
-    <Button
-        android:id="@+id/cancelButton"
-        android:layout_below="@id/basementCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@string/stdLeftMargin"
-        android:layout_marginTop="@string/stdTopMargin"
-        android:text="Cancel" />
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_toRightOf="@id/cancelButton"
-        android:layout_alignBottom="@id/cancelButton"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@string/stdRightMargin"
-        android:text="Save" />
 </RelativeLayout>

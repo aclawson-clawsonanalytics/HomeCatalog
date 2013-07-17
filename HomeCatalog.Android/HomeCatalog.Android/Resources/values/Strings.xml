@@ -11,7 +11,7 @@
 	<string name="stdTopMargin">15dp</string>
 	<string name="smallTopMargin">10dp</string>
 	<string name="EditTextGray">@color/gray</string>
-	
+	<string name="createPropertyTitle">Create Property</string>
 	<string-array name="StateArray">
 		<item>Alabama</item>
 		<item>Alaska</item>
