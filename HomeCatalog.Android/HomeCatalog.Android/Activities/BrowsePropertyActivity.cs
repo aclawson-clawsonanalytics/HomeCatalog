@@ -13,8 +13,6 @@ namespace HomeCatalog.Android
 	[Activity (Label = "HomeCatalog.Android", MainLauncher = true)]
 	public class BrowsePropertyActivity : Activity
 	{
-		public Button AddPropertyButton { get; set; }
-
 		private enum PropertyRequest
 		{
 			ADD_PROPERTY
@@ -36,7 +34,7 @@ namespace HomeCatalog.Android
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult (requestCode, resultCode, data);
-
+			 
 			if (requestCode == (int)PropertyRequest.ADD_PROPERTY) {
 
 			}
