@@ -24,9 +24,9 @@ namespace HomeCatalog.Android
 
 			SetContentView (Resource.Layout.MainView);
 
-			Button AddPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
+			Button addPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
 			
-			AddPropertyButton.Click += (sender,e) => {
+			addPropertyButton.Click += (sender,e) => {
 				StartActivityForResult (typeof(AddEditPropertyActivity), (int)PropertyRequest.ADD_PROPERTY);
 			};
 		}
@@ -34,7 +34,7 @@ namespace HomeCatalog.Android
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult (requestCode, resultCode, data);
-			 
+
 			if (requestCode == (int)PropertyRequest.ADD_PROPERTY) {
 
 			}

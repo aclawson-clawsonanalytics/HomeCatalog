@@ -566,29 +566,32 @@ namespace HomeCatalog.Android
 			// aapt resource value: 0x7f080001
 			public const int AddPropertyButton = 2131230721;
 			
-			// aapt resource value: 0x7f08000a
-			public const int ChangePropertyButton = 2131230730;
-			
 			// aapt resource value: 0x7f08000b
-			public const int ExitButton = 2131230731;
+			public const int ChangePropertyButton = 2131230731;
 			
-			// aapt resource value: 0x7f080007
-			public const int GoToCollectionsButton = 2131230727;
-			
-			// aapt resource value: 0x7f080009
-			public const int GoToContactsButton = 2131230729;
+			// aapt resource value: 0x7f08000c
+			public const int ExitButton = 2131230732;
 			
 			// aapt resource value: 0x7f080008
-			public const int GoToDocumentsButton = 2131230728;
+			public const int GoToCollectionsButton = 2131230728;
 			
-			// aapt resource value: 0x7f080006
-			public const int GoToItemsButton = 2131230726;
+			// aapt resource value: 0x7f08000a
+			public const int GoToContactsButton = 2131230730;
+			
+			// aapt resource value: 0x7f080009
+			public const int GoToDocumentsButton = 2131230729;
+			
+			// aapt resource value: 0x7f080007
+			public const int GoToItemsButton = 2131230727;
 			
 			// aapt resource value: 0x7f080000
 			public const int HomeCatalogMainMenuLabel = 2131230720;
 			
+			// aapt resource value: 0x7f080006
+			public const int PropertyAddressLabel = 2131230726;
+			
 			// aapt resource value: 0x7f080005
-			public const int PropertyAddressLabel = 2131230725;
+			public const int SaveButton = 2131230725;
 			
 			// aapt resource value: 0x7f080004
 			public const int propNameField = 2131230724;
