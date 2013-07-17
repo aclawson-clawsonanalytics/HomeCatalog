@@ -6,6 +6,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+
+
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "HomeCatalog.Android", MainLauncher = true)]
@@ -13,20 +15,31 @@ namespace HomeCatalog.Android
 	{
 		public Button AddPropertyButton { get; set; }
 
+		private enum PropertyRequest
+		{
+			ADD_PROPERTY
+		}
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
-			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.MainView);
 
-			// Get our button from the layout resource,
-			// and attach an event to it
 			Button AddPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
 			
 			AddPropertyButton.Click += (sender,e) => {
-				StartActivity (typeof(AddEditPropertyActivity));
+				StartActivityForResult (typeof(AddEditPropertyActivity), (int)PropertyRequest.ADD_PROPERTY);
 			};
+		}
+
+		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult (requestCode, resultCode, data);
+
+			if (requestCode == (int)PropertyRequest.ADD_PROPERTY) {
+
+			}
 		}
 	}
 }
