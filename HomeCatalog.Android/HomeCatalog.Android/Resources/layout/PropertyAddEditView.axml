@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <TextView
         android:text="@string/createPropertyTitle"
         android:layout_width="wrap_content"
@@ -28,7 +28,88 @@
         android:layout_width="wrap_content"
         android:layout_marginRight="10dp"
         android:background="@color/white"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/PropAddressLabel"
+        android:layout_below="@id/propNameLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Address:"
+        android:textSize="10dp" />
+    <EditText
+        android:id="@+id/PropAddressField"
+        android:layout_toRightOf="@id/PropAddressLabel"
+        android:layout_alignBottom="@id/PropAddressLabel"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="10dp"
+        android:background="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/PropCityLabel"
+        android:layout_below="@id/PropAddressLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="City:"
+        android:textSize="10dp" />
+    <EditText
+        android:id="@+id/PropCityField"
+        android:layout_toRightOf="@id/PropCityLabel"
+        android:layout_alignBottom="@id/PropCityLabel"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="10dp"
+        android:background="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/PropStateLabel"
+        android:layout_below="@id/PropCityLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="State:"
+        android:textSize="10dp" />
+    <EditText
+        android:id="@+id/PropStateField"
+        android:layout_toRightOf="@id/PropStateLabel"
+        android:layout_alignBottom="@id/PropStateLabel"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="10dp"
+        android:background="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/PropZipLabel"
+        android:layout_below="@id/PropStateLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Zip Code:"
+        android:textSize="10dp" />
+    <EditText
+        android:id="@+id/PropZipField"
+        android:layout_toRightOf="@id/PropZipLabel"
+        android:layout_alignBottom="@id/PropZipLabel"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="10dp"
+        android:background="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp" />
     <Button
         android:text="Save"
         android:layout_width="match_parent"
