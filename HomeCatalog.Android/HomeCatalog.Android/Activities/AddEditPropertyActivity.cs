@@ -16,20 +16,28 @@ namespace HomeCatalog.Android
 	public class AddEditPropertyActivity : Activity
 	{
 		private Property Property { get; set; }
+		private EditText PropNameField { get; set; }
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			Property = new Property ();
+			String propertyID = Intent.GetStringExtra ("propertyID");
+			Property = PropertyCollection.SharedCollection.PropertyWithID (propertyID);
 			SetContentView (Resource.Layout.PropertyAddEditView);
-			EditText propNameField = FindViewById<EditText> (Resource.Id.propNameField);
-			propNameField.Text = Property.PropertyID;
+			PropNameField = FindViewById<EditText> (Resource.Id.propNameField);
+			PropNameField.Text = Property.PropertyID;
 			Button saveButton = FindViewById<Button> (Resource.Id.SaveButton);
 			saveButton.Click += (sender,e) => {
+				SaveProperty();
 				Intent returnIntent = new Intent();
 				SetResult(Result.Ok, returnIntent);     
 				Finish();
 			}; 
 		}
+		private void SaveProperty() 
+		{
+			Property.PropertyName = PropNameField.Text
+		}
 	}
+
 }
 

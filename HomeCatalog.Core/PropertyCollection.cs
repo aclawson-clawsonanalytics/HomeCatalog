@@ -13,10 +13,8 @@ namespace HomeCatalog.Core
 
 		public static PropertyCollection SharedCollection
 		{
-			get 
-			{
-				if (instance == null)
-				{
+			get {
+				if (instance == null) {
 					instance = new PropertyCollection();
 				}
 				return instance;
@@ -24,12 +22,12 @@ namespace HomeCatalog.Core
 		}
 	
 		private List<Property> properties = new List<Property> (); 
-		public List<Property> Properties { 
-			get{
+		public List<Property> Properties 
+		{ 
+			get {
 				return new List<Property>(properties);
 			}
 		}
-
 
 		public void AddProperty (Property property)
 		{
@@ -45,8 +43,6 @@ namespace HomeCatalog.Core
 		{
 			instance = null;
 		}
-
-		
 	}
 }
 

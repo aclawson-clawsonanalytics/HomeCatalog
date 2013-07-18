@@ -22,9 +22,9 @@ namespace HomeCatalog.Android
 		}
 		public override long GetItemId(int position)
 		{
-			return Properties[position].PropertyID;
+			return position;
 		}
-		public override string this[int position] {  
+		public override Property this[int position] {  
 			get { return Properties[position]; }
 		}
 		public override int Count {
@@ -39,6 +39,5 @@ namespace HomeCatalog.Android
 			return view;
 		}
    }
-	}
 }
 

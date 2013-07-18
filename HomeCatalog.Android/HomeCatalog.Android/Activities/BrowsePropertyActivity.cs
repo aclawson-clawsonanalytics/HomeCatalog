@@ -21,12 +21,16 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			for (int i=0; i < 5; i++) {
-				Property property = new Property();
-				property.PropertyName = "Property" + i;
-			}
+//			for (int i=0; i < 20; i++) {
+//				Property property = new Property();
+//				property.PropertyName = "Property" + i;
+//				PropertyCollection.SharedCollection.AddProperty (property);
+//			}
 
 			SetContentView (Resource.Layout.MainView);
+
+			ListView listView = FindViewById<ListView> (Resource.Id.propertyList);
+			listView.Adapter = new PropertyListAdapter (this, PropertyCollection.SharedCollection.Properties.ToArray ());
 
 			Button addPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
 			
