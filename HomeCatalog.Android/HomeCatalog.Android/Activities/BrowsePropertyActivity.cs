@@ -13,6 +13,7 @@ namespace HomeCatalog.Android
 	[Activity (Label = "HomeCatalog.Android", MainLauncher = true)]
 	public class BrowsePropertyActivity : Activity
 	{
+		private PropertyListAdapter ListAdapter { get; set; }
 		private enum PropertyRequest
 		{
 			ADD_PROPERTY
@@ -21,16 +22,17 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-//			for (int i=0; i < 20; i++) {
-//				Property property = new Property();
-//				property.PropertyName = "Property" + i;
-//				PropertyCollection.SharedCollection.AddProperty (property);
-//			}
+			for (int i=0; i < 5; i++) {
+				Property property = new Property();
+				property.PropertyName = "Property" + i;
+				PropertyCollection.SharedCollection.AddProperty (property);
+			}
 
 			SetContentView (Resource.Layout.MainView);
 
 			ListView listView = FindViewById<ListView> (Resource.Id.propertyList);
-			listView.Adapter = new PropertyListAdapter (this, PropertyCollection.SharedCollection.Properties.ToArray ());
+			ListAdapter = new PropertyListAdapter (this);
+			listView.Adapter = ListAdapter;
 
 			Button addPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
 			
@@ -49,7 +51,7 @@ namespace HomeCatalog.Android
 			base.OnActivityResult (requestCode, resultCode, data);
 
 			if (requestCode == (int)PropertyRequest.ADD_PROPERTY) {
-
+				ListAdapter.NotifyDataSetChanged ();
 			}
 		}
 	}

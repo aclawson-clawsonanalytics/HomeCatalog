@@ -16,9 +16,9 @@ namespace HomeCatalog.Android
 	{
 		Property[] Properties;
 		Activity context;
-		public PropertyListAdapter(Activity context, Property[] items) : base() {
+		public PropertyListAdapter(Activity context) : base() {
 			this.context = context;
-			this.Properties = items;
+			this.Properties = PropertyCollection.SharedCollection.Properties.ToArray ();
 		}
 		public override long GetItemId(int position)
 		{
@@ -38,6 +38,13 @@ namespace HomeCatalog.Android
 			view.FindViewById<TextView>(Android.Resource.Id.propertyTextItem).Text = Properties[position].PropertyName;
 			return view;
 		}
+		public override void NotifyDataSetChanged ()
+		{
+			Properties = Properties = PropertyCollection.SharedCollection.Properties.ToArray ();
+
+			base.NotifyDataSetChanged ();
+		}
+
    }
 }
 

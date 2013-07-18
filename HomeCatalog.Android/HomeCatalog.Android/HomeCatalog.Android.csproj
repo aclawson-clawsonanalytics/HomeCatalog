@@ -51,7 +51,7 @@
     <Compile Include="..\..\HomeCatalog.Core\PropertyCollection.cs">
       <Link>Core\PropertyCollection.cs</Link>
     </Compile>
-    <Compile Include="Activities\PropertyListAdapter.cs" />
+    <Compile Include="Adapters\PropertyListAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -70,5 +70,6 @@
   <ItemGroup>
     <Folder Include="Activities\" />
     <Folder Include="Core\" />
+    <Folder Include="Adapters\" />
   </ItemGroup>
 </Project>
