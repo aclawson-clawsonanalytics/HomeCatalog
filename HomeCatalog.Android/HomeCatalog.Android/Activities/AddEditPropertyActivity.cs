@@ -36,6 +36,8 @@ namespace HomeCatalog.Android
 			PropCityField = FindViewById<EditText> (Resource.Id.PropCityField);
 			PropStateField = FindViewById<EditText> (Resource.Id.PropCityField);
 
+			DisplayPropertyInField ();
+
 			Button saveButton = FindViewById<Button> (Resource.Id.SaveButton);
 			saveButton.Click += (sender,e) => {
 				SaveProperty();
@@ -44,9 +46,24 @@ namespace HomeCatalog.Android
 				Finish();
 			}; 
 		}
+
 		private void SaveProperty() 
 		{
-			Property.PropertyName = PropNameField.Text
+			// Set Property Attributes by the text in each EditText field
+			Property.PropertyName = PropNameField.Text;
+			Property.Address = PropAddressField.Text;
+			Property.City = PropCityField;
+			Property.State = PropStateField;
+			Property.ZipCode = PropZipField;
+		}
+
+		private void DisplayPropertyInField ()
+		{
+			PropNameField.Text = Property.PropertyName;
+			PropAddressField.Text = Property.Address;
+			PropCityField.Text = Property.City;
+			PropStateField.Text = Property.State;
+			PropZipField.Text = Property.ZipCode;
 		}
 	}
 
