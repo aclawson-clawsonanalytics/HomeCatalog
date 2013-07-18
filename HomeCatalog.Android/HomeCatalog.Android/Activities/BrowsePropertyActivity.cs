@@ -21,6 +21,10 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+			for (int i=0; i < 5; i++) {
+				Property property = new Property();
+				property.PropertyName = "Property" + i;
+			}
 
 			SetContentView (Resource.Layout.MainView);
 

@@ -51,6 +51,7 @@
     <Compile Include="..\..\HomeCatalog.Core\PropertyCollection.cs">
       <Link>Core\PropertyCollection.cs</Link>
     </Compile>
+    <Compile Include="Activities\PropertyListAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -63,6 +64,7 @@
     <AndroidResource Include="Resources\values\color.xml" />
     <AndroidResource Include="Resources\layout\PropertyAddEditView.axml" />
     <AndroidResource Include="Resources\layout\PropertyDetailView.axml" />
+    <AndroidResource Include="Resources\layout\PropertyViewListItem.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

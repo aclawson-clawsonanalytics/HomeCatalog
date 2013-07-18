@@ -17,4 +17,12 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/HomeCatalogMainMenuLabel"
         android:id="@+id/AddPropertyButton" />
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/propertyList"
+        android:layout_below="@id/AddPropertyButton"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>
