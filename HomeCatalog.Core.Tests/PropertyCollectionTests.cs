@@ -60,6 +60,31 @@ namespace HomeCatalog.Core.Tests
 			Assert.That (sut != PropertyCollection.SharedCollection);
 		}
 
+		[Test ()]
+		public void CanFindPropertyById ()
+		{
+			Property property2 = new Property ();
+			Property property3 = new Property ();
+			Property property4 = new Property ();
+			string ID1 = property.PropertyID;
+			string ID2 = property2.PropertyID;
+			string ID3 = property3.PropertyID;
+			string ID4 = property4.PropertyID;
+			sut.AddProperty (property);
+			sut.AddProperty (property2);
+			sut.AddProperty (property3);
+			sut.AddProperty (property4);
+
+			Assert.That (property3 == sut.FindPropertyWithId(ID3));
+		}
+
+		[Test()]
+		public void FindPropertyReturnsNullWithNonExistentId()
+		{
+			string FalseId = "1";
+			Assert.That (sut.FindPropertyWithId (FalseId) == null);
+		}
+
 
 	}
 }

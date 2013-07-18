@@ -43,6 +43,18 @@ namespace HomeCatalog.Core
 		{
 			instance = null;
 		}
+
+		public Property FindPropertyWithId (string SearchId)
+		{
+			foreach (Property prop in PropertyCollection.SharedCollection.Properties) 
+			{
+				if (prop.PropertyID == SearchId) {
+					return prop;
+				} 
+
+			}
+			return null;
+		}
 	}
 }
 
