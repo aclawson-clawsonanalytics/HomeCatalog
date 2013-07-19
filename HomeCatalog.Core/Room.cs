@@ -6,6 +6,7 @@ namespace HomeCatalog.Core
 	{
 		public Room ()
 		{
+
 		}
 
 		public int RoomID { get; set; }

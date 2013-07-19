@@ -9,6 +9,8 @@ namespace HomeCatalog.Core
 		public Property ()
 		{
 			PropertyID = Guid.NewGuid ().ToString ();
+			RoomList = new List<Room> ();
+			CategoryList = new List<Category> ();
 		}
 
 		// Define Metadata elements
