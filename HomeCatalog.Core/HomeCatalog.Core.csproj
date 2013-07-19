@@ -34,5 +34,7 @@
       <DependentUpon>Property.cs</DependentUpon>
     </Compile>
     <Compile Include="Property.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Room.cs" />
   </ItemGroup>
 </Project>

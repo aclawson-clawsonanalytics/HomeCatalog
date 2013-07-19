@@ -19,6 +19,11 @@ namespace HomeCatalog.Core
 		public string State { get; set; }
 		public string ZipCode {get;set;}
 
+		// Define Standard set of room and category labels
+		public List<Room> RoomList { get; set; }
+		public List<Category> CategoryList { get; set; }
+
+
 	}
 }
 

@@ -52,6 +52,12 @@
       <Link>Core\PropertyCollection.cs</Link>
     </Compile>
     <Compile Include="Adapters\PropertyListAdapter.cs" />
+    <Compile Include="..\..\HomeCatalog.Core\Room.cs">
+      <Link>Core\Room.cs</Link>
+    </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\Category.cs">
+      <Link>Core\Category.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
