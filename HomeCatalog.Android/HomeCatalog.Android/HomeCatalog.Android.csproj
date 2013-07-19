@@ -71,6 +71,8 @@
     <AndroidResource Include="Resources\layout\PropertyAddEditView.axml" />
     <AndroidResource Include="Resources\layout\PropertyDetailView.axml" />
     <AndroidResource Include="Resources\layout\PropertyViewListItem.axml" />
+    <AndroidResource Include="Resources\layout\SetUpRoomView.axml" />
+    <AndroidResource Include="Resources\layout\SetUpCategoryView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

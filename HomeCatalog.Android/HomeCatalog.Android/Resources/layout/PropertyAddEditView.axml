@@ -109,6 +109,7 @@
         android:layout_marginRight="10dp"
         android:background="@color/white"
         android:layout_alignParentRight="true" />
+<!--
     <TextView
         android:id="@+id/RoomSectionLabel"
         android:layout_width="wrap_content"
@@ -116,7 +117,7 @@
         android:layout_below="@id/PropZipField"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:text="Customize Rooms"
+        android:text="Custom Room Set Up"
         android:textSize="15dp" />
     <Button
         android:text="Save"
@@ -244,5 +245,39 @@
         android:layout_alignBaseline="@id/OfficeCheckBox"
         android:textSize="10dp"
         android:layout_alignLeft="@id/CustomField"
-        android:layout_marginBottom="0.0dp" />
+        android:layout_marginBottom="0.0dp" /> -->
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CancelButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="0.0dp" />
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/SaveButton"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true" />
+    <Button
+        android:text="Rooms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PropZipField"
+        android:id="@+id/EditRoomsButton"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp" />
+    <Button
+        android:text="Item Categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PropZipField"
+        android:id="@+id/EditCategories"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignBaseline="@id/EditRoomsButton" />
 </RelativeLayout>

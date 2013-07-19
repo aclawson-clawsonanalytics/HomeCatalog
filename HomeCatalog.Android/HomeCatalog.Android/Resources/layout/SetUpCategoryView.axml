@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TextView
+        android:text="Category Set Up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CategoryLabel"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp" />
+    <CheckBox
+        android:text="Appliance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CategoryLabel"
+        android:id="@+id/ApplianceCheckBox"
+        android:textSize="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp" />
+    <CheckBox
+        android:text="Dishes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BathApplianceCheckBox"
+        android:id="@+id/DishCheckBox"
+        android:textSize="15dp"
+        android:layout_alignLeft="@id/ApplianceCheckBox" />
+    <CheckBox
+        android:text="Electronics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/DishCheckBox"
+        android:id="@+id/ElectronicsCheckBox"
+        android:layout_alignLeft="@id/DishCheckBox" />
+    <CheckBox
+        android:text="Furniture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ElectronicsCheckBox"
+        android:id="@+id/FurnitureCheckBox"
+        android:textSize="15dp"
+        android:layout_alignLeft="@id/ElectronicsCheckBox" />
+    <CheckBox
+        android:text="Kitchen Appliance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/FurnitureCheckBox"
+        android:id="@+id/KitApplianceCheckBox"
+        android:layout_alignLeft="@id/ApplianceCheckBox"
+        android:textSize="15dp" />
+    <CheckBox
+        android:text="Bathroom Appliance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ApplianceCheckBox"
+        android:id="@+id/BathApplianceCheckBox"
+        android:textSize="15dp"
+        android:layout_alignLeft="@id/ApplianceCheckBox" />
+    <CheckBox
+        android:text="Storage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/KitApplianceCheckBox"
+        android:id="@+id/StorageCheckBox"
+        android:textSize="15dp"
+        android:layout_alignLeft="@id/ApplianceCheckBox" />
+    <CheckBox
+        android:text="Tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/StorageCheckBox"
+        android:id="@+id/ToolsCheckBox"
+        android:textSize="15dp"
+        android:layout_alignLeft="@id/ApplianceCheckBox" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ToolsCheckBox"
+        android:id="@+id/CustomCategoryField"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="15dp"
+        android:background="@color/white" />
+    <Button
+        android:text="Add Custom Category"
+        android:layout_width="wrap_content"
+        android:layout_height="32.0dp"
+        android:layout_below="@id/CustomCategoryField"
+        android:id="@+id/AddCustomCategoryButton"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp" />
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CancelButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="0.0dp" />
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/SaveCategoriesButton"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>

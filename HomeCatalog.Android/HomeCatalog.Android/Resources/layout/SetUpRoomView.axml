@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TextView
+        android:id="@+id/RoomSectionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="Room Set Up"
+        android:textSize="15dp" />
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/SaveRoomsButton"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true" />
+    <CheckBox
+        android:text="Kitchen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/RoomSectionLabel"
+        android:id="@+id/KitchenCheckBox"
+        android:textSize="10dp" />
+    <CheckBox
+        android:text="Living Room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/KitchenCheckBox"
+        android:id="@+id/LivingCheckBox"
+        android:textSize="10dp" />
+    <CheckBox
+        android:text="Storage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LivingCheckBox"
+        android:id="@+id/StorageCheckBox"
+        android:textSize="10dp" />
+    <CheckBox
+        android:text="Basement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/StorageCheckBox"
+        android:id="@+id/BasementCheckBox"
+        android:textSize="10dp" />
+    <CheckBox
+        android:text="Office"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BasementCheckBox"
+        android:id="@+id/OfficeCheckBox"
+        android:textSize="10dp" />
+    <TextView
+        android:id="@+id/BathPrompt"
+        android:text="Bathrooms: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/RoomSectionLabel"
+        android:layout_toRightOf="@id/KitchenCheckBox"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/RoomSectionLabel"
+        android:id="@+id/BathField"
+        android:layout_toRightOf="@id/BathPrompt"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="0.0dp"
+        android:layout_marginTop="0.0dp"
+        android:textSize="10dp"
+        android:width="40dp"
+        android:height="20dp"
+        android:layout_alignBaseline="@id/BathPrompt"
+        android:layout_marginRight="10dp" />
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CancelButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="0.0dp" />
+    <TextView
+        android:text="Bedrooms: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BedPrompt"
+        android:id="@+id/BedPrompt"
+        android:layout_alignBaseline="@id/LivingCheckBox"
+        android:layout_toRightOf="@id/LivingCheckBox"
+        android:layout_alignLeft="@id/BathPrompt" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BathField"
+        android:id="@+id/editText1"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/BedPrompt"
+        android:layout_alignBaseline="@id/BedPrompt"
+        android:layout_alignLeft="@id/BathField"
+        android:height="20dp"
+        android:background="@color/white" />
+    <TextView
+        android:text="Custom Room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BedPrompt"
+        android:id="@+id/CustomLabel"
+        android:layout_alignBaseline="@id/StorageCheckBox"
+        android:layout_toRightOf="@id/StorageCheckBox"
+        android:layout_alignLeft="@id/BedPrompt" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CustomLabel"
+        android:id="@+id/CustomField"
+        android:layout_alignBaseline="@id/BasementCheckBox"
+        android:layout_toLeftOf="@id/CustomLabel"
+        android:height="20dp"
+        android:layout_alignLeft="@id/CustomLabel"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:background="@color/white" />
+    <Button
+        android:text="Add Custom Room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/OfficeCheckBox"
+        android:id="@+id/AddCustomButton"
+        android:layout_below="@id/CustomField"
+        android:layout_alignBaseline="@id/OfficeCheckBox"
+        android:textSize="10dp"
+        android:layout_alignLeft="@id/CustomField"
+        android:layout_marginBottom="0.0dp" />
+</RelativeLayout>
