@@ -51,32 +51,25 @@ namespace HomeCatalog.Android
 			CheckBox BasementCheckBox = FindViewById<CheckBox> (Resource.Id.BasementCheckBox);
 			CheckBox OfficeCheckBox = FindViewById<CheckBox> (Resource.Id.OfficeCheckBox);
 
-			if (Property.RoomList.Contains (Kitchen))
-			{
-				KitchenCheckBox.Checked;
-				//Toast.MakeText (this, "Selected", ToastLength.Short).Show ();
-			}
-//			else
+			KitchenCheckBox.Checked = true;
+//			if (Property.RoomList.Contains (Kitchen))
 //			{
-//				Toast.MakeText (this, "Not Selected", ToastLength.Short).Show ();
+//				KitchenCheckBox.Checked;
+//				//Toast.MakeText (this, "Selected", ToastLength.Short).Show ();
 //			}
-
-			if (Property.RoomList.Contains (LivingRoom))
-			{
-				LivingCheckBox.Checked;
-			}
+////			else
+////			{
+////				Toast.MakeText (this, "Not Selected", ToastLength.Short).Show ();
+////			}
+//
+//			if (Property.RoomList.Contains (LivingRoom))
+//			{
+//				LivingCheckBox.Checked;
+//			}
 		
 		}
 
-		private void LoadRooms (Property)
-		{
-			if (Property.RoomList.Contains (Kitchen))
-			{
 
-			}
-
-
-		}
 
 
 	}

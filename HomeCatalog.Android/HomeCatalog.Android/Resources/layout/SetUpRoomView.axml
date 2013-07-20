@@ -25,7 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/RoomSectionLabel"
         android:id="@+id/KitchenCheckBox"
-        android:textSize="10dp" />
+        android:textSize="10dp"
+        android:visibility="visible"
+        android:clickable="true" />
     <CheckBox
         android:text="Living Room"
         android:layout_width="wrap_content"
