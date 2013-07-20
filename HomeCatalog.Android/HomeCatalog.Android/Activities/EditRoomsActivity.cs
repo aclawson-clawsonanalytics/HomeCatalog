@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using Android.App;
@@ -51,22 +52,46 @@ namespace HomeCatalog.Android
 			CheckBox BasementCheckBox = FindViewById<CheckBox> (Resource.Id.BasementCheckBox);
 			CheckBox OfficeCheckBox = FindViewById<CheckBox> (Resource.Id.OfficeCheckBox);
 
-			KitchenCheckBox.Checked = true;
-//			if (Property.RoomList.Contains (Kitchen))
-//			{
-//				KitchenCheckBox.Checked;
-//				//Toast.MakeText (this, "Selected", ToastLength.Short).Show ();
-//			}
-////			else
-////			{
-////				Toast.MakeText (this, "Not Selected", ToastLength.Short).Show ();
-////			}
-//
-//			if (Property.RoomList.Contains (LivingRoom))
-//			{
-//				LivingCheckBox.Checked;
-//			}
+			// Set CheckBox checks for existing rooms in RoomList
+			KitchenCheckBox.Checked = SetCheckBoxByRoomLabel ("Kitchen");
+			LivingCheckBox.Checked = SetCheckBoxByRoomLabel ("Living Room");
+			StorageCheckBox.Checked = SetCheckBoxByRoomLabel ("Storage");
+			BasementCheckBox.Checked = SetCheckBoxByRoomLabel ("Basement");
+			OfficeCheckBox.Checked = SetCheckBoxByRoomLabel ("Office");
+
+			// Set Click events for CheckBoxes
+			KitchenCheckBox.Click += (o,e) => 
+			{
+				if (KitchenCheckBox.Checked = false)
+				{
+					if (Property.RoomList.Contains (Kitchen)	// if not checked, check and add kit
+					{
+						Room Kitchen = new Room ();
+						Kitchen.RoomID = 1;
+						Kitchen.Label = "Kitchen";
+					}
+					else
+					{
+
+					}
+				}
+
+			}
 		
+		}
+
+		private CheckBox CheckBoxClicker (CheckBox cb,Room room)
+		{
+			if (cb.Checked = false)
+			{
+					
+			}
+
+		}
+
+		private Room AddRoomByCheckBox (CheckBox checkbox)
+		{
+
 		}
 
 
