@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <TextView
-        android:text="@string/createPropertyTitle"
+        android:text="Add / Edit Property"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -276,7 +276,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/PropZipField"
-        android:id="@+id/EditCategories"
+        android:id="@+id/EditCategoriesButton"
         android:layout_alignParentRight="true"
         android:layout_marginRight="30dp"
         android:layout_alignBaseline="@id/EditRoomsButton" />

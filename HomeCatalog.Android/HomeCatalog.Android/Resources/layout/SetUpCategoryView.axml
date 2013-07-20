@@ -21,6 +21,14 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="30dp" />
     <CheckBox
+        android:text="Bathroom Appliance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ApplianceCheckBox"
+        android:id="@+id/BathApplianceCheckBox"
+        android:textSize="15dp"
+        android:layout_alignLeft="@id/ApplianceCheckBox" />
+    <CheckBox
         android:text="Dishes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,14 +59,6 @@
         android:id="@+id/KitApplianceCheckBox"
         android:layout_alignLeft="@id/ApplianceCheckBox"
         android:textSize="15dp" />
-    <CheckBox
-        android:text="Bathroom Appliance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ApplianceCheckBox"
-        android:id="@+id/BathApplianceCheckBox"
-        android:textSize="15dp"
-        android:layout_alignLeft="@id/ApplianceCheckBox" />
     <CheckBox
         android:text="Storage"
         android:layout_width="wrap_content"

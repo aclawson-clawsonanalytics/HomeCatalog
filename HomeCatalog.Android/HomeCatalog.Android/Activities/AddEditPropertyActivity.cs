@@ -16,6 +16,8 @@ namespace HomeCatalog.Android
 	public class AddEditPropertyActivity : Activity
 	{
 		private Property Property { get; set; }
+
+
 		private EditText PropNameField { get; set; }
 		private EditText PropAddressField { get; set; }
 		private EditText PropCityField { get; set; }
@@ -26,6 +28,7 @@ namespace HomeCatalog.Android
 		{
 			base.OnCreate (bundle);
 			String propertyID = Intent.GetStringExtra ("propertyID");
+
 			Property = PropertyCollection.SharedCollection.FindPropertyWithId (propertyID);
 
 			SetContentView (Resource.Layout.PropertyAddEditView);
@@ -36,15 +39,31 @@ namespace HomeCatalog.Android
 			PropCityField = FindViewById<EditText> (Resource.Id.PropCityField);
 			PropStateField = FindViewById<EditText> (Resource.Id.PropCityField);
 			PropZipField = FindViewById<EditText> (Resource.Id.PropZipField);
+
 			DisplayPropertyInField ();
 
-			Button saveButton = FindViewById<Button> (Resource.Id.SaveButton);
-			saveButton.Click += (sender,e) => {
-				SaveProperty();
-				Intent returnIntent = new Intent();
-				SetResult(Result.Ok, returnIntent);     
-				Finish();
-			}; 
+			Button SaveButton = FindViewById<Button> (Resource.Id.SaveButton);
+			Button CancelButton = FindViewById<Button> (Resource.Id.CancelButton);
+			Button EditRoomsButton = FindViewById<Button> (Resource.Id.EditRoomsButton);
+			Button EditCategoriesButton = FindViewById<Button> (Resource.Id.EditCategoriesButton);
+
+			SaveButton.Click += (sender,e) => {
+				SaveProperty ();
+				Intent returnIntent = new Intent ();
+				SetResult (Result.Ok, returnIntent);     
+				Finish ();
+			};
+
+			EditRoomsButton.Click += (sender,e) => {
+				SaveProperty ();
+				string ActivityName = "AddEditPropertyActivity";
+
+				Intent PassPropertyID = new Intent (this,typeof(EditRoomsActivity));
+				PassPropertyID.PutExtra ("PropertyID",Property.PropertyID);
+				Finish ();
+			};
+
+
 		}
 
 		private void SaveProperty() 
