@@ -58,6 +58,7 @@
     <Compile Include="..\..\HomeCatalog.Core\Category.cs">
       <Link>Core\Category.cs</Link>
     </Compile>
+    <Compile Include="Activities\EditRoomsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
