@@ -29,7 +29,7 @@ namespace HomeCatalog.Android
 		private CheckBox StorageCheckBox { get; set; }
 		private CheckBox BasementCheckBox { get; set; }
 		private CheckBox OfficeCheckBox { get; set; }
-		
+
 		private Room Kitchen { get; set; }
 		private Room LivingRoom {get;set;}
 		private Room Storage { get; set; }
@@ -77,6 +77,26 @@ namespace HomeCatalog.Android
 			//Load EditTexts
 			EditText BathField = FindViewById<EditText> (Resource.Id.BathField);
 			EditText BedField = FindViewById<EditText> (Resource.Id.BedField);
+
+			AddCustomButton.Click += (sender, e) => 
+			{
+				SaveCustomRoom (CustomField);
+				CustomField.Text = "";
+			};
+
+			CancelRoomEditButton.Click += (sender, e) => 
+			{
+				SetResult (Result.Canceled);
+				Finish ();
+			};
+
+			SaveRoomsButton.Click += (sender,e) =>
+			{
+				SaveRooms ();
+				Intent returnIntent = new Intent ();
+				SetResult (Result.Ok, returnIntent);     
+				Finish ();
+			}
 
 
 
@@ -208,7 +228,9 @@ namespace HomeCatalog.Android
 			}
 
 			//ADD MORE CODE FOR CUSTOM ROOMS
-
+			SaveBathrooms (BathField.Text);
+			SaveBedrooms (BedField.Text);
+			SaveCustomRoom (CustomField.Text);
 		}
 
 
@@ -242,24 +264,46 @@ namespace HomeCatalog.Android
 
 		}
 
-		private Property CreateBathrooms (Property prop, string num)
+		private void SaveBathrooms (string num)
 		{
 			int numberBaths = (int)num;
 			for (int i =1;i<= numberBaths;i++)
 			{
 				string BathString = "Bathroom" + i;
 				Room Bathroom = new Room();
-				Property.CreateRoom (Bathroom,
+				Property.CreateRoom (Bathroom, BathString);
+				Property.RoomList.Add (Bathroom);
 			}
 		}
-		private void RemoveRoomByCheckBox (CheckBox checkbox)
+
+		private void SaveBedrooms(string num)
 		{
+			int numberBeds = (int)num;
+			for (int i=1; i <= numberBeds; i++)
+			{
+				string BedString = "Bedroom" + i;
+				Room Bedroom = new Room ();
+				Property.CreateRoom (Bedroom, BedString);
+				Property.RoomList.Add (Bedroom);
+			}
+		}
+		private void SaveCustomRoom (string label)
+		{
+			if (CustomField.Text != "")
+			{
+				Room CustomRoom = new Room ();
+				Property.CreateRoom (CustomRoom, label);
+				Property.RoomList.Add (CustomRoom);
+			}
+		}
 
-
-
-
-
-		}		
+		private void DisplayRoomsOnConsole ()
+		{
+			foreach (Room room in Property.RoomList)
+			{
+				Console.WriteLine (room.Label);
+			}
+		}
 	}
 }
 
