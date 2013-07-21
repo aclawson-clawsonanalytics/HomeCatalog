@@ -34,9 +34,9 @@ namespace HomeCatalog.Android
 			ListAdapter = new PropertyListAdapter (this);
 			listView.Adapter = ListAdapter;
 
-			Button addPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
+			Button AddPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
 			
-			addPropertyButton.Click += (sender,e) => {
+			AddPropertyButton.Click += (sender,e) => {
 
 				Property property = new Property();
 				PropertyCollection.SharedCollection.AddProperty(property);

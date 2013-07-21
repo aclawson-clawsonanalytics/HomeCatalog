@@ -70,6 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/RoomSectionLabel"
         android:id="@+id/BathField"
+        android:inputType="number"
         android:layout_toRightOf="@id/BathPrompt"
         android:background="#FFFFFF"
         android:layout_marginBottom="0.0dp"
@@ -93,6 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/BedPrompt"
+        android:inputType="number"
         android:layout_alignBaseline="@id/LivingCheckBox"
         android:layout_toRightOf="@id/LivingCheckBox"
         android:layout_alignLeft="@id/BathPrompt" />

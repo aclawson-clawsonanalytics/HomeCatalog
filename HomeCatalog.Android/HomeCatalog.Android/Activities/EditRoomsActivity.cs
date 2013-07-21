@@ -75,12 +75,10 @@ namespace HomeCatalog.Android
 			OfficeCheckBox.Checked = SetCheckBoxByRoom ("Office");
 
 			//Load EditTexts
-			EditText BathField = FindViewById<EditText> (Resource.Id.BathField);
-			EditText BedField = FindViewById<EditText> (Resource.Id.BedField);
 
 			AddCustomButton.Click += (sender, e) => 
 			{
-				SaveCustomRoom (CustomField);
+				SaveCustomRoom (CustomField.Text);
 				CustomField.Text = "";
 			};
 
@@ -96,7 +94,7 @@ namespace HomeCatalog.Android
 				Intent returnIntent = new Intent ();
 				SetResult (Result.Ok, returnIntent);     
 				Finish ();
-			}
+			};
 
 
 
@@ -266,9 +264,10 @@ namespace HomeCatalog.Android
 
 		private void SaveBathrooms (string num)
 		{
-			int numberBaths = (int)num;
-			for (int i =1;i<= numberBaths;i++)
+			int numberBath = Convert.ToInt32 (num);
+			for (int i =1; i<= numberBath; i++)
 			{
+
 				string BathString = "Bathroom" + i;
 				Room Bathroom = new Room();
 				Property.CreateRoom (Bathroom, BathString);
@@ -278,8 +277,8 @@ namespace HomeCatalog.Android
 
 		private void SaveBedrooms(string num)
 		{
-			int numberBeds = (int)num;
-			for (int i=1; i <= numberBeds; i++)
+			int numberBed = Convert.ToInt32 (num);
+			for (int i=1; i <= numberBed; i++)
 			{
 				string BedString = "Bedroom" + i;
 				Room Bedroom = new Room ();
