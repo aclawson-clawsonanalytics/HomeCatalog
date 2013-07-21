@@ -29,9 +29,8 @@ namespace HomeCatalog.Core
 		public List<Room> RoomList { get; set; }
 		public List<Category> CategoryList { get; set; }
 
-		public static Room CreateRoom(Room room, int ID, string label)
+		public static Room CreateRoom(Room room, string label)
 		{
-			room.RoomID = ID;
 			room.Label = label;
 
 			return room;
