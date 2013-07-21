@@ -6,8 +6,12 @@ namespace HomeCatalog.Core
 {
 	public class Property
 	{
+		public static string PropertyIDKey = "PropertyID";
 		public Property ()
 		{
+//			Room Kitchen = new Room ();
+//			CreateRoom (Kitchen, 1, "Kitchen");
+
 			PropertyID = Guid.NewGuid ().ToString ();
 			RoomList = new List<Room> ();
 			CategoryList = new List<Category> ();
@@ -25,7 +29,17 @@ namespace HomeCatalog.Core
 		public List<Room> RoomList { get; set; }
 		public List<Category> CategoryList { get; set; }
 
+		public static Room CreateRoom(Room room, int ID, string label)
+		{
+			room.RoomID = ID;
+			room.Label = label;
+
+			return room;
+		}
+
 
 	}
+
+
 }
 

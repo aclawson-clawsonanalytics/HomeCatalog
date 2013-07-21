@@ -24,12 +24,25 @@ namespace HomeCatalog.Android
 		private EditText BedField { get; set; }
 		private EditText CustomField {get;set;}
 
+		private CheckBox KitchenCheckBox { get; set; }
+		private CheckBox LivingCheckBox { get; set; }
+		private CheckBox StorageCheckBox { get; set; }
+		private CheckBox BasementCheckBox { get; set; }
+		private CheckBox OfficeCheckBox { get; set; }
+
+		private Room Kitchen { get; set; }
+		private Room LivingRoom {get;set;}
+		private Room Storage { get; set; }
+		private Room Basement { get; set; }
+		private Room Office { get; set; }
+
+
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
-			String propertyID = Intent.GetStringExtra ("propertyID");
+			String propertyID = Intent.GetStringExtra (Property.PropertyIDKey);
 
 			Property = PropertyCollection.SharedCollection.FindPropertyWithId (propertyID);
 
@@ -52,101 +65,35 @@ namespace HomeCatalog.Android
 			CheckBox BasementCheckBox = FindViewById<CheckBox> (Resource.Id.BasementCheckBox);
 			CheckBox OfficeCheckBox = FindViewById<CheckBox> (Resource.Id.OfficeCheckBox);
 
-			// Set CheckBox checks for existing rooms in RoomList
-			KitchenCheckBox.Checked = SetCheckBoxByRoom (Kitchen);
-			LivingCheckBox.Checked = SetCheckBoxByRoom (Living);
-			StorageCheckBox.Checked = SetCheckBoxByRoom (Storage);
-			BasementCheckBox.Checked = SetCheckBoxByRoom (Basement);
-			OfficeCheckBox.Checked = SetCheckBoxByRoom (Office);
+			Room Kitchen = new Room ();
+			Kitchen = Property.CreateRoom (Kitchen,1,"Kitchen");
+			Property.RoomList.Add (Kitchen);
+
+			//Set CheckBox checks for existing rooms in RoomList
+			KitchenCheckBox.Checked = SetCheckBoxByRoom ("Kitchen");
+			LivingCheckBox.Checked = SetCheckBoxByRoom ("Living Room");
+			StorageCheckBox.Checked = SetCheckBoxByRoom ("Storage");
+			BasementCheckBox.Checked = SetCheckBoxByRoom ("Basement");
+			OfficeCheckBox.Checked = SetCheckBoxByRoom ("Office");
 
 			// Set Click events for CheckBoxes
-			KitchenCheckBox.Click += (o,e) => 
-			{
-				CheckBoxClicker (KitchenCheckBox, "Kitchen");
-			};
 
-			LivingCheckBox.Click += (o,e) =>
-			{
-				CheckBoxClicker (LivingCheckBox,"Living Room");
-			};
-
-			StorageCheckBox.Click += (o,e) =>
-			{
-				CheckBoxClicker (StorageCheckBox,"Storage");
-			};
-
-			BasementCheckBox.Click += (o,e) =>
-			{
-				CheckBoxClicker (BasementCheckBox, "Living Room");
-			};
-
-			OfficeCheckBox.Click += (o,e) =>
-			{
-				CheckBoxClicker (OfficeCheckBox,"Office");
-			};
 
 
 		
 		}
 
-		private void CheckBoxClicker (CheckBox cb,string label)
+		private bool CheckForRoomByLabel(Property prop, string label)
 		{
-			if (cb.Checked == false)
+			int count = 0;
+			foreach (Room room in Property.RoomList)
 			{
-				foreach (Room rm in Property.RoomList)
+				if (room.Label == label)
 				{
-					if (rm.Label == label)
-					{
-						Property.RoomList.Remove (rm);
-					}
+					count = count + 1;
 				}
 			}
-			else
-			{
-				int count = 0;
-				foreach (Room rm in Property.RoomList)
-				{
-					if (rm.Label == label)
-					{
-						count = count + 1;
-					}
-				}
-
-				if (count == 0) 
-				{
-					Room room = new Room ();
-					switch (label)
-					{
-					case "Kitchen":
-							
-						room.RoomID = 1;
-						room.Label = "Kitchen";
-						Property.RoomList.Add (room);
-					case "LivingRoom":
-						room.RoomID = 2;
-						Room.Label = "Living Room";
-						Property.RoomList.Add (room);
-					case "Storage":
-						room.RoomID = 3;
-						room.Label = "Storage";
-						Property.RoomList.Add (room);
-					case "Basement":
-						room.RoomID = 4;
-						room.Label = "Basement";
-						Property.RoomList.Add (room);
-					case "Office":
-						room.RoomID = 5;
-						room.Label = "Office";
-						Property.RoomList.Add (room);
-					}
-				}
-			}
-		}
-
-
-		private bool SetCheckBoxByRoom (Room room)
-		{
-			if (Property.RoomList.Contains(Room)
+			if (count == 0)
 			{
 				return true;
 			}
@@ -156,6 +103,133 @@ namespace HomeCatalog.Android
 			}
 		}
 
+
+		private void SaveRooms()
+		{
+			//Save Kitchen Room
+			if (KitchenCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForRoomByLabel (Property,"Kitchen") == false)
+				{
+					Room Kitchen = new Room ();
+					Kitchen = Property.CreateRoom (Kitchen, 1, "Kitchen");
+					Property.RoomList.Add (Kitchen);
+				}
+			}
+			//If box.checked == false, check for room and delete if existing
+			else
+			{
+				Property.RoomList.Remove (Kitchen);
+			}
+
+			//Save Living Room
+			if (LivingCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForRoomByLabel (Property,"Living Room") == false)
+				{
+					Room LivingRoom = new Room ();
+					LivingRoom = Property.CreateRoom (LivingRoom, 2, "Living Room");
+					Property.RoomList.Add (LivingRoom);
+				}
+				else
+				{
+					Property.RoomList.Remove (LivingRoom);
+				}
+			}
+
+			// Save storage
+			if (StorageCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForRoomByLabel (Property,"Storage") == false)
+				{
+					Room Storage = new Room ();
+					Storage = Property.CreateRoom (Storage, 3, "Storage");
+					Property.RoomList.Add (Storage);
+				}
+				else
+				{
+					Property.RoomList.Remove (Storage);
+				}
+			}
+
+			// Basement
+			if (BasementCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForRoomByLabel (Property,"Basement") == false)
+				{
+					Room Basment = new Room ();
+					Basement = Property.CreateRoom (Basement, 4, "Basement");
+					Property.RoomList.Add (Basement);
+				}
+				else
+				{
+					Property.RoomList.Remove (Basement);
+				}
+			}
+
+			if (OfficeCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForRoomByLabel (Property,"Office") == false)
+				{
+					Room Office = new Room ();
+					Office = Property.CreateRoom (Office, 5, "Office");
+					Property.RoomList.Add (Office);
+				}
+				else
+				{
+					Property.RoomList.Remove (Office);
+				}
+			}
+
+			//ADD MORE CODE FOR CUSTOM ROOMS
+
+		}
+
+
+
+
+		// Find Rooms in the property list and set
+		// Checkboxes to display those that are in the list.
+		private bool SetCheckBoxByRoom (string label)
+		{
+			bool returnString;
+			returnString = false;
+			if (Property.RoomList == null)
+			{
+				return returnString;
+			}
+			foreach (Room room in Property.RoomList)
+			{
+
+
+				if (room.Label == label)
+				{
+					returnString = true;
+					break;
+				}
+				else
+				{
+					returnString = false;
+				}
+			}
+			return returnString;
+
+		}
+
+		private void AddRoomByCheckBox (CheckBox checkbox)
+		{
+
+		}
 		private void RemoveRoomByCheckBox (CheckBox checkbox)
 		{
 
@@ -163,6 +237,7 @@ namespace HomeCatalog.Android
 
 
 
+		}		
 	}
 }
 

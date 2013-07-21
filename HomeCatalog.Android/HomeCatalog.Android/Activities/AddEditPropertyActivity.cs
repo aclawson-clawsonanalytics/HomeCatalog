@@ -27,7 +27,7 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			String propertyID = Intent.GetStringExtra ("propertyID");
+			String propertyID = Intent.GetStringExtra (Property.PropertyIDKey);
 
 			Property = PropertyCollection.SharedCollection.FindPropertyWithId (propertyID);
 
@@ -58,7 +58,7 @@ namespace HomeCatalog.Android
 				SaveProperty ();
 
 				Intent PassPropertyID = new Intent (this,typeof(EditRoomsActivity));
-				PassPropertyID.PutExtra ("PropertyID",Property.PropertyID);
+				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
 				StartActivity (PassPropertyID);
 
 			};

@@ -41,7 +41,7 @@ namespace HomeCatalog.Android
 				Property property = new Property();
 				PropertyCollection.SharedCollection.AddProperty(property);
 				Intent PassPropertyID = new Intent(this,typeof(AddEditPropertyActivity));
-				PassPropertyID.PutExtra ("propertyID",property.PropertyID);
+				PassPropertyID.PutExtra (Property.PropertyIDKey,property.PropertyID);
 				StartActivityForResult (PassPropertyID, (int)PropertyRequest.ADD_PROPERTY);
 			};
 		}

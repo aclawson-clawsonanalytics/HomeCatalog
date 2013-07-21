@@ -12,5 +12,7 @@ namespace HomeCatalog.Core
 		public int RoomID { get; set; }
 		public string Label { get; set; }
 	}
+
+
 }
 
