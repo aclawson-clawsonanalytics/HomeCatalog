@@ -20,6 +20,10 @@ namespace HomeCatalog.Android
 	{
 		private Property Property { get;set;}
 
+		private int numberBath {get;set;}
+		private int numberBeds { get; set; }
+		private string num { get; set; }
+
 		private EditText BathField { get;set; }
 		private EditText BedField { get; set; }
 		private EditText CustomField {get;set;}
@@ -35,8 +39,6 @@ namespace HomeCatalog.Android
 		private Room Storage { get; set; }
 		private Room Basement { get; set; }
 		private Room Office { get; set; }
-
-		private string CustomRoomLabel;
 
 
 
@@ -60,12 +62,14 @@ namespace HomeCatalog.Android
 			Button CancelRoomEditButton = FindViewById<Button> (Resource.Id.CancelRoomEditButton);
 			Button SaveRoomsButton = FindViewById<Button> (Resource.Id.SaveRoomsButton);
 
+
+
 			// Load CheckBox views
-			CheckBox KitchenCheckBox = FindViewById<CheckBox> (Resource.Id.KitchenCheckBox);
-			CheckBox LivingCheckBox = FindViewById<CheckBox> (Resource.Id.LivingCheckBox);
-			CheckBox StorageCheckBox = FindViewById<CheckBox> (Resource.Id.StorageCheckBox);
-			CheckBox BasementCheckBox = FindViewById<CheckBox> (Resource.Id.BasementCheckBox);
-			CheckBox OfficeCheckBox = FindViewById<CheckBox> (Resource.Id.OfficeCheckBox);
+			KitchenCheckBox = FindViewById<CheckBox> (Resource.Id.KitchenCheckBox);
+			LivingCheckBox = FindViewById<CheckBox> (Resource.Id.LivingCheckBox);
+			StorageCheckBox = FindViewById<CheckBox> (Resource.Id.StorageCheckBox);
+			BasementCheckBox = FindViewById<CheckBox> (Resource.Id.BasementCheckBox);
+			OfficeCheckBox = FindViewById<CheckBox> (Resource.Id.OfficeCheckBox);
 
 			//Set CheckBox checks for existing rooms in RoomList
 			KitchenCheckBox.Checked = SetCheckBoxByRoom ("Kitchen");
@@ -103,9 +107,7 @@ namespace HomeCatalog.Android
 
 
 			//Testing
-			Room Kitchen = new Room ();
-			Kitchen = Property.CreateRoom (Kitchen, "Kitchen");
-			Property.RoomList.Add (Kitchen);
+			DisplayRoomsInConsole ();
 
 
 
@@ -229,6 +231,7 @@ namespace HomeCatalog.Android
 			SaveBathrooms (BathField.Text);
 			SaveBedrooms (BedField.Text);
 			SaveCustomRoom (CustomField.Text);
+			DisplayRoomsInConsole ();
 		}
 
 
@@ -264,28 +267,38 @@ namespace HomeCatalog.Android
 
 		private void SaveBathrooms (string num)
 		{
-			int numberBath = Convert.ToInt32 (num);
-			for (int i =1; i<= numberBath; i++)
+			if (num != "")
 			{
+				numberBath = int.Parse (num);
+				//int numberBath = Int32.Parse (num);
+				for (int i =1; i<= numberBath; i++)
+				{
 
-				string BathString = "Bathroom" + i;
-				Room Bathroom = new Room();
-				Property.CreateRoom (Bathroom, BathString);
-				Property.RoomList.Add (Bathroom);
+					string BathString = "Bathroom" + i;
+					Room Bathroom = new Room();
+					Property.CreateRoom (Bathroom, BathString);
+					Property.RoomList.Add (Bathroom);
+				}
 			}
 		}
 
 		private void SaveBedrooms(string num)
 		{
-			int numberBed = Convert.ToInt32 (num);
-			for (int i=1; i <= numberBed; i++)
+			if (num != "")
 			{
-				string BedString = "Bedroom" + i;
-				Room Bedroom = new Room ();
-				Property.CreateRoom (Bedroom, BedString);
-				Property.RoomList.Add (Bedroom);
+				numberBeds = int.Parse (num);
+				//int numberBeds = Int32.Parse (num);
+				for (int i=1; i <= numberBeds; i++)
+				{
+					string BedString = "Bedroom" + i;
+					Room Bedroom = new Room ();
+					Property.CreateRoom (Bedroom, BedString);
+					Property.RoomList.Add (Bedroom);
+				}
 			}
 		}
+
+
 		private void SaveCustomRoom (string label)
 		{
 			if (CustomField.Text != "")
@@ -296,7 +309,7 @@ namespace HomeCatalog.Android
 			}
 		}
 
-		private void DisplayRoomsOnConsole ()
+		private void DisplayRoomsInConsole ()
 		{
 			foreach (Room room in Property.RoomList)
 			{
