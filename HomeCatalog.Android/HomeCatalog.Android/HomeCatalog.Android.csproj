@@ -60,6 +60,9 @@
     </Compile>
     <Compile Include="Activities\EditRoomsActivity.cs" />
     <Compile Include="Activities\PropertyDetailActivity.cs" />
+    <Compile Include="Activities\DisplayItemsActivity.cs" />
+    <Compile Include="Activities\DisplayCollectionsActivity.cs" />
+    <Compile Include="Activities\DisplayContactsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

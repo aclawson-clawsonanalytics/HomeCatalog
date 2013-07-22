@@ -59,7 +59,6 @@ namespace HomeCatalog.Android
 		protected override void OnListItemClick (ListView l, View v, int position, long id)
 		{
 			Property Property = PropertyCollection.SharedCollection [position];
-			//Toast.MakeText (this, t, ToastLength.Short).Show ();
 			Intent PassPropertyID = new Intent (this, typeof(PropertyDetailActivity));
 			PassPropertyID.PutExtra (Property.PropertyIDKey, Property.PropertyID);
 			StartActivity (PassPropertyID);

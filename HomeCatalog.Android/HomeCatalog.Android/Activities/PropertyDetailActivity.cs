@@ -53,11 +53,58 @@ namespace HomeCatalog.Android
 			//Load Buttons From View
 
 			Button EditButton = FindViewById<Button> (Resource.Id.EditButton);
+			EditButton.Click += (sender, e) =>
+			{
+				Intent PassPropertyID = new Intent(this,typeof(AddEditPropertyActivity));
+				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				StartActivity (PassPropertyID);
+			};
+
+
 			Button ItemsButton = FindViewById<Button> (Resource.Id.ItemsButton);
-			Button CollectionsItem = FindViewById<Button> (Resource.Id.CollectionsButton);
+			ItemsButton.Click += (sender, e) =>
+			{
+				Intent PassPropertyID = new Intent(this,typeof(DisplayItemsActivity));
+				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				StartActivity (PassPropertyID);
+			};
+
+			Button CollectionsButton = FindViewById<Button> (Resource.Id.CollectionsButton);
+			CollectionsButton.Click += (sender, e) => 
+			{
+				Intent PassPropertyID = new Intent(this,typeof(DisplayCollectionsActivity));
+				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				StartActivity (PassPropertyID);
+			};
+
 			Button ContactsButton = FindViewById<Button> (Resource.Id.ContactButton);
+			ContactsButton.Click += (sender, e) => 
+			{
+
+			};
 			Button ReportsButton = FindViewById<Button> (Resource.Id.ReportsButton);
+			ReportsButton.Click += (sender, e) => 
+			{
+				Intent PassPropertyID = new Intent(this,typeof(DisplayContactsActivity));
+				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				StartActivity (PassPropertyID);
+			};
+
+			Button DeletePropertyButton = FindViewById<Button> (Resource.Id.DeletePropertyButton);
+			DeletePropertyButton.Click += (sender, e) => 
+			{
+				PropertyCollection.SharedCollection.RemoveProperty (Property);
+				Finish ();
+			};
+
 			Button CancelDetailsButton = FindViewById<Button> (Resource.Id.CancelDetailsButton);
+			CancelDetailsButton.Click += (sender, e) => 
+			{
+				SetResult (Result.Canceled);
+				Finish ();
+			};
+
+
 
 
 		}
