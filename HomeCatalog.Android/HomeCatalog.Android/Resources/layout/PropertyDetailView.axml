@@ -2,60 +2,96 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:id="@+id/ItemsButton">
     <TextView
-        android:id="@+id/PropertyAddressLabel"
-        android:layout_width="fill_parent"
+        android:id="@+/PropertyDetailLabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:textSize="30dp"
-        android:text="PROPERTY ADDRESS HERE:" />
-    <Button
-        android:id="@+id/GoToItemsButton"
-        android:layout_below="@id/PropertyAddressLabel"
+        android:text="Property Details" />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Items" />
-    <Button
-        android:id="@+id/GoToCollectionsButton"
+        android:layout_below="@/PropertyDetailLabel"
+        android:id="@+id/NameLabel"
+        android:layout_centerHorizontal="true"
+        android:text="PropertyNameHere"
+        android:layout_marginTop="35dp" />
+    <TextView
+        android:text="PropertyAddressHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/GoToItemsButton"
+        android:layout_below="@id/NameLabel"
+        android:id="@+id/AddressLabel"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:text="PropertyCityHere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/AddressLabel"
+        android:id="@+id/CityLabel"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:text="Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CityLabel"
+        android:id="@+id/DeletePropertyButton"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:text="Collections" />
+        android:layout_alignBaseline="@id/EditButton"
+        android:layout_marginRight="10dp" />
     <Button
-        android:id="@+id/GoToDocumentsButton"
+        android:text="Items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/DeletePropertyButton"
+        android:id="@+id/ItemsButton"
+        android:layout_marginTop="30dp" />
+    <Button
+        android:text="Edit Info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/GoToItemsButton"
+        android:layout_below="@id/ZipLabel"
+        android:id="@+id/EditButton"
         android:layout_marginLeft="10dp"
-        android:text="Documents" />
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true" />
     <Button
-        android:id="@+id/GoToContactsButton"
+        android:text="Collections"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ItemsButton"
+        android:id="@+id/CollectionsButton" />
+    <Button
+        android:text="Emergency Contacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CollectionsButton"
+        android:id="@+id/ContactButton" />
+    <Button
+        android:text="Reports"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ContactButton"
+        android:id="@+id/ReportsButton" />
+    <Button
+        android:text="Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/GoToCollectionsButton"
-        android:layout_alignTop="@id/GoToDocumentsButton"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:text="Contacts" />
-    <Button
-        android:id="@+id/ChangePropertyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/GoToDocumentsButton"
-        android:layout_marginTop="70dp"
-        android:layout_alignParentLeft="true"
+        android:id="@+id/CancelDetailsButton"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
-        android:text="Change Property" />
-    <Button
-        android:id="@+id/ExitButton"
+        android:layout_alignParentLeft="false"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:text="PropertyZipHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/ChangePropertyButton"
-        android:layout_marginRight="10dp"
-        android:text="Exit" />
+        android:layout_below="@id/CityLabel"
+        android:id="@+id/ZipLabel"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

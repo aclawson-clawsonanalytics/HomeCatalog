@@ -46,9 +46,9 @@ namespace HomeCatalog.Android
 		{
 			base.OnCreate (bundle);
 
-			String propertyID = Intent.GetStringExtra (Property.PropertyIDKey);
+			String PropertyID = Intent.GetStringExtra (Property.PropertyIDKey);
 
-			Property = PropertyCollection.SharedCollection.FindPropertyWithId (propertyID);
+			Property = PropertyCollection.SharedCollection.FindPropertyWithId (PropertyID);
 
 			SetContentView (Resource.Layout.SetUpRoomView);
 
