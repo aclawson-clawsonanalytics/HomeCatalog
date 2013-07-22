@@ -112,11 +112,6 @@ namespace HomeCatalog.Android
 
 
 
-
-
-
-
-		
 		}
 
 		private bool CheckForRoomByLabel(Property prop, string label)

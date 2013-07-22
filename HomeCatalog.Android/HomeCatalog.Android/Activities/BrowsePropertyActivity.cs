@@ -35,7 +35,8 @@ namespace HomeCatalog.Android
 			listView.Adapter = ListAdapter;
 
 			Button AddPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
-			
+
+
 			AddPropertyButton.Click += (sender,e) => {
 
 				Property property = new Property();
@@ -53,6 +54,16 @@ namespace HomeCatalog.Android
 			if (requestCode == (int)PropertyRequest.ADD_PROPERTY) {
 				ListAdapter.NotifyDataSetChanged ();
 			}
+		}
+
+		protected override void OnListItemClick (ListView l, View v, int position, long id)
+		{
+			Property Property = PropertyCollection.SharedCollection [position];
+			//Toast.MakeText (this, t, ToastLength.Short).Show ();
+			Intent PassPropertyID = new Intent (this, typeof(PropertyDetailActivity));
+			PassPropertyID.PutExtra (Property.PropertyIDKey, Property.PropertyID);
+			StartActivity (PassPropertyID);
+
 		}
 	}
 }
