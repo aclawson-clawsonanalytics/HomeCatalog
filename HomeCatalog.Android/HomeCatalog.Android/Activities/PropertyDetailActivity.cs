@@ -53,9 +53,9 @@ namespace HomeCatalog.Android
 			//Load Buttons From View
 
 			Button EditButton = FindViewById<Button> (Resource.Id.EditButton);
-			Button ItemsButton = FindViewById<Button> (Resource.Id.GoToItemsButton);
-			Button CollectionsItem = FindViewById<Button> (Resource.Id.GoToCollectionsButton);
-			Button ContactsButton = FindViewById<Button> (Resource.Id.GoToContactsButton);
+			Button ItemsButton = FindViewById<Button> (Resource.Id.ItemsButton);
+			Button CollectionsItem = FindViewById<Button> (Resource.Id.CollectionsButton);
+			Button ContactsButton = FindViewById<Button> (Resource.Id.ContactButton);
 			Button ReportsButton = FindViewById<Button> (Resource.Id.ReportsButton);
 			Button CancelDetailsButton = FindViewById<Button> (Resource.Id.CancelDetailsButton);
 
