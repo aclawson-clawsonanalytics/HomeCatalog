@@ -7,7 +7,7 @@
     android:minHeight="25px"
     android:id="@+id/ItemsButton">
     <TextView
-        android:id="@+/PropertyDetailLabel"
+        android:id="@+id/PropertyDetailLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -16,11 +16,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@/PropertyDetailLabel"
+        android:layout_below="@id/PropertyDetailLabel"
         android:id="@+id/NameLabel"
         android:layout_centerHorizontal="true"
         android:text="PropertyNameHere"
-        android:layout_marginTop="35dp" />
+        android:layout_marginTop="20dp" />
     <TextView
         android:text="PropertyAddressHere"
         android:layout_width="wrap_content"
@@ -35,6 +35,22 @@
         android:layout_below="@id/AddressLabel"
         android:id="@+id/CityLabel"
         android:layout_centerHorizontal="true" />
+    <TextView
+        android:text="PropertyZipHere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CityLabel"
+        android:id="@+id/ZipLabel"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:text="Edit Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ZipLabel"
+        android:id="@+id/EditButton"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true" />
     <Button
         android:text="Delete"
         android:layout_width="wrap_content"
@@ -51,15 +67,6 @@
         android:layout_below="@id/DeletePropertyButton"
         android:id="@+id/ItemsButton"
         android:layout_marginTop="30dp" />
-    <Button
-        android:text="Edit Info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ZipLabel"
-        android:id="@+id/EditButton"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentLeft="true" />
     <Button
         android:text="Collections"
         android:layout_width="match_parent"
@@ -86,12 +93,5 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
         android:layout_alignParentLeft="false"
-        android:layout_centerHorizontal="true" />
-    <TextView
-        android:text="PropertyZipHere"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/CityLabel"
-        android:id="@+id/ZipLabel"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
