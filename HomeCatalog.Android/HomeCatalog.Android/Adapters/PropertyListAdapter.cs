@@ -44,7 +44,7 @@ namespace HomeCatalog.Android
 
 			base.NotifyDataSetChanged ();
 		}
-
+		 
    }
 }
 

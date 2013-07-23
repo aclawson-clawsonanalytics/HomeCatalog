@@ -33,6 +33,18 @@ namespace HomeCatalog.Android
 			ListView listView = FindViewById<ListView> (Resource.Id.propertyList);
 			ListAdapter = new PropertyListAdapter (this);
 			listView.Adapter = ListAdapter;
+//			listView.SetOnClickListener (new View.IOnClickListener()
+//			{
+//
+//				protected override void OnItemClick (ListView lst, View void, int position, long id)
+//				{
+//					Property Property = PropertyCollection.SharedCollection.Properties [position];
+//					Intent PassPropertyID = new Intent (this, typeof(PropertyDetailActivity));
+//					PassPropertyID.PutExtra (Property.PropertyIDKey, Property.PropertyID);
+//					StartActivity (PassPropertyID);
+//				}
+//			});
+
 
 			Button AddPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
 
@@ -56,9 +68,9 @@ namespace HomeCatalog.Android
 			}
 		}
 
-//		protected override void OnListItemClick (ListView l, View v, int position, long id)
+//		protected override void OnItemClick (ListView l, View v, int position, long id)
 //		{
-//			Property Property = PropertyCollection.SharedCollection [position];
+//			Property Property = PropertyCollection.SharedCollection.Properties [position];
 //			Intent PassPropertyID = new Intent (this, typeof(PropertyDetailActivity));
 //			PassPropertyID.PutExtra (Property.PropertyIDKey, Property.PropertyID);
 //			StartActivity (PassPropertyID);

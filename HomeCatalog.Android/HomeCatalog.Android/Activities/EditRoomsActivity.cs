@@ -152,7 +152,10 @@ namespace HomeCatalog.Android
 			//If box.checked == false, check for room and delete if existing
 			else
 			{
-				Property.RoomList.Remove (Kitchen);
+				if (CheckForRoomByLabel (Property, "Kitchen") == true)
+				{
+					Property.RoomList.Remove (Kitchen);
+				}
 			}
 
 			//Save Living Room
