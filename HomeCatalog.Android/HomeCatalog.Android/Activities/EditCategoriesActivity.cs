@@ -165,7 +165,7 @@ namespace HomeCatalog.Android
 
 		private void WriteCategoriesToFile(string position)
 		{
-			string FileName = "RoomTest" + position + ".txt";
+			string FileName = "CategoryTest_" + position + ".txt";
 			StreamWriter file = new StreamWriter (FileName);
 			file.WriteLine (Property.PropertyName);
 			file.WriteLine (Property.Address);
