@@ -63,6 +63,15 @@ namespace HomeCatalog.Android
 
 			};
 
+			EditCategoriesButton.Click += (sender, e) => 
+			{
+				SaveProperty ();
+
+				Intent PassPropertyID = new Intent (this,typeof(EditCategoriesActivity));
+				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				StartActivity (PassPropertyID);
+			};
+
 
 		}
 

@@ -65,6 +65,7 @@
     <Compile Include="Activities\DisplayItemsActivity.cs" />
     <Compile Include="Activities\DisplayCollectionsActivity.cs" />
     <Compile Include="Activities\DisplayContactsActivity.cs" />
+    <Compile Include="Activities\EditCategoriesActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

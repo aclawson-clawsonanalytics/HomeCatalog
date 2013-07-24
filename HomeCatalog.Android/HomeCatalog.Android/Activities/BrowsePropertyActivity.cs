@@ -33,6 +33,15 @@ namespace HomeCatalog.Android
 			ListView listView = FindViewById<ListView> (Resource.Id.propertyList);
 			ListAdapter = new PropertyListAdapter (this);
 			listView.Adapter = ListAdapter;
+			listView.Clickable = true;
+//			listView.ItemClick += (sender, e) =>
+//			{
+//				Property SelectedProperty = PropertyCollection.SharedCollection.Properties[e.Position];
+//				string SelectedID = SelectedProperty.PropertyID;
+//				Intent PassPropertyID = new Intent (this, typeof(PropertyDetailActivity));
+//				PassPropertyID.PutExtra (Property.PropertyIDKey, SelectedProperty.PropertyID);
+//				StartActivity (PassPropertyID);
+//			};
 //			listView.SetOnClickListener (new View.IOnClickListener()
 //			{
 //

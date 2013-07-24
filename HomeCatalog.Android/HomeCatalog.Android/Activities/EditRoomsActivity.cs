@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
@@ -313,6 +314,25 @@ namespace HomeCatalog.Android
 			{
 				Console.WriteLine (room.Label);
 			}
+		}
+
+		private void WriteRoomsToFile(string position)
+		{
+			string FileName = "C:\\Users\\Andrew\\Documents\\GitHub\\HomeCatalog\\RoomTestResults_"+position+".txt";
+			StreamWriter file = new StreamWriter (FileName);
+			file.WriteLine (Property.PropertyName);
+			file.WriteLine (Property.Address);
+			file.WriteLine (Property.City);
+			file.WriteLine (Property.ZipCode);
+			file.WriteLine ("Room List: ");
+			file.WriteLine ();
+			foreach (Room room in Property.RoomList)
+			{
+				file.WriteLine (room.Label);
+			}
+
+			file.Close ();
+
 		}
 	}
 }
