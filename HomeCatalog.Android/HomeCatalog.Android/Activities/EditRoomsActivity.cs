@@ -140,11 +140,11 @@ namespace HomeCatalog.Android
 			}
 			if (count == 0)
 			{
-				return true;
+				return false;
 			}
 			else
 			{
-				return false;
+				return true;
 			}
 		}
 
@@ -255,18 +255,7 @@ namespace HomeCatalog.Android
 		// Checkboxes to display those that are in the list.
 		private bool SetCheckBoxByRoom (string label)
 		{
-			int count = 0;
-			foreach (Room room in Property.RoomList)
-			{
-
-				if (room.Label == label)
-				{
-					count = count + 1;
-					break;
-				}
-			}
-
-			if (count == 1)
+			if (CheckForRoomByLabel (Property,label) == true)
 			{
 				return true;
 			}
