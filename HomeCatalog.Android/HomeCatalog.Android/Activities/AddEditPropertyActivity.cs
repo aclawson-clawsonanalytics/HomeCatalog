@@ -47,6 +47,11 @@ namespace HomeCatalog.Android
 			Button EditRoomsButton = FindViewById<Button> (Resource.Id.EditRoomsButton);
 			Button EditCategoriesButton = FindViewById<Button> (Resource.Id.EditCategoriesButton);
 
+			CancelButton.Click += (sender, e) => 
+			{
+				SetResult (Result.Canceled);
+				Finish ();
+			};
 			SaveButton.Click += (sender,e) => {
 				SaveProperty ();
 				Intent returnIntent = new Intent ();

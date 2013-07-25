@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Util;
 using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
@@ -67,10 +68,15 @@ namespace HomeCatalog.Android
 
 			// Load CheckBox views
 			KitchenCheckBox = FindViewById<CheckBox> (Resource.Id.KitchenCheckBox);
+			KitchenCheckBox.Clickable = true;
 			LivingCheckBox = FindViewById<CheckBox> (Resource.Id.LivingCheckBox);
+			LivingCheckBox.Clickable = true;
 			StorageCheckBox = FindViewById<CheckBox> (Resource.Id.StorageCheckBox);
+			StorageCheckBox.Clickable = true;
 			BasementCheckBox = FindViewById<CheckBox> (Resource.Id.BasementCheckBox);
+			BasementCheckBox.Clickable = true;
 			OfficeCheckBox = FindViewById<CheckBox> (Resource.Id.OfficeCheckBox);
+			OfficeCheckBox.Clickable = true;
 
 			//Set CheckBox checks for existing rooms in RoomList
 			KitchenCheckBox.Checked = SetCheckBoxByRoom ("Kitchen");
@@ -96,6 +102,14 @@ namespace HomeCatalog.Android
 			SaveRoomsButton.Click += (sender,e) =>
 			{
 				SaveRooms ();
+
+				foreach (Room room in Property.RoomList)
+				{
+					Console.WriteLine (room.Label);
+					string tag = "RoomCheck";
+					string message = room.Label+" is in RoomList";
+					Log.Info (tag,message);
+				}
 				Intent returnIntent = new Intent ();
 				SetResult (Result.Ok, returnIntent);     
 				Finish ();
@@ -143,10 +157,11 @@ namespace HomeCatalog.Android
 			{
 				//If not found, add to Property.RoomList
 				//If found, don't do anything
+				Log.Info ("KitchenCheckBox", "KitchenCheckBox is checked");
 				if (CheckForRoomByLabel (Property,"Kitchen") == false)
 				{
 					Room Kitchen = new Room ();
-					Kitchen = Property.CreateRoom (Kitchen, "Kitchen");
+					Kitchen.Label = "Kitchen";
 					Property.RoomList.Add (Kitchen);
 				}
 			}
@@ -167,7 +182,7 @@ namespace HomeCatalog.Android
 				if (CheckForRoomByLabel (Property,"Living Room") == false)
 				{
 					Room LivingRoom = new Room ();
-					LivingRoom = Property.CreateRoom (LivingRoom,"Living Room");
+					LivingRoom.Label = "Living Room";
 					Property.RoomList.Add (LivingRoom);
 				}
 				else
@@ -184,7 +199,7 @@ namespace HomeCatalog.Android
 				if (CheckForRoomByLabel (Property,"Storage") == false)
 				{
 					Room Storage = new Room ();
-					Storage = Property.CreateRoom (Storage,"Storage");
+					Storage.Label = "Storage";
 					Property.RoomList.Add (Storage);
 				}
 				else
@@ -201,7 +216,7 @@ namespace HomeCatalog.Android
 				if (CheckForRoomByLabel (Property,"Basement") == false)
 				{
 					Room Basment = new Room ();
-					Basement = Property.CreateRoom (Basement, "Basement");
+					Basement.Label = "Basement";
 					Property.RoomList.Add (Basement);
 				}
 				else
@@ -217,7 +232,7 @@ namespace HomeCatalog.Android
 				if (CheckForRoomByLabel (Property,"Office") == false)
 				{
 					Room Office = new Room ();
-					Office = Property.CreateRoom (Office, "Office");
+					Office.Label = "Office";
 					Property.RoomList.Add (Office);
 				}
 				else
@@ -236,31 +251,30 @@ namespace HomeCatalog.Android
 
 
 
+
 		// Find Rooms in the property list and set
 		// Checkboxes to display those that are in the list.
 		private bool SetCheckBoxByRoom (string label)
 		{
-			bool returnString;
-			returnString = false;
-			if (Property.RoomList == null)
-			{
-				return returnString;
-			}
+			int count = 0;
 			foreach (Room room in Property.RoomList)
 			{
 
-
 				if (room.Label == label)
 				{
-					returnString = true;
+					count = count + 1;
 					break;
 				}
-				else
-				{
-					returnString = false;
-				}
 			}
-			return returnString;
+
+			if (count == 1)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 
 		}
 
@@ -334,6 +348,7 @@ namespace HomeCatalog.Android
 			file.Close ();
 
 		}
+		
 	}
 }
 

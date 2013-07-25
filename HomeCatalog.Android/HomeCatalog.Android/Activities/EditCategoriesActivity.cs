@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Util;
 using HomeCatalog.Core;
 
 namespace HomeCatalog.Android

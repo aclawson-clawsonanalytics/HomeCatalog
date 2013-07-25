@@ -9,12 +9,12 @@ namespace HomeCatalog.Core
 		public static string PropertyIDKey = "PropertyID";
 		public Property ()
 		{
-//			Room Kitchen = new Room ();
-//			CreateRoom (Kitchen, 1, "Kitchen");
+//			
 
 			PropertyID = Guid.NewGuid ().ToString ();
 			RoomList = new List<Room> ();
 			CategoryList = new List<Category> ();
+			ItemList = new List<Item> ();
 		}
 
 		// Define Metadata elements
@@ -28,6 +28,7 @@ namespace HomeCatalog.Core
 		// Define Standard set of room and category labels
 		public List<Room> RoomList { get; set; }
 		public List<Category> CategoryList { get; set; }
+		public List<Item> ItemList { get; set; }
 
 		public static Room CreateRoom(Room room, string label)
 		{

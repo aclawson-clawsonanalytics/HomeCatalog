@@ -51,6 +51,10 @@
     <Compile Include="..\HomeCatalog.Core\Category.cs">
       <Link>Category.cs</Link>
     </Compile>
+    <Compile Include="ItemTests.cs" />
+    <Compile Include="..\HomeCatalog.Core\Item.cs">
+      <Link>Item.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

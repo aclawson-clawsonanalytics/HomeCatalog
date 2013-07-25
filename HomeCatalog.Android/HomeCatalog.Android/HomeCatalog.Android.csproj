@@ -66,6 +66,9 @@
     <Compile Include="Activities\DisplayCollectionsActivity.cs" />
     <Compile Include="Activities\DisplayContactsActivity.cs" />
     <Compile Include="Activities\EditCategoriesActivity.cs" />
+    <Compile Include="..\..\HomeCatalog.Core\Item.cs">
+      <Link>Core\Item.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

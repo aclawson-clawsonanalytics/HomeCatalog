@@ -36,5 +36,6 @@
     <Compile Include="Property.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Room.cs" />
+    <Compile Include="Item.cs" />
   </ItemGroup>
 </Project>
