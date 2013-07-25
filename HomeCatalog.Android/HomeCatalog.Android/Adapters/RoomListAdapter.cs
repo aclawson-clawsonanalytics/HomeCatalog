@@ -12,39 +12,47 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	class PropertyListAdapter : BaseAdapter<Property>
+	class RoomListAdapter : BaseAdapter<Property>
 	{
-		Property[] Properties;
+		Room[] Rooms;
+		private Property Property {get;set;}
 		Activity context;
-		public PropertyListAdapter(Activity context) : base() {
+
+		public RoomListAdapter(Activity context,Property aProperty) : base() {
+			Property = aProperty;
 			this.context = context;
-			this.Properties = PropertyCollection.SharedCollection.Properties.ToArray ();
+			this.Rooms = Property.RoomList.ToArray ();
 		}
+
+
+
 		public override long GetItemId(int position)
 		{
 			return position;
 		}
-		public override Property this[int position] {  
-			get { return Properties[position]; }
+		public override Room this[int position] {  
+			get { return Rooms[position]; }
 		}
 		public override int Count {
-			get { return Properties.Length; }
+			get { return Rooms.Length; }
 		}
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
-				view = context.LayoutInflater.Inflate(Android.Resource.Layout.PropertyViewListItem, null);
-			view.FindViewById<TextView>(Android.Resource.Id.propertyTextItem).Text = Properties[position].PropertyName;
+				view = context.LayoutInflater.Inflate(Android.Resource.Layout.RoomListItem, null);
+			view.FindViewById<TextView>(Android.Resource.Id.propertyTextItem).Text = Rooms[position].Label;
 			return view;
 		}
 		public override void NotifyDataSetChanged ()
 		{
-			Properties = PropertyCollection.SharedCollection.Properties.ToArray ();
+			Rooms = Property.RoomList.ToArray ();
 
 			base.NotifyDataSetChanged ();
 		}
-		 
-   }
+
+	}
 }
+
+
 

@@ -69,6 +69,7 @@
     <Compile Include="..\..\HomeCatalog.Core\Item.cs">
       <Link>Core\Item.cs</Link>
     </Compile>
+    <Compile Include="Adapters\RoomListAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -84,6 +85,7 @@
     <AndroidResource Include="Resources\layout\PropertyViewListItem.axml" />
     <AndroidResource Include="Resources\layout\SetUpRoomView.axml" />
     <AndroidResource Include="Resources\layout\SetUpCategoryView.axml" />
+    <AndroidResource Include="Resources\layout\RoomListItem.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
