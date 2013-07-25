@@ -10,7 +10,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "HomeCatalog.Android", MainLauncher = true)]
+	[Activity (Label = "ViewRoomListActivity")]
 	public class ViewRoomListActivity : Activity
 	{
 		private RoomListAdapter ListAdapter { get; set; }
@@ -41,6 +41,14 @@ namespace HomeCatalog.Android
 			BackButton.Click += (sender,e) =>
 			{
 				SetResult (Result.Canceled);
+			};
+
+			Button ViewRoomListButton = FindViewById<Button> (Resource.Id.ViewRoomListButton);
+			ViewRoomListButton.Click += (sender, e) => 
+			{
+				Intent PassPropertyID = new Intent (this,typeof(ViewRoomListActivity));
+				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				StartActivity (PassPropertyID);
 			};
 
 		}
