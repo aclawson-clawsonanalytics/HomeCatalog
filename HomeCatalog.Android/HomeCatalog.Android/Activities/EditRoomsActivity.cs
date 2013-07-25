@@ -63,7 +63,7 @@ namespace HomeCatalog.Android
 			Button AddCustomButton = FindViewById<Button> (Resource.Id.AddCustomButton);
 			Button CancelRoomEditButton = FindViewById<Button> (Resource.Id.CancelRoomEditButton);
 			Button SaveRoomsButton = FindViewById<Button> (Resource.Id.SaveRoomsButton);
-
+			Button ViewRoomListButton = FindViewById<Button> (Resource.Id.ViewRoomListButton);
 
 
 			// Load CheckBox views
@@ -85,6 +85,13 @@ namespace HomeCatalog.Android
 			BasementCheckBox.Checked = SetCheckBoxByRoom ("Basement");
 			OfficeCheckBox.Checked = SetCheckBoxByRoom ("Office");
 
+			ViewRoomListButton.Click += (sender, e) => 
+			{
+				SaveRooms ();
+				Intent PassPropertyID = new Intent (this,typeof(ViewRoomListActivity));
+				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				StartActivity (PassPropertyID);
+			};
 
 			AddCustomButton.Click += (sender, e) => 
 			{
@@ -156,7 +163,6 @@ namespace HomeCatalog.Android
 			{
 				//If not found, add to Property.RoomList
 				//If found, don't do anything
-				Log.Info ("KitchenCheckBox", "KitchenCheckBox is checked");
 				if (CheckForRoomByLabel (Property,"Kitchen") == false)
 				{
 					Room Kitchen = new Room ();

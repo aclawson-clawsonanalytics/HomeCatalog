@@ -12,7 +12,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	class RoomListAdapter : BaseAdapter<Property>
+	class RoomListAdapter : BaseAdapter<Room>
 	{
 		Room[] Rooms;
 		private Property Property {get;set;}
