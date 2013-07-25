@@ -87,7 +87,7 @@ namespace HomeCatalog.Android
 			Property.Address = PropAddressField.Text;
 			Property.City = PropCityField.Text;
 			Property.State = PropStateField.Text;
-			Property.ZipCode = PropZipField.Text;
+			Property.ZipCode = PropZipField.Text; 
 		}
 
 		private void DisplayPropertyInField ()

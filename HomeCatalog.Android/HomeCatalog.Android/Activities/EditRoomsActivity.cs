@@ -85,7 +85,6 @@ namespace HomeCatalog.Android
 			BasementCheckBox.Checked = SetCheckBoxByRoom ("Basement");
 			OfficeCheckBox.Checked = SetCheckBoxByRoom ("Office");
 
-			//Load EditTexts
 
 			AddCustomButton.Click += (sender, e) => 
 			{
@@ -282,9 +281,9 @@ namespace HomeCatalog.Android
 		{
 			if (num != "")
 			{
-				numberBath = int.Parse (num);
+				Property.NumberBaths = int.Parse (num);
 				//int numberBath = Int32.Parse (num);
-				for (int i =1; i<= numberBath; i++)
+				for (int i =1; i<= Property.NumberBaths; i++)
 				{
 
 					string BathString = "Bathroom" + i;
@@ -299,9 +298,9 @@ namespace HomeCatalog.Android
 		{
 			if (num != "")
 			{
-				numberBeds = int.Parse (num);
+				Property.NumberBeds = int.Parse (num);
 				//int numberBeds = Int32.Parse (num);
-				for (int i=1; i <= numberBeds; i++)
+				for (int i=1; i <= Property.NumberBeds; i++)
 				{
 					string BedString = "Bedroom" + i;
 					Room Bedroom = new Room ();
