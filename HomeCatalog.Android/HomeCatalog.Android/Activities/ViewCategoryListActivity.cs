@@ -11,7 +11,7 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "ViewRoomListActivity")]
-	public class ViewRoomListActivity : Activity
+	public class ViewCategoryListActivity : Activity
 	{
 		private RoomListAdapter ListAdapter { get; set; }
 		private Property Property { get; set; }
@@ -23,33 +23,31 @@ namespace HomeCatalog.Android
 
 			Property = PropertyCollection.SharedCollection.FindPropertyWithId (propertyID);
 
-			SetContentView (Resource.Layout.RoomsView);
+			SetContentView (Resource.Layout.CategoryView);
 
-			ListView listView = FindViewById<ListView> (Resource.Id.roomList);
-			ListAdapter = new RoomListAdapter (this,Property);
+			ListView listView = FindViewById<ListView> (Resource.Id.categoryList);
+			ListAdapter = new CategoryListAdapter (this,Property);
 			listView.Adapter = ListAdapter;
 
-			Button EditRoomsButton = FindViewById<Button> (Resource.Id.EditRoomsButton2);
-			EditRoomsButton.Click += (sender, e) => 
+			Button editCategoriesButton = FindViewById<Button> (Resource.Id.editCategoriesButton2);
+			editCategoriesButton.Click += (sender, e) => 
 			{
-				Intent PassPropertyID = new Intent (this,typeof(EditRoomsActivity));
+				Intent PassPropertyID = new Intent (this,typeof(EditCategoriesActivity));
 				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
 				StartActivity (PassPropertyID);
 			};
 
-			Button BackButton = FindViewById<Button> (Resource.Id.BackButton);
-			BackButton.Click += (sender,e) =>
+			Button backButton = FindViewById<Button> (Resource.Id.BackButton);
+			backButton.Click += (sender,e) =>
 			{
 				SetResult (Result.Canceled);
 			};
 
 			listView.ItemClick += (sender, e) => 
 			{
-				Property.RoomList.Remove (ListAdapter[e.Position]);
+				Property.CategoryList.Remove (ListAdapter[e.Position]);
 				ListAdapter.NotifyDataSetChanged ();
 			};
-
-
 
 
 		}

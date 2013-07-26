@@ -10,19 +10,25 @@
         android:layout_centerHorizontal="true"
         android:textSize="30sp"
         android:text="Rooms" />
-<!--
-   -->
+    <TextView
+        android:id="@+id/deleteRoomMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/RoomsViewLabel"
+        android:textSize="10dp"
+        android:text="Click an item to remove it from the list" />
     <Button
         android:text="Edit Rooms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/RoomsViewLabel"
+        android:layout_below="@id/deleteRoomMessage"
         android:id="@+id/EditRoomsButton2" />
     <Button
         android:text="Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/RoomsViewLabel"
+        android:layout_below="@id/deleteRoomMessage"
         android:id="@+id/BackButton"
         android:layout_alignParentRight="true" />
     <ListView

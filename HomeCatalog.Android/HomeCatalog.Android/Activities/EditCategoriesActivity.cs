@@ -64,96 +64,207 @@ namespace HomeCatalog.Android
 			CustomCategoryField = FindViewById<EditText> (Resource.Id.CustomCategoryField);
 
 			// Add Buttons
-			Button AddCustomCategoryButton = FindViewById<Button> (Resource.Id.AddCustomCategoryButton);
+			Button addCustomCategoryButton = FindViewById<Button> (Resource.Id.AddCustomCategoryButton);
 
-			AddCustomCategoryButton.Click += (sender,e) =>
+			addCustomCategoryButton.Click += (sender,e) =>
 			{
 				SaveCustomCategory ();
 			};
 
-			Button CancelEditCategoriesButton = FindViewById<Button> (Resource.Id.CancelEditCategoriesButton);
+			Button cancelEditCategoriesButton = FindViewById<Button> (Resource.Id.CancelEditCategoriesButton);
 
-			CancelEditCategoriesButton.Click += (sender,e) =>
+			cancelEditCategoriesButton.Click += (sender,e) =>
 			{
 				SetResult (Result.Canceled);
 				Finish ();
 			};
 
-			Button SaveCategoriesButton = FindViewById<Button> (Resource.Id.SaveCategoriesButton);
+			Button saveCategoriesButton = FindViewById<Button> (Resource.Id.SaveCategoriesButton);
 
 
-			SaveCategoriesButton.Click += (sender, e) => 
+			saveCategoriesButton.Click += (sender, e) => 
 			{
 				WriteCategoriesToFile ("BeforeSave");
 				SaveCategories ();
 				Finish ();
 				WriteCategoriesToFile ("AfterSave");
 			};
+
+			Button viewCategoryListButton = FindViewById<Button> (Resource.Id.viewCategoryListButton);
+			{
+				SaveCategories ();
+				Intent PassPropertyID = new Intent (this,typeof(ViewCategoryListActivity));
+				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				StartActivity (PassPropertyID);
+			}
 		
 
 		}
 
-		private bool CheckForCategoryByLabel(string label)
+		private bool CheckForCategoryByLabel(Property prop, string label)
 		{
-			int count = 1;
+			int count = 0;
 			foreach (Category cat in Property.CategoryList)
 			{
 				if (cat.Label == label)
 				{
 					count = count + 1;
 				}
-				
 			}
-			
-			if (count > 0)
-				{
-					return true;
-				}
-			else
-				{
-					return false;
-				}
-			}
-
-		private void WriteByCheckBoxandLabel(CheckBox check,string label)
-		{
-			if (check.Checked == true)
+			if (count == 0)
 			{
-				if (CheckForCategoryByLabel (label) == false)
-				{
-					Category NewCategory = new Category ();
-					NewCategory.Label = label;
-					Property.CategoryList.Add (NewCategory);
-				}
+				return false;
 			}
 			else
 			{
-				if (CheckForCategoryByLabel(label) == true)
-				{
-					foreach (Category cat in Property.CategoryList)
-					{
-						if (cat.Label == label)
-						{
-							Property.CategoryList.Remove (cat);
-						}
-					}
-				}
+				return true;
 			}
 		}
 
 		private void SaveCategories()
 		{
-			WriteByCheckBoxandLabel (ApplianceCheckBox, "Appliance");
-			WriteByCheckBoxandLabel (BathApplianceCheckBox, "Bathroom Appliance");
-			WriteByCheckBoxandLabel (DishCheckBox, "Dishes");
-			WriteByCheckBoxandLabel (ElectronicsCheckBox, "Electronics");
-			WriteByCheckBoxandLabel (FurnitureCheckBox, "Furniture");
-			WriteByCheckBoxandLabel (KitchenApplianceCheckBox, "Kitchen Appliance");
-			WriteByCheckBoxandLabel (StorageCheckBox, "Storage");
-			WriteByCheckBoxandLabel (ToolsCheckBox, "Tools");
+			//Save Appliance
+			if (ApplianceCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForCategoryByLabel (Property,"Kitchen") == false)
+				{
+					Category Appliance = new Category ();
+					Appliance.Label = "Appliance";
+					Property.CategoryList.Add (Category);
+				}
+			}
+			//If box.checked == false, check for room and delete if existing
+			else
+			{
+				if (CheckForCategoryByLabel (Property, "Appliance") == true)
+				{
+					RemoveByCategoryLabel("Appliance");
+				}
+			}
+
+			//Save BathAppliance
+			if (BathApplianceCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForCategoryByLabel (Property,"Bathroom Appliance") == false)
+				{
+					Category BathroomAppliance = new Category ();
+					BathroomAppliance.Label = "Bathroom Appliance";
+					Property.CategoryList.Add (BathroomAppliance);
+				}
+				else
+				{
+					RemoveByCategoryLabel("Bathroom Appliance");
+				}
+			}
+
+			// Save Dishes
+			if (DishCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForCategoryByLabel (Property,"Dishes") == false)
+				{
+					Category Dishes = new Category ();
+					Dishes.Label = "Dishes";
+					Property.CategoryList.Add (Dishes);
+				}
+				else
+				{
+					RemoveByCategoryLabel("Dishes");
+				}
+			}
+
+			// Electronics
+			if (ElectronicsCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForCategoryByLabel (Property,"Electronics") == false)
+				{
+					Category Electronics = new Category ();
+					Electronics.Label = "Electronics";
+					Property.CategoryList.Add (Electronics);
+				}
+				else
+				{
+					RemoveByCategoryLabel("Electronics");
+				}
+			}
+
+			//Furniture
+			if (FurnitureCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForCategoryByLabel (Property,"Furniture") == false)
+				{
+					Category Furniture = new Category ();
+					Furniture.Label = "Furniture";
+					Property.CategoryList.Add (Furniture);
+				}
+				else
+				{
+					RemoveByCategoryLabel ("Furniture");
+				}
+			}
+
+			//Kitchen Appliance
+			if (KitchenApplianceCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForCategoryByLabel (Property,"Kitchen Appliance") == false)
+				{
+					Category KitchenAppliance = new Category ();
+					KitchenAppliance.Label = "Kitchen Appliance";
+					Property.CategoryList.Add (KitchenAppliance);
+				}
+				else
+				{
+					RemoveByCategoryLabel("Kitchen Appliance");
+				}
+			}
+
+			if (StorageCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForCategoryByLabel (Property,"Storage") == false)
+				{
+					Category Storage = new Category ();
+					Storage.Label = "Storage";
+					Property.CategoryList.Add (Storage);
+				}
+				else
+				{
+					RemoveByCategoryLabel ("Storage");
+				}
+			}
+
+			if (ToolsCheckBox.Checked == true)
+			{
+				//If not found, add to Property.RoomList
+				//If found, don't do anything
+				if (CheckForCategoryByLabel (Property,"Tools") == false)
+				{
+					Category Tools = new Category ();
+					Tools.Label = "Tools";
+					Property.CategoryList.Add (Tools);
+				}
+				else
+				{
+					RemoveByCategoryLabel ("Tools");
+				}
+			}
 
 			SaveCustomCategory ();
+
 		}
+
 
 		private void SaveCustomCategory ()
 		{
@@ -181,6 +292,17 @@ namespace HomeCatalog.Android
 
 			file.Close ();
 
+		}
+
+		private void RemoveByCategoryLabel (string label)
+		{
+			foreach (Category cat in Property.CategoryList)
+			{
+				if (cat.Label == label)
+				{
+					Property.CategoryList.Remove (cat);
+				}
+			}
 		}
 		
 		
