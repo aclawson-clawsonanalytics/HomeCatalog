@@ -33,6 +33,10 @@
     <Reference Include="nunit.framework">
       <Private>False</Private>
     </Reference>
+    <Reference Include="NSubstitute">
+      <HintPath>NSubstitute\lib\NET40\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PropertyCollectionTests.cs" />
@@ -55,6 +59,17 @@
     <Compile Include="..\HomeCatalog.Core\Item.cs">
       <Link>Item.cs</Link>
     </Compile>
+    <Compile Include="..\HomeCatalog.Core\StoreLayer\PropertyDatabase.cs">
+      <Link>StoreLayer\PropertyDatabase.cs</Link>
+    </Compile>
+    <Compile Include="..\HomeCatalog.Core\StoreLayer\PropertyStore.cs">
+      <Link>StoreLayer\PropertyStore.cs</Link>
+    </Compile>
+    <Compile Include="StoreLayerTests\PropertyStoreTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="StoreLayer\" />
+    <Folder Include="StoreLayerTests\" />
+  </ItemGroup>
 </Project>
