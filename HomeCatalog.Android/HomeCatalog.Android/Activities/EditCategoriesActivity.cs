@@ -84,19 +84,19 @@ namespace HomeCatalog.Android
 
 			saveCategoriesButton.Click += (sender, e) => 
 			{
-				WriteCategoriesToFile ("BeforeSave");
 				SaveCategories ();
 				Finish ();
-				WriteCategoriesToFile ("AfterSave");
 			};
 
 			Button viewCategoryListButton = FindViewById<Button> (Resource.Id.viewCategoryListButton);
+
+			viewCategoryListButton.Click += (sender,e) =>
 			{
 				SaveCategories ();
 				Intent PassPropertyID = new Intent (this,typeof(ViewCategoryListActivity));
 				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
 				StartActivity (PassPropertyID);
-			}
+			};
 		
 
 		}
@@ -132,7 +132,7 @@ namespace HomeCatalog.Android
 				{
 					Category Appliance = new Category ();
 					Appliance.Label = "Appliance";
-					Property.CategoryList.Add (Category);
+					Property.CategoryList.Add (Appliance);
 				}
 			}
 			//If box.checked == false, check for room and delete if existing
@@ -266,6 +266,19 @@ namespace HomeCatalog.Android
 		}
 
 
+		private bool SetCheckBoxByCategory (string label)
+		{
+			if (CheckForCategoryByLabel (Property,label) == true)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+
+		}
+
 		private void SaveCustomCategory ()
 		{
 			if (CustomCategoryField.Text != "")
@@ -275,24 +288,6 @@ namespace HomeCatalog.Android
 			}
 		}
 
-		private void WriteCategoriesToFile(string position)
-		{
-			string FileName = "CategoryTest_" + position + ".txt";
-			StreamWriter file = new StreamWriter (FileName);
-			file.WriteLine (Property.PropertyName);
-			file.WriteLine (Property.Address);
-			file.WriteLine (Property.City);
-			file.WriteLine (Property.ZipCode);
-			file.WriteLine ("Category List: ");
-			file.WriteLine ();
-			foreach (Category cat in Property.CategoryList)
-			{
-				file.WriteLine (cat.Label);
-			}
-
-			file.Close ();
-
-		}
 
 		private void RemoveByCategoryLabel (string label)
 		{

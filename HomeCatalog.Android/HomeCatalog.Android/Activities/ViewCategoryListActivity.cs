@@ -13,7 +13,7 @@ namespace HomeCatalog.Android
 	[Activity (Label = "ViewRoomListActivity")]
 	public class ViewCategoryListActivity : Activity
 	{
-		private RoomListAdapter ListAdapter { get; set; }
+		private CategoryListAdapter ListAdapter { get; set; }
 		private Property Property { get; set; }
 
 		protected override void OnCreate (Bundle bundle)

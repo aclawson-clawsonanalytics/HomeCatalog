@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:id="@+id/deleteCategoryMessage">
     <TextView
         android:id="@+id/CategoryViewLabel"
         android:layout_width="wrap_content"
@@ -11,7 +12,7 @@
         android:textSize="30sp"
         android:text="Categories" />
     <TextView
-        android:id="@+id/deleteMessage"
+        android:id="@+id/deleteCategoryMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="10dp"
@@ -22,13 +23,13 @@
         android:text="Edit Categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/deleteMessage"
+        android:layout_below="@id/deleteCategoryMessage"
         android:id="@+id/editCategoriesButton2" />
     <Button
         android:text="Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/deleteMessage"
+        android:layout_below="@id/deleteCategoryMessage"
         android:id="@+id/BackButton"
         android:layout_alignParentRight="true" />
     <ListView
