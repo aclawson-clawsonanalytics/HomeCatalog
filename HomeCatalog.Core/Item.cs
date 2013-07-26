@@ -13,6 +13,8 @@ namespace HomeCatalog.Core
 		public string ParentID { get; set; }
 		public string ItemID {get;set;}
 
+		public string ItemName { get; set; }
+
 		public DateTime PurchaseDate { get; set; }
 		public float PurchaseValue { get; set; }
 		public float AppraisalValue {get;set;}
