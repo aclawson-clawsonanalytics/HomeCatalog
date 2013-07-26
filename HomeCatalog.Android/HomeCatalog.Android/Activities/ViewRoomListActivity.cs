@@ -43,13 +43,8 @@ namespace HomeCatalog.Android
 				SetResult (Result.Canceled);
 			};
 
-			Button ViewRoomListButton = FindViewById<Button> (Resource.Id.ViewRoomListButton);
-			ViewRoomListButton.Click += (sender, e) => 
-			{
-				Intent PassPropertyID = new Intent (this,typeof(ViewRoomListActivity));
-				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
-				StartActivity (PassPropertyID);
-			};
+
+
 
 		}
 

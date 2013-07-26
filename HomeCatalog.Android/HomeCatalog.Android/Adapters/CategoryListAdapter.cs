@@ -12,16 +12,16 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	class RoomListAdapter : BaseAdapter<Room>
+	class CategoryListAdapter : BaseAdapter<Category>
 	{
-		Room[] Rooms;
+		Category[] Categories;
 		private Property Property {get;set;}
 		Activity context;
 
-		public RoomListAdapter(Activity context,Property aProperty) : base() {
+		public CategoryListAdapter(Activity context,Property aProperty) : base() {
 			Property = aProperty;
 			this.context = context;
-			this.Rooms = Property.RoomList.ToArray ();
+			this.Categories = Property.CategoryList.ToArray ();
 		}
 
 
@@ -30,23 +30,23 @@ namespace HomeCatalog.Android
 		{
 			return position;
 		}
-		public override Room this[int position] {  
-			get { return Rooms[position]; }
+		public override Category this[int position] {  
+			get { return Categories[position]; }
 		}
 		public override int Count {
-			get { return Rooms.Length; }
+			get { return Categories.Length; }
 		}
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
-				view = context.LayoutInflater.Inflate(Android.Resource.Layout.RoomListItem, null);
-			view.FindViewById<TextView>(Android.Resource.Id.roomTextItem).Text = Rooms[position].Label;
+				view = context.LayoutInflater.Inflate(Android.Resource.Layout.CategoryListItem, null);
+			view.FindViewById<TextView>(Android.Resource.Id.propertyTextItem).Text = Categories[position].Label;
 			return view;
 		}
 		public override void NotifyDataSetChanged ()
 		{
-			Rooms = Property.RoomList.ToArray ();
+			Categories = Property.CategoryList.ToArray ();
 
 			base.NotifyDataSetChanged ();
 		}

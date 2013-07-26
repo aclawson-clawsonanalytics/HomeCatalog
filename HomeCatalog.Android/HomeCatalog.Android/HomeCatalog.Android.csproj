@@ -73,6 +73,7 @@
     <Compile Include="Activities\ViewRoomListActivity.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Adapters\CategoryListAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -90,6 +91,8 @@
     <AndroidResource Include="Resources\layout\SetUpCategoryView.axml" />
     <AndroidResource Include="Resources\layout\RoomListItem.axml" />
     <AndroidResource Include="Resources\layout\RoomsView.axml" />
+    <AndroidResource Include="Resources\layout\CategoryListItem.axml" />
+    <AndroidResource Include="Resources\layout\CategoryView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

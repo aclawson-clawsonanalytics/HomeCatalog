@@ -60,10 +60,10 @@ namespace HomeCatalog.Android
 			CustomField = FindViewById<EditText> (Resource.Id.CustomField);
 
 			//Load Buttons and respective views
-			Button AddCustomButton = FindViewById<Button> (Resource.Id.AddCustomButton);
-			Button CancelRoomEditButton = FindViewById<Button> (Resource.Id.CancelRoomEditButton);
-			Button SaveRoomsButton = FindViewById<Button> (Resource.Id.SaveRoomsButton);
-			Button ViewRoomListButton = FindViewById<Button> (Resource.Id.ViewRoomListButton);
+			Button addCustomButton = FindViewById<Button> (Resource.Id.AddCustomButton);
+			Button cancelRoomEditButton = FindViewById<Button> (Resource.Id.CancelRoomEditButton);
+			Button saveRoomsButton = FindViewById<Button> (Resource.Id.SaveRoomsButton);
+			Button viewRoomListButton = FindViewById<Button> (Resource.Id.ViewRoomListButton);
 
 
 			// Load CheckBox views
@@ -85,7 +85,7 @@ namespace HomeCatalog.Android
 			BasementCheckBox.Checked = SetCheckBoxByRoom ("Basement");
 			OfficeCheckBox.Checked = SetCheckBoxByRoom ("Office");
 
-			ViewRoomListButton.Click += (sender, e) => 
+			viewRoomListButton.Click += (sender, e) => 
 			{
 				SaveRooms ();
 				Intent PassPropertyID = new Intent (this,typeof(ViewRoomListActivity));
@@ -93,19 +93,19 @@ namespace HomeCatalog.Android
 				StartActivity (PassPropertyID);
 			};
 
-			AddCustomButton.Click += (sender, e) => 
+			addCustomButton.Click += (sender, e) => 
 			{
 				SaveCustomRoom (CustomField.Text);
 				CustomField.Text = "";
 			};
 
-			CancelRoomEditButton.Click += (sender, e) => 
+			cancelRoomEditButton.Click += (sender, e) => 
 			{
 				SetResult (Result.Canceled);
 				Finish ();
 			};
 
-			SaveRoomsButton.Click += (sender,e) =>
+			saveRoomsButton.Click += (sender,e) =>
 			{
 				SaveRooms ();
 
@@ -220,7 +220,7 @@ namespace HomeCatalog.Android
 				//If found, don't do anything
 				if (CheckForRoomByLabel (Property,"Basement") == false)
 				{
-					Room Basment = new Room ();
+					Room Basement = new Room ();
 					Basement.Label = "Basement";
 					Property.RoomList.Add (Basement);
 				}
