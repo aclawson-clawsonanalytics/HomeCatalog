@@ -10,8 +10,6 @@ namespace HomeCatalog.Core
 		public static string PropertyIDKey = "PropertyID";
 		public Property ()
 		{
-//			
-
 			PropertyID = Guid.NewGuid ().ToString ();
 			RoomList = new List<Room> ();
 			CategoryList = new List<Category> ();

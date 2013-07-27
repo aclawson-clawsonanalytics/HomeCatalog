@@ -41,12 +41,11 @@ namespace HomeCatalog.Core.Tests
 		{
 			MockDB.Received ().CreateTable<Item> ();
 		}
-		[Test()]
-		public void ItReturnsANewPropertyFromBlankTable ()
-		{
-			MockDB.Table<Property> ().Returns(new MockTableQuery<Property> (null, null));
-			Assert.NotNull(SUT.Property);
-		}
+//		[Test()]
+//		public void ItReturnsANewPropertyFromBlankTable ()
+//		{
+//
+//		}
 	}
 }
 

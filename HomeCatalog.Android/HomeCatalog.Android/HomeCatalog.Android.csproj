@@ -78,6 +78,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Activities\AddItemActivity.cs" />
+    <Compile Include="..\..\HomeCatalog.Core\StoreLayer\SQLite.cs">
+      <Link>Core\SQLite.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

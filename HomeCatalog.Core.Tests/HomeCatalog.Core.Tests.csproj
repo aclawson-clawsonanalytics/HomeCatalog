@@ -72,7 +72,6 @@
     <Compile Include="..\HomeCatalog.Core\StoreLayer\PropertyDatabaseConnection.cs">
       <Link>StoreLayer\PropertyDatabaseConnection.cs</Link>
     </Compile>
-    <Compile Include="StoreLayerTests\MockTableQuery.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

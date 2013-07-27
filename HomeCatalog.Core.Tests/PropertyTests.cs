@@ -15,12 +15,6 @@ namespace HomeCatalog.Core.Tests
 		}
 
 		[Test()]
-		public void PropertyHasName ()
-		{
-			Assert.That (sut.PropertyName == null);
-		}
-
-		[Test()]
 		public void PropertyNameIsCorrect()
 		{
 			sut.PropertyName = "Name";
@@ -33,12 +27,6 @@ namespace HomeCatalog.Core.Tests
 			Assert.That (sut.PropertyID != null);
 		}
 
-		[Test()]
-		public void PropertyHasAddress()
-		{
-			Assert.That (sut.Address != null);
-		}
-
 		[Test ()]
 		public void PropertyAddressIsCorrect ()
 		{
@@ -47,22 +35,10 @@ namespace HomeCatalog.Core.Tests
 		}
 
 		[Test()]
-		public void PropertyHasCity ()
-		{
-			Assert.That (sut.City != null);
-		}
-
-		[Test()]
 		public void PropertyCityIsCorrect ()
 		{
 			sut.City = "Centennial";
 			Assert.That (sut.City == "Centennial");
-		}
-
-		[Test()]
-		public void PropertyHasState ()
-		{
-			Assert.That (sut.State == null);
 		}
 
 		[Test()]
