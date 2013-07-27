@@ -47,30 +47,6 @@ namespace HomeCatalog.Core.Tests
 			sut.State = "Colorado";
 			Assert.That (sut.State== "Colorado");
 		}
-
-		[Test ()]
-		public void CanAddRoom ()
-		{
-			Room NewRoom = new Room ();
-			Random rnd = new Random ();
-			int rand = rnd.Next (1, 100);
-			NewRoom.RoomID = rand;
-			NewRoom.Label = "NewRoom";
-			sut.RoomList.Add (NewRoom);
-			Assert.That (sut.RoomList.Contains (NewRoom));
-		}
-
-		[Test()]
-		public void CanAddCategory()
-		{
-			Category NewCategory = new Category ();
-			Random rnd = new Random ();
-			int rand = rnd.Next (1, 100);
-			NewCategory.CategoryID = rand;
-			NewCategory.Label = "NewCategory";
-			sut.CategoryList.Add (NewCategory);
-			Assert.That (sut.CategoryList.Contains (NewCategory));
-		}
 	}
 }
 
