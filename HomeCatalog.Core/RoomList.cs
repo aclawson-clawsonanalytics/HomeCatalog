@@ -34,9 +34,18 @@ namespace HomeCatalog.Core
 			return InternalTable.FirstOrDefault (x => x.ID == id);
 		}
 
+		public ReadOnlyCollection<Room> AllRoomsByLabel (bool ascending) {
+			if (ascending) {
+				return (from room in InternalTable orderby room.Label select room).ToList ().AsReadOnly ();
+			} else {
+				return (from room in InternalTable orderby room.Label descending select room).ToList ().AsReadOnly ();
+			}
+		}
+
 		public ReadOnlyCollection<Room> AllRooms () {
 			return (from room in InternalTable select room).ToList ().AsReadOnly ();
 		}
+
 	}
 }
 
