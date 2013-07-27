@@ -60,10 +60,10 @@ namespace HomeCatalog.Android
 			CustomField = FindViewById<EditText> (Resource.Id.CustomField);
 
 			//Load Buttons and respective views
-			Button AddCustomButton = FindViewById<Button> (Resource.Id.AddCustomButton);
-			Button CancelRoomEditButton = FindViewById<Button> (Resource.Id.CancelRoomEditButton);
-			Button SaveRoomsButton = FindViewById<Button> (Resource.Id.SaveRoomsButton);
-
+			Button addCustomButton = FindViewById<Button> (Resource.Id.AddCustomButton);
+			Button cancelRoomEditButton = FindViewById<Button> (Resource.Id.CancelRoomEditButton);
+			Button saveRoomsButton = FindViewById<Button> (Resource.Id.SaveRoomsButton);
+			Button viewRoomListButton = FindViewById<Button> (Resource.Id.ViewRoomListButton);
 
 
 			// Load CheckBox views
@@ -85,21 +85,27 @@ namespace HomeCatalog.Android
 			BasementCheckBox.Checked = SetCheckBoxByRoom ("Basement");
 			OfficeCheckBox.Checked = SetCheckBoxByRoom ("Office");
 
-			//Load EditTexts
+			viewRoomListButton.Click += (sender, e) => 
+			{
+				SaveRooms ();
+				Intent PassPropertyID = new Intent (this,typeof(ViewRoomListActivity));
+				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				StartActivity (PassPropertyID);
+			};
 
-			AddCustomButton.Click += (sender, e) => 
+			addCustomButton.Click += (sender, e) => 
 			{
 				SaveCustomRoom (CustomField.Text);
 				CustomField.Text = "";
 			};
 
-			CancelRoomEditButton.Click += (sender, e) => 
+			cancelRoomEditButton.Click += (sender, e) => 
 			{
 				SetResult (Result.Canceled);
 				Finish ();
 			};
 
-			SaveRoomsButton.Click += (sender,e) =>
+			saveRoomsButton.Click += (sender,e) =>
 			{
 				SaveRooms ();
 
@@ -141,11 +147,11 @@ namespace HomeCatalog.Android
 			}
 			if (count == 0)
 			{
-				return true;
+				return false;
 			}
 			else
 			{
-				return false;
+				return true;
 			}
 		}
 
@@ -157,7 +163,6 @@ namespace HomeCatalog.Android
 			{
 				//If not found, add to Property.RoomList
 				//If found, don't do anything
-				Log.Info ("KitchenCheckBox", "KitchenCheckBox is checked");
 				if (CheckForRoomByLabel (Property,"Kitchen") == false)
 				{
 					Room Kitchen = new Room ();
@@ -215,7 +220,7 @@ namespace HomeCatalog.Android
 				//If found, don't do anything
 				if (CheckForRoomByLabel (Property,"Basement") == false)
 				{
-					Room Basment = new Room ();
+					Room Basement = new Room ();
 					Basement.Label = "Basement";
 					Property.RoomList.Add (Basement);
 				}
@@ -256,18 +261,7 @@ namespace HomeCatalog.Android
 		// Checkboxes to display those that are in the list.
 		private bool SetCheckBoxByRoom (string label)
 		{
-			int count = 0;
-			foreach (Room room in Property.RoomList)
-			{
-
-				if (room.Label == label)
-				{
-					count = count + 1;
-					break;
-				}
-			}
-
-			if (count == 1)
+			if (CheckForRoomByLabel (Property,label) == true)
 			{
 				return true;
 			}
@@ -282,9 +276,9 @@ namespace HomeCatalog.Android
 		{
 			if (num != "")
 			{
-				numberBath = int.Parse (num);
+				Property.NumberBaths = int.Parse (num);
 				//int numberBath = Int32.Parse (num);
-				for (int i =1; i<= numberBath; i++)
+				for (int i =1; i<= Property.NumberBaths; i++)
 				{
 
 					string BathString = "Bathroom" + i;
@@ -299,9 +293,9 @@ namespace HomeCatalog.Android
 		{
 			if (num != "")
 			{
-				numberBeds = int.Parse (num);
+				Property.NumberBeds = int.Parse (num);
 				//int numberBeds = Int32.Parse (num);
-				for (int i=1; i <= numberBeds; i++)
+				for (int i=1; i <= Property.NumberBeds; i++)
 				{
 					string BedString = "Bedroom" + i;
 					Room Bedroom = new Room ();
