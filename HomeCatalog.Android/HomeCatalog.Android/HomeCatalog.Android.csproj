@@ -79,6 +79,9 @@
     </Compile>
     <Compile Include="Activities\AddItemActivity.cs" />
     <Compile Include="Adapters\ItemListAdapter.cs" />
+    <Compile Include="Activities\ViewItemListActivity.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -99,6 +102,8 @@
     <AndroidResource Include="Resources\layout\CategoryListItem.axml" />
     <AndroidResource Include="Resources\layout\CategoryView.axml" />
     <AndroidResource Include="Resources\layout\AddItemView.axml" />
+    <AndroidResource Include="Resources\layout\ItemsView.axml" />
+    <AndroidResource Include="Resources\layout\ItemListItem.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

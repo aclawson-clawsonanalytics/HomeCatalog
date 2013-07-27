@@ -212,4 +212,12 @@
         android:textSize="15dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true" />
+    <Button
+        android:text="Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/deleteItemButton"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

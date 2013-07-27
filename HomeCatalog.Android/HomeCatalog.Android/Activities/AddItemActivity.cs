@@ -37,6 +37,8 @@ namespace HomeCatalog.Android
 			String propertyID = Intent.GetStringExtra (Property.PropertyIDKey);
 			Property = PropertyCollection.SharedCollection.FindPropertyWithId (propertyID);
 
+			Item item = new Item ();
+
 			SetContentView (Resource.Layout.AddItemView);
 
 			// Load EditText views by ID
@@ -49,9 +51,15 @@ namespace HomeCatalog.Android
 
 			Button receiptButton = FindViewById<Button> (Resource.Id.receiptButton);
 			Button goToPhotosButton = FindViewById<Button> (Resource.Id.goToPhotosButton);
-			Button cancelAddItemButton = FindViewById<Button> (Resource.Id.cancelAddItemButton);
-			Button saveAddItemButton = FindViewById<Button> (Resource.Id.saveAddItemButton);
 
+			Button cancelAddItemButton = FindViewById<Button> (Resource.Id.cancelAddItemButton);
+			cancelAddItemButton.Click += (sender, e) => 
+			{
+				SetResult(Result.Canceled);
+			};
+
+			Button saveAddItemButton = FindViewById<Button> (Resource.Id.saveAddItemButton);
+			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);
 		}
 	}
 }
