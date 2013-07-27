@@ -7,10 +7,13 @@ namespace HomeCatalog.Core
 {
 	public class PropertyStore : IDisposable
 	{
-		public SQLiteConnection DB { get; private set;}
+		Property _property;
+
+		public SQLiteConnection DB { get; private set; }
+
 		public PropertyStore (String aDBpath)
 		{
-			DB = new SQLiteConnection(aDBpath);
+			DB = new SQLiteConnection (aDBpath);
 			DB.CreateTable<Property> ();
 			DB.CreateTable<Room> ();
 			DB.CreateTable<Category> ();
@@ -19,11 +22,20 @@ namespace HomeCatalog.Core
 
 		public Property Property {
 			get {
-				if (DB.Table<Property> ().Count () == 0) {
-					//Inser
+				if (_property == null) {
+					if (DB.Table<Property> ().Count () == 0) {
+						_property = new Property ();
+						DB.Insert (_property);
+					} else {
+						_property = DB.Table<Property> ().First ();
+					}
 				}
-				return null;
+				return _property;
 			}
+		}
+
+		public void SaveProperty () {
+			DB.Update (Property);
 		}
 
 		~PropertyStore ()

@@ -55,6 +55,57 @@ namespace HomeCatalog.Core.Tests
 		{
 			Assert.That (SUT.DB.GetTableInfo ("Category").Count > 0);
 		}
+
+		[Test()]
+		public void ItReturnsANewProperty ()
+		{
+			Assert.NotNull (SUT.Property);
+		}
+
+		[Test()]
+		public void ItPersistsTheProperty ()
+		{
+			Property firstProperty = SUT.Property;
+			Property secondProperty = SUT.Property;
+			Assert.That (firstProperty == secondProperty);
+		}
+
+		[Test()]
+		public void ItStoresANewProperty ()
+		{
+			Property aProperty = SUT.Property;
+			Assert.That (SUT.DB.Table<Property> ().Count () == 1);
+		}
+
+		[Test()]
+		public void MultipleCallsOnlyStoreOneProperty ()
+		{
+			Property aProperty = SUT.Property;
+			SUT.Dispose ();
+
+			PropertyStore secondStore = new PropertyStore (TempDBPath);
+			Property anotherProperty = secondStore.Property;
+
+			Assert.That (secondStore.DB.Table<Property> ().Count () == 1);
+
+			secondStore.Dispose ();
+		}
+
+		[Test()]
+		public void SavingPersistsPropertyChanges ()
+		{
+			Property aProperty = SUT.Property;
+			aProperty.PropertyName = "SomeName";
+			SUT.SaveProperty ();
+			SUT.Dispose ();
+
+			PropertyStore secondStore = new PropertyStore (TempDBPath);
+			Property anotherProperty = secondStore.Property;
+
+			Assert.That (anotherProperty.PropertyName == "SomeName");
+
+			secondStore.Dispose ();
+		}
 	}
 }
 
