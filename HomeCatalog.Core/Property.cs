@@ -11,9 +11,6 @@ namespace HomeCatalog.Core
 		public Property ()
 		{
 			PropertyID = Guid.NewGuid ().ToString ();
-			RoomList = new List<Room> ();
-			CategoryList = new List<Category> ();
-			ItemList = new List<Item> ();
 		}
 
 		// Define Metadata elements
@@ -30,7 +27,7 @@ namespace HomeCatalog.Core
 
 		// Define Standard set of room and category labels
 		[Ignore]
-		public List<Room> RoomList { get; set; }
+		public RoomList RoomList { get; set; }
 		[Ignore]
 		public List<Category> CategoryList { get; set; }
 		[Ignore]

@@ -29,9 +29,15 @@ namespace HomeCatalog.Core
 					} else {
 						_property = DB.Table<Property> ().First ();
 					}
+					AddListsToProperty ();
 				}
 				return _property;
 			}
+		}
+
+		void AddListsToProperty ()
+		{
+			Property.RoomList = new RoomList (DB.Table<Room> ());
 		}
 
 		public void SaveProperty () {

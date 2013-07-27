@@ -2,7 +2,6 @@ using System;
 using NUnit.Framework;
 using HomeCatalog.Core;
 using System.Collections.Generic;
-using NSubstitute;
 using SQLite;
 using System.IO;
 

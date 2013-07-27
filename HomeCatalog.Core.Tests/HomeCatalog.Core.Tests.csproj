@@ -37,6 +37,7 @@
       <HintPath>NSubstitute\lib\NET40\NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PropertyCollectionTests.cs" />
@@ -65,6 +66,10 @@
     <Compile Include="StoreLayerTests\PropertyStoreTests.cs" />
     <Compile Include="..\HomeCatalog.Core\StoreLayer\SQLite.cs">
       <Link>StoreLayer\SQLite.cs</Link>
+    </Compile>
+    <Compile Include="StoreLayerTests\RoomListTests.cs" />
+    <Compile Include="..\HomeCatalog.Core\RoomList.cs">
+      <Link>RoomList.cs</Link>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

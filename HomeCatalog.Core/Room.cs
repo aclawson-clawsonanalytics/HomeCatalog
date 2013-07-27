@@ -1,5 +1,5 @@
 using System;
-
+using SQLite;
 namespace HomeCatalog.Core
 {
 	public class Room
@@ -8,8 +8,8 @@ namespace HomeCatalog.Core
 		{
 
 		}
-
-		public int RoomID { get; set; }
+		[PrimaryKey, AutoIncrement]
+		public int ID { get; set; }
 		public string Label { get; set; }
 	}
 

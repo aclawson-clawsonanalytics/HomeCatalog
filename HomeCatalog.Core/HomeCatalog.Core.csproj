@@ -39,8 +39,12 @@
     <Compile Include="Item.cs" />
     <Compile Include="StoreLayer\PropertyStore.cs" />
     <Compile Include="StoreLayer\SQLite.cs" />
+    <Compile Include="RoomList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="StoreLayer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Core" />
   </ItemGroup>
 </Project>
