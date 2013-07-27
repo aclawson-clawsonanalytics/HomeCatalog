@@ -11,7 +11,7 @@ namespace HomeCatalog.Core.Tests
 		[SetUp()]
 		public void SetUp ()
 		{
-			Property sut = new Property ();
+			sut = new Property ();
 		}
 
 		[Test()]

@@ -37,9 +37,10 @@
     <Compile Include="Category.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="StoreLayer\PropertyDatabase.cs" />
     <Compile Include="StoreLayer\PropertyStore.cs" />
     <Compile Include="StoreLayer\SQLite.cs" />
+    <Compile Include="StoreLayer\ISQLiteConnection.cs" />
+    <Compile Include="StoreLayer\PropertyDatabaseConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="StoreLayer\" />

@@ -1,21 +1,51 @@
 using System;
 using NUnit.Framework;
 using HomeCatalog.Core;
+using System.Collections.Generic;
 using NSubstitute;
+using SQLite;
 
 namespace HomeCatalog.Core.Tests
 {
 	[TestFixture()]
 	public class PropertyStoreTests
 	{
-		[Test()]
-		public void ItAsksDatabaseForProperty ()
+		ISQLiteConnection MockDB;
+		PropertyStore SUT;
+		[SetUp()]
+		public void Setup()
 		{
-			S mockDB = Substitute.For<PropertyDatabase> ();
+			MockDB = Substitute.For<ISQLiteConnection> ();
+			SUT = new PropertyStore (MockDB);
+		}
+		[Test()]
+		public void ItTriesToCreatePropertyTable ()
+		{
+			MockDB.Received ().CreateTable<Property> ();
+		}
 
-			PropertyStore sut = new PropertyStore (mockDB);
-			sut.Property;
-			mockDB.Received().GetProperty
+		[Test()]
+		public void ItTriesToCreateRoomsTable ()
+		{
+			MockDB.Received ().CreateTable<Room> ();
+		}
+
+		[Test()]
+		public void ItTriesToCreateCategoryTable ()
+		{
+			MockDB.Received ().CreateTable<Category> ();
+		}
+
+		[Test()]
+		public void ItTriesToCreateItemTable ()
+		{
+			MockDB.Received ().CreateTable<Item> ();
+		}
+		[Test()]
+		public void ItReturnsANewPropertyFromBlankTable ()
+		{
+			MockDB.Table<Property> ().Returns(new MockTableQuery<Property> (null, null));
+			Assert.NotNull(SUT.Property);
 		}
 	}
 }
