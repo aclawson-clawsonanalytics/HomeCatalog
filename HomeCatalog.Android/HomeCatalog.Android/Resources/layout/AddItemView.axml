@@ -110,5 +110,106 @@
         android:id="@+id/itemCategoryLabel"
         android:textSize="15dp"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBaseline="@id/itemCategoryLabel"
+        android:layout_alignParentRight="false" />
+    <Spinner
+        android:id="@+id/roomLabelSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appraisalDateField"
+        android:layout_alignBaseline="@id/itemRoomLabel"
+        android:layout_toRightOf="@id/itemRoomLabel"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:background="@color/white"
+        android:layout_alignLeft="@id/itemNameField" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/roomLabelSpinner"
+        android:id="@+id/categoryLabelSpinner"
+        android:background="@color/white"
+        android:layout_toRightOf="@id/itemCategoryLabel"
+        android:layout_alignBaseline="@id/itemCategoryLabel"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignLeft="@id/roomLabelSpinner" />
+    <TextView
+        android:text="Model Number: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemCategoryLabel"
+        android:id="@+id/modelNumberLabel"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/categoryLabelSpinner"
+        android:id="@+id/modelNumberField"
+        android:layout_alignBaseline="@id/modelNumberLabel"
+        android:layout_toRightOf="@id/modelNumberLabel"
+        android:textSize="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/white" />
+    <TextView
+        android:text="Serial Number: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/modelNumberLabel"
+        android:id="@+id/serialNumberLabel"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/modelNumberField"
+        android:id="@+id/serialNumberField"
+        android:layout_alignBaseline="@id/serialNumberLabel"
+        android:layout_toRightOf="@id/serialNumberLabel"
+        android:textSize="15dp"
+        android:background="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@id/modelNumberField"
+        android:layout_marginRight="10dp" />
+    <Button
+        android:text="Receipt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serialNumberLabel"
+        android:id="@+id/receiptButton"
+        android:textSize="15dp"
+        android:layout_marginBottom="0.0dp"
+        android:layout_marginTop="0.0dp"
         android:layout_marginLeft="10dp" />
+    <Button
+        android:text="Photos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serialNumberField"
+        android:id="@+id/goToPhotosButton"
+        android:textSize="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignBaseline="@id/receiptButton" />
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancelAddItemButton"
+        android:textSize="15dp"
+        android:layout_alignParentBottom="true" />
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveAddItemButton"
+        android:textSize="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
 </RelativeLayout>

@@ -7,18 +7,25 @@ namespace HomeCatalog.Core
 
 		public Item ()
 		{
-			ItemID = Guid.NewGuid ().ToString ();
+			ItemID = GetNewID ();
 		}
 
-		public string ParentID { get; set; }
-		public string ItemID {get;set;}
+		static int IDCounter = 0;
 
+		public static int GetNewID() {
+			++IDCounter;
+			return IDCounter;
+		}
+
+//		public string ParentID { get; set; }
+		public int ItemID {get;set;}
+//
 		public string ItemName { get; set; }
-
+//
 		public DateTime PurchaseDate { get; set; }
-		public float PurchaseValue { get; set; }
-		public float AppraisalValue {get;set;}
+		public float PurchaseValue {get;set;}
 		public DateTime AppraisalDate {get;set;}
+		public float AppraisalValue { get; set; }
 		public string ModelNumber { get; set; }
 		public string SerialNumber {get;set;}
 
