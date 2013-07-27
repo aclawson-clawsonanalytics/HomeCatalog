@@ -66,12 +66,6 @@
     <Compile Include="..\HomeCatalog.Core\StoreLayer\SQLite.cs">
       <Link>StoreLayer\SQLite.cs</Link>
     </Compile>
-    <Compile Include="..\HomeCatalog.Core\StoreLayer\ISQLiteConnection.cs">
-      <Link>StoreLayer\ISQLiteConnection.cs</Link>
-    </Compile>
-    <Compile Include="..\HomeCatalog.Core\StoreLayer\PropertyDatabaseConnection.cs">
-      <Link>StoreLayer\PropertyDatabaseConnection.cs</Link>
-    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

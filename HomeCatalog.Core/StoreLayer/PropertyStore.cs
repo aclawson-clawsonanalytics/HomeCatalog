@@ -5,20 +5,16 @@ using System.Collections.Generic;
 
 namespace HomeCatalog.Core
 {
-	public class PropertyStore
+	public class PropertyStore : IDisposable
 	{
-		private ISQLiteConnection DB { get; set; }
-		String DBPath;
+		public SQLiteConnection DB { get; private set;}
 		public PropertyStore (String aDBpath)
 		{
-			DBPath = aDBpath;
-			Initialize ();
-		}
-
-		public PropertyStore (ISQLiteConnection db)
-		{
-			DB = db;
-			Initialize ();
+			DB = new SQLiteConnection(aDBpath);
+			DB.CreateTable<Property> ();
+			DB.CreateTable<Room> ();
+			DB.CreateTable<Category> ();
+			DB.CreateTable<Item> ();
 		}
 
 		public Property Property {
@@ -30,11 +26,20 @@ namespace HomeCatalog.Core
 			}
 		}
 
-		protected void Initialize () {
-			DB.CreateTable<Property> ();
-			DB.CreateTable<Room> ();
-			DB.CreateTable<Category> ();
-			DB.CreateTable<Item> ();
+		~PropertyStore ()
+		{
+			Dispose (false);
+		}
+
+		public void Dispose ()
+		{
+			Dispose (true);
+			GC.SuppressFinalize (this);
+		}
+
+		protected virtual void Dispose (bool disposing)
+		{
+			DB.Dispose ();
 		}
 	}
 }

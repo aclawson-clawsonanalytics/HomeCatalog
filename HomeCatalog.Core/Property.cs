@@ -29,8 +29,11 @@ namespace HomeCatalog.Core
 		public int NumberBeds { get; set; }
 
 		// Define Standard set of room and category labels
+		[Ignore]
 		public List<Room> RoomList { get; set; }
+		[Ignore]
 		public List<Category> CategoryList { get; set; }
+		[Ignore]
 		public List<Item> ItemList { get; set; }
 
 		public static Room CreateRoom(Room room, string label)

@@ -4,48 +4,57 @@ using HomeCatalog.Core;
 using System.Collections.Generic;
 using NSubstitute;
 using SQLite;
+using System.IO;
 
 namespace HomeCatalog.Core.Tests
 {
 	[TestFixture()]
 	public class PropertyStoreTests
 	{
-		ISQLiteConnection MockDB;
 		PropertyStore SUT;
+		string TempDBPath;
+		string TempDirectory;
+
 		[SetUp()]
-		public void Setup()
+		public void Setup ()
 		{
-			MockDB = Substitute.For<ISQLiteConnection> ();
-			SUT = new PropertyStore (MockDB);
+			TempDirectory = Path.Combine (Path.GetTempPath (), Path.GetRandomFileName ());
+			Directory.CreateDirectory (TempDirectory);
+			TempDBPath = Path.Combine (TempDirectory, Path.GetRandomFileName ());
+			SUT = new PropertyStore (TempDBPath);
 		}
-		[Test()]
-		public void ItTriesToCreatePropertyTable ()
+
+		[TearDown()]
+		public void Teardown ()
 		{
-			MockDB.Received ().CreateTable<Property> ();
+			SUT.Dispose ();
+			File.Delete (TempDBPath);
+			Directory.Delete (TempDirectory);
 		}
 
 		[Test()]
-		public void ItTriesToCreateRoomsTable ()
+		public void ItCreatesAPropertyTable ()
 		{
-			MockDB.Received ().CreateTable<Room> ();
+			Assert.That (SUT.DB.GetTableInfo ("Property").Count > 0);
 		}
 
 		[Test()]
-		public void ItTriesToCreateCategoryTable ()
+		public void ItCreatesAnItemTable ()
 		{
-			MockDB.Received ().CreateTable<Category> ();
+			Assert.That (SUT.DB.GetTableInfo ("Item").Count > 0);
 		}
 
 		[Test()]
-		public void ItTriesToCreateItemTable ()
+		public void ItCreatesRoomTable ()
 		{
-			MockDB.Received ().CreateTable<Item> ();
+			Assert.That (SUT.DB.GetTableInfo ("Room").Count > 0);
 		}
-//		[Test()]
-//		public void ItReturnsANewPropertyFromBlankTable ()
-//		{
-//
-//		}
+
+		[Test()]
+		public void ItCreatesCategoryTable ()
+		{
+			Assert.That (SUT.DB.GetTableInfo ("Category").Count > 0);
+		}
 	}
 }
 
