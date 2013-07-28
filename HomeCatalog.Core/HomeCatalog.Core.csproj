@@ -33,16 +33,17 @@
     <Compile Include="PropertyCollection.cs">
       <DependentUpon>Property.cs</DependentUpon>
     </Compile>
-    <Compile Include="Property.cs" />
-    <Compile Include="Category.cs" />
-    <Compile Include="Room.cs" />
-    <Compile Include="Item.cs" />
     <Compile Include="StoreLayer\PropertyStore.cs" />
     <Compile Include="StoreLayer\SQLite.cs" />
-    <Compile Include="RoomList.cs" />
+    <Compile Include="ModelLayer\Category.cs" />
+    <Compile Include="ModelLayer\Item.cs" />
+    <Compile Include="ModelLayer\Property.cs" />
+    <Compile Include="ModelLayer\Room.cs" />
+    <Compile Include="ModelLayer\RoomList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="StoreLayer\" />
+    <Folder Include="ModelLayer\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

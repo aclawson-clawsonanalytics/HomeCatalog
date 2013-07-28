@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Data.Sqlite" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -46,29 +47,17 @@
     <Compile Include="Activities\BrowsePropertyActivity.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="..\..\HomeCatalog.Core\Property.cs">
-      <Link>Core\Property.cs</Link>
-    </Compile>
     <Compile Include="Activities\AddEditPropertyActivity.cs" />
     <Compile Include="..\..\HomeCatalog.Core\PropertyCollection.cs">
       <Link>Core\PropertyCollection.cs</Link>
     </Compile>
     <Compile Include="Adapters\PropertyListAdapter.cs" />
-    <Compile Include="..\..\HomeCatalog.Core\Room.cs">
-      <Link>Core\Room.cs</Link>
-    </Compile>
-    <Compile Include="..\..\HomeCatalog.Core\Category.cs">
-      <Link>Core\Category.cs</Link>
-    </Compile>
     <Compile Include="Activities\EditRoomsActivity.cs" />
     <Compile Include="Activities\PropertyDetailActivity.cs" />
     <Compile Include="Activities\DisplayItemsActivity.cs" />
     <Compile Include="Activities\DisplayCollectionsActivity.cs" />
     <Compile Include="Activities\DisplayContactsActivity.cs" />
     <Compile Include="Activities\EditCategoriesActivity.cs" />
-    <Compile Include="..\..\HomeCatalog.Core\Item.cs">
-      <Link>Core\Item.cs</Link>
-    </Compile>
     <Compile Include="Adapters\RoomListAdapter.cs" />
     <Compile Include="Activities\ViewRoomListActivity.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -79,7 +68,25 @@
     </Compile>
     <Compile Include="Activities\AddItemActivity.cs" />
     <Compile Include="..\..\HomeCatalog.Core\StoreLayer\SQLite.cs">
-      <Link>Core\SQLite.cs</Link>
+      <Link>Core\StoreLayer\SQLite.cs</Link>
+    </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\StoreLayer\PropertyStore.cs">
+      <Link>Core\StoreLayer\PropertyStore.cs</Link>
+    </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\ModelLayer\Category.cs">
+      <Link>Core\ModelLayer\Category.cs</Link>
+    </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\ModelLayer\Item.cs">
+      <Link>Core\ModelLayer\Item.cs</Link>
+    </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\ModelLayer\Property.cs">
+      <Link>Core\ModelLayer\Property.cs</Link>
+    </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\ModelLayer\Room.cs">
+      <Link>Core\ModelLayer\Room.cs</Link>
+    </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\ModelLayer\RoomList.cs">
+      <Link>Core\ModelLayer\RoomList.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -107,5 +114,7 @@
     <Folder Include="Activities\" />
     <Folder Include="Core\" />
     <Folder Include="Adapters\" />
+    <Folder Include="Core\StoreLayer\" />
+    <Folder Include="Core\ModelLayer\" />
   </ItemGroup>
 </Project>

@@ -41,6 +41,6 @@ Global
 		{9AACFFC8-D36B-4A88-8399-08AF6D5082F7}.Release|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ..\HomeCatalog.Core.Tests\HomeCatalog.Core.Tests.csproj
+		StartupItem = HomeCatalog.Android\HomeCatalog.Android.csproj
 	EndGlobalSection
 EndGlobal

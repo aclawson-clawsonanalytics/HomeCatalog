@@ -41,24 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PropertyCollectionTests.cs" />
-    <Compile Include="..\HomeCatalog.Core\Property.cs">
-      <Link>Property.cs</Link>
-    </Compile>
     <Compile Include="..\HomeCatalog.Core\PropertyCollection.cs">
       <Link>PropertyCollection.cs</Link>
-    </Compile>
-    <Compile Include="PropertyTests.cs" />
-    <Compile Include="RoomTests.cs" />
-    <Compile Include="CategoryTests.cs" />
-    <Compile Include="..\HomeCatalog.Core\Room.cs">
-      <Link>Room.cs</Link>
-    </Compile>
-    <Compile Include="..\HomeCatalog.Core\Category.cs">
-      <Link>Category.cs</Link>
-    </Compile>
-    <Compile Include="ItemTests.cs" />
-    <Compile Include="..\HomeCatalog.Core\Item.cs">
-      <Link>Item.cs</Link>
     </Compile>
     <Compile Include="..\HomeCatalog.Core\StoreLayer\PropertyStore.cs">
       <Link>StoreLayer\PropertyStore.cs</Link>
@@ -68,13 +52,31 @@
       <Link>StoreLayer\SQLite.cs</Link>
     </Compile>
     <Compile Include="StoreLayerTests\RoomListTests.cs" />
-    <Compile Include="..\HomeCatalog.Core\RoomList.cs">
-      <Link>RoomList.cs</Link>
+    <Compile Include="..\HomeCatalog.Core\ModelLayer\Category.cs">
+      <Link>ModelLayer\Category.cs</Link>
     </Compile>
+    <Compile Include="..\HomeCatalog.Core\ModelLayer\Item.cs">
+      <Link>ModelLayer\Item.cs</Link>
+    </Compile>
+    <Compile Include="..\HomeCatalog.Core\ModelLayer\Property.cs">
+      <Link>ModelLayer\Property.cs</Link>
+    </Compile>
+    <Compile Include="..\HomeCatalog.Core\ModelLayer\Room.cs">
+      <Link>ModelLayer\Room.cs</Link>
+    </Compile>
+    <Compile Include="..\HomeCatalog.Core\ModelLayer\RoomList.cs">
+      <Link>ModelLayer\RoomList.cs</Link>
+    </Compile>
+    <Compile Include="ModelLayerTests\CategoryTests.cs" />
+    <Compile Include="ModelLayerTests\ItemTests.cs" />
+    <Compile Include="ModelLayerTests\PropertyTests.cs" />
+    <Compile Include="ModelLayerTests\RoomTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="StoreLayer\" />
     <Folder Include="StoreLayerTests\" />
+    <Folder Include="ModelLayer\" />
+    <Folder Include="ModelLayerTests\" />
   </ItemGroup>
 </Project>
