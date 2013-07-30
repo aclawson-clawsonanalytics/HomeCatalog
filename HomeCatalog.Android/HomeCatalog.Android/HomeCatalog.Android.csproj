@@ -62,7 +62,6 @@
     </Compile>
     <Compile Include="Activities\EditRoomsActivity.cs" />
     <Compile Include="Activities\PropertyDetailActivity.cs" />
-    <Compile Include="Activities\DisplayItemsActivity.cs" />
     <Compile Include="Activities\DisplayCollectionsActivity.cs" />
     <Compile Include="Activities\DisplayContactsActivity.cs" />
     <Compile Include="Activities\EditCategoriesActivity.cs" />
@@ -79,9 +78,10 @@
     </Compile>
     <Compile Include="Activities\AddItemActivity.cs" />
     <Compile Include="Adapters\ItemListAdapter.cs" />
-    <Compile Include="Activities\ViewItemListActivity.cs">
+    <Compile Include="Activities\DisplayItemsActivity.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Activities\ItemsDetailActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -104,6 +104,7 @@
     <AndroidResource Include="Resources\layout\AddItemView.axml" />
     <AndroidResource Include="Resources\layout\ItemsView.axml" />
     <AndroidResource Include="Resources\layout\ItemListItem.axml" />
+    <AndroidResource Include="Resources\layout\ItemDetailView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

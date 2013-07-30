@@ -12,7 +12,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	class ItemListAdapter : BaseAdapter<Room>
+	class ItemListAdapter : BaseAdapter<Item>
 	{
 		Item[] items;
 		private Property Property {get;set;}
@@ -40,8 +40,8 @@ namespace HomeCatalog.Android
 		{
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
-				view = context.LayoutInflater.Inflate(Android.Resource.Layout.RoomListItem, null);
-			view.FindViewById<TextView>(Android.Resource.Id.itemListItem).Text = items[position].ItemName;
+				view = context.LayoutInflater.Inflate(Android.Resource.Layout.ItemsView, null);
+			view.FindViewById<TextView> (Android.Resource.Id.itemListText).Text = items[position].ItemName;
 			return view;
 		}
 		public override void NotifyDataSetChanged ()

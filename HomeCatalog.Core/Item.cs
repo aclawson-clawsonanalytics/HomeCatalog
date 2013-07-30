@@ -10,6 +10,7 @@ namespace HomeCatalog.Core
 			ItemID = GetNewID ();
 		}
 
+		public static string ItemIDKey = "ItemID";
 		static int IDCounter = 0;
 
 		public static int GetNewID() {
@@ -19,9 +20,9 @@ namespace HomeCatalog.Core
 
 //		public string ParentID { get; set; }
 		public int ItemID {get;set;}
-//
+		public string ParentID { get; set; }
 		public string ItemName { get; set; }
-//
+
 		public DateTime PurchaseDate { get; set; }
 		public float PurchaseValue {get;set;}
 		public DateTime AppraisalDate {get;set;}
@@ -33,5 +34,7 @@ namespace HomeCatalog.Core
 		public string CategoryLabel {get;set;}
 
 	}
+
+
 }
 

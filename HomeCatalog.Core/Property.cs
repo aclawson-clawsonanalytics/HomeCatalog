@@ -40,6 +40,19 @@ namespace HomeCatalog.Core
 			return room;
 		}
 
+		public static Item FindItemInItemList(Property prop, int id)
+		{
+			foreach(Item item in prop.ItemList)
+			{
+				if (item.ParentID == prop.PropertyID)
+				{
+					return item;
+				}
+			}
+
+			return null;
+		}
+
 
 	}
 

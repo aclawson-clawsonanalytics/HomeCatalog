@@ -17,11 +17,13 @@ namespace HomeCatalog.Android
 	{
 
 		private Property Property { get; set; }
+		private Item Item {get;set;}
 
 		private EditText itemNameField { get; set; }
 		private EditText purchaseDateField { get; set; }
 		private EditText purchaseValueField { get; set; }
 		private EditText appraisalDateField { get; set; }
+		private EditText appraisalValueField { get; set; }
 		private EditText modelNumberField { get; set; }
 		private EditText serialNumberField { get; set; }
 
@@ -34,10 +36,10 @@ namespace HomeCatalog.Android
 			base.OnCreate (bundle);
 
 			// Grab intent from sending Activity
-			String propertyID = Intent.GetStringExtra (Property.PropertyIDKey);
-			Property = PropertyCollection.SharedCollection.FindPropertyWithId (propertyID);
-
-			Item item = new Item ();
+			string ID = Intent.GetStringExtra (Item.ItemIDKey);
+			int itemID = Convert.ToInt32 (ID);
+			Item = PropertyCollection.SharedCollection.FindItemById (itemID);
+			Property = PropertyCollection.SharedCollection.FindParentProperty (itemID);
 
 			SetContentView (Resource.Layout.AddItemView);
 
@@ -46,8 +48,11 @@ namespace HomeCatalog.Android
 			purchaseDateField = FindViewById<EditText> (Resource.Id.purchaseDateField);
 			purchaseValueField = FindViewById<EditText> (Resource.Id.purchaseValueField);
 			appraisalDateField = FindViewById<EditText> (Resource.Id.appraisalDateField);
+			appraisalValueField = FindViewById<EditText> (Resource.Id.appraisalValueField);
 			modelNumberField = FindViewById<EditText> (Resource.Id.modelNumberField);
 			serialNumberField = FindViewById<EditText> (Resource.Id.serialNumberField);
+
+			DisplayItemInfo ();
 
 			Button receiptButton = FindViewById<Button> (Resource.Id.receiptButton);
 			Button goToPhotosButton = FindViewById<Button> (Resource.Id.goToPhotosButton);
@@ -60,6 +65,18 @@ namespace HomeCatalog.Android
 
 			Button saveAddItemButton = FindViewById<Button> (Resource.Id.saveAddItemButton);
 			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);
+		}
+
+		private void DisplayItemInfo()
+		{
+			itemNameField.Text = Item.ItemName;
+			purchaseDateField.Text = Item.PurchaseDate;
+			purchaseValueField.Text = Item.PurchaseValue;
+			appraisalDateField.Text = Item.AppraisalDate;
+			appraisalValueField.Text = Item.AppraisalValue;
+			modelNumberField.Text = Item.ModelNumber;
+			serialNumberField.Text = Item.SerialNumber;
+
 		}
 	}
 }

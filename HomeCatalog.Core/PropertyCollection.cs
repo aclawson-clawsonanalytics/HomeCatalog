@@ -55,6 +55,36 @@ namespace HomeCatalog.Core
 			}
 			return null;
 		}
+
+		public Item FindItemById (int itemID)
+		{
+			foreach (Property prop in PropertyCollection.SharedCollection.Properties)
+			{
+				foreach (Item item in prop.ItemList)
+				{
+					if (item.ItemID == itemID)
+					{
+						return item;
+					}
+				}
+			}
+			return null;
+		}
+
+		public Property FindParentProperty (int itemID)
+		{
+			foreach (Property prop in PropertyCollection.SharedCollection.Properties)
+			{
+				foreach (Item item in prop.ItemList)
+				{
+					if (item.ParentID == prop.PropertyID)
+					{
+						return prop;
+					}
+				}
+			}
+			return null;
+		}
 	}
 }
 
