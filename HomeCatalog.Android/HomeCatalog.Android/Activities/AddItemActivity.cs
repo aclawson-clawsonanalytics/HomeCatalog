@@ -37,12 +37,13 @@ namespace HomeCatalog.Android
 
 			// Grab intent from sending Activity
 			int itemID = Intent.GetIntExtra (Item.ItemIDKey, 0);
-			if (itemID == 0) {
-				throw new ArgumentException ("Expected intent with item ID");
+
+			if (itemID > 0) {
+				Item = PropertyStore.CurrentStore.Property.ItemList.ItemWithID (itemID);
 			}
 			//Item = PropertyCollection.SharedCollection.FindItemById (itemID);
-			// TODO: Implement getting items;
-			Item = null;
+
+
 			Property = PropertyStore.CurrentStore.Property;
 
 			SetContentView (Resource.Layout.AddItemView);
@@ -55,6 +56,8 @@ namespace HomeCatalog.Android
 			appraisalValueField = FindViewById<EditText> (Resource.Id.appraisalValueField);
 			modelNumberField = FindViewById<EditText> (Resource.Id.modelNumberField);
 			serialNumberField = FindViewById<EditText> (Resource.Id.serialNumberField);
+			roomLabelSpinner = FindViewById<Spinner> (Resource.Id.roomLabelSpinner);
+			categoryLabelSpinner = FindViewById<Spinner> (Resource.Id.categoryLabelSpinner);
 
 			DisplayItemInfo ();
 
@@ -69,10 +72,22 @@ namespace HomeCatalog.Android
 
 			Button saveAddItemButton = FindViewById<Button> (Resource.Id.saveAddItemButton);
 			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);
+
+			RoomSpinnerAdapter roomAdapter = new RoomSpinnerAdapter (this,Property);
+
+			roomLabelSpinner.Adapter = roomAdapter;
+
+			CategorySpinnerAdapter categoryAdapter = new CategorySpinnerAdapter (this, Property);
+			categoryLabelSpinner.Adapter = categoryAdapter;
+
 		}
 
 		private void DisplayItemInfo()
 		{
+			if (Item == null) {
+				return;
+			}
+
 			itemNameField.Text = Item.ItemName;
 			purchaseDateField.Text = Item.PurchaseDate.ToString ();
 			purchaseValueField.Text = Item.PurchaseValue.ToString ();

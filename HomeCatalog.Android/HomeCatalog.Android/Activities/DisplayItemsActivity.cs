@@ -32,7 +32,7 @@ namespace HomeCatalog.Android
 			Button additemButton = FindViewById<Button> (Resource.Id.addItemButton);
 			additemButton.Click += (sender, e) => 
 			{
-
+				StartActivity (typeof(AddItemActivity));
 			};
 			Button backButton3 = FindViewById<Button> (Resource.Id.backButton3);
 			backButton3.Click += (sender, e) => 

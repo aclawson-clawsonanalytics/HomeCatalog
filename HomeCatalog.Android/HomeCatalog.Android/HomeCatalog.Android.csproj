@@ -58,7 +58,6 @@
     <Compile Include="Activities\DisplayCollectionsActivity.cs" />
     <Compile Include="Activities\DisplayContactsActivity.cs" />
     <Compile Include="Activities\EditCategoriesActivity.cs" />
-    <Compile Include="Adapters\RoomListAdapter.cs" />
     <Compile Include="Activities\ViewRoomListActivity.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -102,6 +101,9 @@
     <Compile Include="..\..\HomeCatalog.Core\StoreLayer\SQLList.cs">
       <Link>Core\StoreLayer\SQLList.cs</Link>
     </Compile>
+    <Compile Include="Adapters\RoomSpinnerAdapter.cs" />
+    <Compile Include="Adapters\RoomListAdapter.cs" />
+    <Compile Include="Adapters\CategorySpinnerAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -124,6 +126,8 @@
     <AndroidResource Include="Resources\layout\AddItemView.axml" />
     <AndroidResource Include="Resources\layout\ItemListItem.axml" />
     <AndroidResource Include="Resources\layout\ItemsView.axml" />
+    <AndroidResource Include="Resources\layout\categorySpinnerItem.axml" />
+    <AndroidResource Include="Resources\layout\roomSpinnerItem.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

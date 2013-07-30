@@ -21,6 +21,11 @@ namespace HomeCatalog.Core
 				return (from room in InternalTable orderby room.Label descending select room).ToList ().AsReadOnly ();
 			}
 		}
+
+		public Room RoomWithName (string label)
+		{
+			return InternalTable.FirstOrDefault (room => room.Label == label);
+		}
 	}
 }
 
