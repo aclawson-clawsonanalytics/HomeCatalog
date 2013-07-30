@@ -146,8 +146,8 @@
         android:text="View Room List"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/AddCustomButton"
         android:id="@+id/ViewRoomListButton"
         android:textSize="15dp"
-        android:layout_marginTop="150dp" />
+        android:layout_marginTop="150dp"
+        android:layout_above="@id/CancelRoomEditButton" />
 </RelativeLayout>

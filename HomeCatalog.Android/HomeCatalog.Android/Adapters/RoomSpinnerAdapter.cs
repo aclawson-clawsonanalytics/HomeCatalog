@@ -47,10 +47,17 @@ namespace HomeCatalog.Android
 
 		public override View GetView (int position, View convertView, ViewGroup parent)
 		{
+			string text;
+			if (position == 0) {
+				text = "No Room";
+			} else {
+				text = Rooms [position - 1].Label;
+			}
+
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
 				view = Context.LayoutInflater.Inflate (Android.Resource.Layout.RoomListItem, null);
-			view.FindViewById<TextView> (Android.Resource.Id.roomTextItem).Text = Rooms [position].Label;
+			view.FindViewById<TextView> (Android.Resource.Id.roomTextItem).Text = text;
 			return view;
 		}
 

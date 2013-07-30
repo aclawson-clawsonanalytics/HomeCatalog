@@ -44,10 +44,16 @@ namespace HomeCatalog.Android
 		}
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
+			string text;
+			if (position == 0) {
+				text = "No Category";
+			} else {
+				text = Categories [position - 1].Label;
+			}
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
 				view = context.LayoutInflater.Inflate(Android.Resource.Layout.CategoryListItem, null);
-			view.FindViewById<TextView> (Android.Resource.Id.categoryTextItem).Text = Categories[position].Label;
+			view.FindViewById<TextView> (Android.Resource.Id.categoryTextItem).Text = text;
 			return view;
 		}
 		public override void NotifyDataSetChanged ()
@@ -68,7 +74,7 @@ namespace HomeCatalog.Android
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
 				view = context.LayoutInflater.Inflate(Android.Resource.Layout.CategoryListItem, null);
-			view.FindViewById<TextView> (Android.Resource.Id.categoryTextItem).Text = Categories[position].Label;
+			view.FindViewById<TextView> (Android.Resource.Id.categoryTextItem).Text = text;
 			return view;
 		}
 
