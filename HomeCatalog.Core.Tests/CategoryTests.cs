@@ -11,7 +11,7 @@ namespace HomeCatalog.Core.Tests
 		[Test()]
 		public void CategoryHasID ()
 		{
-			Category sut = new Category ();
+			sut = new Category ();
 		}
 
 //		[Test ()]

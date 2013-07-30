@@ -13,7 +13,7 @@ namespace HomeCatalog.Core.Tests
 		[SetUp ()]
 		public void SetUp ()
 		{
-			Room sut = new Room ();
+			sut = new Room ();
 		}
 		//[Test()]
 		//public void RoomHasID()
@@ -33,8 +33,6 @@ namespace HomeCatalog.Core.Tests
 			sut.Label = "Kitchen";
 			Assert.That (sut.Label == "Kitchen");
 		}
-
-
 	}
 }
 

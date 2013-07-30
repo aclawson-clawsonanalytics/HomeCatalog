@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections;
+using SQLite;
 
 namespace HomeCatalog.Core
 {
@@ -9,8 +10,6 @@ namespace HomeCatalog.Core
 		public static string PropertyIDKey = "PropertyID";
 		public Property ()
 		{
-//			
-
 			PropertyID = Guid.NewGuid ().ToString ();
 			RoomList = new List<Room> ();
 			CategoryList = new List<Category> ();
@@ -18,6 +17,7 @@ namespace HomeCatalog.Core
 		}
 
 		// Define Metadata elements
+		[PrimaryKey]
 		public string PropertyID { get; private set; }
 		public string PropertyName { get; set; }
 		public string Address { get; set; }
