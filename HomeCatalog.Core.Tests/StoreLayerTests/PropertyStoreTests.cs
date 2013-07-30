@@ -38,6 +38,12 @@ namespace HomeCatalog.Core.Tests
 		}
 
 		[Test()]
+		public void PropertyReturnsARoomList ()
+		{
+			Assert.NotNull (SUT.Property.RoomList);
+		}
+
+		[Test()]
 		public void ItCreatesAnItemTable ()
 		{
 			Assert.That (SUT.DB.GetTableInfo ("Item").Count > 0);

@@ -103,7 +103,7 @@ namespace HomeCatalog.Android
 		private bool CheckForCategoryByLabel(Property prop, string label)
 		{
 			int count = 0;
-			foreach (Category cat in Property.CategoryList)
+			foreach (Category cat in Property.CategoryList.AllItems ())
 			{
 				if (cat.Label == label)
 				{
@@ -290,7 +290,7 @@ namespace HomeCatalog.Android
 
 		private void RemoveByCategoryLabel (string label)
 		{
-			foreach (Category cat in Property.CategoryList)
+			foreach (Category cat in Property.CategoryList.AllItems ())
 			{
 				if (cat.Label == label)
 				{

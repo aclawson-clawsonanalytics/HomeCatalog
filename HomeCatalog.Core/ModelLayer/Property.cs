@@ -29,9 +29,9 @@ namespace HomeCatalog.Core
 		[Ignore]
 		public RoomList RoomList { get; set; }
 		[Ignore]
-		public List<Category> CategoryList { get; set; }
+		public CategoryList CategoryList { get; set; }
 		[Ignore]
-		public List<Item> ItemList { get; set; }
+		public ItemList ItemList { get; set; }
 
 		public static Room CreateRoom(Room room, string label)
 		{
@@ -39,20 +39,6 @@ namespace HomeCatalog.Core
 
 			return room;
 		}
-
-		public static Item FindItemInItemList(Property prop, int id)
-		{
-			foreach(Item item in prop.ItemList)
-			{
-				if (item.ParentID == prop.PropertyID)
-				{
-					return item;
-				}
-			}
-
-			return null;
-		}
-
 	}
 }
 

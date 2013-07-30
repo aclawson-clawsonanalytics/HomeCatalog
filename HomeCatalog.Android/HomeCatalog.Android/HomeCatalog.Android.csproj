@@ -91,6 +91,17 @@
     <Compile Include="..\..\HomeCatalog.Core\StoreLayer\PropertyPath.cs">
       <Link>Core\PropertyPath.cs</Link>
     </Compile>
+    <Compile Include="Activities\ItemsDetailActivity.cs" />
+    <Compile Include="Adapters\ItemListAdapter.cs" />
+    <Compile Include="..\..\HomeCatalog.Core\ModelLayer\CategoryList.cs">
+      <Link>Core\ModelLayer\CategoryList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\ModelLayer\ItemList.cs">
+      <Link>Core\ModelLayer\ItemList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\StoreLayer\SQLList.cs">
+      <Link>Core\StoreLayer\SQLList.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -111,6 +122,8 @@
     <AndroidResource Include="Resources\layout\CategoryListItem.axml" />
     <AndroidResource Include="Resources\layout\CategoryView.axml" />
     <AndroidResource Include="Resources\layout\AddItemView.axml" />
+    <AndroidResource Include="Resources\layout\ItemListItem.axml" />
+    <AndroidResource Include="Resources\layout\ItemsView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

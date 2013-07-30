@@ -35,35 +35,6 @@ namespace HomeCatalog.Core.Tests
 		}
 
 		[Test()]
-		public void PropertyReturnsARoomList ()
-		{
-			Assert.NotNull (Store.Property.RoomList);
-		}
-
-		[Test()]
-		public void ItHasATableQuery ()
-		{
-			Assert.NotNull (SUT.InternalTable);
-		}
-
-		[Test()]
-		public void CanAddRoom ()
-		{
-			Room newRoom = new Room ();
-			SUT.Add (newRoom);
-			Assert.NotNull (SUT.RoomWithID (newRoom.ID));
-		}
-
-		[Test()]
-		public void CanRemoveRoom ()
-		{
-			Room newRoom = new Room ();
-			SUT.Add (newRoom);
-			SUT.Remove (newRoom);
-			Assert.Null (SUT.RoomWithID (newRoom.ID));
-		}
-
-		[Test()]
 		public void CanListRoomsAlphabetically ()
 		{
 			Room newRoom1 = new Room ();
@@ -79,29 +50,6 @@ namespace HomeCatalog.Core.Tests
 			Assert.That (rooms [0].Label == "A");
 			Assert.That (rooms [1].Label == "B");
 			Assert.That (rooms [2].Label == "C");
-		}
-
-		[Test()]
-		public void RoomListIsPersistent ()
-		{
-			Room newRoom = new Room ();
-			SUT.Add (newRoom);
-			newRoom.Label = "ARoom";
-			SUT.Save (newRoom);
-
-			Store.Dispose ();
-
-			PropertyStore newStore = new PropertyStore (TempDBPath);
-			Assert.That (newStore.Property.RoomList.AllRooms ().First ().Label == "ARoom");
-			newStore.Dispose ();
-		}
-
-		[Test()]
-		public void ThrowsErrorTryingToSaveUninsertedObject ()
-		{
-			Room newRoom = new Room ();
-			newRoom.Label = "ARoom";
-			Assert.Throws<ArgumentException> (delegate { SUT.Save (newRoom); });
 		}
 	}
 }

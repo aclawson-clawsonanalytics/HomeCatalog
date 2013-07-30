@@ -2,7 +2,7 @@ using System;
 using SQLite;
 namespace HomeCatalog.Core
 {
-	public class Room
+	public class Room : ISQLListItem
 	{
 		public Room ()
 		{

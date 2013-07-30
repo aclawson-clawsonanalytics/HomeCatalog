@@ -1,13 +1,14 @@
 using System;
+using SQLite;
 
 namespace HomeCatalog.Core
 {
-	public class Item
+	public class Item : ISQLListItem
 	{
 
 		public Item ()
 		{
-			ItemID = GetNewID ();
+
 		}
 
 		public static string ItemIDKey = "ItemID";
@@ -18,8 +19,8 @@ namespace HomeCatalog.Core
 			return IDCounter;
 		}
 
-//		public string ParentID { get; set; }
-		public int ItemID {get;set;}
+		[PrimaryKey, AutoIncrement]
+		public int ID {get;set;}
 		public string ParentID { get; set; }
 		public string ItemName { get; set; }
 

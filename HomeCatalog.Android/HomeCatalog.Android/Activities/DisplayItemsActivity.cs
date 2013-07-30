@@ -20,9 +20,7 @@ namespace HomeCatalog.Android
 		{
 			base.OnCreate (bundle);
 
-			String propertyID = Intent.GetStringExtra (Property.PropertyIDKey);
-
-			Property = PropertyCollection.SharedCollection.FindPropertyWithId (propertyID);
+			Property = PropertyStore.CurrentStore.Property;
 
 			SetContentView (Resource.Layout.ItemsView);
 
@@ -46,7 +44,7 @@ namespace HomeCatalog.Android
 			listView.ItemClick += (sender, e) => 
 			{
 				var ItemRequest = new Intent (this,typeof(ItemsDetailActivity));
-				ItemRequest.PutExtra (Item.ItemIDKey,ListAdapter[e.Position].ItemID.ToString ());
+				ItemRequest.PutExtra (Item.ItemIDKey,ListAdapter[e.Position].ID);
 				StartActivity (ItemRequest);
 			};
 

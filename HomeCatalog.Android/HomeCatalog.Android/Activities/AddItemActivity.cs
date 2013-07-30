@@ -36,9 +36,13 @@ namespace HomeCatalog.Android
 			base.OnCreate (bundle);
 
 			// Grab intent from sending Activity
-			string ID = Intent.GetStringExtra (Item.ItemIDKey);
-			int itemID = Convert.ToInt32 (ID);
-			Item = PropertyCollection.SharedCollection.FindItemById (itemID);
+			int itemID = Intent.GetIntExtra (Item.ItemIDKey, 0);
+			if (itemID == 0) {
+				throw new ArgumentException ("Expected intent with item ID");
+			}
+			//Item = PropertyCollection.SharedCollection.FindItemById (itemID);
+			// TODO: Implement getting items;
+			Item = null;
 			Property = PropertyStore.CurrentStore.Property;
 
 			SetContentView (Resource.Layout.AddItemView);
@@ -70,10 +74,10 @@ namespace HomeCatalog.Android
 		private void DisplayItemInfo()
 		{
 			itemNameField.Text = Item.ItemName;
-			purchaseDateField.Text = Item.PurchaseDate;
-			purchaseValueField.Text = Item.PurchaseValue;
-			appraisalDateField.Text = Item.AppraisalDate;
-			appraisalValueField.Text = Item.AppraisalValue;
+			purchaseDateField.Text = Item.PurchaseDate.ToString ();
+			purchaseValueField.Text = Item.PurchaseValue.ToString ();
+			appraisalDateField.Text = Item.AppraisalDate.ToString ();
+			appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
 		}

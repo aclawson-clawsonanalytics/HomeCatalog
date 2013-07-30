@@ -1,14 +1,16 @@
 using System;
+using SQLite;
 
 namespace HomeCatalog.Core
 {
-	public class Category
+	public class Category : ISQLListItem
 	{
 		public Category ()
 		{
 		}
 
-		public int CategoryID {get;set;}
+		[PrimaryKey, AutoIncrement]
+		public int ID {get;set;}
 		public string Label{ get; set;}
 	}
 

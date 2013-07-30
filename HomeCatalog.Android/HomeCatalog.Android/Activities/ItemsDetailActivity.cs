@@ -12,8 +12,8 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "ItemsDetalActivity")]			
-	public class ItemsDetalActivity : Activity
+	[Activity (Label = "ItemsDetailActivity")]			
+	public class ItemsDetailActivity : Activity
 	{
 		private Property Property { get; set; }
 		private Item Item {get;set;}

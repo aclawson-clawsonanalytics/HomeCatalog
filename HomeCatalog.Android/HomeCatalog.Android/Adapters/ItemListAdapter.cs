@@ -14,17 +14,15 @@ namespace HomeCatalog.Android
 {
 	class ItemListAdapter : BaseAdapter<Item>
 	{
-		Item[] items;
+		IList<Item> items;
 		private Property Property {get;set;}
 		Activity context;
 
 		public ItemListAdapter(Activity context,Property aProperty) : base() {
 			Property = aProperty;
 			this.context = context;
-			this.items = Property.ItemList.ToArray ();
+			this.items = Property.ItemList.AllItems ();
 		}
-
-
 
 		public override long GetItemId(int position)
 		{
@@ -34,7 +32,7 @@ namespace HomeCatalog.Android
 			get { return items[position]; }
 		}
 		public override int Count {
-			get { return items.Length; }
+			get { return items.Count; }
 		}
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
@@ -46,7 +44,7 @@ namespace HomeCatalog.Android
 		}
 		public override void NotifyDataSetChanged ()
 		{
-			items = Property.ItemList.ToArray ();
+			items = Property.ItemList.AllItems ();
 
 			base.NotifyDataSetChanged ();
 		}

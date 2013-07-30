@@ -55,6 +55,8 @@ namespace HomeCatalog.Core
 		private void AddListsToProperty ()
 		{
 			Property.RoomList = new RoomList (DB.Table<Room> ());
+			Property.CategoryList = new CategoryList (DB.Table<Category> ());
+			Property.ItemList = new ItemList (DB.Table<Item> ());
 		}
 
 		public void SaveProperty () {

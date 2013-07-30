@@ -19,8 +19,8 @@ namespace HomeCatalog.Core.Tests
 		[Test()]
 		public void ItemHasID ()
 		{
-			sut.ItemID = 1;
-			Assert.That (sut.ItemID == 1);
+			sut.ID = 1;
+			Assert.That (sut.ID == 1);
 		}
 
 		[Test ()]

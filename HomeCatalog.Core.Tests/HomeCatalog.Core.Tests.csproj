@@ -75,6 +75,16 @@
       <Link>StoreLayer\PropertyPath.cs</Link>
     </Compile>
     <Compile Include="StoreLayerTests\PropertyPathTests.cs" />
+    <Compile Include="..\HomeCatalog.Core\StoreLayer\SQLList.cs">
+      <Link>StoreLayer\SQLList.cs</Link>
+    </Compile>
+    <Compile Include="StoreLayerTests\SQLListTests.cs" />
+    <Compile Include="..\HomeCatalog.Core\ModelLayer\ItemList.cs">
+      <Link>ModelLayer\ItemList.cs</Link>
+    </Compile>
+    <Compile Include="..\HomeCatalog.Core\ModelLayer\CategoryList.cs">
+      <Link>ModelLayer\CategoryList.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
