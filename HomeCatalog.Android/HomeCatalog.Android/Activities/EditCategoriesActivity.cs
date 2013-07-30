@@ -40,9 +40,8 @@ namespace HomeCatalog.Android
 			base.OnCreate (bundle);
 
 			// Grab property ID from intent passed into activity
-			String PropertyID = Intent.GetStringExtra (Property.PropertyIDKey);
 
-			Property = PropertyCollection.SharedCollection.FindPropertyWithId (PropertyID);
+			Property = PropertyStore.CurrentStore.Property;
 
 			SetContentView (Resource.Layout.SetUpCategoryView);
 

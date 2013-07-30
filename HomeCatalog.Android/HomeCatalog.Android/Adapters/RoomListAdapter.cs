@@ -14,17 +14,15 @@ namespace HomeCatalog.Android
 {
 	class RoomListAdapter : BaseAdapter<Room>
 	{
-		Room[] Rooms;
+		IList<Room> Rooms;
 		private Property Property {get;set;}
-		Activity context;
+		Activity Context;
 
 		public RoomListAdapter(Activity context,Property aProperty) : base() {
 			Property = aProperty;
-			this.context = context;
-			this.Rooms = Property.RoomList.ToArray ();
+			Context = context;
+			Rooms = Property.RoomList.AllRoomsByLabel (ascending:true);
 		}
-
-
 
 		public override long GetItemId(int position)
 		{
@@ -34,23 +32,22 @@ namespace HomeCatalog.Android
 			get { return Rooms[position]; }
 		}
 		public override int Count {
-			get { return Rooms.Length; }
+			get { return Rooms.Count; }
 		}
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
-				view = context.LayoutInflater.Inflate(Android.Resource.Layout.RoomListItem, null);
+				view = Context.LayoutInflater.Inflate(Android.Resource.Layout.RoomListItem, null);
 			view.FindViewById<TextView>(Android.Resource.Id.roomTextItem).Text = Rooms[position].Label;
 			return view;
 		}
 		public override void NotifyDataSetChanged ()
 		{
-			Rooms = Property.RoomList.ToArray ();
+			Rooms = Property.RoomList.AllRoomsByLabel (ascending:true);
 
 			base.NotifyDataSetChanged ();
 		}
-
 	}
 }
 

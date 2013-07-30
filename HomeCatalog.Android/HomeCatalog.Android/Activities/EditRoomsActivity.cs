@@ -48,9 +48,7 @@ namespace HomeCatalog.Android
 		{
 			base.OnCreate (bundle);
 
-			String PropertyID = Intent.GetStringExtra (Property.PropertyIDKey);
-
-			Property = PropertyCollection.SharedCollection.FindPropertyWithId (PropertyID);
+			Property = PropertyStore.CurrentStore.Property;
 
 			SetContentView (Resource.Layout.SetUpRoomView);
 
@@ -109,7 +107,7 @@ namespace HomeCatalog.Android
 			{
 				SaveRooms ();
 
-				foreach (Room room in Property.RoomList)
+				foreach (Room room in Property.RoomList.AllRooms ())
 				{
 					Console.WriteLine (room.Label);
 					string tag = "RoomCheck";
@@ -138,7 +136,7 @@ namespace HomeCatalog.Android
 		private bool CheckForRoomByLabel(Property prop, string label)
 		{
 			int count = 0;
-			foreach (Room room in Property.RoomList)
+			foreach (Room room in Property.RoomList.AllRooms ())
 			{
 				if (room.Label == label)
 				{
@@ -318,7 +316,7 @@ namespace HomeCatalog.Android
 
 		private void DisplayRoomsInConsole ()
 		{
-			foreach (Room room in Property.RoomList)
+			foreach (Room room in Property.RoomList.AllRooms ())
 			{
 				Console.WriteLine (room.Label);
 			}
@@ -334,7 +332,7 @@ namespace HomeCatalog.Android
 			file.WriteLine (Property.ZipCode);
 			file.WriteLine ("Room List: ");
 			file.WriteLine ();
-			foreach (Room room in Property.RoomList)
+			foreach (Room room in Property.RoomList.AllRooms ())
 			{
 				file.WriteLine (room.Label);
 			}

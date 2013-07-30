@@ -15,7 +15,7 @@ namespace HomeCatalog.Core
 
 		// Define Metadata elements
 		[PrimaryKey]
-		public string PropertyID { get; private set; }
+		public string PropertyID { get; set; }
 		public string PropertyName { get; set; }
 		public string Address { get; set; }
 		public string City {get;set;}
@@ -39,10 +39,6 @@ namespace HomeCatalog.Core
 
 			return room;
 		}
-
-
 	}
-
-
 }
 

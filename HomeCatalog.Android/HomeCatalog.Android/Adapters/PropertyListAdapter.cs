@@ -12,35 +12,35 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	class PropertyListAdapter : BaseAdapter<Property>
+	class PropertyListAdapter : BaseAdapter<PropertyPath>
 	{
-		Property[] Properties;
+		IList<PropertyPath> Properties;
 		Activity context;
 		public PropertyListAdapter(Activity context) : base() {
 			this.context = context;
-			this.Properties = PropertyCollection.SharedCollection.Properties.ToArray ();
+			this.Properties = PropertyCollection.SharedCollection.PropertyPathsByName ();
 		}
 		public override long GetItemId(int position)
 		{
 			return position;
 		}
-		public override Property this[int position] {  
+		public override PropertyPath this[int position] {  
 			get { return Properties[position]; }
 		}
 		public override int Count {
-			get { return Properties.Length; }
+			get { return Properties.Count; }
 		}
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
 				view = context.LayoutInflater.Inflate(Android.Resource.Layout.PropertyViewListItem, null);
-			view.FindViewById<TextView>(Android.Resource.Id.propertyTextItem).Text = Properties[position].PropertyName;
+			view.FindViewById<TextView>(Android.Resource.Id.propertyTextItem).Text = Properties[position].Name;
 			return view;
 		}
 		public override void NotifyDataSetChanged ()
 		{
-			Properties = PropertyCollection.SharedCollection.Properties.ToArray ();
+			this.Properties = PropertyCollection.SharedCollection.PropertyPathsByName ();
 
 			base.NotifyDataSetChanged ();
 		}

@@ -23,11 +23,7 @@ namespace HomeCatalog.Android
 		{
 			base.OnCreate (bundle);
 
-			// Grab intent from sending Activity
-			String propertyID = Intent.GetStringExtra (Property.PropertyIDKey);
-			Property = PropertyCollection.SharedCollection.FindPropertyWithId (propertyID);
-
-
+			Property = PropertyStore.CurrentStore.Property;
 		}
 	}
 }

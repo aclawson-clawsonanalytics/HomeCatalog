@@ -88,6 +88,9 @@
     <Compile Include="..\..\HomeCatalog.Core\ModelLayer\RoomList.cs">
       <Link>Core\ModelLayer\RoomList.cs</Link>
     </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\StoreLayer\PropertyPath.cs">
+      <Link>Core\PropertyPath.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -1,57 +1,83 @@
 using System;
+using System.IO;
+using System.Linq;
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
 
 namespace HomeCatalog.Core
 {
 	public class PropertyCollection
 	{
 		private static PropertyCollection instance;
-		private PropertyCollection ()
+		string _directory;
+
+		public PropertyCollection (string directory)
 		{
+			_directory = directory;
+			RefreshCollection ();
 		}
 
 		public static PropertyCollection SharedCollection
 		{
 			get {
 				if (instance == null) {
-					instance = new PropertyCollection();
+					instance = new PropertyCollection(Environment.GetFolderPath (Environment.SpecialFolder.MyDocuments));
 				}
 				return instance;
 			}
 		}
 	
-		private List<Property> properties = new List<Property> (); 
-		public List<Property> Properties 
-		{ 
-			get {
-				return new List<Property>(properties);
+		public ReadOnlyCollection<PropertyPath> PropertyPaths { 
+			get;
+			private set;
+		}
+
+		public ReadOnlyCollection<PropertyPath> PropertyPathsByName () { 
+			return (from path in PropertyPaths orderby path.Name select path).ToList().AsReadOnly();
+		}
+
+		public void RefreshCollection () {
+			var files = Directory.EnumerateFiles(_directory);
+			List<PropertyPath> paths = new List<PropertyPath> ();
+			foreach (var file in files) {
+				PropertyPath path = new PropertyPath (file);
+				paths.Add (path);
 			}
+			PropertyPaths = paths.AsReadOnly ();
 		}
 
-		public void AddProperty (Property property)
+		public PropertyStore NewPropertyStore ()
 		{
-			properties.Add (property);
+			PropertyStore s = PropertyStore.NewPropertyStoreInDirectory (_directory);
+			RefreshCollection ();
+			return s;
 		}
 
-		public void RemoveProperty (Property property)
+		public void RemovePropertyStoreWithID (string id)
 		{
-			properties.Remove (property);
+			PropertyPath p = FindPathWithID(id);
+			File.Delete (p.Path);
+			RefreshCollection ();
 		}
 
-		public static void Reset ()
+		public PropertyPath FindPathWithID (string SearchId)
 		{
-			instance = null;
-		}
-
-		public Property FindPropertyWithId (string SearchId)
-		{
-			foreach (Property prop in PropertyCollection.SharedCollection.Properties) 
+			foreach (PropertyPath prop in PropertyPaths) 
 			{
-				if (prop.PropertyID == SearchId) {
+				if (prop.ID == SearchId) {
 					return prop;
 				} 
+			}
+			return null;
+		}
 
+		public PropertyStore FindPropertyStoreWithID (string SearchId)
+		{
+			foreach (PropertyPath prop in PropertyPaths) 
+			{
+				if (prop.ID == SearchId) {
+					return new PropertyStore(prop.Path);
+				} 
 			}
 			return null;
 		}

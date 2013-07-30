@@ -71,6 +71,10 @@
     <Compile Include="ModelLayerTests\ItemTests.cs" />
     <Compile Include="ModelLayerTests\PropertyTests.cs" />
     <Compile Include="ModelLayerTests\RoomTests.cs" />
+    <Compile Include="..\HomeCatalog.Core\StoreLayer\PropertyPath.cs">
+      <Link>StoreLayer\PropertyPath.cs</Link>
+    </Compile>
+    <Compile Include="StoreLayerTests\PropertyPathTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

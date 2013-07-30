@@ -40,6 +40,7 @@
     <Compile Include="ModelLayer\Property.cs" />
     <Compile Include="ModelLayer\Room.cs" />
     <Compile Include="ModelLayer\RoomList.cs" />
+    <Compile Include="StoreLayer\PropertyPath.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="StoreLayer\" />

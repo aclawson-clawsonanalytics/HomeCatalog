@@ -23,16 +23,11 @@ namespace HomeCatalog.Android
 		private TextView CityText {get;set;}
 		private TextView StateText { get; set; }
 		private TextView ZipText { get; set; }
-
-
-
-
+	
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			// Grab propertyID from intent being sent by previous activity
-			String propertyID = Intent.GetStringExtra (Property.PropertyIDKey);
-			Property = PropertyCollection.SharedCollection.FindPropertyWithId (propertyID);
+			Property = PropertyStore.CurrentStore.Property;
 
 			//Load view
 			SetContentView (Resource.Layout.PropertyDetailView);
@@ -93,7 +88,7 @@ namespace HomeCatalog.Android
 			Button DeletePropertyButton = FindViewById<Button> (Resource.Id.DeletePropertyButton);
 			DeletePropertyButton.Click += (sender, e) => 
 			{
-				PropertyCollection.SharedCollection.RemoveProperty (Property);
+				PropertyCollection.SharedCollection.RemovePropertyStoreWithID (Property.PropertyID);
 				Finish ();
 			};
 

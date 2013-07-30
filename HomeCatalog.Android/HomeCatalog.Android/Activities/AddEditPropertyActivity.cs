@@ -27,12 +27,10 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			String propertyID = Intent.GetStringExtra (Property.PropertyIDKey);
 
-			Property = PropertyCollection.SharedCollection.FindPropertyWithId (propertyID);
+			Property = PropertyStore.CurrentStore.Property;
 
 			SetContentView (Resource.Layout.PropertyAddEditView);
-
 
 			PropNameField = FindViewById<EditText> (Resource.Id.propNameField);
 			PropAddressField = FindViewById<EditText> (Resource.Id.PropAddressField);
@@ -88,6 +86,7 @@ namespace HomeCatalog.Android
 			Property.City = PropCityField.Text;
 			Property.State = PropStateField.Text;
 			Property.ZipCode = PropZipField.Text; 
+			PropertyStore.CurrentStore.SaveProperty ();
 		}
 
 		private void DisplayPropertyInField ()

@@ -1,5 +1,8 @@
 using NUnit.Framework;
 using System;
+using System.IO;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace HomeCatalog.Core.Tests
 {
@@ -7,85 +10,116 @@ namespace HomeCatalog.Core.Tests
 	public class PropertyCollectionTests
 	{
 
-		private PropertyCollection sut;
-		private Property property;
+		PropertyCollection SUT;
+		string TempDirectory;
 
 		[SetUp()]
 		public void SetUp ()
 		{
-			PropertyCollection.Reset ();
-			sut = PropertyCollection.SharedCollection;
-			property = new Property ();
-		}
-		[Test()]
-		public void CanAddProperty ()
-		{
-
-			sut.AddProperty (property);
-			Assert.That (sut.Properties.Contains (property));
+			TempDirectory = Path.Combine (Path.GetTempPath (), Path.GetRandomFileName ());
+			Directory.CreateDirectory (TempDirectory);
+			SUT = new PropertyCollection (TempDirectory);
 		}
 
-		[Test()]
-		public void CanRemoveProperty()
+		[TearDown()]
+		public void Teardown ()
 		{
-			sut.AddProperty (property);
-			sut.RemoveProperty (property);
-			Assert.That (sut.Properties.Contains (property) == false);
+			Directory.Delete (TempDirectory, true);
 		}
 
 		[Test()]
-		public void PropertiesReturnsACopiedList()
+		public void AddPropertyStoreUpdatesPaths ()
 		{
-			sut.AddProperty (property);
-			sut.Properties.Remove (property);
-			Assert.That (sut.Properties.Contains (property));
+			SUT.NewPropertyStore ();
+			Assert.That (SUT.PropertyPaths.Count == 1);
 		}
 
 		[Test()]
-		public void CollectionReturnsSharedInstance()
+		public void RemovePropertyStoreUpdatesPaths ()
 		{
-			Assert.NotNull (sut);
+			var id = SUT.NewPropertyStore ().Property.PropertyID;
+			SUT.RemovePropertyStoreWithID (id);
+			Assert.That (SUT.PropertyPaths.Count == 0);
 		}
 
 		[Test()]
-		public void CollectionHasOneInstance()
+		public void CollectionReturnsSharedInstance ()
 		{
-			Assert.That (sut == PropertyCollection.SharedCollection);
+			Assert.NotNull (PropertyCollection.SharedCollection);
 		}
 
 		[Test()]
-		public void CollectionResets ()
+		public void CollectionHasOneInstance ()
 		{
-			PropertyCollection.Reset ();
-			Assert.That (sut != PropertyCollection.SharedCollection);
+			Assert.That (PropertyCollection.SharedCollection == PropertyCollection.SharedCollection);
 		}
 
 		[Test ()]
-		public void CanFindPropertyById ()
+		public void CanFindPropertyPathById ()
 		{
-			Property property2 = new Property ();
-			Property property3 = new Property ();
-			Property property4 = new Property ();
-			string ID1 = property.PropertyID;
+			Property property1 = SUT.NewPropertyStore ().Property;
+			Property property2 = SUT.NewPropertyStore ().Property;
+			Property property3 = SUT.NewPropertyStore ().Property;
+			Property property4 = SUT.NewPropertyStore ().Property;
+			string ID1 = property1.PropertyID;
 			string ID2 = property2.PropertyID;
 			string ID3 = property3.PropertyID;
 			string ID4 = property4.PropertyID;
-			sut.AddProperty (property);
-			sut.AddProperty (property2);
-			sut.AddProperty (property3);
-			sut.AddProperty (property4);
 
-			Assert.That (property3 == sut.FindPropertyWithId(ID3));
+			Assert.That (property3.PropertyID == SUT.FindPathWithID (ID3).ID);
+		}
+
+		[Test ()]
+		public void PropertyPathsByNameReturnsOrderedList ()
+		{
+			PropertyStore store1 = SUT.NewPropertyStore ();
+			PropertyStore store2 = SUT.NewPropertyStore ();
+			PropertyStore store3 = SUT.NewPropertyStore ();
+			PropertyStore store4 = SUT.NewPropertyStore ();
+			store1.Property.PropertyName = "C";
+			store2.Property.PropertyName = "A";
+			store3.Property.PropertyName = "B";
+			store4.Property.PropertyName = "D";
+			store1.SaveProperty ();
+			store2.SaveProperty ();
+			store3.SaveProperty ();
+			store4.SaveProperty ();
+
+			Assert.That (SUT.PropertyPathsByName ()[1].Name == "B");
+		}
+
+		[Test ()]
+		public void CanFindPropertyStoreById ()
+		{
+			Property property1 = SUT.NewPropertyStore ().Property;
+			Property property2 = SUT.NewPropertyStore ().Property;
+			Property property3 = SUT.NewPropertyStore ().Property;
+			Property property4 = SUT.NewPropertyStore ().Property;
+			string ID1 = property1.PropertyID;
+			string ID2 = property2.PropertyID;
+			string ID3 = property3.PropertyID;
+			string ID4 = property4.PropertyID;
+				
+			Assert.That (property3.PropertyID == SUT.FindPropertyStoreWithID (ID3).Property.PropertyID);
 		}
 
 		[Test()]
-		public void FindPropertyReturnsNullWithNonExistentId()
+		public void FindPropertyReturnsNullWithNonExistentId ()
 		{
+			Property property1 = SUT.NewPropertyStore ().Property;
+			Property property2 = SUT.NewPropertyStore ().Property;
 			string FalseId = "1";
-			Assert.That (sut.FindPropertyWithId (FalseId) == null);
+			Assert.That (SUT.FindPropertyStoreWithID (FalseId) == null);
 		}
 
-
+		[Test()]
+		public void FindPathReturnsNullWithNonExistentId ()
+		{
+			Property property1 = SUT.NewPropertyStore ().Property;
+			Property property2 = SUT.NewPropertyStore ().Property;
+			string FalseId = "1";
+			Assert.That (SUT.FindPathWithID (FalseId) == null);
+		}
 	}
 }
 

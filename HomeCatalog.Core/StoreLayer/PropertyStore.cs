@@ -1,5 +1,6 @@
 using System;
 using SQLite;
+using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -10,6 +11,22 @@ namespace HomeCatalog.Core
 		Property _property;
 
 		public SQLiteConnection DB { get; private set; }
+
+		public static PropertyStore CurrentStore {
+			get;
+			set;
+		}
+
+		public static PropertyStore NewPropertyStoreInDirectory (String dbDirectory)
+		{
+			string propertyID = Guid.NewGuid ().ToString ();
+			string dbPath = Path.Combine (dbDirectory, propertyID);
+			PropertyStore tempStore = new PropertyStore (dbPath);
+			tempStore.Property.PropertyID = propertyID;
+			tempStore.SaveProperty ();
+			tempStore.Dispose ();
+			return new PropertyStore (dbPath);
+		}
 
 		public PropertyStore (String aDBpath)
 		{
@@ -35,7 +52,7 @@ namespace HomeCatalog.Core
 			}
 		}
 
-		void AddListsToProperty ()
+		private void AddListsToProperty ()
 		{
 			Property.RoomList = new RoomList (DB.Table<Room> ());
 		}

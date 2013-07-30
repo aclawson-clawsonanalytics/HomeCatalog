@@ -22,11 +22,6 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			for (int i=0; i < 5; i++) {
-				Property property = new Property();
-				property.PropertyName = "Property" + i;
-				PropertyCollection.SharedCollection.AddProperty (property);
-			}
 
 			SetContentView (Resource.Layout.MainView);
 
@@ -38,32 +33,19 @@ namespace HomeCatalog.Android
 			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
 			{
 				var PropertyDetails = new Intent (this,typeof(PropertyDetailActivity));
-				PropertyDetails.PutExtra (Property.PropertyIDKey,ListAdapter[e.Position].PropertyID);
+				PropertyStore store = PropertyCollection.SharedCollection.FindPropertyStoreWithID (ListAdapter[e.Position].ID);
+				PropertyStore.CurrentStore = store;
 				StartActivity (PropertyDetails);
 			};
-//			listView.SetOnClickListener (new View.IOnClickListener()
-//			{
-//
-//				protected override void OnItemClick (ListView lst, View void, int position, long id)
-//				{
-//					Property Property = PropertyCollection.SharedCollection.Properties [position];
-//					Intent PassPropertyID = new Intent (this, typeof(PropertyDetailActivity));
-//					PassPropertyID.PutExtra (Property.PropertyIDKey, Property.PropertyID);
-//					StartActivity (PassPropertyID);
-//				}
-//			});
-
 
 			Button AddPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
 
-
 			AddPropertyButton.Click += (sender,e) => {
 
-				Property property = new Property();
-				PropertyCollection.SharedCollection.AddProperty(property);
-				Intent PassPropertyID = new Intent(this,typeof(AddEditPropertyActivity));
-				PassPropertyID.PutExtra (Property.PropertyIDKey,property.PropertyID);
-				StartActivityForResult (PassPropertyID, (int)PropertyRequest.ADD_PROPERTY);
+				PropertyStore store = PropertyCollection.SharedCollection.NewPropertyStore ();
+				PropertyStore.CurrentStore = store;
+				Intent AddIntent = new Intent(this,typeof(AddEditPropertyActivity));
+				StartActivityForResult (AddIntent, (int)PropertyRequest.ADD_PROPERTY);
 			};
 		}
 
@@ -75,15 +57,6 @@ namespace HomeCatalog.Android
 				ListAdapter.NotifyDataSetChanged ();
 			}
 		}
-
-//		protected override void OnItemClick (ListView l, View v, int position, long id)
-//		{
-//			Property Property = PropertyCollection.SharedCollection.Properties [position];
-//			Intent PassPropertyID = new Intent (this, typeof(PropertyDetailActivity));
-//			PassPropertyID.PutExtra (Property.PropertyIDKey, Property.PropertyID);
-//			StartActivity (PassPropertyID);
-//
-//		}
 	}
 }
 
