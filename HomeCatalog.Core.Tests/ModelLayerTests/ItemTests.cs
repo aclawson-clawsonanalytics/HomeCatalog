@@ -61,6 +61,14 @@ namespace HomeCatalog.Core.Tests
 		{
 			Assert.That (sut.AppraisalDate == sut.PurchaseDate);
 		}
+
+		[Test()]
+		public void PhotoListThrowsIfInvalidID ()
+		{
+			Assert.Throws<InvalidOperationException> (delegate { 
+				PhotoList list = sut.PhotoList; 
+			});
+		}
 	}
 }
 

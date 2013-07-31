@@ -51,7 +51,6 @@
     <Compile Include="..\HomeCatalog.Core\StoreLayer\SQLite.cs">
       <Link>StoreLayer\SQLite.cs</Link>
     </Compile>
-    <Compile Include="StoreLayerTests\RoomListTests.cs" />
     <Compile Include="..\HomeCatalog.Core\ModelLayer\Category.cs">
       <Link>ModelLayer\Category.cs</Link>
     </Compile>
@@ -85,6 +84,19 @@
     <Compile Include="..\HomeCatalog.Core\ModelLayer\CategoryList.cs">
       <Link>ModelLayer\CategoryList.cs</Link>
     </Compile>
+    <Compile Include="..\HomeCatalog.Core\StoreLayer\AssetStore.cs">
+      <Link>StoreLayer\AssetStore.cs</Link>
+    </Compile>
+    <Compile Include="StoreLayerTests\AssetStoreTests.cs" />
+    <Compile Include="..\HomeCatalog.Core\ModelLayer\Photo.cs">
+      <Link>ModelLayer\Photo.cs</Link>
+    </Compile>
+    <Compile Include="..\HomeCatalog.Core\ModelLayer\PhotoList.cs">
+      <Link>ModelLayer\PhotoList.cs</Link>
+    </Compile>
+    <Compile Include="ModelLayerTests\RoomListTests.cs" />
+    <Compile Include="ModelLayerTests\PhotoListTests.cs" />
+    <Compile Include="ModelLayerTests\ItemListTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

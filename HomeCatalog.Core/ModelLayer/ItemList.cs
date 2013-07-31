@@ -9,6 +9,13 @@ namespace HomeCatalog.Core
 		{
 
 		}
+		public override void Remove (Item item)
+		{
+			foreach (Photo photo in item.PhotoList.AllItems ()) {
+				item.PhotoList.Remove (photo);
+			}
+			base.Remove (item);
+		}
 	}
 }
 

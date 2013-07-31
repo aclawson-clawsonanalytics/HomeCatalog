@@ -12,12 +12,6 @@ namespace HomeCatalog.Core
 		}
 
 		public static string ItemIDKey = "ItemID";
-		static int IDCounter = 0;
-
-		public static int GetNewID() {
-			++IDCounter;
-			return IDCounter;
-		}
 
 		[PrimaryKey, AutoIncrement]
 		public int ID {get;set;}
@@ -34,6 +28,19 @@ namespace HomeCatalog.Core
 		public string RoomLabel { get; set; }
 		public string CategoryLabel {get;set;}
 
+		private PhotoList _PhotoList;
+		[Ignore]
+		public PhotoList PhotoList {
+			get {
+				if (ID == 0) {
+					throw new InvalidOperationException ("You need to add the item to a list first");
+				}
+				if (_PhotoList == null) {
+					_PhotoList = new PhotoList (PropertyStore.CurrentStore.DB.Table<Photo> (), this.ID);
+				}
+				return _PhotoList;
+			}
+		}
 	}
 
 

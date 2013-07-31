@@ -50,6 +50,12 @@ namespace HomeCatalog.Core.Tests
 		}
 
 		[Test()]
+		public void ItCreatesAPhotoTable ()
+		{
+			Assert.That (SUT.DB.GetTableInfo ("Photo").Count > 0);
+		}
+
+		[Test()]
 		public void ItCreatesRoomTable ()
 		{
 			Assert.That (SUT.DB.GetTableInfo ("Room").Count > 0);

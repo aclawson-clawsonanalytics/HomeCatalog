@@ -44,6 +44,9 @@
     <Compile Include="ModelLayer\ItemList.cs" />
     <Compile Include="StoreLayer\SQLList.cs" />
     <Compile Include="ModelLayer\CategoryList.cs" />
+    <Compile Include="StoreLayer\AssetStore.cs" />
+    <Compile Include="ModelLayer\Photo.cs" />
+    <Compile Include="ModelLayer\PhotoList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="StoreLayer\" />

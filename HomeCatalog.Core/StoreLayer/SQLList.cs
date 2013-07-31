@@ -20,26 +20,26 @@ namespace HomeCatalog.Core
 			InternalTable = aTable;
 		}
 
-		public void Add (T item) {
+		public virtual void Add (T item) {
 			InternalTable.Connection.Insert (item);
 		}
 
-		public void Remove (T item) {
+		public virtual void Remove (T item) {
 			InternalTable.Connection.Delete (item);
 		}
 
-		public void Save (T item) {
+		public virtual void Save (T item) {
 			if (InternalTable.FirstOrDefault (x => x.ID == item.ID) == null) {
 				throw new System.ArgumentException ("Item must be added first");
 			}
 			InternalTable.Connection.Update (item);
 		}
 
-		public T ItemWithID (int id) {
+		public virtual T ItemWithID (int id) {
 			return InternalTable.FirstOrDefault (x => x.ID == id);
 		}
 
-		public ReadOnlyCollection<T> AllItems () {
+		public virtual ReadOnlyCollection<T> AllItems () {
 			return (from item in InternalTable select item).ToList ().AsReadOnly ();
 		}
 

@@ -102,6 +102,15 @@
     <Compile Include="..\..\HomeCatalog.Core\StoreLayer\SQLList.cs">
       <Link>Core\StoreLayer\SQLList.cs</Link>
     </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\StoreLayer\AssetStore.cs">
+      <Link>Core\StoreLayer\AssetStore.cs</Link>
+    </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\ModelLayer\Photo.cs">
+      <Link>Core\ModelLayer\Photo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\HomeCatalog.Core\ModelLayer\PhotoList.cs">
+      <Link>Core\ModelLayer\PhotoList.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

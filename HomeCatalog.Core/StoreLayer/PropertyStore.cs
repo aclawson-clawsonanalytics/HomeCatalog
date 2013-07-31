@@ -35,6 +35,7 @@ namespace HomeCatalog.Core
 			DB.CreateTable<Room> ();
 			DB.CreateTable<Category> ();
 			DB.CreateTable<Item> ();
+			DB.CreateTable<Photo> ();
 		}
 
 		public Property Property {
