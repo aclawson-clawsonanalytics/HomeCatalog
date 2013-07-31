@@ -35,8 +35,8 @@ namespace HomeCatalog.Android
 
 			AlertDialog.Builder builder = new AlertDialog.Builder (this);
 			builder.SetTitle ("Add Photo By:");
-			builder.SetItems (optionList, async delegate(object sender, DialogClickEventArgs e) {
-				e.Which;
+			builder.SetItems (optionList, delegate(object sender, DialogClickEventArgs e) {
+				//e.Which;
 			});
 
 			AlertDialog popUpMenu = builder.Create ();
