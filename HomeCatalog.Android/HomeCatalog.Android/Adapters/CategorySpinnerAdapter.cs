@@ -12,13 +12,13 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	class CategoryListAdapter : BaseAdapter<Category>
+	class CategorySpinnerAdapter : BaseAdapter<Category>
 	{
 		IList<Category> Categories;
 		private Property Property {get;set;}
 		Activity context;
 
-		public CategoryListAdapter(Activity context,Property aProperty) : base() {
+		public CategorySpinnerAdapter(Activity context,Property aProperty) : base() {
 			Property = aProperty;
 			this.context = context;
 			this.Categories = Property.CategoryList.AllItems ();
@@ -30,18 +30,30 @@ namespace HomeCatalog.Android
 		{
 			return position;
 		}
-		public override Category this[int position] {  
-			get { return Categories[position]; }
+		public override Category this[int position] { 
+
+			get {
+				if (position == 0) {
+					return null;
+				}
+				return Categories [position - 1];
+			}
 		}
 		public override int Count {
-			get { return Categories.Count; }
+			get { return Categories.Count+1; }
 		}
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
+			string text;
+			if (position == 0) {
+				text = "No Category";
+			} else {
+				text = Categories [position - 1].Label;
+			}
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
 				view = context.LayoutInflater.Inflate(Android.Resource.Layout.CategoryListItem, null);
-			view.FindViewById<TextView> (Android.Resource.Id.categoryTextItem).Text = Categories[position].Label;
+			view.FindViewById<TextView> (Android.Resource.Id.categoryTextItem).Text = text;
 			return view;
 		}
 		public override void NotifyDataSetChanged ()
@@ -53,10 +65,16 @@ namespace HomeCatalog.Android
 
 		public override View GetDropDownView(int position, View convertView, ViewGroup parent)
 		{
+			string text;
+			if (position == 0) {
+				text = "No Category";
+			} else {
+				text = Categories [position - 1].Label;
+			}
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
 				view = context.LayoutInflater.Inflate(Android.Resource.Layout.CategoryListItem, null);
-			view.FindViewById<TextView> (Android.Resource.Id.categoryTextItem).Text = Categories[position].Label;
+			view.FindViewById<TextView> (Android.Resource.Id.categoryTextItem).Text = text;
 			return view;
 		}
 

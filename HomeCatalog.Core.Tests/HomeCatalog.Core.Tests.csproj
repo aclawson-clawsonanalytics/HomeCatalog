@@ -36,7 +36,6 @@
     <Reference Include="NSubstitute">
       <HintPath>NSubstitute\lib\NET40\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
