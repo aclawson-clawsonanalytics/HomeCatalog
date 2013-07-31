@@ -18,7 +18,7 @@ namespace HomeCatalog.Android
 		{
 			base.OnCreate (bundle);
 
-			SetContentView (
+
 		}
 	}
 }

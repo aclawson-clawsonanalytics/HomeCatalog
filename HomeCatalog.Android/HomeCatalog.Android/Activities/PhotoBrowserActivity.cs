@@ -32,13 +32,12 @@ namespace HomeCatalog.Android
 			};
 
 			string[] optionList = {"Camera","Gallery"};
-			optionList.Add ("Camera");
-			optionList.Add ("Gallery");
 
 			AlertDialog.Builder builder = new AlertDialog.Builder (this);
 			builder.SetTitle ("Add Photo By:");
-			builder.SetItems (optionList);
-
+			builder.SetItems (optionList, async delegate(object sender, DialogClickEventArgs e) {
+				e.Which;
+			});
 
 			AlertDialog popUpMenu = builder.Create ();
 
