@@ -104,6 +104,9 @@
     <Compile Include="Adapters\RoomSpinnerAdapter.cs" />
     <Compile Include="Adapters\RoomListAdapter.cs" />
     <Compile Include="Adapters\CategorySpinnerAdapter.cs" />
+    <Compile Include="Activities\PhotoBrowserActivity.cs" />
+    <Compile Include="Adapters\ImageAdapter.cs" />
+    <Compile Include="Activities\FullImageActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -128,6 +131,8 @@
     <AndroidResource Include="Resources\layout\ItemsView.axml" />
     <AndroidResource Include="Resources\layout\categorySpinnerItem.axml" />
     <AndroidResource Include="Resources\layout\roomSpinnerItem.axml" />
+    <AndroidResource Include="Resources\layout\PhotoBrowserView.axml" />
+    <AndroidResource Include="Resources\layout\FullPhotoView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
