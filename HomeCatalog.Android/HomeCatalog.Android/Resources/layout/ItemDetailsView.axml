@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <TextView
+        android:text="Item Details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ItemDetailLabel"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:text="Item Name: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ItemDetailLabel"
+        android:id="@+id/itemNameLabel"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:text="Item Name Here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/itemNameLabel"
+        android:id="@+id/itemNameText"
+        android:layout_alignBaseline="@id/itemNameLabel"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:text="Purchase Date: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemNameLabel"
+        android:id="@+id/itemPurchaseDateLabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:text="Item Purchase Date Here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/itemPurchaseDateLabel"
+        android:id="@+id/purchaseDateText"
+        android:layout_alignBaseline="@id/itemPurchaseDateLabel"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:text="Purchase Value: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemPurchaseDateLabel"
+        android:id="@+id/purchaseValueLabel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp" />
+    <TextView
+        android:text="Purchase Value Here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/purchaseValueLabel"
+        android:id="@+id/purchaseValueText"
+        android:layout_alignBaseline="@id/purchaseValueLabel"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:text="Appraisal Date: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/purchaseValueLabel"
+        android:id="@+id/appraisalDateLabel"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:text="Appraisal Date Here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/purchaseValueField"
+        android:id="@+id/appraisalDateText"
+        android:layout_alignBaseline="@id/appraisalDateLabel"
+        android:textSize="15dp"
+        android:layout_toRightOf="@id/appraisalDateLabel"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:text="Appraisal Value: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appraisalDateLabel"
+        android:id="@+id/appraisalValueLabel"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:text="Appraisal Value Here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/appraisalValueLabel"
+        android:id="@+id/appraisalValueText"
+        android:layout_alignBaseline="@id/appraisalValueLabel"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:text="Room: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appraisalValueLabel"
+        android:id="@+id/itemRoomLabel"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp" />
+    <TextView
+        android:text="Category: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemRoomLabel"
+        android:id="@+id/itemCategoryLabel"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBaseline="@id/itemCategoryLabel"
+        android:layout_alignParentRight="false" />
+    <TextView
+        android:text="Item Room Here"
+        android:id="@+id/itemRoomText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appraisalDateText"
+        android:layout_alignBaseline="@id/itemRoomLabel"
+        android:layout_toRightOf="@id/itemRoomLabel"
+        android:layout_alignLeft="@id/itemNameText" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemRoomText"
+        android:id="@+id/itemCategoryText"
+        android:layout_toRightOf="@id/itemCategoryLabel"
+        android:layout_alignBaseline="@id/itemCategoryLabel"
+        android:layout_alignLeft="@id/itemRoomText" />
+    <TextView
+        android:text="Model Number: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemCategoryLabel"
+        android:id="@+id/modelNumberLabel"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemCategoryText"
+        android:id="@+id/modelNumberText"
+        android:layout_alignBaseline="@id/modelNumberLabel"
+        android:layout_toRightOf="@id/modelNumberLabel"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:text="Serial Number: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/modelNumberLabel"
+        android:id="@+id/serialNumberLabel"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/modelNumberText"
+        android:id="@+id/serialNumberText"
+        android:layout_alignBaseline="@id/serialNumberLabel"
+        android:layout_toRightOf="@id/serialNumberLabel"
+        android:textSize="15dp"
+        android:layout_alignLeft="@id/modelNumberText" />
+    <Button
+        android:text="Receipt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serialNumberLabel"
+        android:id="@+id/itemReceiptButton"
+        android:textSize="15dp"
+        android:layout_marginBottom="0.0dp"
+        android:layout_marginTop="0.0dp"
+        android:layout_marginLeft="10dp" />
+    <Button
+        android:text="Photos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/serialNumberText"
+        android:id="@+id/itemPhotosButton"
+        android:textSize="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignBaseline="@id/itemReceiptButton" />
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancelItemDetailButton"
+        android:textSize="15dp"
+        android:layout_alignParentBottom="true" />
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveItemDetailsButton"
+        android:textSize="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
+    <Button
+        android:text="Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/deleteItemButton"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

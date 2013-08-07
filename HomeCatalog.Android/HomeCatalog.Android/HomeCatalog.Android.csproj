@@ -138,11 +138,12 @@
     <AndroidResource Include="Resources\layout\CategoryView.axml" />
     <AndroidResource Include="Resources\layout\AddItemView.axml" />
     <AndroidResource Include="Resources\layout\ItemListItem.axml" />
-    <AndroidResource Include="Resources\layout\ItemsView.axml" />
     <AndroidResource Include="Resources\layout\categorySpinnerItem.axml" />
     <AndroidResource Include="Resources\layout\roomSpinnerItem.axml" />
     <AndroidResource Include="Resources\layout\PhotoBrowserView.axml" />
     <AndroidResource Include="Resources\layout\FullPhotoView.axml" />
+    <AndroidResource Include="Resources\layout\DisplayItemsView.axml" />
+    <AndroidResource Include="Resources\layout\ItemDetailsView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

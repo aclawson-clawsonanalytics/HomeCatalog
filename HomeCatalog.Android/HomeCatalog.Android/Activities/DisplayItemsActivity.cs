@@ -37,7 +37,7 @@ namespace HomeCatalog.Android
 			Button backButton3 = FindViewById<Button> (Resource.Id.backButton3);
 			backButton3.Click += (sender, e) => 
 			{
-				SetResult (Result.Ok);
+				SetResult (Result.Canceled);
 				Finish ();
 			};
 

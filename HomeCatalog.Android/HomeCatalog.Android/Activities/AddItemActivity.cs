@@ -62,13 +62,25 @@ namespace HomeCatalog.Android
 			DisplayItemInfo ();
 
 			Button receiptButton = FindViewById<Button> (Resource.Id.receiptButton);
+			receiptButton.Click += (sender, e) => 
+			{
+
+			};
+
 			Button goToPhotosButton = FindViewById<Button> (Resource.Id.goToPhotosButton);
+			goToPhotosButton.Click += (object sender, EventArgs e) => 
+			{
+
+			};
 
 			Button cancelAddItemButton = FindViewById<Button> (Resource.Id.cancelAddItemButton);
-			cancelAddItemButton.Click += (sender, e) => 
+			cancelAddItemButton.Click += (sender, e) =>
 			{
-				SetResult(Result.Canceled);
+				SetResult (Result.Canceled);
+				Finish ();
 			};
+
+
 
 			Button saveAddItemButton = FindViewById<Button> (Resource.Id.saveAddItemButton);
 			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);
