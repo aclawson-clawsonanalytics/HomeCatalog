@@ -10,7 +10,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "ViewitemsListActivity")]
+	[Activity (Label = "ViewItemsListActivity")]
 	public class DisplayItemsActivity : Activity
 	{
 		private ItemListAdapter ListAdapter { get; set; }

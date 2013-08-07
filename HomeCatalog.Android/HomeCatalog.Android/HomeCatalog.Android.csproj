@@ -117,6 +117,7 @@
     <Compile Include="Activities\PhotoBrowserActivity.cs" />
     <Compile Include="Adapters\ImageAdapter.cs" />
     <Compile Include="Activities\FullImageActivity.cs" />
+    <Compile Include="Activities\AddPhotoActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />

@@ -32,6 +32,8 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+			Property = PropertyStore.CurrentStore.Property;
+
 			SetContentView (Resource.Layout.ItemDetailsView);
 
 			itemNameText = FindViewById<TextView> (Resource.Id.itemNameText);
@@ -56,15 +58,28 @@ namespace HomeCatalog.Android
 
 			};
 
+			Button cancelItemDetailButton = FindViewById<Button> (Resource.Id.cancelItemDetailButton);
+			cancelItemDetailButton.Click += (sender, e) => 
+			{
+				SetResult(Result.Canceled);
+				Finish ();
+			};
+
+			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);
+			deleteItemButton.Click += (sender, e) => 
+			{
+				Property.ItemList.Remove (Item);
+			};
+
 		}
 
 		private void FillItemData ()
 		{
 			itemNameText.Text = Item.ItemName;
-			purchaseDateText.Text = Item.PurchaseDate;
-			purchaseValueText.Text = Item.PurchaseValue;
-			appraisalDateText.Text = Item.AppraisalDate;
-			appraisalValueText.Text = Item.AppraisalValue;
+			purchaseDateText.Text = Item.PurchaseDate.ToString ();
+			purchaseValueText.Text = Item.PurchaseValue.ToString ();
+			appraisalDateText.Text = Item.AppraisalDate.ToString ();
+			appraisalValueText.Text = Item.AppraisalValue.ToString ();
 			modelNumberText.Text = Item.ModelNumber;
 			serialNumberText.Text = Item.SerialNumber;
 		}

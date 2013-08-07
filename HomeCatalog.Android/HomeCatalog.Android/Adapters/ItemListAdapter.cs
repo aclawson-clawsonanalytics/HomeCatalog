@@ -38,7 +38,7 @@ namespace HomeCatalog.Android
 		{
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
-				view = context.LayoutInflater.Inflate(Android.Resource.Layout.ItemsView, null);
+				view = context.LayoutInflater.Inflate(Android.Resource.Layout.ItemDetailsView, null);
 			view.FindViewById<TextView> (Android.Resource.Id.itemListText).Text = items[position].ItemName;
 			return view;
 		}

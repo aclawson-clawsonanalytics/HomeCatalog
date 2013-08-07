@@ -22,6 +22,7 @@ namespace HomeCatalog.Android
 		}
 
 		public override int Count {
+			//get { return thumbIds.Length;}
 			get { return 0;}
 		}
 
@@ -50,7 +51,9 @@ namespace HomeCatalog.Android
 			//imageView.SetImageResource (thumbIds[position]);
 			return imageView;
 		}
-		// Include a reference to the images.  
+
+		// Include a reference to the images.
+		//int[] thumbIds = Item.PhotoList;
 	}
 }
 
