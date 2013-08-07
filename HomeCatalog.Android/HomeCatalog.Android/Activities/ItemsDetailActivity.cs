@@ -32,8 +32,41 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+			SetContentView (Resource.Layout.ItemDetailsView);
 
-			// Create your application here
+			itemNameText = FindViewById<TextView> (Resource.Id.itemNameText);
+			purchaseDateText = FindViewById<TextView> (Resource.Id.purchaseDateText);
+			purchaseValueText = FindViewById<TextView> (Resource.Id.purchaseValueText);
+			appraisalDateText = FindViewById<TextView> (Resource.Id.appraisalDateText);
+			appraisalValueText = FindViewById<TextView> (Resource.Id.appraisalValueText);
+			modelNumberText = FindViewById<TextView> (Resource.Id.modelNumberText);
+			serialNumberText = FindViewById<TextView> (Resource.Id.serialNumberText);
+
+			FillItemData ();
+
+			Button itemReceiptButton = FindViewById<Button> (Resource.Id.itemReceiptButton);
+			itemReceiptButton.Click += (sender, e) => 
+			{
+
+			};
+
+			Button itemPhotosButton = FindViewById<Button> (Resource.Id.itemPhotosButton);
+			itemPhotosButton.Click += (sender, e) => 
+			{
+
+			};
+
+		}
+
+		private void FillItemData ()
+		{
+			itemNameText.Text = Item.ItemName;
+			purchaseDateText.Text = Item.PurchaseDate;
+			purchaseValueText.Text = Item.PurchaseValue;
+			appraisalDateText.Text = Item.AppraisalDate;
+			appraisalValueText.Text = Item.AppraisalValue;
+			modelNumberText.Text = Item.ModelNumber;
+			serialNumberText.Text = Item.SerialNumber;
 		}
 	}
 }

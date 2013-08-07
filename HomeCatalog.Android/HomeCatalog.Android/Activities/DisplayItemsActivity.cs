@@ -22,7 +22,7 @@ namespace HomeCatalog.Android
 
 			Property = PropertyStore.CurrentStore.Property;
 
-			SetContentView (Resource.Layout.ItemsView);
+			SetContentView (Resource.Layout.DisplayItemsView);
 
 			ListView listView = FindViewById<ListView> (Resource.Id.itemsList);
 			ListAdapter = new ItemListAdapter (this,Property);

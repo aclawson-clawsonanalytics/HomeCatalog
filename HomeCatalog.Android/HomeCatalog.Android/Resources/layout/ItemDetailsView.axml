@@ -136,7 +136,8 @@
         android:id="@+id/itemCategoryText"
         android:layout_toRightOf="@id/itemCategoryLabel"
         android:layout_alignBaseline="@id/itemCategoryLabel"
-        android:layout_alignLeft="@id/itemRoomText" />
+        android:layout_alignLeft="@id/itemRoomText"
+        android:text="Item Category Here" />
     <TextView
         android:text="Model Number: "
         android:layout_width="wrap_content"
@@ -154,7 +155,8 @@
         android:layout_alignBaseline="@id/modelNumberLabel"
         android:layout_toRightOf="@id/modelNumberLabel"
         android:textSize="15dp"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="10dp"
+        android:text="Model Number Here" />
     <TextView
         android:text="Serial Number: "
         android:layout_width="wrap_content"
@@ -172,7 +174,8 @@
         android:layout_alignBaseline="@id/serialNumberLabel"
         android:layout_toRightOf="@id/serialNumberLabel"
         android:textSize="15dp"
-        android:layout_alignLeft="@id/modelNumberText" />
+        android:layout_alignLeft="@id/modelNumberText"
+        android:text="Serial Number Here" />
     <Button
         android:text="Receipt"
         android:layout_width="wrap_content"
