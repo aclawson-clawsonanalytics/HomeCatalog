@@ -14,11 +14,15 @@ namespace HomeCatalog.Android
 {
 	public class ImageAdapter : BaseAdapter<Photo>
 	{
-		Context Context;
+		IList<Photo> photos;
+		private Item Item { get; set; }
+		Activity Context;
 
-		public ImageAdapter (Context c)
+		public ImageAdapter (Activity context, Item anItem)
 		{
-			Context = c;
+			Item = anItem;
+			this.Context = context;
+			this.photos = Item.PhotoList;			
 		}
 
 		public override int Count {

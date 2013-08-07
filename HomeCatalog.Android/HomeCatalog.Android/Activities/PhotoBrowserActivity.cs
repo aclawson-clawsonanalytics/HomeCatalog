@@ -26,12 +26,12 @@ namespace HomeCatalog.Android
 			int itemID = Intent.GetIntExtra (Item.ItemIDKey, 0);
 			if (itemID > 0)
 			{
-				Item = PropertyStore.CurrentStore.Property.ItemList.ItemWithId (itemID);
+				Item = PropertyStore.CurrentStore.Property.ItemList.ItemWithID (itemID);
 			}
 			SetContentView (Resource.Layout.DisplayItemsView);
 
 			GridView photoBrowserGridView = FindViewById<GridView> (Resource.Id.photoBrowserGridView);
-			GridViewAdapter = new ImageAdapter (this,Property);
+			GridViewAdapter = new ImageAdapter (this,Item);
 
 			photoBrowserGridView.Adapter = GridViewAdapter;
 
