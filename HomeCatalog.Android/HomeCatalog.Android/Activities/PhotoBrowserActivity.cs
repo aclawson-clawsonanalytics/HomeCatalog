@@ -46,8 +46,10 @@ namespace HomeCatalog.Android
 
 			photoBrowserGridView.ItemClick += (sender, e) => 
 			{
-				var ItemRequest = new Intent (this,typeof(ItemsDetailActivity));
-				ItemRequest.PutExtra (Item.ItemIDKey,ImageAdapter[e.Position].ID);
+				// This is not correct.  We are not requesting an item or moving
+				// to the ItemsDetailActivity
+				var ItemRequest = new Intent (this,typeof(FullImageActivity));
+				ItemRequest.PutExtra (Item.ItemIDKey,GridViewAdapter[e.Position].ID);
 				StartActivity (ItemRequest);
 			};
 

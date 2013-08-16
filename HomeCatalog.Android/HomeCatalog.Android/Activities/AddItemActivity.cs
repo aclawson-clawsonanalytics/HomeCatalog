@@ -68,7 +68,7 @@ namespace HomeCatalog.Android
 			};
 
 			Button goToPhotosButton = FindViewById<Button> (Resource.Id.goToPhotosButton);
-			goToPhotosButton.Click += (object sender, EventArgs e) => 
+			goToPhotosButton.Click += (sender, e) => 
 			{
 
 			};
@@ -83,6 +83,11 @@ namespace HomeCatalog.Android
 
 
 			Button saveAddItemButton = FindViewById<Button> (Resource.Id.saveAddItemButton);
+			saveAddItemButton.Click += (sender, e) => 
+			{
+
+			};
+
 			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);
 
 			RoomSpinnerAdapter roomAdapter = new RoomSpinnerAdapter (this,Property);

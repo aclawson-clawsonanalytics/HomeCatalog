@@ -22,12 +22,13 @@ namespace HomeCatalog.Android
 		{
 			Item = anItem;
 			this.Context = context;
-			this.photos = Item.PhotoList;			
+			this.photos = Item.PhotoList;
+
 		}
 
 		public override int Count {
 			//get { return thumbIds.Length;}
-			get { return 0;}
+			get { return photos.Count;}
 		}
 
 		public override long GetItemId (int position)
@@ -35,9 +36,9 @@ namespace HomeCatalog.Android
 			return 0;
 		}
 
-		public override Photo this [int position] {  
-			get { return null; }
-		}
+//		public override Photo this [int position] {  
+//			get { return null; }
+//		}
 
 		public override View GetView (int position, View convertView, ViewGroup parent)
 		{

@@ -40,6 +40,7 @@ namespace HomeCatalog.Android
 			BackButton.Click += (sender,e) =>
 			{
 				SetResult (Result.Canceled);
+				Finish ();
 			};
 
 			listView.ItemClick += (sender, e) => 
