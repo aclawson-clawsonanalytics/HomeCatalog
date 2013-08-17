@@ -16,6 +16,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AssemblyName>HomeCatalog.Android</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <TargetFrameworkVersion>v3.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -116,6 +117,7 @@
     <Compile Include="Adapters\CategorySpinnerAdapter.cs" />
     <Compile Include="Activities\FullImageActivity.cs" />
     <Compile Include="Activities\AddPhotoActivity.cs" />
+    <Compile Include="Fragments\PhotoDialogFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -153,5 +155,6 @@
     <Folder Include="Adapters\" />
     <Folder Include="Core\StoreLayer\" />
     <Folder Include="Core\ModelLayer\" />
+    <Folder Include="Fragments\" />
   </ItemGroup>
 </Project>

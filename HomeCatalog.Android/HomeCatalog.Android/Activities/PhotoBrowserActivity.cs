@@ -39,9 +39,10 @@ namespace HomeCatalog.Android
 			Button addPhotoButton = FindViewById<Button> (Resource.Id.addPhotoButton);
 			addPhotoButton.Click += (sender, e) => 
 			{
-				StartActivity (typeof(AddPhotoActivity));
-			};
 
+
+
+			};
 
 
 			photoBrowserGridView.ItemClick += (sender, e) => 

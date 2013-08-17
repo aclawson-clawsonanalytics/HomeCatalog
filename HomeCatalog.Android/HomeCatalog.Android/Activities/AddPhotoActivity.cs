@@ -8,12 +8,14 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "AddPhotoActivity")]			
 	public class AddPhotoActivity : Activity
 	{
+		private Property Property { get; set; }
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
