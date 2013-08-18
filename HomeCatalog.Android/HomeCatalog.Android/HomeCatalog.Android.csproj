@@ -119,6 +119,7 @@
     <Compile Include="Activities\AddPhotoActivity.cs" />
     <Compile Include="Fragments\PhotoDialogFragment.cs" />
     <Compile Include="Activities\PhotoBrowserActivity.cs" />
+    <Compile Include="Fragments\ListOptionDialogFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
