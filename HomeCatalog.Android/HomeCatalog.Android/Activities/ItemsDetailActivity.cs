@@ -16,7 +16,9 @@ namespace HomeCatalog.Android
 	public class ItemsDetailActivity : Activity
 	{
 		private Property Property { get; set; }
+
 		private Item Item {get;set;}
+
 
 		private TextView itemNameText { get; set; }
 		private TextView purchaseDateText { get; set; }
@@ -32,6 +34,8 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+			itemID
+
 			Property = PropertyStore.CurrentStore.Property;
 
 			SetContentView (Resource.Layout.ItemDetailsView);

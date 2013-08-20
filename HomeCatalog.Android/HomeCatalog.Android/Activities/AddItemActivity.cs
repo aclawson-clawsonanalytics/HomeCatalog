@@ -85,7 +85,15 @@ namespace HomeCatalog.Android
 			Button saveAddItemButton = FindViewById<Button> (Resource.Id.saveAddItemButton);
 			saveAddItemButton.Click += (sender, e) => 
 			{
+				if (Item == null)
+				{
+					Item = new Item ();
+					Property.ItemList.Add (Item);
+				}
 
+				Item.ItemName = itemNameField.Text;
+				Property.ItemList.Save (Item);
+				Finish ();
 			};
 
 			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);

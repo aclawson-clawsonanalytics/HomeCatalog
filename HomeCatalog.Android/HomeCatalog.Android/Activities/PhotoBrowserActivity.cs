@@ -43,7 +43,7 @@ namespace HomeCatalog.Android
 			{
 				var transaction = FragmentManager.BeginTransaction();
 				PhotoDialogFragment photoDialog = new PhotoDialogFragment();
-				photoDialog.Show(transaction,"photDialog");
+				photoDialog.Show(transaction,"photoDialog");
 			};
 
 

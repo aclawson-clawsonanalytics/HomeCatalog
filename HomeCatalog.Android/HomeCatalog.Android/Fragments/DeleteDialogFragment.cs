@@ -12,27 +12,27 @@ using Android.Widget;
 
 namespace HomeCatalog.Android
 {
-	public class PhotoDialogFragment : DialogFragment
+	public class DeleteDialogFragment : DialogFragment
 	{
 		private string[] optionList;
-
 		public override Dialog OnCreateDialog(Bundle savedInstanceState)
 		{
-			optionList = new string[] {"From Camera","From Gallery"};
+			optionList = new string[] {"Rename","Delete"};
 			var builder = new AlertDialog.Builder (Activity);
-			builder.SetTitle ("How to add the photo: ");
-			builder.SetItems (optionList, delegate(object sender, DialogClickEventArgs e)
+			builder.SetTitle ("DELETE ITEM");
+			builder.SetMessage ("Are you sure?");
+
+			// Set buttons
+			builder.SetPositiveButton ("Ok", (sender,EventArgs) =>
 			{
-//				switch (e.Which)
-//				{
-//					case 0:
-//						
-//
-//				}
+
 			});
+			                          
 
 			return builder.Create ();
 		}
-		}
+
+
+	}
 }
 

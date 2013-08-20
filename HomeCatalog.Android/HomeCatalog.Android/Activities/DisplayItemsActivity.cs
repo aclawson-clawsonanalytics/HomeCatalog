@@ -15,6 +15,7 @@ namespace HomeCatalog.Android
 	{
 		private ItemListAdapter ListAdapter { get; set; }
 		private Property Property { get; set; }
+		private int selectedItem { get; set; }
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -41,16 +42,52 @@ namespace HomeCatalog.Android
 				Finish ();
 			};
 
-			listView.ItemClick += (sender, e) => 
+//			listView.ItemClick += (sender, e) => 
+//			{
+//				var ItemRequest = new Intent (this,typeof(ItemsDetailActivity));
+//				ItemRequest.PutExtra (Item.ItemIDKey,ListAdapter[e.Position].ID);
+//				StartActivity (ItemRequest);
+//			};
+
+			listView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
 			{
-				var ItemRequest = new Intent (this,typeof(ItemsDetailActivity));
-				ItemRequest.PutExtra (Item.ItemIDKey,ListAdapter[e.Position].ID);
-				StartActivity (ItemRequest);
-			};
+				selectedItem = e.Position;
+
+				var transaction = FragmentManager.BeginTransaction ();
+				ItemDialogFragment itemDialog = new ItemDialogFragment ();
+				itemDialog.Show (transaction, "itemDialog");
+				itemDialog.OnItemSelected += (DialogClickEventArgs a) =>
+				{
+					switch (a.Which) {
+					case 0:
+						var ItemRequest = new Intent (this, typeof(ItemsDetailActivity));
+						ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
+						StartActivity (ItemRequest);
+						break;
+					case 1:
+						break;
+
+					case 2:
+						Property.ItemList.Remove (ListAdapter [e.Position]);
+						ListAdapter.NotifyDataSetChanged ();
+						break;
+					}
+					;
+
+
+
+				};
 
 
 
 
+			};}
+
+		public void showItem(AdapterView.ItemClickEventArgs e)
+		{
+			var ItemRequest = new Intent (this,typeof(ItemsDetailActivity));
+			ItemRequest.PutExtra (Item.ItemIDKey,ListAdapter[e.Position].ID);
+			StartActivity (ItemRequest);
 		}
 
 	}

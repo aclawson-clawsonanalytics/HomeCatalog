@@ -12,20 +12,27 @@ using Android.Widget;
 
 namespace HomeCatalog.Android
 {
-	public class ListOptionDialogFragment : DialogFragment
+	public class PropertyDialogFragment : DialogFragment
 	{
 		private string[] optionList;
-
 		public override Dialog OnCreateDialog(Bundle savedInstanceState)
 		{
-			optionList = new string[] {"Edit","Delete"};
-			var builder = new AlertDialog.Builder (Activity);
-			builder.SetTitle ("How to add the photo: ");
-			builder.SetItems (optionList, delegate(object sender, DialogClickEventArgs e) {
-				});
+			optionList = new string[] {"Rename","Delete"};
+			var builder = new AlertDialog.Builder (Activity,object obj);
+			builder.SetTitle ("DELETE ITEM");
+			builder.SetMessage ("Are you sure?");
+
+			// Set buttons
+			builder.SetPositiveButton ("Ok", (sender,EventArgs) =>
+			{
+
+			});
+			                          
 
 			return builder.Create ();
 		}
+
+
 	}
 }
 
