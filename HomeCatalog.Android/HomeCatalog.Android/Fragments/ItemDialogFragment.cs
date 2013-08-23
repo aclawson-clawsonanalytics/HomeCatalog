@@ -22,7 +22,7 @@ namespace HomeCatalog.Android
 
 		public override Dialog OnCreateDialog(Bundle savedInstanceState)
 		{
-			optionList = new string[] {"View","Rename","Delete"};
+			optionList = new string[] {"View","Delete"};
 			Property = PropertyStore.CurrentStore.Property;
 
 			var builder = new AlertDialog.Builder (Activity);

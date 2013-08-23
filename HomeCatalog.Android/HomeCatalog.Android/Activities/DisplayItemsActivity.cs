@@ -33,7 +33,7 @@ namespace HomeCatalog.Android
 			Button additemButton = FindViewById<Button> (Resource.Id.addItemButton);
 			additemButton.Click += (sender, e) => 
 			{
-				StartActivity (typeof(AddItemActivity));
+				StartActivityForResult (typeof(AddItemActivity),0);
 			};
 			Button backButton3 = FindViewById<Button> (Resource.Id.backButton3);
 			backButton3.Click += (sender, e) => 
@@ -62,7 +62,7 @@ namespace HomeCatalog.Android
 					case 0:
 						var ItemRequest = new Intent (this, typeof(ItemsDetailActivity));
 						ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
-						StartActivity (ItemRequest);
+						StartActivityForResult (ItemRequest,0);
 						break;
 					case 1:
 						break;
@@ -88,6 +88,13 @@ namespace HomeCatalog.Android
 			var ItemRequest = new Intent (this,typeof(ItemsDetailActivity));
 			ItemRequest.PutExtra (Item.ItemIDKey,ListAdapter[e.Position].ID);
 			StartActivity (ItemRequest);
+		}
+
+		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult (requestCode, resultCode, data);
+			ListAdapter.NotifyDataSetChanged ();
+
 		}
 
 	}
