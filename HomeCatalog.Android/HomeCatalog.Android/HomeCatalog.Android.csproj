@@ -27,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -124,6 +125,7 @@
     <Compile Include="Fragments\ItemDialogFragment.cs" />
     <Compile Include="Fragments\RoomDialogFragment.cs" />
     <Compile Include="Fragments\CategoryDialogFragment.cs" />
+    <Compile Include="Fragments\ReceiptDialogFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />

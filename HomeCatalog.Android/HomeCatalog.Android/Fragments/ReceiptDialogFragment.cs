@@ -8,32 +8,31 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using HomeCatalog.Core;
 
 
 namespace HomeCatalog.Android
 {
-	public class RoomDialogFragment : DialogFragment
+	public class ReceiptDialogFragment : DialogFragment
 	{
 		private string[] optionList;
-		private Property Property { get; set; }
 
 		public override Dialog OnCreateDialog(Bundle savedInstanceState)
 		{
-			optionList = new string[] {"Rename","Delete"};
-			Property = PropertyStore.CurrentStore.Property;
-
+			optionList = new string[] {"From Camera","From File"};
 			var builder = new AlertDialog.Builder (Activity);
-			builder.SetTitle ("Edit Property");
-			builder.SetItems (optionList,delegate(object sender, DialogClickEventArgs e)
+			builder.SetTitle ("How to add the receipt: ");
+			builder.SetItems (optionList, delegate(object sender, DialogClickEventArgs e)
 			{
-
+//				switch (e.Which)
+//				{
+//					case 0:
+//						
+//
+//				}
 			});
 
 			return builder.Create ();
 		}
-
-
-	}
+		}
 }
 

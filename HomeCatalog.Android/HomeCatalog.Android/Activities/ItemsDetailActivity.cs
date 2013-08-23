@@ -16,7 +16,7 @@ namespace HomeCatalog.Android
 	public class ItemsDetailActivity : Activity
 	{
 		private Property Property { get; set; }
-
+		private string itemID { get; set; }
 		private Item Item {get;set;}
 
 
@@ -27,16 +27,18 @@ namespace HomeCatalog.Android
 		private TextView appraisalValueText { get; set; }
 		private TextView modelNumberText { get; set; }
 		private TextView serialNumberText { get; set; }
+		private TextView itemRoomText {get;set;}
+		private TextView itemCategoryText { get; set; }
 
-
-		private Spinner roomLabelSpinner { get; set; }
-		private Spinner categoryLabelSpinner { get; set; }
+		
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			itemID
+			int itemID = Intent.GetIntExtra (Item.ItemIDKey,0);
+
 
 			Property = PropertyStore.CurrentStore.Property;
+			Item = Property.ItemList.ItemWithID (itemID);
 
 			SetContentView (Resource.Layout.ItemDetailsView);
 
@@ -47,6 +49,9 @@ namespace HomeCatalog.Android
 			appraisalValueText = FindViewById<TextView> (Resource.Id.appraisalValueText);
 			modelNumberText = FindViewById<TextView> (Resource.Id.modelNumberText);
 			serialNumberText = FindViewById<TextView> (Resource.Id.serialNumberText);
+			itemRoomText = FindViewById<TextView> (Resource.Id.itemRoomText);
+			itemCategoryText = FindViewById<TextView> (Resource.Id.itemCategoryText);
+
 
 			FillItemData ();
 
@@ -86,6 +91,11 @@ namespace HomeCatalog.Android
 			appraisalValueText.Text = Item.AppraisalValue.ToString ();
 			modelNumberText.Text = Item.ModelNumber;
 			serialNumberText.Text = Item.SerialNumber;
+
+			itemRoomText.Text = Property.RoomList.ItemWithID (Item.RoomID).Label;
+			itemCategoryText.Text = Property.CategoryList.ItemWithID (Item.CategoryID).Label;
+
+
 		}
 	}
 }
