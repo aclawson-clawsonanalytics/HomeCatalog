@@ -19,9 +19,11 @@ namespace HomeCatalog.Android
 			ADD_PROPERTY
 		}
 
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+
 
 			SetContentView (Resource.Layout.MainView);
 
@@ -33,29 +35,37 @@ namespace HomeCatalog.Android
 			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
 			{
 				var transaction = FragmentManager.BeginTransaction();
-				PropertyDialogFragment propertyDialog = new PropertyDialogFragment();
-				propertyDialog.Show(transaction,"photoDialog");
+				OptionDialogFragment optionDialog = new OptionDialogFragment();
+				optionDialog.Show(transaction,"optionDialog");
 
-				propertyDialog.OnItemSelected += (DialogClickEventArgs a) =>
+				optionDialog.OnItemSelected += (DialogClickEventArgs a) =>
 				{
 					switch (a.Which)
 					{
 					case 0:
+					{
 						var PropertyDetails = new Intent (this,typeof(PropertyDetailActivity));
 						PropertyStore store = PropertyCollection.SharedCollection.FindPropertyStoreWithID (ListAdapter[e.Position].ID);
 						PropertyStore.CurrentStore = store;
 						StartActivity (PropertyDetails);
 						break;
+					}
 					case 1:
-						Intent PassPropertyID = new Intent(this,typeof(AddEditPropertyActivity));
-						PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
-						StartActivity (PassPropertyID);
-						break;
-					case 2:
-						//PropertyStore.CurrentStore.Dispose ();
+					{
+						PropertyStore store = PropertyCollection.SharedCollection.FindPropertyStoreWithID (ListAdapter[e.Position].ID);
+						PropertyStore.CurrentStore = store;
+						StartActivity (typeof(AddEditPropertyActivity));
 						break;
 					}
-				}
+					case 2:
+					{
+
+						PropertyCollection.SharedCollection.RemovePropertyStoreWithID (ListAdapter[e.Position].ID);
+						ListAdapter.NotifyDataSetChanged();
+						break;
+					}
+					}
+				};
 //				var PropertyDetails = new Intent (this,typeof(PropertyDetailActivity));
 //				PropertyStore store = PropertyCollection.SharedCollection.FindPropertyStoreWithID (ListAdapter[e.Position].ID);
 //				PropertyStore.CurrentStore = store;
