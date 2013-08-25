@@ -32,10 +32,34 @@ namespace HomeCatalog.Android
 
 			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
 			{
-				var PropertyDetails = new Intent (this,typeof(PropertyDetailActivity));
-				PropertyStore store = PropertyCollection.SharedCollection.FindPropertyStoreWithID (ListAdapter[e.Position].ID);
-				PropertyStore.CurrentStore = store;
-				StartActivity (PropertyDetails);
+				var transaction = FragmentManager.BeginTransaction();
+				PropertyDialogFragment propertyDialog = new PropertyDialogFragment();
+				propertyDialog.Show(transaction,"photoDialog");
+
+				propertyDialog.OnItemSelected += (DialogClickEventArgs a) =>
+				{
+					switch (a.Which)
+					{
+					case 0:
+						var PropertyDetails = new Intent (this,typeof(PropertyDetailActivity));
+						PropertyStore store = PropertyCollection.SharedCollection.FindPropertyStoreWithID (ListAdapter[e.Position].ID);
+						PropertyStore.CurrentStore = store;
+						StartActivity (PropertyDetails);
+						break;
+					case 1:
+						Intent PassPropertyID = new Intent(this,typeof(AddEditPropertyActivity));
+						PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+						StartActivity (PassPropertyID);
+						break;
+					case 2:
+						//PropertyStore.CurrentStore.Dispose ();
+						break;
+					}
+				}
+//				var PropertyDetails = new Intent (this,typeof(PropertyDetailActivity));
+//				PropertyStore store = PropertyCollection.SharedCollection.FindPropertyStoreWithID (ListAdapter[e.Position].ID);
+//				PropertyStore.CurrentStore = store;
+//				StartActivity (PropertyDetails);
 			};
 
 			Button AddPropertyButton = FindViewById<Button> (Resource.Id.AddPropertyButton);
