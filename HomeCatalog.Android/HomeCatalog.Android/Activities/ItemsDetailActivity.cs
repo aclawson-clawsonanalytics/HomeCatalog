@@ -64,7 +64,9 @@ namespace HomeCatalog.Android
 			Button itemPhotosButton = FindViewById<Button> (Resource.Id.itemPhotosButton);
 			itemPhotosButton.Click += (sender, e) => 
 			{
-
+				Intent viewPhotoIntent = new Intent(this,typeof(PhotoBrowserActivity));
+				viewPhotoIntent.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				StartActivity (viewPhotoIntent);
 			};
 
 			Button cancelItemDetailButton = FindViewById<Button> (Resource.Id.cancelItemDetailButton);
@@ -78,23 +80,41 @@ namespace HomeCatalog.Android
 			deleteItemButton.Click += (sender, e) => 
 			{
 				Property.ItemList.Remove (Item);
+				Finish ();
 			};
 
 		}
 
 		private void FillItemData ()
 		{
-			itemNameText.Text = Item.ItemName;
-			purchaseDateText.Text = Item.PurchaseDate.ToString ();
-			purchaseValueText.Text = Item.PurchaseValue.ToString ();
-			appraisalDateText.Text = Item.AppraisalDate.ToString ();
-			appraisalValueText.Text = Item.AppraisalValue.ToString ();
-			modelNumberText.Text = Item.ModelNumber;
-			serialNumberText.Text = Item.SerialNumber;
+			if (Item != null)
+			{
+				itemNameText.Text = Item.ItemName;
+				purchaseDateText.Text = Item.PurchaseDate.ToString ();
+				purchaseValueText.Text = Item.PurchaseValue.ToString ();
+				appraisalDateText.Text = Item.AppraisalDate.ToString ();
+				appraisalValueText.Text = Item.AppraisalValue.ToString ();
+				modelNumberText.Text = Item.ModelNumber;
+				serialNumberText.Text = Item.SerialNumber;
 
-			itemRoomText.Text = Property.RoomList.ItemWithID (Item.RoomID).Label;
-			itemCategoryText.Text = Property.CategoryList.ItemWithID (Item.CategoryID).Label;
+				if (Item.RoomID != 0)
+				{
+					itemRoomText.Text = Property.RoomList.ItemWithID (Item.RoomID).Label;
+				}
+				else
+				{
+					itemRoomText.Text = "No Room";
+				}
 
+				if (Item.CategoryID != 0)
+				{
+					itemCategoryText.Text = Property.CategoryList.ItemWithID (Item.CategoryID).Label;
+				}
+				else
+				{
+					itemCategoryText.Text = "No Category";
+				}
+			}
 
 		}
 	}
