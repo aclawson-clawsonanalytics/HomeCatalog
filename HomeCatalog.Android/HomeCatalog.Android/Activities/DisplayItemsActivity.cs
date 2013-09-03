@@ -54,25 +54,33 @@ namespace HomeCatalog.Android
 				selectedItem = e.Position;
 
 				var transaction = FragmentManager.BeginTransaction ();
-				ItemDialogFragment itemDialog = new ItemDialogFragment ();
-				itemDialog.Show (transaction, "itemDialog");
-				itemDialog.OnItemSelected += (DialogClickEventArgs a) =>
+				OptionDialogFragment optionDialog = new OptionDialogFragment ();
+				optionDialog.Show (transaction, "optionDialog");
+				optionDialog.OnItemSelected += (DialogClickEventArgs a) =>
 				{
 					switch (a.Which) {
 					case 0:
+					{
 						var ItemRequest = new Intent (this, typeof(ItemsDetailActivity));
 						ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
 						StartActivityForResult (ItemRequest,0);
 						break;
+					}
 					case 1:
+					{
+						var ItemRequest = new Intent (this, typeof(AddItemActivity));
+						ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
+						StartActivityForResult (ItemRequest,0);
 						break;
+					}
 
 					case 2:
+					{
 						Property.ItemList.Remove (ListAdapter [e.Position]);
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
-					;
+					};
 
 
 

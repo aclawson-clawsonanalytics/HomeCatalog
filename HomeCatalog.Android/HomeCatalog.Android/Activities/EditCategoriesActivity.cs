@@ -68,6 +68,7 @@ namespace HomeCatalog.Android
 			addCustomCategoryButton.Click += (sender,e) =>
 			{
 				SaveCustomCategory ();
+				CustomCategoryField.Text="";
 			};
 
 			Button cancelEditCategoriesButton = FindViewById<Button> (Resource.Id.CancelEditCategoriesButton);
