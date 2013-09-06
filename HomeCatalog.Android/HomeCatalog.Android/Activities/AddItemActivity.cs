@@ -90,6 +90,11 @@ namespace HomeCatalog.Android
 			};
 
 			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);
+			deleteItemButton.Click += (sender, e) => 
+			{
+				Property.ItemList.Remove (Item);
+				Finish();
+			};
 
 			RoomSpinnerAdapter roomAdapter = new RoomSpinnerAdapter (this,Property);
 
