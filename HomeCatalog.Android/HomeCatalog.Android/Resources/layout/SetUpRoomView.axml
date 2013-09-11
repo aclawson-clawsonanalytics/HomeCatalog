@@ -79,7 +79,8 @@
         android:width="40dp"
         android:height="20dp"
         android:layout_alignBaseline="@id/BathPrompt"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:textColor="@color/black" />
     <Button
         android:text="Cancel"
         android:layout_width="wrap_content"
@@ -108,7 +109,8 @@
         android:layout_alignBaseline="@id/BedPrompt"
         android:layout_alignLeft="@id/BathField"
         android:height="20dp"
-        android:background="@color/white" />
+        android:background="@color/white"
+        android:textColor="@color/black" />
     <TextView
         android:text="Custom Room"
         android:layout_width="wrap_content"
@@ -129,7 +131,8 @@
         android:layout_alignLeft="@id/CustomLabel"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:background="@color/white" />
+        android:background="@color/white"
+        android:textColor="@color/black" />
     <Button
         android:text="Add Custom Room"
         android:layout_width="wrap_content"

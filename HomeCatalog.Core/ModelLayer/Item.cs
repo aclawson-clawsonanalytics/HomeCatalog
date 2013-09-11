@@ -18,15 +18,15 @@ namespace HomeCatalog.Core
 		public string ParentID { get; set; }
 		public string ItemName { get; set; }
 
-		public DateTime PurchaseDate { get; set; }
-		public float PurchaseValue {get;set;}
-		public DateTime AppraisalDate {get;set;}
-		public float AppraisalValue { get; set; }
+		public string PurchaseDate { get; set; }
+		public string PurchaseValue {get;set;}
+		public string AppraisalDate {get;set;}
+		public string AppraisalValue { get; set; }
 		public string ModelNumber { get; set; }
 		public string SerialNumber {get;set;}
 
-		public string RoomLabel { get; set; }
-		public string CategoryLabel {get;set;}
+		public int RoomID { get; set; }
+		public int CategoryID {get;set;}
 
 		private PhotoList _PhotoList;
 		[Ignore]

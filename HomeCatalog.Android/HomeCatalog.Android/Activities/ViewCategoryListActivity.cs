@@ -42,10 +42,17 @@ namespace HomeCatalog.Android
 				SetResult (Result.Canceled);
 			};
 
-			listView.ItemClick += (sender, e) => 
+			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
 			{
-				Property.CategoryList.Remove (ListAdapter[e.Position]);
-				ListAdapter.NotifyDataSetChanged ();
+				var transaction = FragmentManager.BeginTransaction ();
+				DeleteDialogFragment deleteDialog = new DeleteDialogFragment ();
+				deleteDialog.Show (transaction, "deleteDialog");
+
+				deleteDialog.OnItemSelected += (DialogClickEventArgs a) =>
+				{
+					Property.CategoryList.Remove (ListAdapter [e.Position]);
+					ListAdapter.NotifyDataSetChanged ();
+				};
 			};
 
 

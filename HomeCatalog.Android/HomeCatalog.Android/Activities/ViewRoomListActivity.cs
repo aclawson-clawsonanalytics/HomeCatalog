@@ -43,11 +43,19 @@ namespace HomeCatalog.Android
 				Finish ();
 			};
 
-			listView.ItemClick += (sender, e) => 
+			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
 			{
-				Property.RoomList.Remove (ListAdapter[e.Position]);
-				ListAdapter.NotifyDataSetChanged ();
+				var transaction = FragmentManager.BeginTransaction ();
+				DeleteDialogFragment deleteDialog = new DeleteDialogFragment ();
+				deleteDialog.Show (transaction, "deleteDialog");
+
+				deleteDialog.OnItemSelected += (DialogClickEventArgs a) =>
+				{
+					Property.RoomList.Remove (ListAdapter [e.Position]);
+					ListAdapter.NotifyDataSetChanged ();
+				};
 			};
+			
 
 
 

@@ -39,6 +39,13 @@ namespace HomeCatalog.Core
 
 			return room;
 		}
+
+		public static Category CreateCategory(Category cat, string label)
+		{
+			cat.Label = label;
+
+			return cat;
+		}
 	}
 }
 

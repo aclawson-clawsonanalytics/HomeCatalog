@@ -16,6 +16,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AssemblyName>HomeCatalog.Android</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <TargetFrameworkVersion>v3.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -116,12 +118,20 @@
     <Compile Include="Adapters\CategorySpinnerAdapter.cs" />
     <Compile Include="Activities\FullImageActivity.cs" />
     <Compile Include="Activities\AddPhotoActivity.cs" />
+    <Compile Include="Fragments\PhotoDialogFragment.cs" />
+    <Compile Include="Activities\PhotoBrowserActivity.cs" />
+    <Compile Include="Fragments\PropertyDialogFragment.cs" />
+    <Compile Include="Fragments\ItemDialogFragment.cs" />
+    <Compile Include="Fragments\RoomDialogFragment.cs" />
+    <Compile Include="Fragments\CategoryDialogFragment.cs" />
+    <Compile Include="Fragments\ReceiptDialogFragment.cs" />
+    <Compile Include="Fragments\OptionDialogFragment.cs" />
+    <Compile Include="Fragments\DeleteDialogFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Adapters\ImageAdapter.cs" />
-    <None Include="Activities\PhotoBrowserActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -153,5 +163,6 @@
     <Folder Include="Adapters\" />
     <Folder Include="Core\StoreLayer\" />
     <Folder Include="Core\ModelLayer\" />
+    <Folder Include="Fragments\" />
   </ItemGroup>
 </Project>

@@ -13,13 +13,15 @@ namespace HomeCatalog.Android
 	[Activity (Label = "PhotoBrowserActivity")]
 	public class PhotoBrowserActivity : Activity
 	{
-		private ImageAdapter GridViewAdapter { get; set; }
+		//private ImageAdapter GridViewAdapter { get; set; }
 		private Property Property { get; set; }
 		private Item Item {get;set;}
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+			SetContentView (Resource.Layout.PhotoBrowserView);
+
 
 			Property = PropertyStore.CurrentStore.Property;
 			// Get Item from intent
@@ -28,30 +30,31 @@ namespace HomeCatalog.Android
 			{
 				Item = PropertyStore.CurrentStore.Property.ItemList.ItemWithID (itemID);
 			}
-			SetContentView (Resource.Layout.DisplayItemsView);
+//			SetContentView (Resource.Layout.DisplayItemsView);
 
 			GridView photoBrowserGridView = FindViewById<GridView> (Resource.Id.photoBrowserGridView);
-			GridViewAdapter = new ImageAdapter (this,Item);
+			//GridViewAdapter = new ImageAdapter (this,Item);
 
-			photoBrowserGridView.Adapter = GridViewAdapter;
+			//photoBrowserGridView.Adapter = GridViewAdapter;
 
 
 			Button addPhotoButton = FindViewById<Button> (Resource.Id.addPhotoButton);
 			addPhotoButton.Click += (sender, e) => 
 			{
-				StartActivity (typeof(AddPhotoActivity));
+				var transaction = FragmentManager.BeginTransaction();
+				PhotoDialogFragment photoDialog = new PhotoDialogFragment();
+				photoDialog.Show(transaction,"photoDialog");
 			};
 
 
-
-			photoBrowserGridView.ItemClick += (sender, e) => 
-			{
-				// This is not correct.  We are not requesting an item or moving
-				// to the ItemsDetailActivity
-				var ItemRequest = new Intent (this,typeof(FullImageActivity));
-				ItemRequest.PutExtra (Item.ItemIDKey,GridViewAdapter[e.Position].ID);
-				StartActivity (ItemRequest);
-			};
+//			photoBrowserGridView.ItemClick += (sender, e) => 
+//			{
+//				// This is not correct.  We are not requesting an item or moving
+//				// to the ItemsDetailActivity
+//				var ItemRequest = new Intent (this,typeof(FullImageActivity));
+//				ItemRequest.PutExtra (Item.ItemIDKey,GridViewAdapter[e.Position].ID);
+//				StartActivity (ItemRequest);
+//			};
 
 
 

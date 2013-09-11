@@ -70,7 +70,7 @@ namespace HomeCatalog.Android
 			Button goToPhotosButton = FindViewById<Button> (Resource.Id.goToPhotosButton);
 			goToPhotosButton.Click += (sender, e) => 
 			{
-
+				StartActivity (typeof(PhotoBrowserActivity));
 			};
 
 			Button cancelAddItemButton = FindViewById<Button> (Resource.Id.cancelAddItemButton);
@@ -85,10 +85,16 @@ namespace HomeCatalog.Android
 			Button saveAddItemButton = FindViewById<Button> (Resource.Id.saveAddItemButton);
 			saveAddItemButton.Click += (sender, e) => 
 			{
-
+				SaveItemInfo ();
+				Finish ();
 			};
 
 			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);
+			deleteItemButton.Click += (sender, e) => 
+			{
+				Property.ItemList.Remove (Item);
+				Finish();
+			};
 
 			RoomSpinnerAdapter roomAdapter = new RoomSpinnerAdapter (this,Property);
 
@@ -106,12 +112,50 @@ namespace HomeCatalog.Android
 			}
 
 			itemNameField.Text = Item.ItemName;
-			purchaseDateField.Text = Item.PurchaseDate.ToString ();
-			purchaseValueField.Text = Item.PurchaseValue.ToString ();
-			appraisalDateField.Text = Item.AppraisalDate.ToString ();
-			appraisalValueField.Text = Item.AppraisalValue.ToString ();
+			purchaseDateField.Text = Item.PurchaseDate;
+			purchaseValueField.Text = Item.PurchaseValue;
+			appraisalDateField.Text = Item.AppraisalDate;
+			appraisalValueField.Text = Item.AppraisalValue;
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
+		}
+
+		private void SaveItemInfo()
+		{
+			if (Item == null)
+			{
+				Item = new Item ();
+				Property.ItemList.Add (Item);
+			}
+
+			Item.ItemName = itemNameField.Text;
+			Item.PurchaseDate = purchaseDateField.Text;
+			Item.PurchaseValue = purchaseValueField.Text;
+			Item.AppraisalDate = appraisalDateField.Text;
+			Item.AppraisalValue = appraisalValueField.Text;
+			Item.ModelNumber = modelNumberField.Text;
+			Item.SerialNumber = serialNumberField.Text;
+
+			var room = ((RoomSpinnerAdapter)roomLabelSpinner.Adapter) [roomLabelSpinner.SelectedItemPosition];
+			if (room == null)
+			{
+				Item.RoomID = 0;
+			}
+			else
+			{
+			Item.RoomID = ((RoomSpinnerAdapter) roomLabelSpinner.Adapter) [roomLabelSpinner.SelectedItemPosition].ID;
+			}
+
+			var category = ((CategorySpinnerAdapter)categoryLabelSpinner.Adapter) [categoryLabelSpinner.SelectedItemPosition];
+			if (category == null)
+			{
+				Item.CategoryID = 0;
+			}
+			else
+			{
+			Item.CategoryID = ((CategorySpinnerAdapter)categoryLabelSpinner.Adapter) [categoryLabelSpinner.SelectedItemPosition].ID;
+			}
+			Property.ItemList.Save (Item);
 		}
 	}
 }
