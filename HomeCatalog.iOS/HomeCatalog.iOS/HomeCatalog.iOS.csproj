@@ -100,17 +100,25 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="RootViewController.cs" />
     <Compile Include="RootViewController.designer.cs">
-      <DependentUpon>RootViewController.cs</DependentUpon>
+      <DependentUpon>PropertyListController.cs</DependentUpon>
     </Compile>
     <Compile Include="DetailViewController.cs" />
     <Compile Include="DetailViewController.designer.cs">
       <DependentUpon>DetailViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="PropertyTableViewCell.cs" />
+    <Compile Include="PropertyTableViewCell.designer.cs">
+      <DependentUpon>PropertyTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyListDataSource.cs">
+      <DependentUpon>PropertyListController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyListController.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
+    <InterfaceDefinition Include="PropertyTableViewCell.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
