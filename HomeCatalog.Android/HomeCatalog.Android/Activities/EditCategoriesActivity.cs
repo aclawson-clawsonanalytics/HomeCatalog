@@ -67,7 +67,7 @@ namespace HomeCatalog.Android
 
 			addCustomCategoryButton.Click += (sender,e) =>
 			{
-				SaveCustomCategory ();
+				SaveCustomCategory (CustomCategoryField.Text);
 				CustomCategoryField.Text="";
 			};
 
@@ -125,7 +125,7 @@ namespace HomeCatalog.Android
 		{
 			if (check.Checked == true && CheckForCategoryByLabel(label) == false)
 			{
-				Category newCategory = new Room ();
+				Category newCategory = new Category ();
 				newCategory.Label = label;
 				Property.CategoryList.Add (newCategory);
 			}
@@ -134,6 +134,44 @@ namespace HomeCatalog.Android
 				Category cat = Property.CategoryList.CategoryWithName (label);
 				Property.CategoryList.Remove (cat);
 			}
+		}
+
+		private bool SetCheckBoxByCategory (string label)
+		{
+			if (CheckForCategoryByLabel (label) == true)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+
+		}
+
+		private void SaveCustomCategory (string label)
+		{
+			if (CustomCategoryField.Text != "")
+			{
+				Category CustomCategory = new Category ();
+				Property.CreateCategory (CustomCategory, label);
+				Property.CategoryList.Add (CustomCategory);
+			}
+		}
+
+		private void SaveCategories()
+		{
+			SaveCategoryFromCheckBox ("Appliance", ApplianceCheckBox);
+			SaveCategoryFromCheckBox ("Bath Appliance", BathApplianceCheckBox);
+			SaveCategoryFromCheckBox ("Dishes", DishCheckBox);
+			SaveCategoryFromCheckBox ("Electronics", ElectronicsCheckBox);
+			SaveCategoryFromCheckBox ("Furniture", FurnitureCheckBox);
+			SaveCategoryFromCheckBox ("Kitchen Appliance", KitchenApplianceCheckBox);
+			SaveCategoryFromCheckBox ("Storage", StorageCheckBox);
+			SaveCategoryFromCheckBox ("Tools", ToolsCheckBox);
+
+			// Save Custom Category from EditText field
+			SaveCustomCategory (CustomCategoryField.Text);
 		}
 //		private bool CheckForCategoryByLabel(Property prop, string label)
 //		{

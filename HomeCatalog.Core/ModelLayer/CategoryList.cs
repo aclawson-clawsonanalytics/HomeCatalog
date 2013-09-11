@@ -22,7 +22,7 @@ namespace HomeCatalog.Core
 			}
 		}
 
-		public Room CategoryWithName (string label)
+		public Category CategoryWithName (string label)
 		{
 			return InternalTable.FirstOrDefault (cat => cat.Label == label);
 		}
