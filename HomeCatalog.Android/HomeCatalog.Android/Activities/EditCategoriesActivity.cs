@@ -58,6 +58,8 @@ namespace HomeCatalog.Android
 			StorageCheckBox = FindViewById<CheckBox> (Resource.Id.StorageCheckBox);
 			ToolsCheckBox = FindViewById<CheckBox> (Resource.Id.ToolsCheckBox);
 
+			// Set check boxes by CategoryList
+			SetAllCheckBoxes ();
 
 			// Load EditText view
 			CustomCategoryField = FindViewById<EditText> (Resource.Id.CustomCategoryField);
@@ -95,12 +97,29 @@ namespace HomeCatalog.Android
 				SaveCategories ();
 				Intent PassPropertyID = new Intent (this,typeof(ViewCategoryListActivity));
 				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
-				StartActivity (PassPropertyID);
+				StartActivityForResult (PassPropertyID,0);
 			};
 		
 
 		}
 
+		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult (requestCode, resultCode, data);
+			SetAllCheckBoxes ();
+		}
+
+		private void SetAllCheckBoxes()
+		{
+			ApplianceCheckBox.Checked = SetCheckBoxByCategory ("Appliance");
+			BathApplianceCheckBox.Checked = SetCheckBoxByCategory ("Bath Appliance");
+			DishCheckBox.Checked = SetCheckBoxByCategory ("Dishes");
+			ElectronicsCheckBox.Checked = SetCheckBoxByCategory ("Electronics");
+			FurnitureCheckBox.Checked = SetCheckBoxByCategory ("Furniture");
+			KitchenApplianceCheckBox.Checked = SetCheckBoxByCategory ("Kitchen Appliance");
+			StorageCheckBox.Checked = SetCheckBoxByCategory ("Storage");
+			ToolsCheckBox.Checked = SetCheckBoxByCategory ("Tools");
+		}
 		private bool CheckForCategoryByLabel(string label)
 		{
 			int count = 0;

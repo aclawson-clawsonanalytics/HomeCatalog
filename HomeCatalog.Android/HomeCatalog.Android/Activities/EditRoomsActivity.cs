@@ -89,7 +89,7 @@ namespace HomeCatalog.Android
 				SaveRooms ();
 				Intent PassPropertyID = new Intent (this,typeof(ViewRoomListActivity));
 				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
-				StartActivity (PassPropertyID);
+				StartActivityForResult (PassPropertyID,0);
 			};
 
 			addCustomButton.Click += (sender, e) => 
@@ -121,17 +121,22 @@ namespace HomeCatalog.Android
 			};
 
 
+		}
 
 
+		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult (requestCode, resultCode, data);
+			SetAllCheckBoxes ();
+		}
 
-
-
-			//Testing
-			DisplayRoomsInConsole ();
-
-
-
-
+		private void SetAllCheckBoxes ()
+		{
+			KitchenCheckBox.Checked = SetCheckBoxByRoom ("Kitchen");
+			LivingCheckBox.Checked = SetCheckBoxByRoom ("Living Room");
+			StorageCheckBox.Checked = SetCheckBoxByRoom ("Storage");
+			BasementCheckBox.Checked = SetCheckBoxByRoom ("Basement");
+			OfficeCheckBox.Checked = SetCheckBoxByRoom ("Office");
 		}
 
 		private bool CheckForRoomByLabel(string label)
