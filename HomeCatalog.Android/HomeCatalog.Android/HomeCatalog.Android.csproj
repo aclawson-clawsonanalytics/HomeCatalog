@@ -127,6 +127,7 @@
     <Compile Include="Fragments\ReceiptDialogFragment.cs" />
     <Compile Include="Fragments\OptionDialogFragment.cs" />
     <Compile Include="Fragments\DeleteDialogFragment.cs" />
+    <Compile Include="Activities\CameraActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -155,6 +156,7 @@
     <AndroidResource Include="Resources\layout\FullPhotoView.axml" />
     <AndroidResource Include="Resources\layout\DisplayItemsView.axml" />
     <AndroidResource Include="Resources\layout\ItemDetailsView.axml" />
+    <AndroidResource Include="Resources\layout\CameraView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
