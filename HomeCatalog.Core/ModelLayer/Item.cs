@@ -18,10 +18,10 @@ namespace HomeCatalog.Core
 		public string ParentID { get; set; }
 		public string ItemName { get; set; }
 
-		public string PurchaseDate { get; set; }
-		public string PurchaseValue {get;set;}
-		public string AppraisalDate {get;set;}
-		public string AppraisalValue { get; set; }
+		public DateTime PurchaseDate { get; set; }
+		public double PurchaseValue {get;set;}
+		public DateTime AppraisalDate {get;set;}
+		public double AppraisalValue { get; set; }
 		public string ModelNumber { get; set; }
 		public string SerialNumber {get;set;}
 
