@@ -30,6 +30,7 @@
         android:background="@color/white"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="10dp"
+        android:singleLine="true"
         android:textColor="@color/black" />
     <TextView
         android:id="@+id/PropAddressLabel"
@@ -51,6 +52,7 @@
         android:background="@color/white"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="10dp"
+        android:singleLine="true"
         android:textColor="@color/black" />
     <TextView
         android:id="@+id/PropCityLabel"
@@ -72,6 +74,7 @@
         android:background="@color/white"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="10dp"
+        android:singleLine="true"
         android:textColor="@color/black" />
     <TextView
         android:id="@+id/PropStateLabel"
@@ -93,6 +96,7 @@
         android:background="@color/white"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="10dp"
+        android:singleLine="true"
         android:textColor="@color/black" />
     <TextView
         android:id="@+id/PropZipLabel"
@@ -113,6 +117,7 @@
         android:layout_marginRight="10dp"
         android:background="@color/white"
         android:layout_alignParentRight="true"
+        android:singleLine="true"
         android:textColor="@color/black" />
 <!--
     <TextView

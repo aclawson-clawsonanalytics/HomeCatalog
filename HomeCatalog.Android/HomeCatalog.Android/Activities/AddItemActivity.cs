@@ -112,10 +112,10 @@ namespace HomeCatalog.Android
 			}
 
 			itemNameField.Text = Item.ItemName;
-			purchaseDateField.Text = Item.PurchaseDate;
-			purchaseValueField.Text = Item.PurchaseValue;
-			appraisalDateField.Text = Item.AppraisalDate;
-			appraisalValueField.Text = Item.AppraisalValue;
+//			purchaseDateField.Text = Item.PurchaseDate;
+//			purchaseValueField.Text = Item.PurchaseValue;
+//			appraisalDateField.Text = Item.AppraisalDate;
+//			appraisalValueField.Text = Item.AppraisalValue;
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
 		}
@@ -129,10 +129,10 @@ namespace HomeCatalog.Android
 			}
 
 			Item.ItemName = itemNameField.Text;
-			Item.PurchaseDate = purchaseDateField.Text;
-			Item.PurchaseValue = purchaseValueField.Text;
-			Item.AppraisalDate = appraisalDateField.Text;
-			Item.AppraisalValue = appraisalValueField.Text;
+//			Item.PurchaseDate = purchaseDateField.Text;
+//			Item.PurchaseValue = purchaseValueField.Text;
+//			Item.AppraisalDate = appraisalDateField.Text;
+//			Item.AppraisalValue = appraisalValueField.Text;
 			Item.ModelNumber = modelNumberField.Text;
 			Item.SerialNumber = serialNumberField.Text;
 

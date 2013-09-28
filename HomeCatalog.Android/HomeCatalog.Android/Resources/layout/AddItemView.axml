@@ -31,7 +31,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:background="@color/white"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:singleLine="true" />
     <TextView
         android:text="Purchase Date: "
         android:layout_width="wrap_content"
@@ -52,7 +53,15 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@color/white"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:singleLine="true" />
+<!--
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/itemPurchaseDateLabel"
+        android:layout_alignBaseline="@id/itemPurchaseDateLabel"
+        android:id="@+id/datePicker1" /> -->
     <TextView
         android:text="Purchase Value: "
         android:layout_width="wrap_content"
@@ -73,6 +82,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@color/white"
+        android:singleLine="true"
         android:textColor="@color/black" />
     <TextView
         android:text="Appraisal Date: "
@@ -96,6 +106,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:singleLine="true"
         android:textColor="@color/black" />
     <TextView
         android:text="Appraisal Value: "
@@ -117,7 +128,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:background="@color/white"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:singleLine="true" />
     <TextView
         android:text="Room: "
         android:layout_width="wrap_content"
@@ -180,6 +192,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
+        android:singleLine="true"
         android:background="@color/white"
         android:textColor="@color/black" />
     <TextView
@@ -203,6 +216,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignLeft="@id/modelNumberField"
         android:layout_marginRight="10dp"
+        android:singleLine="true"
         android:textColor="@color/black" />
     <Button
         android:text="Receipt"
