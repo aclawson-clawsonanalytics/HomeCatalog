@@ -41,6 +41,15 @@
         android:id="@+id/itemPurchaseDateLabel"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/purchaseDateDisplay"
+        android:layout_toRightOf="@id/itemPurchaseDateLabel"
+        android:layout_alignBaseline="@id/itemPurchaseDateLabel"
+        android:layout_marginLeft="10dp"
+        android:text="Date Goes Here" />
+<!--  	
     <EditText
         android:inputType="date"
         android:layout_width="wrap_content"
@@ -54,7 +63,7 @@
         android:layout_marginRight="10dp"
         android:background="@color/white"
         android:textColor="@color/black"
-        android:singleLine="true" />
+        android:singleLine="true" /> -->
 <!--
     <DatePicker
         android:layout_width="wrap_content"
@@ -62,6 +71,19 @@
         android:layout_toRightOf="@id/itemPurchaseDateLabel"
         android:layout_alignBaseline="@id/itemPurchaseDateLabel"
         android:id="@+id/datePicker1" /> -->
+    <Button
+        android:id="@+id/setPurchaseDateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/purchaseDateDisplay"
+        android:layout_alignBaseline="@id/purchaseDateDisplay"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="10dp"
+        android:text="Set Date" />
     <TextView
         android:text="Purchase Value: "
         android:layout_width="wrap_content"
@@ -93,6 +115,7 @@
         android:textSize="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp" />
+<!--
     <EditText
         android:inputType="date"
         android:layout_width="wrap_content"
@@ -107,7 +130,28 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:singleLine="true"
-        android:textColor="@color/black" />
+        android:textColor="@color/black" /> -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/appraisalDateDisplay"
+        android:layout_toRightOf="@id/appraisalDateLabel"
+        android:layout_alignBaseline="@id/appraisalDateLabel"
+        android:layout_marginLeft="10dp"
+        android:text="Date Goes Here" />
+    <Button
+        android:id="@+id/setAppraisalDateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/appraisalDateDisplay"
+        android:layout_alignBaseline="@id/appraisalDateDisplay"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="10dp"
+        android:text="Set Date" />
     <TextView
         android:text="Appraisal Value: "
         android:layout_width="wrap_content"
@@ -154,7 +198,7 @@
         android:id="@+id/roomLabelSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/appraisalDateField"
+        android:layout_below="@id/appraisalDateDisplay"
         android:layout_alignBaseline="@id/itemRoomLabel"
         android:layout_toRightOf="@id/itemRoomLabel"
         android:layout_alignParentRight="true"

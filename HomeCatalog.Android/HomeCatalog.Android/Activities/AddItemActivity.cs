@@ -27,9 +27,16 @@ namespace HomeCatalog.Android
 		private EditText modelNumberField { get; set; }
 		private EditText serialNumberField { get; set; }
 
+		private TextView purchaseDateDisplay { get; set; }
+		private TextView appraisalDateDisplay { get; set; }
+
+		private DatePicker purchaseDate { get; set; }
+		private DatePicker appraisalDate { get; set; }
 
 		private Spinner roomLabelSpinner { get; set; }
 		private Spinner categoryLabelSpinner { get; set; }
+
+		const  int Date_Dialog_ID1 = 0;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -50,16 +57,29 @@ namespace HomeCatalog.Android
 
 			// Load EditText views by ID
 			itemNameField = FindViewById<EditText> (Resource.Id.itemNameField);
-			purchaseDateField = FindViewById<EditText> (Resource.Id.purchaseDateField);
+			//purchaseDateField = FindViewById<EditText> (Resource.Id.purchaseDateField);
 			purchaseValueField = FindViewById<EditText> (Resource.Id.purchaseValueField);
-			appraisalDateField = FindViewById<EditText> (Resource.Id.appraisalDateField);
+			//appraisalDateField = FindViewById<EditText> (Resource.Id.appraisalDateField);
 			appraisalValueField = FindViewById<EditText> (Resource.Id.appraisalValueField);
 			modelNumberField = FindViewById<EditText> (Resource.Id.modelNumberField);
 			serialNumberField = FindViewById<EditText> (Resource.Id.serialNumberField);
+
+			purchaseDateDisplay = FindViewById<TextView> (Resource.Id.purchaseDateDisplay);
+			appraisalDateDisplay = FindViewById<TextView> (Resource.Id.appraisalDateDisplay);
+
 			roomLabelSpinner = FindViewById<Spinner> (Resource.Id.roomLabelSpinner);
 			categoryLabelSpinner = FindViewById<Spinner> (Resource.Id.categoryLabelSpinner);
 
 			DisplayItemInfo ();
+
+			Button setPurchaseDateButton = FindViewById<Button> (Resource.Id.setPurchaseDateButton);
+			setPurchaseDateButton.Click += delegate{ ShowDialog (Date_Dialog_ID1);};
+
+			Button setAppraisalDateButton = FindViewById<Button> (Resource.Id.setAppraisalDateButton);
+			setAppraisalDateButton.Click += (sender, e) => 
+			{
+
+			};
 
 			Button receiptButton = FindViewById<Button> (Resource.Id.receiptButton);
 			receiptButton.Click += (sender, e) => 
