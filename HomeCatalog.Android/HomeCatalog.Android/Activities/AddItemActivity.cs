@@ -38,6 +38,8 @@ namespace HomeCatalog.Android
 
 		const  int Date_Dialog_ID1 = 0;
 
+		const int Date_Dialog_ID2 = 1;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
