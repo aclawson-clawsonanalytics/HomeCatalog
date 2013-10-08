@@ -36,6 +36,8 @@ namespace HomeCatalog.Android
 		private Spinner roomLabelSpinner { get; set; }
 		private Spinner categoryLabelSpinner { get; set; }
 
+		private DateTime CurrentDate { get; set; }
+
 		const  int Date_Dialog_ID1 = 0;
 
 		const int Date_Dialog_ID2 = 1;
@@ -74,14 +76,13 @@ namespace HomeCatalog.Android
 
 			DisplayItemInfo ();
 
+			CurrentDate = DateTime.Today;
+
 			Button setPurchaseDateButton = FindViewById<Button> (Resource.Id.setPurchaseDateButton);
 			setPurchaseDateButton.Click += delegate{ ShowDialog (Date_Dialog_ID1);};
 
 			Button setAppraisalDateButton = FindViewById<Button> (Resource.Id.setAppraisalDateButton);
-			setAppraisalDateButton.Click += (sender, e) => 
-			{
-
-			};
+			setAppraisalDateButton.Click += delegate{ ShowDialog (Date_Dialog_ID2);};
 
 			Button receiptButton = FindViewById<Button> (Resource.Id.receiptButton);
 			receiptButton.Click += (sender, e) => 
@@ -178,6 +179,41 @@ namespace HomeCatalog.Android
 			Item.CategoryID = ((CategorySpinnerAdapter)categoryLabelSpinner.Adapter) [categoryLabelSpinner.SelectedItemPosition].ID;
 			}
 			Property.ItemList.Save (Item);
+		}
+
+		private void UpdatePurchaseDateDisplay()
+		{
+			purchaseDateDisplay.Text = Item.PurchaseDate.ToString ();
+		}
+
+		private void UpdateAppraisalDateDisplay()
+		{
+			appraisalDateDisplay.Text = Item.PurchaseDate.ToString ();
+		}
+
+		void OnPurchaseDateSet (object sender,DatePickerDialog.DateSetEventArgs e)
+		{
+			Item.PurchaseDate = e.Date;
+			UpdatePurchaseDateDisplay ();
+		}
+
+		void OnAppraisalDateSet (object sender,DatePickerDialog.DateSetEventArgs e)
+		{
+			Item.PurchaseDate = e.Date;
+			UpdateAppraisalDateDisplay ();
+		}
+
+		protected override Dialog OnCreateDialog (int id)
+		{
+			switch (id) {
+			case Date_Dialog_ID1:
+				return new DatePickerDialog (this, OnPurchaseDateSet, CurrentDate.Year, CurrentDate.Month - 1,
+				                       CurrentDate.Day);
+			case Date_Dialog_ID2:
+				return new DatePickerDialog (this, OnAppraisalDateSet, CurrentDate.Year, CurrentDate.Month-1,
+				                       CurrentDate.Day);
+			}
+			return null;
 		}
 	}
 }
