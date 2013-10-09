@@ -23,6 +23,7 @@ namespace HomeCatalog.Android
 		private EditText PropCityField { get; set; }
 		private EditText PropStateField { get; set; }
 		private EditText PropZipField { get; set; }
+		private EditText PropCountryField { get; set; }
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -37,6 +38,7 @@ namespace HomeCatalog.Android
 			PropCityField = FindViewById<EditText> (Resource.Id.PropCityField);
 			PropStateField = FindViewById<EditText> (Resource.Id.PropCityField);
 			PropZipField = FindViewById<EditText> (Resource.Id.PropZipField);
+			PropCountryField = FindViewById<EditText> (Resource.Id.PropCountryField);
 
 			DisplayPropertyInField ();
 
@@ -85,7 +87,8 @@ namespace HomeCatalog.Android
 			Property.Address = PropAddressField.Text;
 			Property.City = PropCityField.Text;
 			Property.State = PropStateField.Text;
-			Property.ZipCode = PropZipField.Text; 
+			Property.ZipCode = PropZipField.Text;
+			Property.Country = PropCountryField.Text;
 			PropertyStore.CurrentStore.SaveProperty ();
 		}
 

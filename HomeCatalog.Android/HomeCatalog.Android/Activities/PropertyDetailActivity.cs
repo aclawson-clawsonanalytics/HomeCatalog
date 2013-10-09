@@ -23,6 +23,7 @@ namespace HomeCatalog.Android
 		private TextView CityText {get;set;}
 		private TextView StateText { get; set; }
 		private TextView ZipText { get; set; }
+		private TextView CountryText { get; set; }
 	
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -44,6 +45,8 @@ namespace HomeCatalog.Android
 
 			ZipText = FindViewById<TextView> (Resource.Id.ZipLabel);
 			ZipText.Text = Property.ZipCode;
+
+			CountryText = FindViewById<TextView> (Resource.Id.CountryLabel);
 
 			//Load Buttons From View
 

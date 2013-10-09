@@ -47,6 +47,19 @@ namespace HomeCatalog.Core.Tests
 			sut.State = "Colorado";
 			Assert.That (sut.State== "Colorado");
 		}
-	}
+
+		[Test()]
+		public void PropertyZipIsCorrect()
+		{
+			sut.ZipCode = "80015";
+			Assert.That (sut.ZipCode == "80015");
+		}
+
+		[Test()]
+		[public void PropertyCountryIsCorrect()
+		{
+			sut.Country = "USA";
+			Assert.That (sut.Country == "USA")
+		}
 }
 

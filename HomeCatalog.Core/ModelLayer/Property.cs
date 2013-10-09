@@ -21,6 +21,7 @@ namespace HomeCatalog.Core
 		public string City {get;set;}
 		public string State { get; set; }
 		public string ZipCode {get;set;}
+		public string Country { get; set; }
 
 		public int NumberBaths { get; set; }
 		public int NumberBeds { get; set; }

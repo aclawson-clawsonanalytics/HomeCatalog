@@ -119,6 +119,27 @@
         android:layout_alignParentRight="true"
         android:singleLine="true"
         android:textColor="@color/black" />
+    <TextView
+        android:id="@+id/PropCountryLabel"
+        android:layout_below="@id/PropZipLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Country:"
+        android:textSize="10dp" />
+    <EditText
+        android:id="@+id/PropCountryField"
+        android:layout_toRightOf="@id/PropCountryLabel"
+        android:layout_alignBottom="@id/PropCountryLabel"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="10dp"
+        android:background="@color/white"
+        android:layout_alignParentRight="true"
+        android:singleLine="true"
+        android:textColor="@color/black" />
 <!--
     <TextView
         android:id="@+id/RoomSectionLabel"
