@@ -47,6 +47,7 @@ namespace HomeCatalog.Android
 			ZipText.Text = Property.ZipCode;
 
 			CountryText = FindViewById<TextView> (Resource.Id.CountryLabel);
+			CountryText.Text = Property.Country;
 
 			//Load Buttons From View
 
