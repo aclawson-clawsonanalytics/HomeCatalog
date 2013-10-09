@@ -37,8 +37,9 @@ namespace HomeCatalog.Android
 		private Spinner categoryLabelSpinner { get; set; }
 
 		private DateTime CurrentDate { get; set; }
-
-		const  int Date_Dialog_ID1 = 0;
+		private DateTime itemPurchaseDate { get; set; }
+		private DateTime itemAppraisalDate { get; set; }
+		const int Date_Dialog_ID1 = 0;
 
 		const int Date_Dialog_ID2 = 1;
 
@@ -152,9 +153,9 @@ namespace HomeCatalog.Android
 			}
 
 			Item.ItemName = itemNameField.Text;
-//			Item.PurchaseDate = purchaseDateField.Text;
+			Item.PurchaseDate = itemPurchaseDate;
 //			Item.PurchaseValue = purchaseValueField.Text;
-//			Item.AppraisalDate = appraisalDateField.Text;
+			Item.AppraisalDate = itemAppraisalDate;
 //			Item.AppraisalValue = appraisalValueField.Text;
 			Item.ModelNumber = modelNumberField.Text;
 			Item.SerialNumber = serialNumberField.Text;
@@ -183,23 +184,24 @@ namespace HomeCatalog.Android
 
 		private void UpdatePurchaseDateDisplay()
 		{
-			purchaseDateDisplay.Text = Item.PurchaseDate.ToString ();
+			purchaseDateDisplay.Text = itemPurchaseDate.ToString ();
 		}
 
 		private void UpdateAppraisalDateDisplay()
 		{
-			appraisalDateDisplay.Text = Item.PurchaseDate.ToString ();
+			appraisalDateDisplay.Text = itemAppraisalDate.ToString ();
 		}
 
 		void OnPurchaseDateSet (object sender,DatePickerDialog.DateSetEventArgs e)
 		{
-			Item.PurchaseDate = e.Date;
+			itemPurchaseDate = e.Date;
 			UpdatePurchaseDateDisplay ();
 		}
 
 		void OnAppraisalDateSet (object sender,DatePickerDialog.DateSetEventArgs e)
 		{
-			Item.PurchaseDate = e.Date;
+
+			itemAppraisalDate = e.Date;
 			UpdateAppraisalDateDisplay ();
 		}
 
