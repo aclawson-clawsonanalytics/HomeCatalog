@@ -311,4 +311,12 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="30dp"
         android:layout_alignBaseline="@id/EditRoomsButton" />
+    <Button
+        android:id="@+id/AddPropertyPhotoButton"
+        android:text="Add Property Photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditCategoriesButton"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

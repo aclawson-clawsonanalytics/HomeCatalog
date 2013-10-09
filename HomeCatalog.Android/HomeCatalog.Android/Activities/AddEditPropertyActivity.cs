@@ -46,6 +46,7 @@ namespace HomeCatalog.Android
 			Button CancelButton = FindViewById<Button> (Resource.Id.CancelButton);
 			Button EditRoomsButton = FindViewById<Button> (Resource.Id.EditRoomsButton);
 			Button EditCategoriesButton = FindViewById<Button> (Resource.Id.EditCategoriesButton);
+			Button AddPropertyPhotoButton = FindViewById<Button> (Resource.Id.AddPropertyPhotoButton);
 
 			CancelButton.Click += (sender, e) => 
 			{
@@ -75,6 +76,13 @@ namespace HomeCatalog.Android
 				Intent PassPropertyID = new Intent (this,typeof(EditCategoriesActivity));
 				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
 				StartActivity (PassPropertyID);
+			};
+
+			AddPropertyPhotoButton.Click += (sender, e) => 
+			{
+				var transaction = FragmentManager.BeginTransaction();
+				PhotoDialogFragment photoDialog = new PhotoDialogFragment();
+				photoDialog.Show(transaction,"photoDialog");
 			};
 
 
