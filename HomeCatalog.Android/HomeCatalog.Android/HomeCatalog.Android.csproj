@@ -133,6 +133,7 @@
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Adapters\ImageAdapter.cs" />
+    <None Include="Resources\layout\CameraView.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -156,7 +157,6 @@
     <AndroidResource Include="Resources\layout\FullPhotoView.axml" />
     <AndroidResource Include="Resources\layout\DisplayItemsView.axml" />
     <AndroidResource Include="Resources\layout\ItemDetailsView.axml" />
-    <AndroidResource Include="Resources\layout\CameraView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

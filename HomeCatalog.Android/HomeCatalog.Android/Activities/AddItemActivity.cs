@@ -12,7 +12,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "AddItemActivity")]			
+	[Activity (Label = "Enter item information")]			
 	public class AddItemActivity : Activity
 	{
 

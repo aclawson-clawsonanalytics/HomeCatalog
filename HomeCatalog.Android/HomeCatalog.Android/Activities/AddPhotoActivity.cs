@@ -12,7 +12,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "AddPhotoActivity")]			
+	[Activity (Label = "Add a Photo")]			
 	public class AddPhotoActivity : Activity
 	{
 		private Property Property { get; set; }

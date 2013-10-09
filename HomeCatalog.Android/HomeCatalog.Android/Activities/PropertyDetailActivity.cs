@@ -12,7 +12,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "PropertyDetailActivity")]			
+	[Activity (Label = "Property details")]			
 	public class PropertyDetailActivity : Activity
 	{
 		private Property Property {get;set;}

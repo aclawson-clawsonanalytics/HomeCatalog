@@ -12,7 +12,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "AddEditProperty")]			
+	[Activity (Label = "Edit Property Information")]			
 	public class AddEditPropertyActivity : Activity
 	{
 		private Property Property { get; set; }

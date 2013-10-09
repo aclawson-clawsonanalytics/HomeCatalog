@@ -15,7 +15,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "EditCategoriesActivity")]			
+	[Activity (Label = "Edit Categories")]			
 	public class EditCategoriesActivity : Activity
 	{
 		private Property Property {get;set;}

@@ -18,7 +18,7 @@ namespace HomeCatalog.Android
 {
 
 
-	[Activity (Label = "EditRoomsActivity")]			
+	[Activity (Label = "Edit Rooms")]			
 	public class EditRoomsActivity : Activity
 	{
 		private Property Property { get;set;}

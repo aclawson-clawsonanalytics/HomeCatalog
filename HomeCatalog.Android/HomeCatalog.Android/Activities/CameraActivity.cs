@@ -11,7 +11,7 @@ using Android.Widget;
 
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "CameraActivity")]			
+	[Activity (Label = "Camera")]			
 	public class CameraActivity : Activity
 	{
 		protected override void OnCreate (Bundle bundle)

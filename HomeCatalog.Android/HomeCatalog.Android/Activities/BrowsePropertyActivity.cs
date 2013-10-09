@@ -10,7 +10,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "HomeCatalog.Android", MainLauncher = true)]
+	[Activity (Label = "Select or add a property", MainLauncher = true)]
 	public class BrowsePropertyActivity : Activity
 	{
 		private PropertyListAdapter ListAdapter { get; set; }
