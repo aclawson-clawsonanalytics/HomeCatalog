@@ -94,7 +94,10 @@ namespace HomeCatalog.Android
 			Button goToPhotosButton = FindViewById<Button> (Resource.Id.goToPhotosButton);
 			goToPhotosButton.Click += (sender, e) => 
 			{
-				StartActivity (typeof(PhotoBrowserActivity));
+				SaveItemInfo ();
+				var photoBrowserIntent = new Intent (this, typeof(PhotoBrowserActivity));
+				photoBrowserIntent.PutExtra (Item.ItemIDKey, Item.ID);
+				StartActivity (photoBrowserIntent);
 			};
 
 			Button cancelAddItemButton = FindViewById<Button> (Resource.Id.cancelAddItemButton);

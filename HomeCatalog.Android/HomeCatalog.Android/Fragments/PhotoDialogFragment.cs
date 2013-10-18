@@ -5,11 +5,12 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
+//using Android.Runtime;
+//using Android.Views;
 using Android.Provider;
-using Android.Widget;
+//using Android.Widget;
 using Android.Content.PM;
+using Java.IO;
 
 
 namespace HomeCatalog.Android
@@ -17,6 +18,8 @@ namespace HomeCatalog.Android
 	public class PhotoDialogFragment : DialogFragment
 	{
 		private string[] optionList;
+		public int itemID { get; set; }
+		Java.IO.File _file;
 
 		public override Dialog OnCreateDialog(Bundle savedInstanceState)
 		{
@@ -37,17 +40,20 @@ namespace HomeCatalog.Android
 				{
 					switch (e.Which)
 					{
-						case 0:
+					case 0:
 						TakePhoto ();
 						break;
-							
 
+					case 1:
+						//OpenGallery();
+						break;
+							
 					}
 				}
 
 				else
 				{
-
+					//OpenGallery();
 				}
 			});
 
@@ -57,7 +63,7 @@ namespace HomeCatalog.Android
 		private bool IsThereAnAppToTakePictures()
 		{
 			Intent intent = new Intent (MediaStore.ActionImageCapture);
-			IList<ResolveInfo> availableActivities = PackageManager.QueryIntentActivities (intent, PackageInfoFlags.MatchDefaultOnly);
+			IList<ResolveInfo> availableActivities = Activity.PackageManager.QueryIntentActivities (intent, PackageInfoFlags.MatchDefaultOnly);
 			return availableActivities != null && availableActivities.Count > 0;
 		}
 
@@ -65,8 +71,8 @@ namespace HomeCatalog.Android
 		{
 			Intent intent = new Intent(MediaStore.ActionImageCapture);
 
-			//_file = new File(_dir, String.Format("myPhoto_{0}.jpg", Guid.NewGuid()));
-			//
+			//_file = new File();
+			
 			//intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(_file));
 
 			StartActivityForResult(intent, 0);

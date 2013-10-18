@@ -6,7 +6,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using HomeCatalog.Core;
-
+using Android.Content.PM;
 
 namespace HomeCatalog.Android
 {
@@ -21,7 +21,6 @@ namespace HomeCatalog.Android
 		{
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.PhotoBrowserView);
-
 
 			Property = PropertyStore.CurrentStore.Property;
 			// Get Item from intent
@@ -43,6 +42,7 @@ namespace HomeCatalog.Android
 			{
 				var transaction = FragmentManager.BeginTransaction();
 				PhotoDialogFragment photoDialog = new PhotoDialogFragment();
+				//photoDialog.itemID = Item.ID;
 				photoDialog.Show(transaction,"photoDialog");
 			};
 

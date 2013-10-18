@@ -1,10 +1,13 @@
 using System;
+using System.IO;
 using Android.App;
 using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+
 using Android.OS;
+
 using HomeCatalog.Core;
 
 
@@ -23,6 +26,8 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+			var documentDirectory = System.Environment.GetFolderPath (System.Environment.SpecialFolder.MyDocuments);
+			AssetStore.CurrentStore = new AssetStore(documentDirectory);
 
 
 			SetContentView (Resource.Layout.MainView);

@@ -6,6 +6,11 @@ namespace HomeCatalog.Core
 	public class AssetStore
 	{
 		string _storeDirectory;
+
+		public static AssetStore CurrentStore {
+			get;
+			set;
+		}
 		public AssetStore (string directory)
 		{
 			_storeDirectory = directory;
