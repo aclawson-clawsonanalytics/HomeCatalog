@@ -127,13 +127,13 @@
     <Compile Include="Fragments\ReceiptDialogFragment.cs" />
     <Compile Include="Fragments\OptionDialogFragment.cs" />
     <Compile Include="Fragments\DeleteDialogFragment.cs" />
-    <Compile Include="Activities\CameraActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Adapters\ImageAdapter.cs" />
     <None Include="Resources\layout\CameraView.axml" />
+    <None Include="Activities\CameraActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
