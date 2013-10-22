@@ -42,7 +42,7 @@ namespace HomeCatalog.Android
 			{
 				var transaction = FragmentManager.BeginTransaction();
 				PhotoDialogFragment photoDialog = new PhotoDialogFragment();
-				//photoDialog.itemID = Item.ID;
+				photoDialog.itemID = Item.ID;
 				photoDialog.Show(transaction,"photoDialog");
 			};
 
@@ -59,6 +59,10 @@ namespace HomeCatalog.Android
 
 
 
+		}
+		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult (requestCode, resultCode, data);
 		}
 
 

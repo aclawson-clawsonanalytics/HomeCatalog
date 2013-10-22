@@ -16,14 +16,12 @@ namespace HomeCatalog.Android
 	public class OptionDialogFragment : DialogFragment
 	{
 		private string[] optionList;
-		private Property Property { get; set; }
 		public delegate void OnItemSelectedDelegate (DialogClickEventArgs e);
 		public OnItemSelectedDelegate OnItemSelected {get; set;}
 
 		public override Dialog OnCreateDialog(Bundle savedInstanceState)
 		{
 			optionList = new string[] {"View","Edit","Delete"};
-			Property = PropertyStore.CurrentStore.Property;
 
 			var builder = new AlertDialog.Builder (Activity);
 			builder.SetTitle ("Options");

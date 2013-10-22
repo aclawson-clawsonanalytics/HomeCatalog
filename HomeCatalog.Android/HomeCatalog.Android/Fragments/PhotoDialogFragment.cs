@@ -5,12 +5,11 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.OS;
-//using Android.Runtime;
-//using Android.Views;
 using Android.Provider;
-//using Android.Widget;
 using Android.Content.PM;
 using Java.IO;
+
+using HomeCatalog.Core;
 
 
 namespace HomeCatalog.Android
@@ -70,13 +69,16 @@ namespace HomeCatalog.Android
 		private void TakePhoto()
 		{
 			Intent intent = new Intent(MediaStore.ActionImageCapture);
-
-			//_file = new File();
+			string asset = AssetStore.CurrentStore.NewEmptyAsset ();
+			string path = AssetStore.CurrentStore.PathForEmptyAsset (asset);
+			_file = new File(path);
 			
-			//intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(_file));
+			intent.PutExtra(MediaStore.ExtraOutput, global::Android.Net.Uri.FromFile(_file));
 
-			StartActivityForResult(intent, 0);
+			Activity.StartActivityForResult(intent, 0);
 		}
+
+
 		}
 }
 
