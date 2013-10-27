@@ -79,6 +79,9 @@ namespace HomeCatalog.Android
 
 			CurrentDate = DateTime.Today;
 
+			DisplayItemInfo ();
+
+
 			Button setPurchaseDateButton = FindViewById<Button> (Resource.Id.setPurchaseDateButton);
 			setPurchaseDateButton.Click += delegate{ ShowDialog (Date_Dialog_ID1);};
 
@@ -139,10 +142,10 @@ namespace HomeCatalog.Android
 			}
 
 			itemNameField.Text = Item.ItemName;
-//			purchaseDateField.Text = Item.PurchaseDate;
-//			purchaseValueField.Text = Item.PurchaseValue;
-//			appraisalDateField.Text = Item.AppraisalDate;
-//			appraisalValueField.Text = Item.AppraisalValue;
+			purchaseDateField.Text = Item.PurchaseDate.ToString ();
+			purchaseValueField.Text = Item.PurchaseValue.ToString ();
+			appraisalDateField.Text = Item.AppraisalDate.ToString ();
+			appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
 		}
