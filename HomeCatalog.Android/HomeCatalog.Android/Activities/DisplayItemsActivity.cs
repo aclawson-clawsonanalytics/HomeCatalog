@@ -61,7 +61,8 @@ namespace HomeCatalog.Android
 					switch (a.Which) {
 					case 0:
 					{
-						var ItemRequest = new Intent (this, typeof(ItemsDetailActivity));
+						//var ItemRequest = new Intent (this, typeof(ItemsDetailActivity));
+						var ItemRequest = new Intent (this,typeof(AddItemActivity));
 						ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
 						StartActivityForResult (ItemRequest,0);
 						break;
