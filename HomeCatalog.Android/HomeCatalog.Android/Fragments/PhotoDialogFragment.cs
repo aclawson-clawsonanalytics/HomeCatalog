@@ -52,7 +52,7 @@ namespace HomeCatalog.Android
 
 				else
 				{
-					//OpenGallery();
+					OpenGallery();
 				}
 			});
 
@@ -78,7 +78,26 @@ namespace HomeCatalog.Android
 			Activity.StartActivityForResult(intent, 0);
 		}
 
+		private void OpenGallery()
+		{
+			var imageIntent = new Intent ();
+			imageIntent.SetType ("image/*");
+			imageIntent.SetAction (Intent.ActionGetContent);
+			StartActivityForResult (
+				Intent.CreateChooser (imageIntent, "Select Photo"), 0);
+		}
 
+//		private override void OnActivityResult(int requestCode,Result resultCode,Intent data)
+//		{
+//			base.OnActivityResult (requestCode, resultCode, data);
+//
+//			if (resultCode == Result.Ok) 
+//			{
+//				var imageView = global::Android.App.FindViewById<ImageView> (Resource.Id.imageView1);
+//				imageView.SetImageURI (data.Data);
+//			}
+//
+//		}
 		}
 }
 

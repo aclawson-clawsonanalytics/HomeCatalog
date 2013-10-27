@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/RoomsViewLabel"
-        android:textSize="10dp"
+        android:textSize="15sdp"
         android:text="Click an item to remove it from the list" />
     <Button
         android:text="Edit Rooms"
