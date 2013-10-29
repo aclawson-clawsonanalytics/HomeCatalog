@@ -5,18 +5,25 @@
     android:layout_height="fill_parent"
     android:minWidth="25px"
     android:minHeight="25px">
+    <TextView
+        android:id="@+id/roomLabelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        android:text="Enter Room Label: " />
     <EditText
         android:id="@+id/roomField"
+        android:layout_below="@id/roomLabelText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:background="@color/White"
-        android:textSize="10dp" />
+        android:background="@color/white"
+        android:textSize="15dp" />
     <Button
         android:id="@+id/saveRoomLabelButton"
         android:layout_width="wrap_content"

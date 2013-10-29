@@ -25,6 +25,8 @@ namespace HomeCatalog.Android
 
 			SetContentView (Resource.Layout.RoomEditLayout);
 
+			roomLabelField = FindViewById<EditText> (Resource.Id.roomField);
+
 
 		}
 	}
