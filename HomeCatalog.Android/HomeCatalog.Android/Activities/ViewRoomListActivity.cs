@@ -46,25 +46,8 @@ namespace HomeCatalog.Android
 			Button AddRoomButton = FindViewById<Button> (Resource.Id.addRoomButton);
 			AddRoomButton.Click += (sender,e) =>
 			{
-				//Insert Code for RoomListDialog
-			};
-
-//			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
-//			{
-//				var transaction = FragmentManager.BeginTransaction ();
-//				DeleteDialogFragment deleteDialog = new DeleteDialogFragment ();
-//				deleteDialog.Show (transaction, "deleteDialog");
-//
-//				deleteDialog.OnItemSelected += (DialogClickEventArgs a) =>
-//				{
-//					Property.RoomList.Remove (ListAdapter [e.Position]);
-//					ListAdapter.NotifyDataSetChanged ();
-//				};
-//			};
-			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
-			{
 				var transaction = FragmentManager.BeginTransaction();
-				RoomListDialogFragment roomDialog = new OptionDialogFragment();
+				RoomListDialogFragment roomDialog = new RoomListDialogFragment ();
 				roomDialog.Show(transaction,"roomListDialog");
 
 				roomDialog.OnItemSelected += (DialogClickEventArgs a) =>
@@ -121,20 +104,38 @@ namespace HomeCatalog.Android
 					}
 						case 6:
 					{
-						// Add Code to go to the Edit Room View.
+						// Add Code to go to the Edit Room View for custom room 
+						break;
 					}
 					}
-				};
+			};
+
+//			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
+//			{
+//				var transaction = FragmentManager.BeginTransaction ();
+//				DeleteDialogFragment deleteDialog = new DeleteDialogFragment ();
+//				deleteDialog.Show (transaction, "deleteDialog");
+//
+//				deleteDialog.OnItemSelected += (DialogClickEventArgs a) =>
+//				{
+//					Property.RoomList.Remove (ListAdapter [e.Position]);
+//					ListAdapter.NotifyDataSetChanged ();
+//				};
+//			};
+
+			};
+
+			// listView ItemClick event
+			// Clicking on an existing room takes the user to a roomEditActivity
+			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
+			{
+
+
 				//				var PropertyDetails = new Intent (this,typeof(PropertyDetailActivity));
 				//				PropertyStore store = PropertyCollection.SharedCollection.FindPropertyStoreWithID (ListAdapter[e.Position].ID);
 				//				PropertyStore.CurrentStore = store;
 				//				StartActivity (PropertyDetails);
 			};
-			
-
-
-
-
 		}
 
 		private void AddBathroom()

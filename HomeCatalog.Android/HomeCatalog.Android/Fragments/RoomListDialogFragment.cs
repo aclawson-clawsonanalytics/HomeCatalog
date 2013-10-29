@@ -26,7 +26,7 @@ namespace HomeCatalog.Android
 			Property = PropertyStore.CurrentStore.Property;
 
 			var builder = new AlertDialog.Builder (Activity);
-			builder.SetTitle ("Edit Property");
+			builder.SetTitle ("Select a room to add:");
 			builder.SetItems (optionList,delegate(object sender, DialogClickEventArgs e)
 			{
 				OnItemSelected(e);

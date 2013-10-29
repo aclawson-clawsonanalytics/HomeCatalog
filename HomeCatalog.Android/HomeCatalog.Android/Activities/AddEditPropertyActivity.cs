@@ -63,7 +63,7 @@ namespace HomeCatalog.Android
 			EditRoomsButton.Click += (sender,e) => {
 				SaveProperty ();
 
-				Intent PassPropertyID = new Intent (this,typeof(EditRoomsActivity));
+				Intent PassPropertyID = new Intent (this,typeof(ViewRoomListActivity)); //Was EditRoomsActivity
 				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
 				StartActivity (PassPropertyID);
 
