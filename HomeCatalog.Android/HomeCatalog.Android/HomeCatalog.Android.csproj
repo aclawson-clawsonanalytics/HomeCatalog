@@ -127,6 +127,7 @@
     <Compile Include="Fragments\ReceiptDialogFragment.cs" />
     <Compile Include="Fragments\OptionDialogFragment.cs" />
     <Compile Include="Fragments\DeleteDialogFragment.cs" />
+    <Compile Include="Fragments\RoomListDialogFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />

@@ -10,6 +10,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="30sp"
         android:text="Rooms" />
+<!--
     <TextView
         android:id="@+id/deleteRoomMessage"
         android:layout_width="wrap_content"
@@ -18,25 +19,39 @@
         android:layout_below="@id/RoomsViewLabel"
         android:textSize="15dp"
         android:text="Click an item to remove it from the list" />
+        -->
     <Button
-        android:text="Edit Rooms"
+        android:text="+ Bath"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/deleteRoomMessage"
-        android:id="@+id/EditRoomsButton2" />
+        android:layout_below="@id/RoomsViewLabel"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:textSize="15dp"
+        android:id="@+id/addBathroomButton" />
     <Button
-        android:text="Back"
+        android:text="+ Bed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/deleteRoomMessage"
-        android:id="@+id/BackButton"
-        android:layout_alignParentRight="true" />
+        android:layout_below="@id/RoomsViewLabel"
+        android:id="@+id/addBedroomButton"
+        android:layout_alignBaseline="@id/addBathroomButton"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:text="Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/addBedroomButton"
+        android:id="@+id/addRoomButton"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/roomList"
-        android:layout_below="@id/BackButton"
+        android:layout_below="@id/addBathroomButton"
         android:layout_alignParentBottom="true" />
 </RelativeLayout>
