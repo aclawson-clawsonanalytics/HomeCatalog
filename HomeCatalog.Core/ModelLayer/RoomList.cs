@@ -26,6 +26,11 @@ namespace HomeCatalog.Core
 		{
 			return InternalTable.FirstOrDefault (room => room.Label == label);
 		}
+
+		public Room RoomWithID (int ID)
+		{
+			return InternalTable.FirstOrDefault (room => room.ID == ID);
+		}
 	}
 }
 

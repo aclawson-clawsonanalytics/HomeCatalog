@@ -15,18 +15,22 @@ namespace HomeCatalog.Android
 	public class RoomEditActivity : Activity
 	{
 		private Property Property { get; set; }
+		private int roomID { get; set; }
+		private Room room { get; set; }
+
 		private EditText roomLabelField { get; set; }
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
+			int roomID = Intent.GetIntExtra ("roomID",0);
 			Property = PropertyStore.CurrentStore.Property;
 
 			SetContentView (Resource.Layout.RoomEditLayout);
 
 			roomLabelField = FindViewById<EditText> (Resource.Id.roomField);
-
+			room = Property.RoomList.RoomWithID (roomID);
+			roomLabelField.Text = room.Label;
 
 		}
 	}

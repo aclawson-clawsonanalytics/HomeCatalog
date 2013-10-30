@@ -16,6 +16,7 @@ namespace HomeCatalog.Android
 		private RoomListAdapter ListAdapter { get; set; }
 		private Property Property { get; set; }
 		private string roomIDText { get; set; }
+		private string roomLabel { get; set; }
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -29,6 +30,13 @@ namespace HomeCatalog.Android
 			ListAdapter = new RoomListAdapter (this,Property);
 			listView.Adapter = ListAdapter;
 
+			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
+			{
+				//roomLabel = ListAdapter[e.Position].Label;
+				Intent RoomEdit = new Intent(this,typeof(RoomEditActivity));
+				RoomEdit.PutExtra ("roomID",ListAdapter[e.Position].ID);
+				StartActivity (RoomEdit);
+			};
 			Button AddBathroomButton = FindViewById<Button> (Resource.Id.addBathroomButton);
 			AddBathroomButton.Click += (sender, e) => 
 			{
@@ -115,7 +123,7 @@ namespace HomeCatalog.Android
 					{
 						// Add Code to go to the Edit Room View for custom room
 						Intent createCustomRoom = new Intent(this,typeof(RoomEditActivity));
-						createCustomRoom.PutExtra ("roomID",0);
+						createCustomRoom.PutExtra ("roomLabel",0);
 						break;
 					}
 					}
