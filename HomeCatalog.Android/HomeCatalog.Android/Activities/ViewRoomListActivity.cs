@@ -15,6 +15,7 @@ namespace HomeCatalog.Android
 	{
 		private RoomListAdapter ListAdapter { get; set; }
 		private Property Property { get; set; }
+		private string roomIDText { get; set; }
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -57,7 +58,7 @@ namespace HomeCatalog.Android
 						case 0:
 					{
 						Room newRoom = new Room();
-						newRoom.Label = "Kitchen";
+						newRoom.Label = "Attic";
 						Property.RoomList.Add (newRoom);
 						ListAdapter.NotifyDataSetChanged ();
 						break;
@@ -89,7 +90,7 @@ namespace HomeCatalog.Android
 						case 4:
 					{
 						Room newRoom = new Room ();
-						newRoom.Label = "Office";
+						newRoom.Label = "Living Room";
 						Property.RoomList.Add (newRoom);
 						ListAdapter.NotifyDataSetChanged ();
 						break;
@@ -104,7 +105,17 @@ namespace HomeCatalog.Android
 					}
 						case 6:
 					{
-						// Add Code to go to the Edit Room View for custom room 
+						Room newRoom = new Room ();
+						newRoom.Label = "Storage";
+						Property.RoomList.Add (newRoom);
+						ListAdapter.NotifyDataSetChanged ();
+						break;
+					}
+						case 7:
+					{
+						// Add Code to go to the Edit Room View for custom room
+						Intent createCustomRoom = new Intent(this,typeof(RoomEditActivity));
+						createCustomRoom.PutExtra ("roomID",0);
 						break;
 					}
 					}
