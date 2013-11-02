@@ -29,7 +29,7 @@ namespace HomeCatalog.Android
 			ListView listView = FindViewById<ListView> (Resource.Id.roomList);
 			ListAdapter = new RoomListAdapter (this,Property);
 			listView.Adapter = ListAdapter;
-
+			ListAdapter.NotifyDataSetChanged ();
 			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
 			{
 				//roomLabel = ListAdapter[e.Position].Label;
@@ -122,8 +122,14 @@ namespace HomeCatalog.Android
 						case 7:
 					{
 						// Add Code to go to the Edit Room View for custom room
+						Room newRoom = new Room ();
+						newRoom.Label = "Custom";
+
+						Property.RoomList.Add (newRoom);
+
 						Intent createCustomRoom = new Intent(this,typeof(RoomEditActivity));
-						createCustomRoom.PutExtra ("roomLabel",0);
+						createCustomRoom.PutExtra ("roomLabel",newRoom.ID);
+						StartActivity (createCustomRoom);
 						break;
 					}
 					}
@@ -157,11 +163,34 @@ namespace HomeCatalog.Android
 			};
 		}
 
-		private void AddBathroom()
+
+//		private void AddBathroom()
+//		{
+//			if (RoomLabelIsTaken("Bathroom") == false)
+//			{
+//				Room newRoom = new Room ();
+//				newRoom.Label = "Bathroom";
+//				Property.RoomList.Add (newRoom);
+//			}
+//			else
+//			{
+//				int bathCount = 2;
+//				string bathString = "Bathroom" + bathCount.ToString ();
+//				while (RoomLabelIsTaken (bathString) == false
+//			}
+//		}
+
+		private bool RoomLabelIsTaken(string label)
 		{
-
+			foreach (Room rm in Property.RoomList)
+			{
+				if (rm.Label == label)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
-
 	}
 }
 

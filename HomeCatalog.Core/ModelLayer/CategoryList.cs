@@ -26,6 +26,11 @@ namespace HomeCatalog.Core
 		{
 			return InternalTable.FirstOrDefault (cat => cat.Label == label);
 		}
+
+		public Category CategoryByID(int ID)
+		{
+			return InternalTable.FirstOrDefault (cat => cat.Label == ID);
+		}
 	}
 }
 

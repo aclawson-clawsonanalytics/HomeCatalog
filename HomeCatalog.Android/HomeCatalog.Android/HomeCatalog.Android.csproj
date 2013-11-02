@@ -65,9 +65,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Adapters\CategoryListAdapter.cs" />
-    <Compile Include="Activities\ViewCategoryListActivity.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Activities\AddItemActivity.cs" />
     <Compile Include="..\..\HomeCatalog.Core\StoreLayer\SQLite.cs">
       <Link>Core\StoreLayer\SQLite.cs</Link>
@@ -129,6 +126,14 @@
     <Compile Include="Fragments\DeleteDialogFragment.cs" />
     <Compile Include="Fragments\RoomListDialogFragment.cs" />
     <Compile Include="Activities\RoomEditActivity.cs" />
+    <Compile Include="Activities\CategoryEditActivity.cs" />
+    <Compile Include="Activities\ViewCategoryListActivity1.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Activities\ViewCategoryListActivity.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Fragments\CategoryListDialogFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -160,6 +165,8 @@
     <AndroidResource Include="Resources\layout\DisplayItemsView.axml" />
     <AndroidResource Include="Resources\layout\ItemDetailsView.axml" />
     <AndroidResource Include="Resources\layout\RoomEditLayout.axml" />
+    <AndroidResource Include="Resources\layout\CategoriesView.axml" />
+    <AndroidResource Include="Resources\layout\CategoryEditLayout.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

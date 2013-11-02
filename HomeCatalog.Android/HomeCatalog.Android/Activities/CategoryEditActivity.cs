@@ -12,27 +12,27 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "RoomEditActivity")]			
-	public class RoomEditActivity : Activity
+	public class CategoryEditActivity : Activity
 	{
 		private Property Property { get; set; }
-		private int roomID { get; set; }
-		private Room room { get; set; }
+		private int categoryID { get; set; }
+		private Room category { get; set; }
 
-		private EditText roomLabelField { get; set; }
+		private EditText categoryLabelField { get; set; }
 
 		private TextView labelTest { get; set; }
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			int roomID = Intent.GetIntExtra ("roomID",0);
+			int categoryID = Intent.GetIntExtra ("catID",0);
 			Property = PropertyStore.CurrentStore.Property;
 
-			SetContentView (Resource.Layout.RoomEditLayout);
+			SetContentView (Resource.Layout.CategoriesView);
 
-			roomLabelField = FindViewById<EditText> (Resource.Id.roomField);
+			categoryLabelField = FindViewById<EditText> (Resource.Id.roomField);
 			//room = Property.RoomList.RoomWithID (roomID);
-			roomLabelField.Text = Property.RoomList.RoomWithID (roomID).Label;
+			categoryLabelField.Text = Property.CategoryList.CategoryByID (categoryID).Label;
 
 			labelTest = FindViewById<TextView> (Resource.Id.labelTest);
 
@@ -41,8 +41,8 @@ namespace HomeCatalog.Android
 			{
 				//Property.RoomList.RoomWithID (roomID).Label = roomLabelField.Text;
 				//Finish ();
-				room = Property.RoomList.RoomWithID (roomID);
-				room.Label = roomLabelField.Text;
+				cat = Property.CategoryList.CategoryByID (categoryID);
+				room.Label = categoryLabelField.Text;
 				labelTest.Text = room.Label;
 				Finish ();
 			};
