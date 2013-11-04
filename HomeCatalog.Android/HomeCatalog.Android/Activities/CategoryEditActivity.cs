@@ -28,15 +28,15 @@ namespace HomeCatalog.Android
 			int categoryID = Intent.GetIntExtra ("catID",0);
 			Property = PropertyStore.CurrentStore.Property;
 
-			SetContentView (Resource.Layout.CategoriesView);
+			SetContentView (Resource.Layout.CategoryEditLayout);
 
-			categoryLabelField = FindViewById<EditText> (Resource.Id.roomField);
+			categoryLabelField = FindViewById<EditText> (Resource.Id.categoryField);
 			//room = Property.RoomList.RoomWithID (roomID);
 			categoryLabelField.Text = Property.CategoryList.CategoryByID (categoryID).Label;
 
 			labelTest = FindViewById<TextView> (Resource.Id.labelTest);
 
-			Button saveButton = FindViewById<Button> (Resource.Id.saveRoomLabelButton);
+			Button saveButton = FindViewById<Button> (Resource.Id.saveCategoryLabelButton);
 			saveButton.Click += (sender, e) => 
 			{
 				//Property.RoomList.RoomWithID (roomID).Label = roomLabelField.Text;
@@ -47,7 +47,7 @@ namespace HomeCatalog.Android
 				Finish ();
 			};
 
-			Button deleteButton = FindViewById<Button> (Resource.Id.deleteRoomButton);
+			Button deleteButton = FindViewById<Button> (Resource.Id.deleteCategoryButton);
 			deleteButton.Click += (sender, e) => 
 			{
 				Property.CategoryList.Remove (Property.CategoryList.CategoryByID (categoryID));
@@ -55,7 +55,7 @@ namespace HomeCatalog.Android
 			};
 
 
-			Button cancelButton = FindViewById<Button> (Resource.Id.cancelRoomEditButton);
+			Button cancelButton = FindViewById<Button> (Resource.Id.cancelCategoryEditButton);
 			cancelButton.Click += (sender, e) => 
 			{
 				Finish ();

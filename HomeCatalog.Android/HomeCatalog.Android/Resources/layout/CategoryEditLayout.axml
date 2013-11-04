@@ -6,15 +6,15 @@
     android:minWidth="25px"
     android:minHeight="25px">
     <TextView
-        android:id="@+id/roomLabelText"
+        android:id="@+id/categoryLabelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textSize="15dp"
-        android:text="Enter Room Label: " />
+        android:text="Enter Category Label: " />
     <EditText
-        android:id="@+id/roomField"
-        android:layout_below="@id/roomLabelText"
+        android:id="@+id/categoryField"
+        android:layout_below="@id/categoryLabelText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -28,14 +28,14 @@
         android:textSize="15dp" />
     <TextView
         android:id="@+id/labelTest"
-        android:layout_below="@id/roomField"
+        android:layout_below="@id/categoryField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="Label Test Here" />
     <Button
-        android:id="@+id/saveRoomLabelButton"
+        android:id="@+id/saveCategoryLabelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="10dp"
@@ -44,20 +44,20 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp" />
     <Button
-        android:id="@+id/deleteRoomButton"
+        android:id="@+id/deleteCategoryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="10dp"
         android:text="Delete"
-        android:layout_alignBaseline="@id/saveRoomLabelButton"
+        android:layout_alignBaseline="@id/saveCategoryLabelButton"
         android:layout_centerHorizontal="true" />
     <Button
-        android:id="@+id/cancelRoomEditButton"
+        android:id="@+id/cancelCategoryEditButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="10dp"
         android:text="Cancel"
-        android:layout_alignBaseline="@id/saveRoomLabelButton"
+        android:layout_alignBaseline="@id/saveCategoryLabelButton"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp" />
 </RelativeLayout>
