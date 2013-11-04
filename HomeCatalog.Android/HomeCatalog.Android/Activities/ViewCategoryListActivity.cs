@@ -100,7 +100,7 @@ namespace HomeCatalog.Android
 						case 5:
 					{
 						Category newCat = new Category ();
-						newCat.Label = "Office";
+						newCat.Label = "Kitchen Appliance";
 						Property.CategoryList.Add (newCat);
 						ListAdapter.NotifyDataSetChanged ();
 						break;
@@ -155,6 +155,12 @@ namespace HomeCatalog.Android
 //				//				PropertyStore.CurrentStore = store;
 //				//				StartActivity (PropertyDetails);
 //			};
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume ();
+			ListAdapter.NotifyDataSetChanged ();
 		}
 
 
