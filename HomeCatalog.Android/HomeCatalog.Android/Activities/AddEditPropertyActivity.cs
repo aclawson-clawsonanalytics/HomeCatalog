@@ -73,7 +73,7 @@ namespace HomeCatalog.Android
 			{
 				SaveProperty ();
 
-				Intent PassPropertyID = new Intent (this,typeof(EditCategoriesActivity));
+				Intent PassPropertyID = new Intent (this,typeof(ViewCategoryListActivity));
 				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
 				StartActivity (PassPropertyID);
 			};

@@ -180,17 +180,17 @@ namespace HomeCatalog.Android
 //			}
 //		}
 
-		private bool RoomLabelIsTaken(string label)
-		{
-			foreach (Room rm in Property.RoomList)
-			{
-				if (rm.Label == label)
-				{
-					return true;
-				}
-			}
-			return false;
-		}
+//		private bool RoomLabelIsTaken(string label)
+//		{
+//			foreach (Room rm in Property.RoomList)
+//			{
+//				if (rm.Label == label)
+//				{
+//					return true;
+//				}
+//			}
+//			return false;
+//		}
 	}
 }
 

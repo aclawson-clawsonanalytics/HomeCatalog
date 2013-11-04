@@ -16,7 +16,7 @@ namespace HomeCatalog.Android
 	{
 		private Property Property { get; set; }
 		private int categoryID { get; set; }
-		private Room category { get; set; }
+		private Category category { get; set; }
 
 		private EditText categoryLabelField { get; set; }
 
@@ -41,16 +41,16 @@ namespace HomeCatalog.Android
 			{
 				//Property.RoomList.RoomWithID (roomID).Label = roomLabelField.Text;
 				//Finish ();
-				cat = Property.CategoryList.CategoryByID (categoryID);
-				room.Label = categoryLabelField.Text;
-				labelTest.Text = room.Label;
+				category = Property.CategoryList.CategoryByID (categoryID);
+				category.Label = categoryLabelField.Text;
+				labelTest.Text = category.Label;
 				Finish ();
 			};
 
 			Button deleteButton = FindViewById<Button> (Resource.Id.deleteRoomButton);
 			deleteButton.Click += (sender, e) => 
 			{
-				Property.RoomList.Remove (Property.RoomList.RoomWithID (roomID));
+				Property.CategoryList.Remove (Property.CategoryList.CategoryByID (categoryID));
 				Finish ();
 			};
 

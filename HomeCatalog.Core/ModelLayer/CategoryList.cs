@@ -29,7 +29,7 @@ namespace HomeCatalog.Core
 
 		public Category CategoryByID(int ID)
 		{
-			return InternalTable.FirstOrDefault (cat => cat.Label == ID);
+			return InternalTable.FirstOrDefault (category => category.ID == ID);
 		}
 	}
 }

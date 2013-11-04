@@ -85,7 +85,7 @@ namespace HomeCatalog.Android
 					{
 						Category newCat = new Category ();
 						newCat.Label = "Furniture";
-						Property.RoomList.Add (newCat);
+						Property.CategoryList.Add (newCat);
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
@@ -93,37 +93,37 @@ namespace HomeCatalog.Android
 					{
 						Category newCat = new Category ();
 						newCat.Label = "Hobby";
-						Property.CategoryList.Add ("Kitchen Appliance"));
+						Property.CategoryList.Add (newCat);
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
 						case 5:
 					{
-						Room newRoom = new Room ();
-						newRoom.Label = "Office";
-						Property.RoomList.Add (newRoom);
+						Category newCat = new Category ();
+						newCat.Label = "Office";
+						Property.CategoryList.Add (newCat);
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
 						case 6:
 					{
-						Room newRoom = new Room ();
-						newRoom.Label = "Storage";
-						Property.RoomList.Add (newRoom);
+						Category newCat = new Category ();
+						newCat.Label = "Storage";
+						Property.CategoryList.Add (newCat);
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
 						case 7:
 					{
 						// Add Code to go to the Edit Room View for custom room
-						Room newRoom = new Room ();
-						newRoom.Label = "Custom";
+						Category newCat = new Category ();
+						newCat.Label = "Custom";
 
-						Property.RoomList.Add (newRoom);
+						Property.CategoryList.Add (newCat);
 
-						Intent createCustomRoom = new Intent(this,typeof(RoomEditActivity));
-						createCustomRoom.PutExtra ("roomLabel",newRoom.ID);
-						StartActivity (createCustomRoom);
+						Intent createCustomCategory = new Intent(this,typeof(CategoryEditActivity));
+						createCustomCategory.PutExtra ("catLabel",newCat.ID);
+						StartActivity (createCustomCategory);
 						break;
 					}
 					}
@@ -175,18 +175,18 @@ namespace HomeCatalog.Android
 //		}
 
 
-		private bool CategoryLabelIsTaken(string label)
-		{
-
-			foreach (Room rm in Property.RoomList)
-			{
-				if (rm.Label == label)
-				{
-					return true;
-				}
-			}
-			return false;
-		}
+//		private bool CategoryLabelIsTaken(string label)
+//		{
+//
+//			foreach (Room rm in Property.RoomList)
+//			{
+//				if (rm.Label == label)
+//				{
+//					return true;
+//				}
+//			}
+//			return false;
+//		}
 		 
 	}
 }
