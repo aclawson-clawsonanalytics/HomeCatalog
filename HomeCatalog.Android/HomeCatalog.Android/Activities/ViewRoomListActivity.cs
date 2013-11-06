@@ -40,6 +40,8 @@ namespace HomeCatalog.Android
 			Button AddBathroomButton = FindViewById<Button> (Resource.Id.addBathroomButton);
 			AddBathroomButton.Click += (sender, e) => 
 			{
+				AddBathroom ();
+				ListAdapter.NotifyDataSetChanged ();
 //				Intent PassPropertyID = new Intent (this,typeof(EditRoomsActivity));
 //				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
 //				StartActivity (PassPropertyID);
@@ -48,6 +50,8 @@ namespace HomeCatalog.Android
 			Button AddBedroomButton = FindViewById<Button> (Resource.Id.addBedroomButton);
 			AddBedroomButton.Click += (sender,e) =>
 			{
+				AddBedroom ();
+				ListAdapter.NotifyDataSetChanged();
 //				SetResult (Result.Canceled);
 //				Finish ();
 			};
@@ -164,33 +168,67 @@ namespace HomeCatalog.Android
 		}
 
 
-//		private void AddBathroom()
-//		{
-//			if (RoomLabelIsTaken("Bathroom") == false)
-//			{
-//				Room newRoom = new Room ();
-//				newRoom.Label = "Bathroom";
-//				Property.RoomList.Add (newRoom);
-//			}
-//			else
-//			{
-//				int bathCount = 2;
-//				string bathString = "Bathroom" + bathCount.ToString ();
-//				while (RoomLabelIsTaken (bathString) == false
-//			}
-//		}
+		private void AddBathroom()
+		{
 
-//		private bool RoomLabelIsTaken(string label)
-//		{
-//			foreach (Room rm in Property.RoomList)
-//			{
-//				if (rm.Label == label)
-//				{
-//					return true;
-//				}
-//			}
-//			return false;
-//		}
+			if (RoomLabelExists("Bathroom") == false)
+			{
+				Room newRoom = new Room ();
+				newRoom.Label = "Bathroom";
+				Property.RoomList.Add (newRoom);
+			}
+			else
+			{
+				int bathCount = 2;
+				string bathString = "Bathroom" + bathCount.ToString ();
+				while (RoomLabelExists(bathString) == true)
+				{
+					bathCount = bathCount + 1;
+					bathString = "Bathroom" + bathCount.ToString ();
+				}
+
+				Room newRoom = new Room ();
+				newRoom.Label = bathString;
+				Property.RoomList.Add (newRoom);
+			}
+		}
+
+		private void AddBedroom()
+		{
+
+			if (RoomLabelExists("Bedroom") == false)
+			{
+				Room newRoom = new Room ();
+				newRoom.Label = "Bedroom";
+				Property.RoomList.Add (newRoom);
+			}
+			else
+			{
+				int bedCount = 2;
+				string bedString = "Bedroom" + bedCount.ToString ();
+				while (RoomLabelExists(bedString) == true)
+				{
+					bedCount = bedCount + 1;
+					bedString = "Bedroom" + bedCount.ToString ();
+				}
+
+				Room newRoom = new Room ();
+				newRoom.Label = bedString;
+				Property.RoomList.Add (newRoom);
+			}
+		}
+
+		private bool RoomLabelExists(string label)
+		{
+			foreach (Room rm in Property.RoomList.AllItems ())
+			{
+				if (rm.Label == label)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 }
 
