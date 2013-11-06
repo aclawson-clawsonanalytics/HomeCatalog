@@ -45,7 +45,10 @@ namespace HomeCatalog.Android
 				room = Property.RoomList.RoomWithID (roomID);
 				room.Label = roomLabelField.Text;
 				labelTest.Text = room.Label;
+				Intent returnIntent = new Intent ();
+				SetResult (Result.Ok, returnIntent);     
 				Finish ();
+
 			};
 
 			Button deleteButton = FindViewById<Button> (Resource.Id.deleteRoomButton);

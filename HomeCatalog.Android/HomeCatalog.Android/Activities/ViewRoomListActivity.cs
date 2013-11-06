@@ -35,7 +35,7 @@ namespace HomeCatalog.Android
 				//roomLabel = ListAdapter[e.Position].Label;
 				Intent RoomEdit = new Intent(this,typeof(RoomEditActivity));
 				RoomEdit.PutExtra ("roomID",ListAdapter[e.Position].ID);
-				StartActivity (RoomEdit);
+				StartActivityForResult (RoomEdit,0);
 			};
 			Button AddBathroomButton = FindViewById<Button> (Resource.Id.addBathroomButton);
 			AddBathroomButton.Click += (sender, e) => 
@@ -133,7 +133,7 @@ namespace HomeCatalog.Android
 
 						Intent createCustomRoom = new Intent(this,typeof(RoomEditActivity));
 						createCustomRoom.PutExtra ("roomLabel",newRoom.ID);
-						StartActivity (createCustomRoom);
+						StartActivityForResult (createCustomRoom,0);
 						break;
 					}
 					}
@@ -156,15 +156,24 @@ namespace HomeCatalog.Android
 
 			// listView ItemClick event
 			// Clicking on an existing room takes the user to a roomEditActivity
-			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
+//			listView.ItemClick += (Object sender, AdapterView.ItemClickEventArgs e) =>
+//			{
+//
+//
+//				//				var PropertyDetails = new Intent (this,typeof(PropertyDetailActivity));
+//				//				PropertyStore store = PropertyCollection.SharedCollection.FindPropertyStoreWithID (ListAdapter[e.Position].ID);
+//				//				PropertyStore.CurrentStore = store;
+//				//				StartActivity (PropertyDetails);
+//			};
+		}
+
+		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult (requestCode, resultCode, data);
+			if (requestCode == 0)
 			{
-
-
-				//				var PropertyDetails = new Intent (this,typeof(PropertyDetailActivity));
-				//				PropertyStore store = PropertyCollection.SharedCollection.FindPropertyStoreWithID (ListAdapter[e.Position].ID);
-				//				PropertyStore.CurrentStore = store;
-				//				StartActivity (PropertyDetails);
-			};
+				ListAdapter.NotifyDataSetChanged ();
+			}
 		}
 
 
