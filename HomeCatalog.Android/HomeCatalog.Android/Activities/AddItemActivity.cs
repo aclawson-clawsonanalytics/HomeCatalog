@@ -142,9 +142,9 @@ namespace HomeCatalog.Android
 			}
 
 			itemNameField.Text = Item.ItemName;
-			purchaseDateField.Text = Item.PurchaseDate.ToString ();
+			//purchaseDateField.Text = Item.PurchaseDate.ToString ();
 			purchaseValueField.Text = Item.PurchaseValue.ToString ();
-			appraisalDateField.Text = Item.AppraisalDate.ToString ();
+			//appraisalDateField.Text = Item.AppraisalDate.ToString ();
 			appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
