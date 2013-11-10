@@ -202,10 +202,18 @@
         android:layout_below="@id/appraisalDateDisplay"
         android:layout_alignBaseline="@id/itemRoomLabel"
         android:layout_toRightOf="@id/itemRoomLabel"
-        android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:background="@color/white"
         android:layout_alignLeft="@id/itemNameField" />
+    <Button
+        android:id="@+id/roomPlusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignBaseline="@id/roomLabelSpinner"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:textSize="10dp"
+        android:text="+" />
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -214,9 +222,18 @@
         android:background="@color/white"
         android:layout_toRightOf="@id/itemCategoryLabel"
         android:layout_alignBaseline="@id/itemCategoryLabel"
-        android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_alignLeft="@id/roomLabelSpinner" />
+    <Button
+        android:id="@+id/categoryPlusButton"
+        android:layout_width="wrap_contnent"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/roomLabelSpinner"
+        android:layout_alignBaseline="@id/categoryLabelSpinner"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:textSize="10dp"
+        android:text="+" />
     <TextView
         android:text="Model Number: "
         android:layout_width="wrap_content"

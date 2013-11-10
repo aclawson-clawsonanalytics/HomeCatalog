@@ -75,13 +75,21 @@ namespace HomeCatalog.Android
 					}
 						case 2:
 					{
+						Category newCat = new Category();
+						newCat.Label = "Collection";
+						Property.CategoryList.Add (newCat);
+						ListAdapter.NotifyDataSetChanged ();
+						break;
+					}
+						case 3:
+					{
 						Category newCat = new Category ();
 						newCat.Label = "Electronics";
 						Property.CategoryList.Add (newCat);
 						ListAdapter.NotifyDataSetChanged();
 						break;
 					}
-						case 3:
+						case 4:
 					{
 						Category newCat = new Category ();
 						newCat.Label = "Furniture";
@@ -89,7 +97,7 @@ namespace HomeCatalog.Android
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
-						case 4:
+						case 5:
 					{
 						Category newCat = new Category ();
 						newCat.Label = "Hobby";
@@ -97,7 +105,7 @@ namespace HomeCatalog.Android
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
-						case 5:
+						case 6:
 					{
 						Category newCat = new Category ();
 						newCat.Label = "Kitchen Appliance";
@@ -105,7 +113,7 @@ namespace HomeCatalog.Android
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
-						case 6:
+						case 7:
 					{
 						Category newCat = new Category ();
 						newCat.Label = "Storage";
@@ -113,7 +121,7 @@ namespace HomeCatalog.Android
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
-						case 7:
+						case 8:
 					{
 						Category newCat = new Category ();
 						newCat.Label = "Tools";
@@ -121,7 +129,7 @@ namespace HomeCatalog.Android
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
-						case 8:
+						case 9:
 					{
 						// Add Code to go to the Edit Room View for custom room
 						Category newCat = new Category ();
