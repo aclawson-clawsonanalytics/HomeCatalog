@@ -131,7 +131,7 @@ namespace HomeCatalog.Android
 						Property.CategoryList.Save (newCat);
 
 						Intent createCustomCategory = new Intent(this,typeof(CategoryEditActivity));
-						createCustomCategory.PutExtra ("catLabel",newCat.ID);
+						createCustomCategory.PutExtra ("catID",newCat.ID);
 						StartActivityForResult (createCustomCategory,0);
 						break;
 					}

@@ -132,7 +132,7 @@ namespace HomeCatalog.Android
 						Property.RoomList.Add (newRoom);
 						Property.RoomList.Save (newRoom);
 						Intent createCustomRoom = new Intent(this,typeof(RoomEditActivity));
-						createCustomRoom.PutExtra ("roomLabel",newRoom.ID);
+						createCustomRoom.PutExtra ("roomID",newRoom.ID);
 						StartActivityForResult (createCustomRoom,0);
 						break;
 					}
