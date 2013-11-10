@@ -9,6 +9,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using HomeCatalog.Core;
+
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "RoomEditActivity")]			
@@ -43,8 +44,12 @@ namespace HomeCatalog.Android
 				//Finish ();
 				room = Property.RoomList.RoomWithID (roomID);
 				room.Label = roomLabelField.Text;
-				labelTest.Text = room.Label;
+
+				Property.RoomList.Save (room);
+				//Intent returnIntent = new Intent ();
+				SetResult (Result.Ok);     
 				Finish ();
+
 			};
 
 			Button deleteButton = FindViewById<Button> (Resource.Id.deleteRoomButton);
@@ -57,7 +62,7 @@ namespace HomeCatalog.Android
 
 			Button cancelButton = FindViewById<Button> (Resource.Id.cancelRoomEditButton);
 			cancelButton.Click += (sender, e) => 
-			{
+			{                       
 				Finish ();
 			};
 

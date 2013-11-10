@@ -23,6 +23,7 @@ namespace HomeCatalog.Android
 		private TextView CityText {get;set;}
 		private TextView StateText { get; set; }
 		private TextView ZipText { get; set; }
+
 		private TextView CountryText { get; set; }
 	
 		protected override void OnCreate (Bundle bundle)
@@ -35,20 +36,19 @@ namespace HomeCatalog.Android
 
 			//Load TextView views and set values
 			NameText = FindViewById<TextView> (Resource.Id.NameLabel);
-			NameText.Text = Property.PropertyName;
 
 			AddressText = FindViewById<TextView> (Resource.Id.AddressLabel);
 			AddressText.Text = Property.Address;
 
 			CityText = FindViewById<TextView> (Resource.Id.CityLabel);
-			CityText.Text = Property.City;
+
+			StateText = FindViewById<TextView> (Resource.Id.StateLabel);
 
 			ZipText = FindViewById<TextView> (Resource.Id.ZipLabel);
-			ZipText.Text = Property.ZipCode;
 
 			CountryText = FindViewById<TextView> (Resource.Id.CountryLabel);
-			CountryText.Text = Property.Country;
 
+			DisplayProperty ();
 			//Load Buttons From View
 
 			Button EditButton = FindViewById<Button> (Resource.Id.EditButton);
@@ -56,7 +56,7 @@ namespace HomeCatalog.Android
 			{
 				Intent PassPropertyID = new Intent(this,typeof(AddEditPropertyActivity));
 				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
-				StartActivity (PassPropertyID);
+				StartActivityForResult (PassPropertyID,0);
 			};
 
 
@@ -93,6 +93,7 @@ namespace HomeCatalog.Android
 			DeletePropertyButton.Click += (sender, e) => 
 			{
 				PropertyCollection.SharedCollection.RemovePropertyStoreWithID (Property.PropertyID);
+				SetResult (Result.Ok);
 				Finish ();
 			};
 
@@ -106,6 +107,25 @@ namespace HomeCatalog.Android
 
 
 
+		}
+
+		private void DisplayProperty()
+		{
+			NameText.Text = Property.PropertyName;
+			AddressText.Text = Property.Address;
+			CityText.Text = Property.City;
+			StateText.Text = Property.State;
+			ZipText.Text = Property.ZipCode;
+			CountryText.Text = Property.Country;
+
+		}
+		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult (requestCode, resultCode, data);
+			if (requestCode == 0)
+			{
+				DisplayProperty ();
+			}
 		}
 	}
 }

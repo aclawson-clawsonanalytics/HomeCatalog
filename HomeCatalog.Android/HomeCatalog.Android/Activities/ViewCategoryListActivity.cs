@@ -34,7 +34,7 @@ namespace HomeCatalog.Android
 				//roomLabel = ListAdapter[e.Position].Label;
 				Intent CategoryEdit = new Intent(this,typeof(CategoryEditActivity));
 				CategoryEdit.PutExtra ("catID",ListAdapter[e.Position].ID);
-				StartActivity (CategoryEdit);
+				StartActivityForResult (CategoryEdit,0);
 			};
 
 //			Button addCategory = FindViewById<Button> (Resource.Id.addCategoryButton);
@@ -51,7 +51,7 @@ namespace HomeCatalog.Android
 			{
 				var transaction = FragmentManager.BeginTransaction();
 				CategoryListDialogFragment catDialog = new CategoryListDialogFragment ();
-				catDialog.Show(transaction,"roomListDialog");
+				catDialog.Show(transaction,"catalogListDialog");
 
 				catDialog.OnItemSelected += (DialogClickEventArgs a) =>
 				{
@@ -115,15 +115,24 @@ namespace HomeCatalog.Android
 					}
 						case 7:
 					{
+						Category newCat = new Category ();
+						newCat.Label = "Tools";
+						Property.CategoryList.Add (newCat);
+						ListAdapter.NotifyDataSetChanged ();
+						break;
+					}
+						case 8:
+					{
 						// Add Code to go to the Edit Room View for custom room
 						Category newCat = new Category ();
 						newCat.Label = "Custom";
 
 						Property.CategoryList.Add (newCat);
+						Property.CategoryList.Save (newCat);
 
 						Intent createCustomCategory = new Intent(this,typeof(CategoryEditActivity));
-						createCustomCategory.PutExtra ("catLabel",newCat.ID);
-						StartActivity (createCustomCategory);
+						createCustomCategory.PutExtra ("catID",newCat.ID);
+						StartActivityForResult (createCustomCategory,0);
 						break;
 					}
 					}
@@ -157,10 +166,13 @@ namespace HomeCatalog.Android
 //			};
 		}
 
-		protected override void OnResume()
+		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
 		{
-			base.OnResume ();
-			ListAdapter.NotifyDataSetChanged ();
+			base.OnActivityResult (requestCode, resultCode, data);
+			if (requestCode == 0)
+			{
+				ListAdapter.NotifyDataSetChanged ();
+			}
 		}
 
 

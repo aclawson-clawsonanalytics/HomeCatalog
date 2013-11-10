@@ -42,7 +42,7 @@ namespace HomeCatalog.Android
 				var PropertyDetails = new Intent (this,typeof(PropertyDetailActivity));
 				PropertyStore store = PropertyCollection.SharedCollection.FindPropertyStoreWithID (ListAdapter[e.Position].ID);
 				PropertyStore.CurrentStore = store;
-				StartActivity (PropertyDetails);
+				StartActivityForResult (PropertyDetails,0);
 
 //				var transaction = FragmentManager.BeginTransaction();
 //				OptionDialogFragment optionDialog = new OptionDialogFragment();
