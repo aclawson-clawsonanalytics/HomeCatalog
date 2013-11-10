@@ -36,7 +36,7 @@ namespace HomeCatalog.Android
 			PropNameField = FindViewById<EditText> (Resource.Id.propNameField);
 			PropAddressField = FindViewById<EditText> (Resource.Id.PropAddressField);
 			PropCityField = FindViewById<EditText> (Resource.Id.PropCityField);
-			PropStateField = FindViewById<EditText> (Resource.Id.PropCityField);
+			PropStateField = FindViewById<EditText> (Resource.Id.PropStateField);
 			PropZipField = FindViewById<EditText> (Resource.Id.PropZipField);
 			PropCountryField = FindViewById<EditText> (Resource.Id.PropCountryField);
 

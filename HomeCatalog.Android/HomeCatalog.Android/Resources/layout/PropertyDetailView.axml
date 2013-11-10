@@ -35,10 +35,17 @@
         android:id="@+id/CityLabel"
         android:layout_centerHorizontal="true" />
     <TextView
-        android:text="PropertyZipHere"
+        android:text="PropertyStateHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/CityLabel"
+        android:id="@+id/StateLabel"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:text="PropertyZipHere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/StateLabel"
         android:id="@+id/ZipLabel"
         android:layout_centerHorizontal="true" />
     <TextView
@@ -52,7 +59,7 @@
         android:text="Edit Info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ZipLabel"
+        android:layout_below="@id/CountryLabel"
         android:id="@+id/EditButton"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
@@ -61,7 +68,7 @@
         android:text="Delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/CityLabel"
+        android:layout_below="@id/CountryLabel"
         android:id="@+id/DeletePropertyButton"
         android:layout_alignParentRight="true"
         android:layout_alignBaseline="@id/EditButton"

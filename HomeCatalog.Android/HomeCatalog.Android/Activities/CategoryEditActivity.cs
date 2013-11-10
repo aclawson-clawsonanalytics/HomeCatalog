@@ -11,7 +11,7 @@ using Android.Widget;
 using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "RoomEditActivity")]			
+	[Activity (Label = "CategoryEditActivity")]			
 	public class CategoryEditActivity : Activity
 	{
 		private Property Property { get; set; }
@@ -34,7 +34,7 @@ namespace HomeCatalog.Android
 			//room = Property.RoomList.RoomWithID (roomID);
 			categoryLabelField.Text = Property.CategoryList.CategoryByID (categoryID).Label;
 
-			labelTest = FindViewById<TextView> (Resource.Id.labelTest);
+
 
 			Button saveButton = FindViewById<Button> (Resource.Id.saveCategoryLabelButton);
 			saveButton.Click += (sender, e) => 
@@ -43,7 +43,8 @@ namespace HomeCatalog.Android
 				//Finish ();
 				category = Property.CategoryList.CategoryByID (categoryID);
 				category.Label = categoryLabelField.Text;
-				labelTest.Text = category.Label;
+				Property.CategoryList.Save (category);
+				SetResult (Result.Ok);
 				Finish ();
 			};
 

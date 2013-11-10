@@ -44,9 +44,10 @@ namespace HomeCatalog.Android
 				//Finish ();
 				room = Property.RoomList.RoomWithID (roomID);
 				room.Label = roomLabelField.Text;
-				labelTest.Text = room.Label;
-				Intent returnIntent = new Intent ();
-				SetResult (Result.Ok, returnIntent);     
+
+				Property.RoomList.Save (room);
+				//Intent returnIntent = new Intent ();
+				SetResult (Result.Ok);     
 				Finish ();
 
 			};
@@ -61,7 +62,7 @@ namespace HomeCatalog.Android
 
 			Button cancelButton = FindViewById<Button> (Resource.Id.cancelRoomEditButton);
 			cancelButton.Click += (sender, e) => 
-			{
+			{                       
 				Finish ();
 			};
 

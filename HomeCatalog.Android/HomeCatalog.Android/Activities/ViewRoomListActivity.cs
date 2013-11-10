@@ -130,7 +130,7 @@ namespace HomeCatalog.Android
 						newRoom.Label = "Custom";
 
 						Property.RoomList.Add (newRoom);
-
+						Property.RoomList.Save (newRoom);
 						Intent createCustomRoom = new Intent(this,typeof(RoomEditActivity));
 						createCustomRoom.PutExtra ("roomLabel",newRoom.ID);
 						StartActivityForResult (createCustomRoom,0);
