@@ -88,6 +88,8 @@ namespace HomeCatalog.Android
 
 		}
 
+
+
 		private void SaveProperty() 
 		{
 			// Set Property Attributes by the text in each EditText field
