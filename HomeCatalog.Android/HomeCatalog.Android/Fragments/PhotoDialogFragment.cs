@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,13 +68,13 @@ namespace HomeCatalog.Android
 		private void TakePhoto()
 		{
 			Intent intent = new Intent(MediaStore.ActionImageCapture);
-			string asset = AssetStore.CurrentStore.NewEmptyAsset ();
-			string path = AssetStore.CurrentStore.PathForEmptyAsset (asset);
-			_file = new File(path);
+			//string asset = AssetStore.CurrentStore.NewEmptyAsset ();
+			//string path = AssetStore.CurrentStore.PathForEmptyAsset (asset);
+			_file = GetTempFile ();
 			
 			intent.PutExtra(MediaStore.ExtraOutput, global::Android.Net.Uri.FromFile(_file));
 
-			Activity.StartActivityForResult(intent, 0);
+			Activity.StartActivityForResult(intent, 1);
 		}
 
 		private void OpenGallery()
@@ -87,17 +86,16 @@ namespace HomeCatalog.Android
 				Intent.CreateChooser (imageIntent, "Select Photo"), 0);
 		}
 
-//		private override void OnActivityResult(int requestCode,Result resultCode,Intent data)
-//		{
-//			base.OnActivityResult (requestCode, resultCode, data);
-//
-//			if (resultCode == Result.Ok) 
-//			{
-//				var imageView = global::Android.App.FindViewById<ImageView> (Resource.Id.imageView1);
-//				imageView.SetImageURI (data.Data);
-//			}
-//
-//		}
+		private Java.IO.File GetTempFile(){
+			//it will return /sdcard/image.tmp
+			File path = new File( Environment.GetExternalStoragePublicDirectory(Environment.DirectoryPictures), Activity.PackageName );
+			if (!path.Exists())
+			{
+				path.Mkdirs();
+			}
+			return new File(path, "image.tmp");
+		}
+
 		}
 }
 
