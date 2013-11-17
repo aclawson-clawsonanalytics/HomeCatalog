@@ -42,55 +42,55 @@ namespace HomeCatalog.Android
 				Finish ();
 			};
 
-//			listView.ItemClick += (sender, e) => 
-//			{
-//				var ItemRequest = new Intent (this,typeof(ItemsDetailActivity));
-//				ItemRequest.PutExtra (Item.ItemIDKey,ListAdapter[e.Position].ID);
-//				StartActivity (ItemRequest);
-//			};
-
-			listView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
+			listView.ItemClick += (sender, e) => 
 			{
-				selectedItem = e.Position;
+				var ItemRequest = new Intent (this,typeof(AddItemActivity));
+				ItemRequest.PutExtra (Item.ItemIDKey,ListAdapter[e.Position].ID);
+				StartActivityForResult (ItemRequest,0);
+			};
 
-				var transaction = FragmentManager.BeginTransaction ();
-				OptionDialogFragment optionDialog = new OptionDialogFragment ();
-				optionDialog.Show (transaction, "optionDialog");
-				optionDialog.OnItemSelected += (DialogClickEventArgs a) =>
-				{
-					switch (a.Which) {
-					case 0:
-					{
-						//var ItemRequest = new Intent (this, typeof(ItemsDetailActivity));
-						var ItemRequest = new Intent (this,typeof(AddItemActivity));
-						ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
-						StartActivityForResult (ItemRequest,0);
-						break;
-					}
-					case 1:
-					{
-						var ItemRequest = new Intent (this, typeof(AddItemActivity));
-						ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
-						StartActivityForResult (ItemRequest,0);
-						break;
-					}
+//			listView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
+//			{
+//
+//
+////				var transaction = FragmentManager.BeginTransaction ();
+////				OptionDialogFragment optionDialog = new OptionDialogFragment ();
+////				optionDialog.Show (transaction, "optionDialog");
+////				optionDialog.OnItemSelected += (DialogClickEventArgs a) =>
+////				{
+////					switch (a.Which) {
+////					case 0:
+////					{
+////						//var ItemRequest = new Intent (this, typeof(ItemsDetailActivity));
+////						var ItemRequest = new Intent (this,typeof(AddItemActivity));
+////						ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
+////						StartActivityForResult (ItemRequest,0);
+////						break;
+////					}
+////					case 1:
+////					{
+////						var ItemRequest = new Intent (this, typeof(AddItemActivity));
+////						ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
+////						StartActivityForResult (ItemRequest,0);
+////						break;
+////					}
+////
+////					case 2:
+////					{
+////						Property.ItemList.Remove (ListAdapter [e.Position]);
+////						ListAdapter.NotifyDataSetChanged ();
+////						break;
+////					}
+////					};
+//
+//
+//
+//				};
 
-					case 2:
-					{
-						Property.ItemList.Remove (ListAdapter [e.Position]);
-						ListAdapter.NotifyDataSetChanged ();
-						break;
-					}
-					};
 
 
 
-				};
-
-
-
-
-			};}
+			}
 
 		public void showItem(AdapterView.ItemClickEventArgs e)
 		{

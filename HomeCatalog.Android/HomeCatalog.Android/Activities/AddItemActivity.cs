@@ -81,7 +81,188 @@ namespace HomeCatalog.Android
 
 			DisplayItemInfo ();
 
+			Button roomAddButton = FindViewById<Button> (Resource.Id.roomPlusButton);
+			roomAddButton.Click += (sender, e) => 
+			{
+				var transaction = FragmentManager.BeginTransaction();
+				RoomListDialogFragment roomDialog = new RoomListDialogFragment ();
+				roomDialog.Show(transaction,"roomListDialog");
 
+				roomDialog.OnItemSelected += (DialogClickEventArgs a) =>
+				{
+					switch (a.Which)
+					{
+						case 0:
+					{
+						Room newRoom = new Room();
+						newRoom.Label = "Attic";
+						Property.RoomList.Add (newRoom);
+						ListAdapter.NotifyDataSetChanged ();
+						break;
+					}
+						case 1:
+					{
+						Room newRoom = new Room();
+						newRoom.Label = "Basement";
+						Property.RoomList.Add (newRoom);
+						ListAdapter.NotifyDataSetChanged ();
+						break;
+					}
+						case 2:
+					{
+						Room newRoom = new Room ();
+						newRoom.Label = "Garage";
+						Property.RoomList.Add (newRoom);
+						ListAdapter.NotifyDataSetChanged();
+						break;
+					}
+						case 3:
+					{
+						Room newRoom = new Room ();
+						newRoom.Label = "Kitchen";
+						Property.RoomList.Add (newRoom);
+						ListAdapter.NotifyDataSetChanged ();
+						break;
+					}
+						case 4:
+					{
+						Room newRoom = new Room ();
+						newRoom.Label = "Living Room";
+						Property.RoomList.Add (newRoom);
+						ListAdapter.NotifyDataSetChanged ();
+						break;
+					}
+						case 5:
+					{
+						Room newRoom = new Room ();
+						newRoom.Label = "Office";
+						Property.RoomList.Add (newRoom);
+						ListAdapter.NotifyDataSetChanged ();
+						break;
+					}
+						case 6:
+					{
+						Room newRoom = new Room ();
+						newRoom.Label = "Storage";
+						Property.RoomList.Add (newRoom);
+						ListAdapter.NotifyDataSetChanged ();
+						break;
+					}
+						case 7:
+					{
+						// Add Code to go to the Edit Room View for custom room
+						Room newRoom = new Room ();
+						newRoom.Label = "Custom";
+
+						Property.RoomList.Add (newRoom);
+						Property.RoomList.Save (newRoom);
+						Intent createCustomRoom = new Intent(this,typeof(RoomEditActivity));
+						createCustomRoom.PutExtra ("roomID",newRoom.ID);
+						StartActivityForResult (createCustomRoom,0);
+						break;
+					}
+					}
+			};
+			
+			Button categoryAddButton = FindViewById<Button> (Resource.Id.categoryPlusButton);
+			categoryAddButton.Click += (sender, e) => 
+				{
+					var transaction = FragmentManager.BeginTransaction();
+					CategoryListDialogFragment catDialog = new CategoryListDialogFragment ();
+					catDialog.Show(transaction,"catalogListDialog");
+
+					catDialog.OnItemSelected += (DialogClickEventArgs a) =>
+					{
+						switch (a.Which)
+						{
+							case 0:
+						{
+							Category newCat = new Category();
+							newCat.Label = "Appliance";
+							Property.CategoryList.Add (newCat);
+							ListAdapter.NotifyDataSetChanged ();
+							break;
+						}
+							case 1:
+						{
+							Category newCat = new Category();
+							newCat.Label = "Bathroom Appliance";
+							Property.CategoryList.Add (newCat);
+							ListAdapter.NotifyDataSetChanged ();
+							break;
+						}
+							case 2:
+						{
+							Category newCat = new Category();
+							newCat.Label = "Collection";
+							Property.CategoryList.Add (newCat);
+							ListAdapter.NotifyDataSetChanged ();
+							break;
+						}
+							case 3:
+						{
+							Category newCat = new Category ();
+							newCat.Label = "Electronics";
+							Property.CategoryList.Add (newCat);
+							ListAdapter.NotifyDataSetChanged();
+							break;
+						}
+							case 4:
+						{
+							Category newCat = new Category ();
+							newCat.Label = "Furniture";
+							Property.CategoryList.Add (newCat);
+							ListAdapter.NotifyDataSetChanged ();
+							break;
+						}
+							case 5:
+						{
+							Category newCat = new Category ();
+							newCat.Label = "Hobby";
+							Property.CategoryList.Add (newCat);
+							ListAdapter.NotifyDataSetChanged ();
+							break;
+						}
+							case 6:
+						{
+							Category newCat = new Category ();
+							newCat.Label = "Kitchen Appliance";
+							Property.CategoryList.Add (newCat);
+							ListAdapter.NotifyDataSetChanged ();
+							break;
+						}
+							case 7:
+						{
+							Category newCat = new Category ();
+							newCat.Label = "Storage";
+							Property.CategoryList.Add (newCat);
+							ListAdapter.NotifyDataSetChanged ();
+							break;
+						}
+							case 8:
+						{
+							Category newCat = new Category ();
+							newCat.Label = "Tools";
+							Property.CategoryList.Add (newCat);
+							ListAdapter.NotifyDataSetChanged ();
+							break;
+						}
+							case 9:
+						{
+							// Add Code to go to the Edit Room View for custom room
+							Category newCat = new Category ();
+							newCat.Label = "Custom";
+
+							Property.CategoryList.Add (newCat);
+							Property.CategoryList.Save (newCat);
+
+							Intent createCustomCategory = new Intent(this,typeof(CategoryEditActivity));
+							createCustomCategory.PutExtra ("catID",newCat.ID);
+							StartActivityForResult (createCustomCategory,0);
+							break;
+						}
+						}
+				};
 			Button setPurchaseDateButton = FindViewById<Button> (Resource.Id.setPurchaseDateButton);
 			setPurchaseDateButton.Click += delegate{ ShowDialog (Date_Dialog_ID1);};
 
@@ -116,6 +297,7 @@ namespace HomeCatalog.Android
 			saveAddItemButton.Click += (sender, e) => 
 			{
 				SaveItemInfo ();
+				SetResult (Result.Ok);
 				Finish ();
 			};
 
@@ -148,6 +330,7 @@ namespace HomeCatalog.Android
 			appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
+
 		}
 
 		private void SaveItemInfo()

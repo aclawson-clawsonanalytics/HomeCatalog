@@ -204,7 +204,8 @@
         android:layout_toRightOf="@id/itemRoomLabel"
         android:layout_marginRight="10dp"
         android:background="@color/white"
-        android:layout_alignLeft="@id/itemNameField" />
+        android:layout_alignLeft="@id/itemNameField"
+        android:layout_toLeftOf="@id/setAppraisalDateButton" />
     <Button
         android:id="@+id/roomPlusButton"
         android:layout_width="wrap_content"
@@ -222,18 +223,20 @@
         android:background="@color/white"
         android:layout_toRightOf="@id/itemCategoryLabel"
         android:layout_alignBaseline="@id/itemCategoryLabel"
-        android:layout_marginRight="10dp"
-        android:layout_alignLeft="@id/roomLabelSpinner" />
+        android:layout_alignLeft="@id/roomLabelSpinner"
+        android:layout_alignRight="@id/roomLabelSpinner" />
     <Button
         android:id="@+id/categoryPlusButton"
-        android:layout_width="wrap_contnent"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_toRightOf="@id/roomLabelSpinner"
+        android:layout_toRightOf="@id/categoryLabelSpinner"
         android:layout_alignBaseline="@id/categoryLabelSpinner"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:textSize="10dp"
-        android:text="+" />
+        android:text="+"
+        android:layout_marginLeft="0.0dp"
+        android:layout_alignLeft="@id/roomPlusButton" />
     <TextView
         android:text="Model Number: "
         android:layout_width="wrap_content"
