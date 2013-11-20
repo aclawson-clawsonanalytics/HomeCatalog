@@ -33,7 +33,7 @@ namespace HomeCatalog.Android
 
 			roomLabelField = FindViewById<EditText> (Resource.Id.roomField);
 			//room = Property.RoomList.RoomWithID (roomID);
-			roomLabelField.Text = Property.RoomList.RoomWithID (roomID).Label;
+			//roomLabelField.Text = Property.RoomList.RoomWithID (roomID).Label;
 
 			labelTest = FindViewById<TextView> (Resource.Id.labelTest);
 
@@ -68,6 +68,18 @@ namespace HomeCatalog.Android
 
 
 
+		}
+
+		private void FillField ()
+		{
+			if (Property.RoomList.RoomWithID(roomID) == null)
+			{
+				return;
+			}
+			else
+			{
+				roomLabelField.Text = Property.RoomList.RoomWithID (roomID).Label;
+			}
 		}
 
 
