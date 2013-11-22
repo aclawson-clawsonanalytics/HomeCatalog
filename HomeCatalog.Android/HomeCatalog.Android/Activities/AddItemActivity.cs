@@ -85,8 +85,8 @@ namespace HomeCatalog.Android
 			roomAddButton.Click += (sender, e) => 
 			{
 				SaveItemInfo ();
-				Intent newRoomIntent = new Intent (this,typeof(RoomEditActivity));
-				newRoomIntent.PutExtra (Item.ItemIDKey,Item.ID);
+				Intent newRoomIntent = new Intent (this,typeof(ViewRoomListActivity));
+				newRoomIntent.PutExtra ("roomID",Item.ID);
 				StartActivityForResult (newRoomIntent,0);
 			};
 
@@ -112,9 +112,10 @@ namespace HomeCatalog.Android
 			goToPhotosButton.Click += (sender, e) => 
 			{
 				SaveItemInfo ();
-				var photoBrowserIntent = new Intent (this, typeof(PhotoBrowserActivity));
-				photoBrowserIntent.PutExtra (Item.ItemIDKey, Item.ID);
-				StartActivity (photoBrowserIntent);
+
+				Intent PassPropertyID = new Intent (this,typeof(ViewRoomListActivity)); //Was EditRoomsActivity
+				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				StartActivity (PassPropertyID);
 			};
 
 			Button cancelAddItemButton = FindViewById<Button> (Resource.Id.cancelAddItemButton);
@@ -150,6 +151,17 @@ namespace HomeCatalog.Android
 
 		}
 
+		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult (requestCode, resultCode, data);
+			if (requestCode == 0)
+			{
+				return;
+				//roomLabelSpinner.Adapter.NotifyDataSetChanged ();
+
+			}
+		}
+
 		private void DisplayItemInfo()
 		{
 			if (Item == null) {
@@ -157,9 +169,11 @@ namespace HomeCatalog.Android
 			}
 
 			itemNameField.Text = Item.ItemName;
-			purchaseDateField.Text = Item.PurchaseDate.ToString ();
+			//purchaseDateField.Text = Item.PurchaseDate.ToString ();
+			purchaseDateDisplay.Text = Item.PurchaseDate.ToString ();
 			purchaseValueField.Text = Item.PurchaseValue.ToString ();
-			appraisalDateField.Text = Item.AppraisalDate.ToString ();
+			//appraisalDateField.Text = Item.AppraisalDate.ToString ();
+			appraisalDateDisplay.Text = Item.AppraisalDate.ToString ();
 			appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
@@ -172,6 +186,7 @@ namespace HomeCatalog.Android
 			{
 				Item = new Item ();
 				Property.ItemList.Add (Item);
+				Property.ItemList.Save (Item);
 			}
 
 			Item.ItemName = itemNameField.Text;

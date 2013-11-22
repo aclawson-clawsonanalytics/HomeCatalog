@@ -61,6 +61,7 @@ namespace HomeCatalog.Android
 			return view;
 		}
 
+		//public override void NotifyDataSetChanged ()
 		public override void NotifyDataSetChanged ()
 		{
 			Rooms = Property.RoomList.AllRoomsByLabel (ascending: true);

@@ -185,6 +185,7 @@ namespace HomeCatalog.Android
 				Room newRoom = new Room ();
 				newRoom.Label = "Bathroom";
 				Property.RoomList.Add (newRoom);
+				SetResult (Result.Ok);
 			}
 			else
 			{
