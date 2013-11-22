@@ -1,12 +1,13 @@
-using System;
 using Android.App;
 using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Provider;
 using Android.OS;
 using HomeCatalog.Core;
 using Android.Content.PM;
+using Java.IO;
 
 namespace HomeCatalog.Android
 {
@@ -36,7 +37,7 @@ namespace HomeCatalog.Android
 
 			//photoBrowserGridView.Adapter = GridViewAdapter;
 
-
+			Java.IO.File _file;
 			Button addPhotoButton = FindViewById<Button> (Resource.Id.addPhotoButton);
 			addPhotoButton.Click += (sender, e) => 
 			{
@@ -46,7 +47,6 @@ namespace HomeCatalog.Android
 				photoDialog.Show(transaction,"photoDialog");
 			};
 
-
 //			photoBrowserGridView.ItemClick += (sender, e) => 
 //			{
 //				// This is not correct.  We are not requesting an item or moving
@@ -55,13 +55,11 @@ namespace HomeCatalog.Android
 //				ItemRequest.PutExtra (Item.ItemIDKey,GridViewAdapter[e.Position].ID);
 //				StartActivity (ItemRequest);
 //			};
-
-
-
-
 		}
+
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
 		{
+			// TODO: handle returned image and store
 			base.OnActivityResult (requestCode, resultCode, data);
 		}
 
