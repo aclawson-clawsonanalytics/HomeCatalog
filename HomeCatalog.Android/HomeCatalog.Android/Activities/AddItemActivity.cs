@@ -156,9 +156,7 @@ namespace HomeCatalog.Android
 			base.OnActivityResult (requestCode, resultCode, data);
 			if (requestCode == 0)
 			{
-				return;
-				//roomLabelSpinner.Adapter.NotifyDataSetChanged ();
-
+				((RoomSpinnerAdapter)roomLabelSpinner.Adapter).NotifyDataSetChanged ();
 			}
 		}
 
