@@ -5,6 +5,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Provider;
 using Android.OS;
+using Android.Net;
 using HomeCatalog.Core;
 using Android.Content.PM;
 using Java.IO;
@@ -16,7 +17,8 @@ namespace HomeCatalog.Android
 	{
 		//private ImageAdapter GridViewAdapter { get; set; }
 		private Property Property { get; set; }
-		private Item Item {get;set;}
+
+		private Item Item { get; set; }
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -26,8 +28,8 @@ namespace HomeCatalog.Android
 			Property = PropertyStore.CurrentStore.Property;
 			// Get Item from intent
 			int itemID = Intent.GetIntExtra (Item.ItemIDKey, 0);
-			if (itemID > 0)
-			{
+
+			if (itemID > 0) {
 				Item = PropertyStore.CurrentStore.Property.ItemList.ItemWithID (itemID);
 			}
 //			SetContentView (Resource.Layout.DisplayItemsView);
@@ -37,14 +39,12 @@ namespace HomeCatalog.Android
 
 			//photoBrowserGridView.Adapter = GridViewAdapter;
 
-			Java.IO.File _file;
 			Button addPhotoButton = FindViewById<Button> (Resource.Id.addPhotoButton);
-			addPhotoButton.Click += (sender, e) => 
-			{
-				var transaction = FragmentManager.BeginTransaction();
-				PhotoDialogFragment photoDialog = new PhotoDialogFragment();
-				photoDialog.itemID = Item.ID;
-				photoDialog.Show(transaction,"photoDialog");
+			addPhotoButton.Click += (sender, e) => {
+				var transaction = FragmentManager.BeginTransaction ();
+				_photoDialog = new PhotoDialogFragment ();
+				_photoDialog.ItemID = Item.ID;
+				_photoDialog.Show (transaction, "photoDialog");
 			};
 
 //			photoBrowserGridView.ItemClick += (sender, e) => 
@@ -57,14 +57,17 @@ namespace HomeCatalog.Android
 //			};
 		}
 
+		PhotoDialogFragment _photoDialog;
+
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
 		{
 			// TODO: handle returned image and store
+			// result code ok 
+			// result code cancelled
 			base.OnActivityResult (requestCode, resultCode, data);
+			System.Console.WriteLine (_photoDialog.File);
 		}
-
-
-    }
+	}
 }
 
 	
