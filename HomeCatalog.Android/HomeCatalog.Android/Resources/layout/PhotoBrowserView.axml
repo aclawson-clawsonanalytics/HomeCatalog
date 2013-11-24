@@ -19,11 +19,16 @@
         android:layout_height="34.7dp"
         android:text="Add Photo"
         android:textSize="10dp" />
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/addPhotoButton"
+        android:id="@+id/testImageView" />
     <GridView
         android:id="@+id/photoBrowserGridView"
-        android:layout_below="@id/addPhotoButton"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_below="@id/testImageView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:columnWidth="90dp"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"

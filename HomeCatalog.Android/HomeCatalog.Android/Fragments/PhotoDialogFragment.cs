@@ -74,7 +74,6 @@ namespace HomeCatalog.Android
 
 		private Java.IO.File GetTempFile ()
 		{
-			//it will return /sdcard/image.tmp
 			File path = new File (Environment.GetExternalStoragePublicDirectory (Environment.DirectoryPictures), Activity.PackageName);
 			if (!path.Exists ()) {
 				path.Mkdirs ();
