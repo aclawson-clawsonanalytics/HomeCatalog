@@ -39,9 +39,11 @@ namespace HomeCatalog.Android
 			ImageView imageView;
 			if (convertView == null) {  // if it's not recycled, initialize some attributes
 				imageView = new ImageView(Context);
-				imageView.LayoutParameters = new GridView.LayoutParams (85, 85);
-				imageView.SetScaleType (ImageView.ScaleType.CenterCrop);
-				imageView.SetPadding (8, 8, 8, 8);
+				int imageSize = (int)(90.0 * Context.Resources.DisplayMetrics.Density);
+				imageView.LayoutParameters = new GridView.LayoutParams (imageSize, imageSize);
+				imageView.SetScaleType (ImageView.ScaleType.FitCenter);
+//				int padding = (int)(10.0 * Context.Resources.DisplayMetrics.Density);
+//				imageView.SetPadding (padding, 0, 0, 0);
 			} else {
 				imageView = (ImageView) convertView;
 			}
@@ -55,7 +57,6 @@ namespace HomeCatalog.Android
 
 			base.NotifyDataSetChanged ();
 		}
-
 	}
 }
 
