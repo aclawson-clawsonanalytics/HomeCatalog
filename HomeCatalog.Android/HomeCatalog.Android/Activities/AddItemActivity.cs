@@ -78,7 +78,6 @@ namespace HomeCatalog.Android
 			roomLabelSpinner = FindViewById<Spinner> (Resource.Id.roomLabelSpinner);
 			categoryLabelSpinner = FindViewById<Spinner> (Resource.Id.categoryLabelSpinner);
 
-			DisplayItemInfo ();
 
 			CurrentDate = DateTime.Today;
 
@@ -179,13 +178,15 @@ namespace HomeCatalog.Android
 
 			itemNameField.Text = Item.ItemName;
 			//purchaseDateField.Text = Item.PurchaseDate.ToString ();
-			purchaseDateDisplay.Text = Item.PurchaseDate.ToString ();
+			purchaseDateDisplay.Text = Item.PurchaseDate.ToShortDateString ();
 			purchaseValueField.Text = Item.PurchaseValue.ToString ();
 			//appraisalDateField.Text = Item.AppraisalDate.ToString ();
-			appraisalDateDisplay.Text = Item.AppraisalDate.ToString ();
+			appraisalDateDisplay.Text = Item.AppraisalDate.ToShortDateString ();
 			appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
+			roomLabelSpinner.SetSelection (Item.RoomID);
+			categoryLabelSpinner.SetSelection (Item.CategoryID);
 
 		}
 
@@ -205,6 +206,7 @@ namespace HomeCatalog.Android
 //			Item.AppraisalValue = appraisalValueField.Text;
 			Item.ModelNumber = modelNumberField.Text;
 			Item.SerialNumber = serialNumberField.Text;
+
 
 			var room = ((RoomSpinnerAdapter)roomLabelSpinner.Adapter) [roomLabelSpinner.SelectedItemPosition];
 			if (room == null)
@@ -263,6 +265,8 @@ namespace HomeCatalog.Android
 			}
 			return null;
 		}
+
+
 	}
 }
 
