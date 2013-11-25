@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="HomeCatalog.Android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.clawsonanalytics.home-catalog">
 	<uses-sdk android:minSdkVersion="12" android:targetSdkVersion="15" />
-	<application android:label="HomeCatalog.Android"></application>
+	<application android:label="Home Catalog" android:icon="@drawable/icon">
+	</application>
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

@@ -119,8 +119,8 @@ namespace HomeCatalog.Android
 			{
 				SaveItemInfo ();
 
-				Intent PassPropertyID = new Intent (this,typeof(ViewRoomListActivity)); //Was EditRoomsActivity
-				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+				Intent PassPropertyID = new Intent (this,typeof(PhotoBrowserActivity));
+				PassPropertyID.PutExtra (Item.ItemIDKey, Item.ID);
 				StartActivity (PassPropertyID);
 			};
 
