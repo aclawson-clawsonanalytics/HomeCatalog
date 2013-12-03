@@ -8,6 +8,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Net;
+using Android.Graphics;
+using Android.Media;
 using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
@@ -48,7 +50,9 @@ namespace HomeCatalog.Android
 				imageView = (ImageView) convertView;
 			}
 			var assetPath = AssetStore.CurrentStore.PathForAsset (Photos[position].AssetID);
-			imageView.SetImageURI (Uri.Parse(assetPath));
+			int THUMBSIZE = 80;
+			Bitmap thumbImage = ThumbnailUtils.ExtractThumbnail(BitmapFactory.DecodeFile(assetPath), THUMBSIZE, THUMBSIZE);
+			imageView.SetImageBitmap (thumbImage);
 			return imageView;
 		}
 		public override void NotifyDataSetChanged ()

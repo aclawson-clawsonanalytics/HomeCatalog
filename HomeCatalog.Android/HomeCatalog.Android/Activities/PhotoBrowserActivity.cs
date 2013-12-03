@@ -80,6 +80,7 @@ namespace HomeCatalog.Android
 				photo.DateAdded = System.DateTime.Now;
 				Item.PhotoList.Add (photo);
 				Item.PhotoList.Save (photo);
+				GridViewAdapter.NotifyDataSetChanged ();
 			}
 
 			base.OnActivityResult (requestCode, resultCode, data);
