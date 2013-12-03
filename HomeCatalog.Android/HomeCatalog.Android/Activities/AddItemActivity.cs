@@ -43,6 +43,9 @@ namespace HomeCatalog.Android
 
 		const int Date_Dialog_ID2 = 1;
 
+		const int roomUpdateRequestCode = 1;
+		const int categoryUpdateRequestCode = 2;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -75,7 +78,6 @@ namespace HomeCatalog.Android
 			roomLabelSpinner = FindViewById<Spinner> (Resource.Id.roomLabelSpinner);
 			categoryLabelSpinner = FindViewById<Spinner> (Resource.Id.categoryLabelSpinner);
 
-			DisplayItemInfo ();
 
 			CurrentDate = DateTime.Today;
 
@@ -84,16 +86,20 @@ namespace HomeCatalog.Android
 			Button roomAddButton = FindViewById<Button> (Resource.Id.roomPlusButton);
 			roomAddButton.Click += (sender, e) => 
 			{
+
 				SaveItemInfo ();
 				Intent newRoomIntent = new Intent (this,typeof(ViewRoomListActivity));
 				newRoomIntent.PutExtra ("roomID",Item.ID);
-				StartActivityForResult (newRoomIntent,0);
+				StartActivityForResult (newRoomIntent,roomUpdateRequestCode);
 			};
 
 			Button categoryAddButton = FindViewById<Button> (Resource.Id.categoryPlusButton);
 			categoryAddButton.Click += (sender, e) => 
 			{
-
+				SaveItemInfo ();
+				Intent newCategoryIntent = new Intent (this,typeof(ViewCategoryListActivity));
+				newCategoryIntent.PutExtra ("catID",Item.ID);
+				StartActivityForResult (newCategoryIntent,categoryUpdateRequestCode);
 			};
 
 			Button setPurchaseDateButton = FindViewById<Button> (Resource.Id.setPurchaseDateButton);
@@ -154,9 +160,13 @@ namespace HomeCatalog.Android
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult (requestCode, resultCode, data);
-			if (requestCode == 0)
+			if (requestCode == roomUpdateRequestCode)
 			{
 				((RoomSpinnerAdapter)roomLabelSpinner.Adapter).NotifyDataSetChanged ();
+			}
+			else if (requestCode == categoryUpdateRequestCode)
+			{
+				((CategorySpinnerAdapter)categoryLabelSpinner.Adapter).NotifyDataSetChanged ();
 			}
 		}
 
@@ -168,13 +178,15 @@ namespace HomeCatalog.Android
 
 			itemNameField.Text = Item.ItemName;
 			//purchaseDateField.Text = Item.PurchaseDate.ToString ();
-			purchaseDateDisplay.Text = Item.PurchaseDate.ToString ();
+			purchaseDateDisplay.Text = Item.PurchaseDate.ToShortDateString ();
 			purchaseValueField.Text = Item.PurchaseValue.ToString ();
 			//appraisalDateField.Text = Item.AppraisalDate.ToString ();
-			appraisalDateDisplay.Text = Item.AppraisalDate.ToString ();
+			appraisalDateDisplay.Text = Item.AppraisalDate.ToShortDateString ();
 			appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
+			roomLabelSpinner.SetSelection (Item.RoomID);
+			categoryLabelSpinner.SetSelection (Item.CategoryID);
 
 		}
 
@@ -194,6 +206,7 @@ namespace HomeCatalog.Android
 //			Item.AppraisalValue = appraisalValueField.Text;
 			Item.ModelNumber = modelNumberField.Text;
 			Item.SerialNumber = serialNumberField.Text;
+
 
 			var room = ((RoomSpinnerAdapter)roomLabelSpinner.Adapter) [roomLabelSpinner.SelectedItemPosition];
 			if (room == null)
@@ -219,12 +232,12 @@ namespace HomeCatalog.Android
 
 		private void UpdatePurchaseDateDisplay()
 		{
-			purchaseDateDisplay.Text = itemPurchaseDate.ToString ();
+			purchaseDateDisplay.Text = itemPurchaseDate.ToShortDateString ();
 		}
 
 		private void UpdateAppraisalDateDisplay()
 		{
-			appraisalDateDisplay.Text = itemAppraisalDate.ToString ();
+			appraisalDateDisplay.Text = itemAppraisalDate.ToShortDateString ();
 		}
 
 		void OnPurchaseDateSet (object sender,DatePickerDialog.DateSetEventArgs e)
@@ -252,6 +265,8 @@ namespace HomeCatalog.Android
 			}
 			return null;
 		}
+
+
 	}
 }
 
