@@ -51,7 +51,9 @@ namespace HomeCatalog.Android
 			}
 			var assetPath = AssetStore.CurrentStore.PathForAsset (Photos[position].AssetID);
 			int THUMBSIZE = 80;
-			Bitmap thumbImage = ThumbnailUtils.ExtractThumbnail(BitmapFactory.DecodeFile(assetPath), THUMBSIZE, THUMBSIZE);
+			BitmapFactory.Options options = new BitmapFactory.Options ();
+			options.InSampleSize = 4;
+			Bitmap thumbImage = ThumbnailUtils.ExtractThumbnail(BitmapFactory.DecodeFile(assetPath, options), THUMBSIZE, THUMBSIZE);
 			imageView.SetImageBitmap (thumbImage);
 			return imageView;
 		}

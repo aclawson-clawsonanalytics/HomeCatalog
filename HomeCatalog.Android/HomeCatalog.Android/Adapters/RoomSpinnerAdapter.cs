@@ -14,7 +14,7 @@ namespace HomeCatalog.Android
 {
 	class RoomSpinnerAdapter : BaseAdapter<Room>
 	{
-		IList<Room> Rooms;
+		public IList<Room> Rooms;
 
 		private Property Property { get; set; }
 

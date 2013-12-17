@@ -60,7 +60,7 @@ namespace HomeCatalog.Android
 //			};
 		}
 
-		PhotoDialogFragment _photoDialog;
+		private PhotoDialogFragment _photoDialog { get; set; }
 
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
 		{

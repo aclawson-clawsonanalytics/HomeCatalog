@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -81,7 +82,7 @@ namespace HomeCatalog.Android
 
 			CurrentDate = DateTime.Today;
 
-			DisplayItemInfo ();
+
 
 			Button roomAddButton = FindViewById<Button> (Resource.Id.roomPlusButton);
 			roomAddButton.Click += (sender, e) => 
@@ -155,6 +156,7 @@ namespace HomeCatalog.Android
 			CategorySpinnerAdapter categoryAdapter = new CategorySpinnerAdapter (this, Property);
 			categoryLabelSpinner.Adapter = categoryAdapter;
 
+			DisplayItemInfo ();
 		}
 
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
@@ -185,7 +187,21 @@ namespace HomeCatalog.Android
 			appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
-			roomLabelSpinner.SetSelection (Item.RoomID);
+
+			RoomSpinnerAdapter roomAdapter = (RoomSpinnerAdapter)roomLabelSpinner.Adapter;
+
+			int roomIndex = -1;
+			foreach (Room room in roomAdapter.Rooms)
+			{
+				if (room.ID == Item.RoomID)
+				{
+					roomIndex = roomAdapter.Rooms.IndexOf (room);
+				}
+			}
+			if (roomIndex > -1)
+			{
+				roomLabelSpinner.SetSelection (roomIndex + 1);
+			}
 			categoryLabelSpinner.SetSelection (Item.CategoryID);
 
 		}

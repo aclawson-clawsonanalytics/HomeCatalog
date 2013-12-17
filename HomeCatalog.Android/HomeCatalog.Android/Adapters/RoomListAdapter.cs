@@ -14,7 +14,7 @@ namespace HomeCatalog.Android
 {
 	class RoomListAdapter : BaseAdapter<Room>
 	{
-		IList<Room> Rooms;
+		public IList<Room> Rooms { get; set; }
 		private Property Property {get;set;}
 		Activity Context;
 
