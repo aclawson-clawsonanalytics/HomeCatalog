@@ -180,10 +180,26 @@ namespace HomeCatalog.Android
 
 			itemNameField.Text = Item.ItemName;
 			//purchaseDateField.Text = Item.PurchaseDate.ToString ();
+
+
 			purchaseDateDisplay.Text = Item.PurchaseDate.ToShortDateString ();
-			purchaseValueField.Text = Item.PurchaseValue.ToString ();
+
+			if (Item.PurchaseValue != null) {
+				purchaseValueField.Text = Item.PurchaseValue.ToString ();
+			}
+			else
+			{
+				purchaseValueField.Text = "";
+			}
 			//appraisalDateField.Text = Item.AppraisalDate.ToString ();
 			appraisalDateDisplay.Text = Item.AppraisalDate.ToShortDateString ();
+
+			if (Item.AppraisalValue != null) {
+				appraisalValueField.Text = Item.AppraisalValue.ToString ();
+			} 
+			else {
+				appraisalValueField.Text = "";
+			}
 			appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
@@ -217,9 +233,23 @@ namespace HomeCatalog.Android
 
 			Item.ItemName = itemNameField.Text;
 			Item.PurchaseDate = itemPurchaseDate;
-//			Item.PurchaseValue = purchaseValueField.Text;
+
+//			if (purchaseValueField.Text != "") {
+//				Item.PurchaseValue = Convert.ToDouble (purchaseValueField.Text);
+//			} 
+//			else {
+//				Item.PurchaseValue = null;
+//			}
 			Item.AppraisalDate = itemAppraisalDate;
-//			Item.AppraisalValue = appraisalValueField.Text;
+
+			if (appraisalValueField.Text != ""){
+				Item.AppraisalValue = Convert.ToDouble (appraisalValueField.Text);
+			}
+			else{
+				Item.AppraisalValue = null;
+			}
+
+			Item.AppraisalValue = Convert.ToDouble (appraisalValueField.Text);
 			Item.ModelNumber = modelNumberField.Text;
 			Item.SerialNumber = serialNumberField.Text;
 
