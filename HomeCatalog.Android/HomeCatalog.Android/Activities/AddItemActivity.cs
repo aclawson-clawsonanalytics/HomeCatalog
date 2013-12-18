@@ -109,11 +109,11 @@ namespace HomeCatalog.Android
 			Button setAppraisalDateButton = FindViewById<Button> (Resource.Id.setAppraisalDateButton);
 			setAppraisalDateButton.Click += delegate{ ShowDialog (Date_Dialog_ID2);};
 
-			Button receiptButton = FindViewById<Button> (Resource.Id.receiptButton);
-			receiptButton.Click += (sender, e) => 
-			{
-
-			};
+//			Button receiptButton = FindViewById<Button> (Resource.Id.receiptButton);
+//			receiptButton.Click += (sender, e) => 
+//			{
+//
+//			};
 
 			Button goToPhotosButton = FindViewById<Button> (Resource.Id.goToPhotosButton);
 			goToPhotosButton.Click += (sender, e) => 
@@ -184,21 +184,21 @@ namespace HomeCatalog.Android
 
 			purchaseDateDisplay.Text = Item.PurchaseDate.ToShortDateString ();
 
-			if (Item.PurchaseValue != null) {
-				purchaseValueField.Text = Item.PurchaseValue.ToString ();
+			if (Item.PurchaseValue == 0) {
+				purchaseValueField.Text = "None";
 			}
 			else
 			{
-				purchaseValueField.Text = "";
+				purchaseValueField.Text = Item.PurchaseValue.ToString ();
 			}
 			//appraisalDateField.Text = Item.AppraisalDate.ToString ();
 			appraisalDateDisplay.Text = Item.AppraisalDate.ToShortDateString ();
 
-			if (Item.AppraisalValue != null) {
-				appraisalValueField.Text = Item.AppraisalValue.ToString ();
+			if (Item.AppraisalValue == 0) {
+				appraisalValueField.Text = "None";
 			} 
 			else {
-				appraisalValueField.Text = "";
+				appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			}
 			appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			modelNumberField.Text = Item.ModelNumber;
@@ -234,22 +234,18 @@ namespace HomeCatalog.Android
 			Item.ItemName = itemNameField.Text;
 			Item.PurchaseDate = itemPurchaseDate;
 
-//			if (purchaseValueField.Text != "") {
-//				Item.PurchaseValue = Convert.ToDouble (purchaseValueField.Text);
-//			} 
-//			else {
-//				Item.PurchaseValue = null;
-//			}
+			if (purchaseValueField.Text != "") {
+				Item.PurchaseValue = Convert.ToDouble (purchaseValueField.Text);
+			} 
+
 			Item.AppraisalDate = itemAppraisalDate;
 
 			if (appraisalValueField.Text != ""){
 				Item.AppraisalValue = Convert.ToDouble (appraisalValueField.Text);
 			}
-			else{
-				Item.AppraisalValue = null;
-			}
 
-			Item.AppraisalValue = Convert.ToDouble (appraisalValueField.Text);
+
+			//Item.AppraisalValue = Convert.ToDouble (appraisalValueField.Text);
 			Item.ModelNumber = modelNumberField.Text;
 			Item.SerialNumber = serialNumberField.Text;
 

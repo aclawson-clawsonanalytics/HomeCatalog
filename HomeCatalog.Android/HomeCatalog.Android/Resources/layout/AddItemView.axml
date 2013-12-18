@@ -93,7 +93,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp" />
     <EditText
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/purchaseValueLabel"
@@ -174,7 +174,7 @@
         android:background="@color/white"
         android:textColor="@color/black"
         android:singleLine="true"
-        android:editable="false" />
+        android:inputType="numberDecimal" />
     <TextView
         android:text="Room: "
         android:layout_width="wrap_content"
@@ -202,6 +202,7 @@
         android:layout_alignBaseline="@id/itemRoomLabel"
         android:layout_toRightOf="@id/itemRoomLabel"
         android:background="@color/white"
+        android:textColor="@color/black"
         android:layout_alignLeft="@id/itemNameField"
         android:layout_alignParentRight="false"
         android:layout_width="150dp" />
@@ -220,6 +221,7 @@
         android:layout_below="@id/roomLabelSpinner"
         android:id="@+id/categoryLabelSpinner"
         android:background="@color/white"
+        android:textColor="@color/black"
         android:layout_toRightOf="@id/itemCategoryLabel"
         android:layout_alignBaseline="@id/itemCategoryLabel"
         android:layout_alignLeft="@id/roomLabelSpinner"
@@ -282,6 +284,7 @@
         android:layout_marginRight="10dp"
         android:singleLine="true"
         android:textColor="@color/black" />
+<!--
     <Button
         android:text="Receipt"
         android:layout_width="wrap_content"
@@ -292,16 +295,14 @@
         android:layout_marginBottom="0.0dp"
         android:layout_marginTop="0.0dp"
         android:layout_marginLeft="10dp" />
+        -->
     <Button
         android:text="Photos"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/serialNumberField"
+        android:layout_below="@id/serialNumberLabel"
         android:id="@+id/goToPhotosButton"
-        android:textSize="15dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_alignBaseline="@id/receiptButton" />
+        android:textSize="15dp" />
     <Button
         android:text="Cancel"
         android:layout_width="wrap_content"
