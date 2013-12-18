@@ -200,7 +200,7 @@ namespace HomeCatalog.Android
 			else {
 				appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			}
-			appraisalValueField.Text = Item.AppraisalValue.ToString ();
+//			appraisalValueField.Text = Item.AppraisalValue.ToString ();
 			modelNumberField.Text = Item.ModelNumber;
 			serialNumberField.Text = Item.SerialNumber;
 
