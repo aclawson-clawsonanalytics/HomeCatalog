@@ -181,9 +181,20 @@ namespace HomeCatalog.Android
 			itemNameField.Text = Item.ItemName;
 			//purchaseDateField.Text = Item.PurchaseDate.ToString ();
 
-
+			if (Item.PurchaseDate.Day == 1 && Item.PurchaseDate.Month == 1 && Item.PurchaseDate.Year == 0001) {
+				purchaseDateDisplay.Text = "None";
+			}
+			else
+			{
 			purchaseDateDisplay.Text = Item.PurchaseDate.ToShortDateString ();
+			}
 
+			if (Item.AppraisalDate.Day == 1 && Item.AppraisalDate.Month == 1 && Item.AppraisalDate.Year == 0001) {
+				appraisalDateDisplay.Text = "None";
+			}
+			else{
+				appraisalDateDisplay.Text = Item.AppraisalDate.ToShortDateString ();
+			}
 			if (Item.PurchaseValue == 0) {
 				purchaseValueField.Text = "None";
 			}
@@ -192,7 +203,7 @@ namespace HomeCatalog.Android
 				purchaseValueField.Text = Item.PurchaseValue.ToString ();
 			}
 			//appraisalDateField.Text = Item.AppraisalDate.ToString ();
-			appraisalDateDisplay.Text = Item.AppraisalDate.ToShortDateString ();
+			//appraisalDateDisplay.Text = Item.AppraisalDate.ToShortDateString ();
 
 			if (Item.AppraisalValue == 0) {
 				appraisalValueField.Text = "None";
@@ -235,13 +246,19 @@ namespace HomeCatalog.Android
 			Item.PurchaseDate = itemPurchaseDate;
 
 			if (purchaseValueField.Text != "") {
-				Item.PurchaseValue = Convert.ToDouble (purchaseValueField.Text);
+				if(purchaseValueField.Text != "None")
+				{
+					Item.PurchaseValue = Convert.ToDouble (purchaseValueField.Text);
+				}
 			} 
 
 			Item.AppraisalDate = itemAppraisalDate;
 
 			if (appraisalValueField.Text != ""){
-				Item.AppraisalValue = Convert.ToDouble (appraisalValueField.Text);
+				if(appraisalValueField.Text != "None")
+				{
+					Item.AppraisalValue = Convert.ToDouble (appraisalValueField.Text);
+				}
 			}
 
 
