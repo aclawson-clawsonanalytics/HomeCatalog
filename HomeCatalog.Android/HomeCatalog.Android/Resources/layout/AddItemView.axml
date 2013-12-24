@@ -23,6 +23,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:cursorVisible="true"
         android:layout_toRightOf="@id/itemNameLabel"
         android:id="@+id/itemNameField"
         android:layout_alignBaseline="@id/itemNameLabel"
