@@ -78,7 +78,7 @@ namespace HomeCatalog.Android
 
 			roomLabelSpinner = FindViewById<Spinner> (Resource.Id.roomLabelSpinner);
 			categoryLabelSpinner = FindViewById<Spinner> (Resource.Id.categoryLabelSpinner);
-
+			itemNameField.SetCursorVisible (true);
 
 			CurrentDate = DateTime.Today;
 

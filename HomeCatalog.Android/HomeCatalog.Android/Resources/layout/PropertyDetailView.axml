@@ -80,6 +80,7 @@
         android:layout_below="@id/DeletePropertyButton"
         android:id="@+id/ItemsButton"
         android:layout_marginTop="30dp" />
+<!--
     <Button
         android:text="Collections"
         android:layout_width="match_parent"
@@ -91,12 +92,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/CollectionsButton"
-        android:id="@+id/ContactButton" />
+        android:id="@+id/ContactButton" /> -->
     <Button
         android:text="Reports"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ContactButton"
+        android:layout_below="@id/ItemsButton"
         android:id="@+id/ReportsButton" />
     <Button
         android:text="Cancel"

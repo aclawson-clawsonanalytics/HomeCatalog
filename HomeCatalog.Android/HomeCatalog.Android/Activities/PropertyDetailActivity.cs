@@ -68,19 +68,20 @@ namespace HomeCatalog.Android
 				StartActivity (PassPropertyID);
 			};
 
-			Button CollectionsButton = FindViewById<Button> (Resource.Id.CollectionsButton);
-			CollectionsButton.Click += (sender, e) => 
-			{
-				Intent PassPropertyID = new Intent(this,typeof(DisplayCollectionsActivity));
-				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
-				StartActivity (PassPropertyID);
-			};
+//			Button CollectionsButton = FindViewById<Button> (Resource.Id.CollectionsButton);
+//			CollectionsButton.Click += (sender, e) => 
+//			{
+//				Intent PassPropertyID = new Intent(this,typeof(DisplayCollectionsActivity));
+//				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+//				StartActivity (PassPropertyID);
+//			};
+//
+//			Button ContactsButton = FindViewById<Button> (Resource.Id.ContactButton);
+//			ContactsButton.Click += (sender, e) => 
+//			{
+//
+//			};
 
-			Button ContactsButton = FindViewById<Button> (Resource.Id.ContactButton);
-			ContactsButton.Click += (sender, e) => 
-			{
-
-			};
 			Button ReportsButton = FindViewById<Button> (Resource.Id.ReportsButton);
 			ReportsButton.Click += (sender, e) => 
 			{
