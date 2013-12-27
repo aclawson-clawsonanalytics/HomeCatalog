@@ -168,6 +168,7 @@
     <AndroidResource Include="Resources\layout\RoomEditLayout.axml" />
     <AndroidResource Include="Resources\layout\CategoriesView.axml" />
     <AndroidResource Include="Resources\layout\CategoryEditLayout.axml" />
+    <AndroidResource Include="Resources\layout\ReportGeneratorView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
