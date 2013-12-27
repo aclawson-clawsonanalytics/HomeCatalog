@@ -34,8 +34,7 @@ namespace HomeCatalog.Android
 			roomLabelField = FindViewById<EditText> (Resource.Id.roomField);
 			//room = Property.RoomList.RoomWithID (roomID);
 			//roomLabelField.Text = Property.RoomList.RoomWithID (roomID).Label;
-			FillField ();
-			labelTest = FindViewById<TextView> (Resource.Id.labelTest);
+			roomLabelField.Text = Property.RoomList.RoomWithID (roomID).Label;
 
 			Button saveButton = FindViewById<Button> (Resource.Id.saveRoomLabelButton);
 			saveButton.Click += (sender, e) => 
