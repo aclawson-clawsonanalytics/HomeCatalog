@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Fragments\CategoryListDialogFragment.cs" />
     <Compile Include="Adapters\PhotoBrowserAdapter.cs" />
+    <Compile Include="Activities\ReportGeneratorActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
