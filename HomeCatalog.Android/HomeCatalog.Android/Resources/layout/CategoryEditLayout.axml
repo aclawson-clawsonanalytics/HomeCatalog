@@ -26,14 +26,6 @@
         android:textColor="@color/black"
         android:singleLine="true"
         android:textSize="15dp" />
-    <TextView
-        android:id="@+id/labelTest"
-        android:layout_below="@id/categoryField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="Label Test Here" />
     <Button
         android:id="@+id/saveCategoryLabelButton"
         android:layout_width="wrap_content"
