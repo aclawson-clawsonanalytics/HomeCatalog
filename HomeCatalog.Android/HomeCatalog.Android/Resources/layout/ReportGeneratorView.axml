@@ -11,38 +11,22 @@
         android:layout_centerHorizontal="true"
         android:textSize="30dp" />
     <TextView
-        android:text="Select Property:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/reportGenTitle"
-        android:id="@+id/propertyPrompt"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp" />
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/propertyPrompt"
-        android:id="@+id/propertySpinner"
-        android:layout_alignBaseline="@id/propertyPrompt"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
-    <TextView
         android:text="Select Room:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/propertyPrompt"
+        android:layout_below="@id/reportGenTitle"
         android:id="@+id/roomPrompt"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp" />
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/roomPrompt"
         android:id="@+id/roomQuerrySpinner"
         android:layout_alignBaseline="@id/roomPrompt"
-        android:layout_marginleft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_alignLeft="@id/propertySpinner" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
     <TextView
         android:text="Select Category:"
         android:layout_width="wrap_content"
@@ -58,12 +42,12 @@
         android:id="@+id/categoryQuerrySpinner"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignLeft="@id/propertySpinner"
         android:layout_alignBaseline="@id/categoryPrompt" />
     <Button
-        android:text="Button"
-        android:layout_width="wrap_content"
+        android:text="Generate Report"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/GenerateReportButton"
         android:layout_below="@id/categoryQuerrySpinner"
-        android:id="@+id/GenerateReportButton" />
+        android:layout_marginTop="100dp" />
 </RelativeLayout>

@@ -85,9 +85,9 @@ namespace HomeCatalog.Android
 			Button ReportsButton = FindViewById<Button> (Resource.Id.ReportsButton);
 			ReportsButton.Click += (sender, e) => 
 			{
-				Intent PassPropertyID = new Intent(this,typeof(DisplayContactsActivity));
+				Intent PassPropertyID = new Intent(this,typeof(ReportGeneratorActivity));
 				PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
-				StartActivity (PassPropertyID);
+				StartActivityForResult (PassPropertyID,0);
 			};
 
 			Button DeletePropertyButton = FindViewById<Button> (Resource.Id.DeletePropertyButton);

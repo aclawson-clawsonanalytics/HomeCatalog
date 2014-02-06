@@ -56,7 +56,7 @@ namespace HomeCatalog.Core.Tests
 		}
 
 		[Test()]
-		[public void PropertyCountryIsCorrect()
+		public void PropertyCountryIsCorrect()
 		{
 			sut.Country = "USA";
 			Assert.That (sut.Country == "USA")

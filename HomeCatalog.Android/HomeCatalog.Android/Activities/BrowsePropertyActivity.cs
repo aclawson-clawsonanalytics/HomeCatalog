@@ -17,6 +17,7 @@ namespace HomeCatalog.Android
 	public class BrowsePropertyActivity : Activity
 	{
 		private PropertyListAdapter ListAdapter { get; set; }
+
 		private enum PropertyRequest
 		{
 			ADD_PROPERTY
