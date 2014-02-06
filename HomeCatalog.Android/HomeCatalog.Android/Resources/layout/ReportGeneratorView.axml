@@ -25,7 +25,7 @@
         android:layout_toRightOf="@id/roomPrompt"
         android:id="@+id/roomQuerrySpinner"
         android:layout_alignBaseline="@id/roomPrompt"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp" />
     <TextView
         android:text="Select Category:"
@@ -34,15 +34,16 @@
         android:layout_below="@id/roomPrompt"
         android:id="@+id/categoryPrompt"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp" />
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/categoryPrompt"
         android:id="@+id/categoryQuerrySpinner"
-        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBaseline="@id/categoryPrompt" />
+        android:layout_alignBaseline="@id/categoryPrompt"
+        android:layout_alignLeft="@id/roomQuerrySpinner" />
     <Button
         android:text="Generate Report"
         android:layout_width="fill_parent"
