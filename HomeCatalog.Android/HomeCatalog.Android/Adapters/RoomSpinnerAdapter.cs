@@ -81,7 +81,7 @@ namespace HomeCatalog.Android
 		{
 			string text;
 			if (position == 0) {
-				text = "No Room";
+				text = NoSelectionText;
 			} else {
 				text = Rooms [position - 1].Label;
 			}

@@ -76,7 +76,13 @@ namespace HomeCatalog.Android
 
 				else if (roomLabelSpinner.SelectedItemPosition != 0 && categoryLabelSpinner.SelectedItemPosition != 0)
 				{
-
+					var roomID = roomAdapter [roomLabelSpinner.SelectedItemPosition].ID;
+					var catID = categoryAdapter [categoryLabelSpinner.SelectedItemPosition].ID;
+					exportItems = 
+						Property.ItemList.InternalTable.Where (item => item.CategoryID == catID && item.RoomID == roomID);
+					//exportItems = Property.ItemList.AllItems ();
+					CsvExporter exporter = new CsvExporter (exportItems);
+					exporter.ConstructOutput ();
 				}
 
 			};
