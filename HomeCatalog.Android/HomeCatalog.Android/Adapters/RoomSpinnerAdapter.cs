@@ -20,8 +20,16 @@ namespace HomeCatalog.Android
 
 		Activity Context;
 
-		public RoomSpinnerAdapter (Activity context, Property aProperty) : base()
+		String NoSelectionText;
+
+		public RoomSpinnerAdapter (Activity context, Property aProperty) : this (context, aProperty, "No Room")
 		{
+
+		}
+
+		public RoomSpinnerAdapter (Activity context, Property aProperty, String noSelectionText) : base()
+		{
+			NoSelectionText = noSelectionText;
 			Property = aProperty;
 			Context = context;
 			Rooms = Property.RoomList.AllRoomsByLabel (ascending: true);
@@ -49,7 +57,7 @@ namespace HomeCatalog.Android
 		{
 			string text;
 			if (position == 0) {
-				text = "No Room";
+				text = NoSelectionText;
 			} else {
 				text = Rooms [position - 1].Label;
 			}

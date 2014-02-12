@@ -35,11 +35,23 @@ namespace HomeCatalog.Android
 			categoryLabelSpinner = FindViewById<Spinner> (Resource.Id.categoryQuerrySpinner);
 
 
-			RoomSpinnerAdapter roomAdapter = new RoomSpinnerAdapter (this, Property);
+			RoomSpinnerAdapter roomAdapter = new RoomSpinnerAdapter (this, Property,"All Rooms");
 			roomLabelSpinner.Adapter = roomAdapter;
 
 			CategorySpinnerAdapter categoryAdapter = new CategorySpinnerAdapter (this, Property);
 			categoryLabelSpinner.Adapter = categoryAdapter;
+
+			Button GenerateReportButton = FindViewById<Button> (Resource.Id.GenerateReportButton);
+			GenerateReportButton.Click += (sender, e) => 
+			{
+				if (roomLabelSpinner.SelectedItemPosition == 0 && categoryLabelSpinner.SelectedItemPosition == 0)
+				{
+					SortWithoutFilter ();
+				}
+
+				else if (roomLabelSpinner.Selected
+
+			};
 
 		}
 
@@ -55,6 +67,27 @@ namespace HomeCatalog.Android
 				((CategorySpinnerAdapter)categoryLabelSpinner.Adapter).NotifyDataSetChanged ();
 			}
 		}
+
+		private void SortWithoutFilter()
+		{
+
+		}
+
+		private void SortByRoomLabel()
+		{
+
+
+		}
+
+		private void SortByCategoryLabel()
+		{
+
+
+
+		}
+
+
+
 
 
 
