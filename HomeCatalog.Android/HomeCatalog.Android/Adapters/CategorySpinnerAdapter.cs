@@ -17,13 +17,19 @@ namespace HomeCatalog.Android
 		IList<Category> Categories;
 		private Property Property {get;set;}
 		Activity context;
+		String NoSelectionText;
 
-		public CategorySpinnerAdapter(Activity context,Property aProperty) : base() {
+		public CategorySpinnerAdapter(Activity context,Property aProperty) : this (context,aProperty,"No Category")
+		{
+
+		}
+
+		public CategorySpinnerAdapter(Activity context,Property aProperty,String noSelectionText) : base() {
 			Property = aProperty;
+			NoSelectionText = noSelectionText;
 			this.context = context;
 			this.Categories = Property.CategoryList.AllItems ();
 		}
-
 
 
 		public override long GetItemId(int position)
@@ -46,7 +52,7 @@ namespace HomeCatalog.Android
 		{
 			string text;
 			if (position == 0) {
-				text = "No Category";
+				text = NoSelectionText;
 			} else {
 				text = Categories [position - 1].Label;
 			}
@@ -67,7 +73,7 @@ namespace HomeCatalog.Android
 		{
 			string text;
 			if (position == 0) {
-				text = "No Category";
+				text = NoSelectionText;
 			} else {
 				text = Categories [position - 1].Label;
 			}

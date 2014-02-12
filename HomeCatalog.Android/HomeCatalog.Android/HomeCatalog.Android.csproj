@@ -136,6 +136,7 @@
     <Compile Include="Fragments\CategoryListDialogFragment.cs" />
     <Compile Include="Adapters\PhotoBrowserAdapter.cs" />
     <Compile Include="Activities\ReportGeneratorActivity.cs" />
+    <Compile Include="Core\ExportLayer\CsvExporter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -179,5 +180,6 @@
     <Folder Include="Core\StoreLayer\" />
     <Folder Include="Core\ModelLayer\" />
     <Folder Include="Fragments\" />
+    <Folder Include="Core\ExportLayer\" />
   </ItemGroup>
 </Project>
