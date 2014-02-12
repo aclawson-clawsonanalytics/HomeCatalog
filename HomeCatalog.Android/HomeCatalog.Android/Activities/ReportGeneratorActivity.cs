@@ -44,9 +44,14 @@ namespace HomeCatalog.Android
 			Button GenerateReportButton = FindViewById<Button> (Resource.Id.GenerateReportButton);
 			GenerateReportButton.Click += (sender, e) => 
 			{
+				IEnumerable<Item> exportItems;
 				if (roomLabelSpinner.SelectedItemPosition == 0 && categoryLabelSpinner.SelectedItemPosition == 0)
 				{
-					SortWithoutFilter ();
+					//var roomID = roomAdapter [roomLabelSpinner.SelectedItemPosition].ID;
+					//exportItems = Property.ItemList.InternalTable.Where (item => item.RoomID == roomID);
+					exportItems = Property.ItemList.AllItems ();
+					CsvExporter exporter = new CsvExporter (exportItems);
+					exporter.ConstructOutput ();
 				}
 
 				else if (roomLabelSpinner.SelectedItemPosition == 0 && categoryLabelSpinner.SelectedItemPosition != 0)

@@ -14,12 +14,27 @@ namespace HomeCatalog.Android
 {
 	class CsvExporter
 	{
-		private List<Item> DisplayItems { get; set; }
+		private IEnumerable<Item> DisplayItems { get; set; }
 
-		public CsvExporter (List<Item> data)
+		public CsvExporter (IEnumerable<Item> itemsToDisplay)
 		{
-			DisplayItems = data;
+			DisplayItems = itemsToDisplay;
 		}
+
+	
+
+		public String ConstructOutput ()
+		{
+			foreach (Item itemToDisplay in DisplayItems)
+			{
+				Console.WriteLine (itemToDisplay.ItemName);
+			}
+			return (null);
+		}
+
+
 	}
+
+
 }
 
