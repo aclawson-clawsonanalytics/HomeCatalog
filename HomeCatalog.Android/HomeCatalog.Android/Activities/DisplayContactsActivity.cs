@@ -12,7 +12,7 @@ using Android.Widget;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "DisplayContactsActivity")]			
-	public class DisplayContactsActivity : Activity
+	public class DisplayContactsActivity : StandardActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{

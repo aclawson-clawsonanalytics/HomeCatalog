@@ -13,7 +13,7 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "Details of selected item")]			
-	public class ItemsDetailActivity : Activity
+	public class ItemsDetailActivity : StandardActivity
 	{
 		private Property Property { get; set; }
 		private string itemID { get; set; }

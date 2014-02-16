@@ -16,10 +16,8 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-
-
 	[Activity (Label = "Edit Rooms")]			
-	public class EditRoomsActivity : Activity
+	public class EditRoomsActivity : StandardActivity
 	{
 		private Property Property { get;set;}
 

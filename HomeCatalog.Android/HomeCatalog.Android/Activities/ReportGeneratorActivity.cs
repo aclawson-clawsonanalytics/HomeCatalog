@@ -13,7 +13,7 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "ReportGeneratorActivity")]			
-	public class ReportGeneratorActivity : Activity
+	public class ReportGeneratorActivity : StandardActivity
 	{
 		private Property Property { get; set; }
 		private Spinner propertySpinner { get; set; }

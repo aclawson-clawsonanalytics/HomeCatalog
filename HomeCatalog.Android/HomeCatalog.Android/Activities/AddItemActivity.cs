@@ -14,7 +14,7 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "Enter item information")]			
-	public class AddItemActivity : Activity
+	public class AddItemActivity : StandardActivity
 	{
 
 		private Property Property { get; set; }

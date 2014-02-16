@@ -14,7 +14,7 @@ using Java.IO;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "Camera")]			
-	public class CameraActivity : Activity
+	public class CameraActivity : StandardActivity
 	{
 		Java.IO.File _file;
 		Java.IO.File _dir;
