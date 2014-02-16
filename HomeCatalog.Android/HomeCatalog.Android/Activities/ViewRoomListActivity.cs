@@ -11,7 +11,7 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "View Rooms")]
-	public class ViewRoomListActivity : Activity
+	public class ViewRoomListActivity : StandardActivity
 	{
 		private RoomListAdapter ListAdapter { get; set; }
 		private Property Property { get; set; }
