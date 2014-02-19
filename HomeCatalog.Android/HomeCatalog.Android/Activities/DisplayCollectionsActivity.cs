@@ -12,7 +12,7 @@ using Android.Widget;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "DisplayCollectionsActivity")]			
-	public class DisplayCollectionsActivity : Activity
+	public class DisplayCollectionsActivity : StandardActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{

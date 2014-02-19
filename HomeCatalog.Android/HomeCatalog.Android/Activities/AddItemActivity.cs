@@ -14,7 +14,7 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "Enter item information")]			
-	public class AddItemActivity : Activity
+	public class AddItemActivity : StandardActivity
 	{
 
 		private Property Property { get; set; }
@@ -51,7 +51,7 @@ namespace HomeCatalog.Android
 		{
 			base.OnCreate (bundle);
 
-			// Grab intent from sending Activity
+			// Grab intent from sending Activity 
 			int itemID = Intent.GetIntExtra (Item.ItemIDKey, 0);
 
 			if (itemID > 0) {

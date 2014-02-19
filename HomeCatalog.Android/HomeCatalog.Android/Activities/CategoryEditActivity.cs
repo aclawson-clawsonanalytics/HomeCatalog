@@ -12,7 +12,7 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "CategoryEditActivity")]			
-	public class CategoryEditActivity : Activity
+	public class CategoryEditActivity : StandardActivity
 	{
 		private Property Property { get; set; }
 		private int categoryID { get; set; }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +11,21 @@ using Android.Widget;
 
 namespace HomeCatalog.Android
 {
-	[Activity (Label = "DisplayContactsActivity")]			
-	public class DisplayContactsActivity : StandardActivity
+	public abstract class StandardActivity : Activity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+			this.ActionBar.SetDisplayHomeAsUpEnabled (true);
+		}
 
-			// Create your application here
+		public override bool OnOptionsItemSelected (IMenuItem item)
+		{
+			if (item.Order == 0) {
+				SetResult (Result.Canceled);
+				Finish ();
+			}
+			return base.OnOptionsItemSelected (item);
 		}
 	}
 }

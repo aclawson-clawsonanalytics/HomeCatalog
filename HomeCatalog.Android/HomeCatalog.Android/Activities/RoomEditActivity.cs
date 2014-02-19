@@ -13,7 +13,7 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "RoomEditActivity")]			
-	public class RoomEditActivity : Activity
+	public class RoomEditActivity : StandardActivity
 	{
 		private Property Property { get; set; }
 		private int roomID { get; set; }

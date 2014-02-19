@@ -16,7 +16,7 @@ using Java.IO;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "PhotoBrowserActivity")]
-	public class PhotoBrowserActivity : Activity
+	public class PhotoBrowserActivity : StandardActivity
 	{
 		private PhotoBrowserAdapter GridViewAdapter { get; set; }
 

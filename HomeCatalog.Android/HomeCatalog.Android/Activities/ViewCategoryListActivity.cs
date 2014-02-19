@@ -11,7 +11,7 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "View Catiegories")]
-	public class ViewCategoryListActivity : Activity
+	public class ViewCategoryListActivity : StandardActivity
 	{
 		private CategoryListAdapter ListAdapter { get; set; }
 		private Property Property { get; set; }

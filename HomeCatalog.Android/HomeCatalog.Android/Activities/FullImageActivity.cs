@@ -12,7 +12,7 @@ using Android.Widget;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "FullImageActivity")]			
-	public class FullImageActivity : Activity
+	public class FullImageActivity : StandardActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{

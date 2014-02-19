@@ -13,10 +13,9 @@ using HomeCatalog.Core;
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "Edit Property Information")]			
-	public class AddEditPropertyActivity : Activity
+	public class AddEditPropertyActivity : StandardActivity
 	{
 		private Property Property { get; set; }
-
 
 		private EditText PropNameField { get; set; }
 		private EditText PropAddressField { get; set; }
@@ -87,8 +86,6 @@ namespace HomeCatalog.Android
 
 
 		}
-
-
 
 		private void SaveProperty() 
 		{
