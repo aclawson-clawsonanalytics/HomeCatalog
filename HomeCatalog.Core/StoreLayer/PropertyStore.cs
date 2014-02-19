@@ -60,7 +60,8 @@ namespace HomeCatalog.Core
 			Property.ItemList = new ItemList (DB.Table<Item> ());
 		}
 
-		public void SaveProperty () {
+		public void SaveProperty ()
+		{
 			DB.Update (Property);
 		}
 
