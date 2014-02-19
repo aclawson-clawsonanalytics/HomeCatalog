@@ -44,14 +44,12 @@ namespace HomeCatalog.Android
 			Button GenerateReportButton = FindViewById<Button> (Resource.Id.GenerateReportButton);
 			GenerateReportButton.Click += (sender, e) => 
 			{
-				IEnumerable<Item> exportItems;
+				IEnumerable<Item> exportItems = null;
 				if (roomLabelSpinner.SelectedItemPosition == 0 && categoryLabelSpinner.SelectedItemPosition == 0)
 				{
 					//var roomID = roomAdapter [roomLabelSpinner.SelectedItemPosition].ID;
 					//exportItems = Property.ItemList.InternalTable.Where (item => item.RoomID == roomID);
 					exportItems = Property.ItemList.AllItems ();
-					CsvExporter exporter = new CsvExporter (exportItems);
-					exporter.ConstructOutput ();
 				}
 
 				else if (roomLabelSpinner.SelectedItemPosition == 0 && categoryLabelSpinner.SelectedItemPosition != 0)
@@ -60,8 +58,8 @@ namespace HomeCatalog.Android
 					var catID = categoryAdapter [categoryLabelSpinner.SelectedItemPosition].ID;
 					exportItems = Property.ItemList.InternalTable.Where (item => item.CategoryID == catID);
 					//exportItems = Property.ItemList.AllItems ();
-					CsvExporter exporter = new CsvExporter (exportItems);
-					exporter.ConstructOutput ();
+
+
 				}
 
 				else if (roomLabelSpinner.SelectedItemPosition != 0 && categoryLabelSpinner.SelectedItemPosition == 0)
@@ -70,8 +68,7 @@ namespace HomeCatalog.Android
 					//var catID = categoryAdapter [categoryLabelSpinner.SelectedItemPosition].ID;
 					exportItems = Property.ItemList.InternalTable.Where (item => item.RoomID == roomID);
 					//exportItems = Property.ItemList.AllItems ();
-					CsvExporter exporter = new CsvExporter (exportItems);
-					exporter.ConstructOutput ();
+
 				}
 
 				else if (roomLabelSpinner.SelectedItemPosition != 0 && categoryLabelSpinner.SelectedItemPosition != 0)
@@ -81,10 +78,10 @@ namespace HomeCatalog.Android
 					exportItems = 
 						Property.ItemList.InternalTable.Where (item => item.CategoryID == catID && item.RoomID == roomID);
 					//exportItems = Property.ItemList.AllItems ();
-					CsvExporter exporter = new CsvExporter (exportItems);
-					exporter.ConstructOutput ();
 				}
-
+				CsvExporter exporter = new CsvExporter (exportItems);
+				String filename = CreateDateString(DateTime.Now);
+				exporter.ConstructOutput (filename);
 			};
 
 		}
@@ -102,9 +99,14 @@ namespace HomeCatalog.Android
 			}
 		}
 
-		private void SortWithoutFilter()
+		private String CreateDateString(DateTime date)
 		{
+			String month = date.Month.ToString ();
+			String day = date.Day.ToString ();
+			String year = date.Year.ToString ();
 
+			String returnString = month + '-' + day + '-' + year;
+			return (returnString);
 		}
 
 		private void SortByRoomLabel()
