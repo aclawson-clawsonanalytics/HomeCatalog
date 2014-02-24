@@ -99,6 +99,7 @@ namespace HomeCatalog.Android
 
 		}
 
+
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult (requestCode, resultCode, data);
@@ -142,20 +143,12 @@ namespace HomeCatalog.Android
 		{
 			int count = 2;
 			var filename = CreateDateString (DateTime.Now);
-			var directory = System.Environment.GetFolderPath (System.Environment.SpecialFolder.MyDocuments);
-			var filepath = System.IO.Path.Combine (directory, filename);
+			var directory = this.FilesDir;
+			var filepath = System.IO.Path.Combine (directory, "Reports",filename);
 			String extension = ".csv";
 			String filestring;
+			filestring = filepath + extension;
 
-
-			if (File.Exists (filepath)) {
-
-				filestring = filepath + count.ToString () + extension;
-				count = count + 1;
-			} 
-			else {
-				filestring = filepath + extension;
-			}
 			return (filestring);
 		}
 

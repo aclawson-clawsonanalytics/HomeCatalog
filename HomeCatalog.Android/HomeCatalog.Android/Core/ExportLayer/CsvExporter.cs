@@ -38,7 +38,7 @@ namespace HomeCatalog.Android
 
 
 			
-			var outputFile = new StreamWriter (filepath);
+			var outputFile = new StreamWriter (filepath,false);
 			var heading = "Name,Purchase Date,Purchase Value,Appraisal Date,Appraisal Value,Model Number,Serial Number";
 			outputFile.WriteLine (heading);
 			//Console.WriteLine (heading);
