@@ -172,6 +172,7 @@
     <AndroidResource Include="Resources\layout\CategoriesView.axml" />
     <AndroidResource Include="Resources\layout\CategoryEditLayout.axml" />
     <AndroidResource Include="Resources\layout\ReportGeneratorView.axml" />
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -182,5 +183,6 @@
     <Folder Include="Core\ModelLayer\" />
     <Folder Include="Fragments\" />
     <Folder Include="Core\ExportLayer\" />
+    <Folder Include="Resources\xml\" />
   </ItemGroup>
 </Project>
