@@ -141,14 +141,14 @@ namespace HomeCatalog.Android
 
 		private String FilePathFromDate()
 		{
-			int count = 2;
+
 			var filename = CreateDateString (DateTime.Now);
 			var directory = this.FilesDir;
-			var filepath = System.IO.Path.Combine (directory, "Reports",filename);
+			var filepath = System.IO.Path.Combine (directory.ToString (), "reports",filename);
 			String extension = ".csv";
 			String filestring;
 			filestring = filepath + extension;
-
+			Console.WriteLine (filestring);
 			return (filestring);
 		}
 
