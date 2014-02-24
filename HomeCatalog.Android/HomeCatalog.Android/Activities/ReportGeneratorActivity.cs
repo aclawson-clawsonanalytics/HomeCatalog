@@ -9,6 +9,8 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Support.V4.Content;
+
 using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
@@ -89,7 +91,8 @@ namespace HomeCatalog.Android
 				//String extension = ".csv";
 				String filename = FilePathFromDate ();
 				exporter.ConstructOutput (filename);
-				var uri = global::Android.Net.Uri.FromFile (new Java.IO.File(filename));
+				var uri = FileProvider.GetUriForFile(this, "com.clawsonanalytics.fileprovider", new Java.IO.File(filename));
+
 				Intent sendIntent = new Intent();
 				sendIntent.SetAction(Intent.ActionSend);
 				sendIntent.PutExtra(Intent.ExtraStream,uri);
@@ -144,7 +147,13 @@ namespace HomeCatalog.Android
 
 			var filename = CreateDateString (DateTime.Now);
 			var directory = this.FilesDir;
-			var filepath = System.IO.Path.Combine (directory.ToString (), "reports",filename);
+			var reportsDirectory = System.IO.Path.Combine (directory.ToString (), "reports");
+			if (!File.Exists (reportsDirectory)) {
+				Directory.CreateDirectory (reportsDirectory);
+			}
+
+			var filepath = System.IO.Path.Combine (reportsDirectory,filename);
+
 			String extension = ".csv";
 			String filestring;
 			filestring = filepath + extension;
