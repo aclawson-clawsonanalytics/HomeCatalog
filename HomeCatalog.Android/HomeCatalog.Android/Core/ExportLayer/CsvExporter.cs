@@ -16,6 +16,7 @@ namespace HomeCatalog.Android
 	class CsvExporter
 	{
 		private IEnumerable<Item> DisplayItems { get; set; }
+		private int fileNumberCount { get; set; }
 
 		public CsvExporter (IEnumerable<Item> itemsToDisplay)
 		{
@@ -24,14 +25,20 @@ namespace HomeCatalog.Android
 
 	
 
-		public String ConstructOutput (String filename)
+		public String ConstructOutput (String filepath)
 		{
-			//var currentDirectory = System.Environment.CurrentDirectory;
-			var directory = System.Environment.GetFolderPath (System.Environment.SpecialFolder.MyDocuments);
-			var filestring = directory + ".csv";
-			var filepath = System.IO.Path.Combine (directory, filestring);
+			//var directory = System.Environment.GetFolderPath (System.Environment.SpecialFolder.MyDocuments);
 
-			var outputFile = new StreamWriter (filepath);
+			//var filestring = directory + ".csv";
+
+			//var filepath = System.IO.Path.Combine (directory, filename);
+
+			// Change file name if filepath exists
+
+
+
+			
+			var outputFile = new StreamWriter (filepath,false);
 			var heading = "Name,Purchase Date,Purchase Value,Appraisal Date,Appraisal Value,Model Number,Serial Number";
 			outputFile.WriteLine (heading);
 			//Console.WriteLine (heading);
