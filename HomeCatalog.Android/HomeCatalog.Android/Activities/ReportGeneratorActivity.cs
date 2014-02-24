@@ -1,7 +1,8 @@
 using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.IO;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -20,8 +21,10 @@ namespace HomeCatalog.Android
 		private Spinner roomLabelSpinner { get; set; }
 		private Spinner categoryLabelSpinner { get ; set; }
 
+		//int filenameCount = 1;
 		const int roomUpdateRequestCode = 1;
 		const int categoryUpdateRequestCode = 2;
+
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -79,9 +82,19 @@ namespace HomeCatalog.Android
 						Property.ItemList.InternalTable.Where (item => item.CategoryID == catID && item.RoomID == roomID);
 					//exportItems = Property.ItemList.AllItems ();
 				}
+
+
 				CsvExporter exporter = new CsvExporter (exportItems);
-				String filename = CreateDateString(DateTime.Now);
+				//String filename = CreateDateString(DateTime.Now);
+				//String extension = ".csv";
+				String filename = FilePathFromDate ();
 				exporter.ConstructOutput (filename);
+				var uri = global::Android.Net.Uri.FromFile (new Java.IO.File(filename));
+				Intent sendIntent = new Intent();
+				sendIntent.SetAction(Intent.ActionSend);
+				sendIntent.PutExtra(Intent.ExtraStream,uri);
+				sendIntent.SetType ("text/csv");
+				StartActivity (sendIntent);
 			};
 
 		}
@@ -104,8 +117,11 @@ namespace HomeCatalog.Android
 			String month = date.Month.ToString ();
 			String day = date.Day.ToString ();
 			String year = date.Year.ToString ();
+			String hour = date.Hour.ToString ();
+			String minute = date.Minute.ToString ();
+			String seconds = date.Second.ToString ();
 
-			String returnString = month + '-' + day + '-' + year;
+			String returnString = month + '-' + day + '-' + year + '_' + hour + ':' + minute + ':' + seconds;
 			return (returnString);
 		}
 
@@ -122,7 +138,26 @@ namespace HomeCatalog.Android
 
 		}
 
+		private String FilePathFromDate()
+		{
+			int count = 2;
+			var filename = CreateDateString (DateTime.Now);
+			var directory = System.Environment.GetFolderPath (System.Environment.SpecialFolder.MyDocuments);
+			var filepath = System.IO.Path.Combine (directory, filename);
+			String extension = ".csv";
+			String filestring;
 
+
+			if (File.Exists (filepath)) {
+
+				filestring = filepath + count.ToString () + extension;
+				count = count + 1;
+			} 
+			else {
+				filestring = filepath + extension;
+			}
+			return (filestring);
+		}
 
 
 
