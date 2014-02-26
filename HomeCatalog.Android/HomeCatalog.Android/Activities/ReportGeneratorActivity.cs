@@ -91,13 +91,18 @@ namespace HomeCatalog.Android
 				//String extension = ".csv";
 				String filename = FilePathFromDate ();
 				exporter.ConstructOutput (filename);
-				var uri = FileProvider.GetUriForFile(this, "com.clawsonanalytics.fileprovider", new Java.IO.File(filename));
 
+				//var uri = FileProvider.GetUriForFile(this, "com.clawsonanalytics.fileprovider", new Java.IO.File(filename));
+				var uri = global::Android.Net.Uri.FromFile (new Java.IO.File(filename));
+				//this.GrantUriPermission ("com.clawsonanlytics.homecatalog",uri,
 				Intent sendIntent = new Intent();
+				sendIntent.AddFlags (ActivityFlags.GrantReadUriPermission);
 				sendIntent.SetAction(Intent.ActionSend);
+				sendIntent.SetData (uri);
 				sendIntent.PutExtra(Intent.ExtraStream,uri);
 				sendIntent.SetType ("text/csv");
 				StartActivity (sendIntent);
+				//StartActivity (Intent.CreateChooser (sendIntent,
 			};
 
 		}
@@ -125,7 +130,7 @@ namespace HomeCatalog.Android
 			String minute = date.Minute.ToString ();
 			String seconds = date.Second.ToString ();
 
-			String returnString = month + '-' + day + '-' + year + '_' + hour + ':' + minute + ':' + seconds;
+			String returnString = month + '-' + day + '-' + year + '_' + hour + '_' + minute + '_' + seconds;
 			return (returnString);
 		}
 
@@ -157,7 +162,7 @@ namespace HomeCatalog.Android
 			String extension = ".csv";
 			String filestring;
 			filestring = filepath + extension;
-			Console.WriteLine (filestring);
+			//Console.WriteLine (filestring);
 			return (filestring);
 		}
 
