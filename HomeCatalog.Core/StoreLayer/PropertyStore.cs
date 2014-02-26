@@ -3,6 +3,7 @@ using SQLite;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace HomeCatalog.Core
 {
@@ -20,7 +21,10 @@ namespace HomeCatalog.Core
 		public static PropertyStore NewPropertyStoreInDirectory (String dbDirectory)
 		{
 			string propertyID = Guid.NewGuid ().ToString ();
-			string dbPath = Path.Combine (dbDirectory, propertyID);
+			var documentRoot = Path.Combine (dbDirectory, propertyID);
+			Directory.CreateDirectory (documentRoot);
+			string dbPath = Path.Combine (documentRoot, "data.sqlite");
+			// Preload the store with the id so that its intialized only once
 			PropertyStore tempStore = new PropertyStore (dbPath);
 			tempStore.Property.PropertyID = propertyID;
 			tempStore.SaveProperty ();
@@ -48,6 +52,7 @@ namespace HomeCatalog.Core
 						_property = DB.Table<Property> ().First ();
 					}
 					AddListsToProperty ();
+					_property.Store = this;
 				}
 				return _property;
 			}
@@ -63,6 +68,17 @@ namespace HomeCatalog.Core
 		public void SaveProperty ()
 		{
 			DB.Update (Property);
+		}
+
+		AssetStore _AssetStore;
+		public AssetStore Assets {
+			get {
+				if (_AssetStore == null) {
+					var storePath = Path.Combine (Path.GetDirectoryName(DB.DatabasePath), "assets");
+					_AssetStore = new AssetStore (storePath);
+				}
+				return _AssetStore;
+			}
 		}
 
 		~PropertyStore ()

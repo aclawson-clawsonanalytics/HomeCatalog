@@ -33,6 +33,8 @@ namespace HomeCatalog.Core
 		public CategoryList CategoryList { get; set; }
 		[Ignore]
 		public ItemList ItemList { get; set; }
+		[Ignore]
+		public PropertyStore Store { get; set; }
 
 		public static Room CreateRoom(Room room, string label)
 		{

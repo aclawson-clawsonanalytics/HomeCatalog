@@ -19,11 +19,13 @@ namespace HomeCatalog.Android
 		IList<Photo> Photos;
 		Item _Item;
 		Activity Context;
+		AssetStore Assets;
 
-		public PhotoBrowserAdapter(Activity context, Item item) : base() {
+		public PhotoBrowserAdapter(Activity context, Item item, Property property) : base() {
 			_Item = item;
 			this.Context = context;
 			this.Photos = item.PhotoList.AllItemsByDate ();
+			Assets = property.Store.Assets;
 		}
 
 		public override long GetItemId(int position)
@@ -49,7 +51,7 @@ namespace HomeCatalog.Android
 			} else {
 				imageView = (ImageView) convertView;
 			}
-			var assetPath = AssetStore.CurrentStore.PathForAsset (Photos[position].AssetID);
+			var assetPath = Assets.PathForAsset (Photos[position].AssetID);
 			int THUMBSIZE = 80;
 			BitmapFactory.Options options = new BitmapFactory.Options ();
 			options.InSampleSize = 4;

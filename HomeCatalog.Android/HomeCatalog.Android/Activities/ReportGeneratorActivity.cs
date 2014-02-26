@@ -151,10 +151,6 @@ namespace HomeCatalog.Android
 			Console.WriteLine (filestring);
 			return (filestring);
 		}
-
-
-
-
 	}
 }
 
