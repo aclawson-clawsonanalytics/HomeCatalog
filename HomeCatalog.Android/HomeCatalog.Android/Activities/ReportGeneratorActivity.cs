@@ -99,14 +99,11 @@ namespace HomeCatalog.Android
 					String filename = FilePathFromDate ();
 					exporter.ConstructOutput (filename);
 
-					//var uri = FileProvider.GetUriForFile(this, "com.clawsonanalytics.fileprovider", new Java.IO.File(filename));
-					var uri = global::Android.Net.Uri.FromFile (new Java.IO.File(filename));
+					var uri = FileProvider.GetUriForFile(this, "com.clawsonanalytics.fileprovider", new Java.IO.File(filename));
 					//this.GrantUriPermission ("com.clawsonanlytics.homecatalog",uri,
 					Intent sendIntent = new Intent();
-					sendIntent.AddFlags (ActivityFlags.GrantReadUriPermission);
-					sendIntent.SetAction(Intent.ActionSend);
-					sendIntent.SetData (uri);
-					sendIntent.PutExtra(Intent.ExtraStream,uri);
+					sendIntent.SetAction(Intent.ActionView);
+					sendIntent.PutExtra(Intent.ExtraText,File.ReadAllText (filename));
 					sendIntent.SetType ("text/csv");
 					StartActivity (sendIntent);
 				}
