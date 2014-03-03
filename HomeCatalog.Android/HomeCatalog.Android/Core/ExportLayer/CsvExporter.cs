@@ -64,7 +64,7 @@ namespace HomeCatalog.Android
 			}
 			outputFile.Close ();
 			Console.Write (File.ReadAllText(filepath));
-			Console.WriteLine (filepath);
+			//Console.WriteLine (filepath);
 			return (null);
 		}
 
