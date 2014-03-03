@@ -7,12 +7,11 @@ namespace HomeCatalog.Core
 	{
 		string _storeDirectory;
 
-		public static AssetStore CurrentStore {
-			get;
-			set;
-		}
 		public AssetStore (string directory)
 		{
+			if (!File.Exists (directory)) {
+				Directory.CreateDirectory (directory);
+			}
 			_storeDirectory = directory;
 		}
 

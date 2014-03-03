@@ -30,7 +30,6 @@ namespace HomeCatalog.Android
 			var documentDirectory = System.Environment.GetFolderPath (System.Environment.SpecialFolder.MyDocuments);
 			documentDirectory = Path.Combine (documentDirectory, "Assets");
 			Directory.CreateDirectory (documentDirectory);
-			AssetStore.CurrentStore = new AssetStore(documentDirectory);
 
 			SetContentView (Resource.Layout.MainView);
 

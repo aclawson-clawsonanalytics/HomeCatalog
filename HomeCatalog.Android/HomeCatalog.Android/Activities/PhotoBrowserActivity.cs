@@ -38,7 +38,7 @@ namespace HomeCatalog.Android
 			}	
 
 			GridView photoBrowserGridView = FindViewById<GridView> (Resource.Id.photoBrowserGridView);
-			GridViewAdapter = new PhotoBrowserAdapter (this, Item);
+			GridViewAdapter = new PhotoBrowserAdapter (this, Item, Property);
 
 			photoBrowserGridView.Adapter = GridViewAdapter;
 
@@ -68,8 +68,8 @@ namespace HomeCatalog.Android
 			// result code cancelled
 
 			if (resultCode == Result.Ok) {
-				var destinationAsset = AssetStore.CurrentStore.NewEmptyAsset ();
-				var destinationPath = AssetStore.CurrentStore.PathForEmptyAsset (destinationAsset);
+				var destinationAsset = Property.Store.Assets.NewEmptyAsset ();
+				var destinationPath = Property.Store.Assets.PathForEmptyAsset (destinationAsset);
 				var input = new FileStream (_photoDialog.File.ToString (), FileMode.Open, FileAccess.Read);
 				var output = new FileStream (destinationPath, FileMode.CreateNew, FileAccess.Write);
 				CopyStream (input, output);
