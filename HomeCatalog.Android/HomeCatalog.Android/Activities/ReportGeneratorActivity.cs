@@ -91,24 +91,32 @@ namespace HomeCatalog.Android
 					//exportItems = Property.ItemList.AllItems ();
 				}
 
+				if (exportMethodSpinner.SelectedItemPosition == 0)
+				{
+					CsvExporter exporter = new CsvExporter (exportItems);
+					//String filename = CreateDateString(DateTime.Now);
+					//String extension = ".csv";
+					String filename = FilePathFromDate ();
+					exporter.ConstructOutput (filename);
 
-				CsvExporter exporter = new CsvExporter (exportItems);
-				//String filename = CreateDateString(DateTime.Now);
-				//String extension = ".csv";
-				String filename = FilePathFromDate ();
-				exporter.ConstructOutput (filename);
+					//var uri = FileProvider.GetUriForFile(this, "com.clawsonanalytics.fileprovider", new Java.IO.File(filename));
+					var uri = global::Android.Net.Uri.FromFile (new Java.IO.File(filename));
+					//this.GrantUriPermission ("com.clawsonanlytics.homecatalog",uri,
+					Intent sendIntent = new Intent();
+					sendIntent.AddFlags (ActivityFlags.GrantReadUriPermission);
+					sendIntent.SetAction(Intent.ActionSend);
+					sendIntent.SetData (uri);
+					sendIntent.PutExtra(Intent.ExtraStream,uri);
+					sendIntent.SetType ("text/csv");
+					StartActivity (sendIntent);
+				}
 
-				//var uri = FileProvider.GetUriForFile(this, "com.clawsonanalytics.fileprovider", new Java.IO.File(filename));
-				var uri = global::Android.Net.Uri.FromFile (new Java.IO.File(filename));
-				//this.GrantUriPermission ("com.clawsonanlytics.homecatalog",uri,
-				Intent sendIntent = new Intent();
-				sendIntent.AddFlags (ActivityFlags.GrantReadUriPermission);
-				sendIntent.SetAction(Intent.ActionSend);
-				sendIntent.SetData (uri);
-				sendIntent.PutExtra(Intent.ExtraStream,uri);
-				sendIntent.SetType ("text/csv");
-				StartActivity (sendIntent);
-				//StartActivity (Intent.CreateChooser (sendIntent,
+				else
+				{
+
+
+
+				}
 			};
 
 		}

@@ -139,6 +139,7 @@
     <Compile Include="Activities\ReportGeneratorActivity.cs" />
     <Compile Include="Core\ExportLayer\CsvExporter.cs" />
     <Compile Include="Activities\StandardActivity.cs" />
+    <Compile Include="Core\ExportLayer\PdfExporter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
