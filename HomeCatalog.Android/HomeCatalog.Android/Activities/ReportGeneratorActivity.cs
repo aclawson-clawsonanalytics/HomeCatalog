@@ -22,6 +22,7 @@ namespace HomeCatalog.Android
 		private Spinner propertySpinner { get; set; }
 		private Spinner roomLabelSpinner { get; set; }
 		private Spinner categoryLabelSpinner { get ; set; }
+		private Spinner exportMethodSpinner { get; set; }
 
 		//int filenameCount = 1;
 		const int roomUpdateRequestCode = 1;
@@ -38,6 +39,7 @@ namespace HomeCatalog.Android
 			SetContentView (Resource.Layout.ReportGeneratorView);
 			roomLabelSpinner = FindViewById<Spinner> (Resource.Id.roomQuerrySpinner);
 			categoryLabelSpinner = FindViewById<Spinner> (Resource.Id.categoryQuerrySpinner);
+			exportMethodSpinner = FindViewById<Spinner> (Resource.Id.exportMethodSpinner);
 
 
 			RoomSpinnerAdapter roomAdapter = new RoomSpinnerAdapter (this, Property,"All Rooms");
@@ -45,6 +47,10 @@ namespace HomeCatalog.Android
 
 			CategorySpinnerAdapter categoryAdapter = new CategorySpinnerAdapter (this, Property,"All Categories");
 			categoryLabelSpinner.Adapter = categoryAdapter;
+
+			string[] exportChoices = {".csv",".pdf"};
+
+			exportMethodSpinner.Adapter = new ArrayAdapter (this, Resource.Layout.GenericSpinnerItem, exportChoices);
 
 			Button GenerateReportButton = FindViewById<Button> (Resource.Id.GenerateReportButton);
 			GenerateReportButton.Click += (sender, e) => 
