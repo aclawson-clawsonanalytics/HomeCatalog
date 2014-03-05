@@ -98,9 +98,8 @@ namespace HomeCatalog.Android
 					//String extension = ".csv";
 					String filename = FilePathFromDate ();
 					exporter.ConstructOutput (filename);
-
-					var uri = FileProvider.GetUriForFile(this, "com.clawsonanalytics.fileprovider", new Java.IO.File(filename));
-					//this.GrantUriPermission ("com.clawsonanlytics.homecatalog",uri,
+					//var uri = FileProvider.GetUriForFile(this, "com.clawsonanalytics.fileprovider", new Java.IO.File(filename));
+					this.GrantUriPermission ("com.clawsonanlytics.homecatalog",
 					Intent sendIntent = new Intent();
 					sendIntent.SetAction(Intent.ActionView);
 					sendIntent.PutExtra(Intent.ExtraText,File.ReadAllText (filename));
