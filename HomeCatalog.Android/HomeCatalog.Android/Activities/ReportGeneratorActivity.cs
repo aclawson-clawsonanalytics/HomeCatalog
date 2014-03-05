@@ -10,7 +10,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V4.Content;
-
 using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
@@ -19,15 +18,17 @@ namespace HomeCatalog.Android
 	public class ReportGeneratorActivity : StandardActivity
 	{
 		private Property Property { get; set; }
-		private Spinner propertySpinner { get; set; }
-		private Spinner roomLabelSpinner { get; set; }
-		private Spinner categoryLabelSpinner { get ; set; }
-		private Spinner exportMethodSpinner { get; set; }
 
+		private Spinner propertySpinner { get; set; }
+
+		private Spinner roomLabelSpinner { get; set; }
+
+		private Spinner categoryLabelSpinner { get ; set; }
+
+		private Spinner exportMethodSpinner { get; set; }
 		//int filenameCount = 1;
 		const int roomUpdateRequestCode = 1;
 		const int categoryUpdateRequestCode = 2;
-
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -42,97 +43,65 @@ namespace HomeCatalog.Android
 			exportMethodSpinner = FindViewById<Spinner> (Resource.Id.exportMethodSpinner);
 
 
-			RoomSpinnerAdapter roomAdapter = new RoomSpinnerAdapter (this, Property,"All Rooms");
+			RoomSpinnerAdapter roomAdapter = new RoomSpinnerAdapter (this, Property, "All Rooms");
 			roomLabelSpinner.Adapter = roomAdapter;
 
-			CategorySpinnerAdapter categoryAdapter = new CategorySpinnerAdapter (this, Property,"All Categories");
+			CategorySpinnerAdapter categoryAdapter = new CategorySpinnerAdapter (this, Property, "All Categories");
 			categoryLabelSpinner.Adapter = categoryAdapter;
 
-			string[] exportChoices = {".csv",".pdf"};
+			string[] exportChoices = { ".csv", ".pdf" };
 
 			exportMethodSpinner.Adapter = new ArrayAdapter (this, Resource.Layout.GenericSpinnerItem, exportChoices);
 
 			Button GenerateReportButton = FindViewById<Button> (Resource.Id.GenerateReportButton);
-			GenerateReportButton.Click += (sender, e) => 
-			{
+			GenerateReportButton.Click += (sender, e) => {
 				IEnumerable<Item> exportItems = null;
-				if (roomLabelSpinner.SelectedItemPosition == 0 && categoryLabelSpinner.SelectedItemPosition == 0)
-				{
-					//var roomID = roomAdapter [roomLabelSpinner.SelectedItemPosition].ID;
-					//exportItems = Property.ItemList.InternalTable.Where (item => item.RoomID == roomID);
+				if (roomLabelSpinner.SelectedItemPosition == 0 && categoryLabelSpinner.SelectedItemPosition == 0) {
 					exportItems = Property.ItemList.AllItems ();
-				}
-
-				else if (roomLabelSpinner.SelectedItemPosition == 0 && categoryLabelSpinner.SelectedItemPosition != 0)
-				{
-					//var roomID = roomAdapter [roomLabelSpinner.SelectedItemPosition].ID;
+				} else if (roomLabelSpinner.SelectedItemPosition == 0 && categoryLabelSpinner.SelectedItemPosition != 0) {
 					var catID = categoryAdapter [categoryLabelSpinner.SelectedItemPosition].ID;
 					exportItems = Property.ItemList.InternalTable.Where (item => item.CategoryID == catID);
-					//exportItems = Property.ItemList.AllItems ();
-
-
-				}
-
-				else if (roomLabelSpinner.SelectedItemPosition != 0 && categoryLabelSpinner.SelectedItemPosition == 0)
-				{
+				} else if (roomLabelSpinner.SelectedItemPosition != 0 && categoryLabelSpinner.SelectedItemPosition == 0) {
 					var roomID = roomAdapter [roomLabelSpinner.SelectedItemPosition].ID;
-					//var catID = categoryAdapter [categoryLabelSpinner.SelectedItemPosition].ID;
 					exportItems = Property.ItemList.InternalTable.Where (item => item.RoomID == roomID);
-					//exportItems = Property.ItemList.AllItems ();
-
-				}
-
-				else if (roomLabelSpinner.SelectedItemPosition != 0 && categoryLabelSpinner.SelectedItemPosition != 0)
-				{
+				} else if (roomLabelSpinner.SelectedItemPosition != 0 && categoryLabelSpinner.SelectedItemPosition != 0) {
 					var roomID = roomAdapter [roomLabelSpinner.SelectedItemPosition].ID;
 					var catID = categoryAdapter [categoryLabelSpinner.SelectedItemPosition].ID;
 					exportItems = 
 						Property.ItemList.InternalTable.Where (item => item.CategoryID == catID && item.RoomID == roomID);
-					//exportItems = Property.ItemList.AllItems ();
 				}
 
-				if (exportMethodSpinner.SelectedItemPosition == 0)
-				{
+				if (exportMethodSpinner.SelectedItemPosition == 0) {
 					CsvExporter exporter = new CsvExporter (exportItems);
-					//String filename = CreateDateString(DateTime.Now);
-					//String extension = ".csv";
 					String filename = FilePathFromDate ();
 					exporter.ConstructOutput (filename);
-
-					var uri = FileProvider.GetUriForFile(this, "com.clawsonanalytics.fileprovider", new Java.IO.File(filename));
-					//this.GrantUriPermission ("com.clawsonanlytics.homecatalog",uri,
-					Intent sendIntent = new Intent();
-					sendIntent.SetAction(Intent.ActionView);
-					sendIntent.PutExtra(Intent.ExtraText,File.ReadAllText (filename));
+					//var file = new Java.IO.File (filename);
+					//var uri = FileProvider.GetUriForFile (this, "com.clawsonanalytics.home_catalog.fileprovider", file);
+					var uri = global::Android.Net.Uri.Parse ("content://com.clawsonanalytics.home_catalog.fileprovider/my_reports" + Path.GetFileName (filename));
+					Intent sendIntent = new Intent ();
+					sendIntent.SetAction (Intent.ActionSend);
+					sendIntent.PutExtra (Intent.ExtraStream, uri);
+					sendIntent.SetData (uri);
 					sendIntent.SetType ("text/csv");
 					StartActivity (sendIntent);
-				}
-
-				else
-				{
-
-
+				} else {
 
 				}
 			};
 
 		}
 
-
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult (requestCode, resultCode, data);
-			if (requestCode == roomUpdateRequestCode)
-			{
+			if (requestCode == roomUpdateRequestCode) {
 				((RoomSpinnerAdapter)roomLabelSpinner.Adapter).NotifyDataSetChanged ();
-			}
-			else if (requestCode == categoryUpdateRequestCode)
-			{
+			} else if (requestCode == categoryUpdateRequestCode) {
 				((CategorySpinnerAdapter)categoryLabelSpinner.Adapter).NotifyDataSetChanged ();
 			}
 		}
 
-		private String CreateDateString(DateTime date)
+		private String CreateDateString (DateTime date)
 		{
 			String month = date.Month.ToString ();
 			String day = date.Day.ToString ();
@@ -145,20 +114,20 @@ namespace HomeCatalog.Android
 			return (returnString);
 		}
 
-		private void SortByRoomLabel()
+		private void SortByRoomLabel ()
 		{
 
 
 		}
 
-		private void SortByCategoryLabel()
+		private void SortByCategoryLabel ()
 		{
 
 
 
 		}
 
-		private String FilePathFromDate()
+		private String FilePathFromDate ()
 		{
 
 			var filename = CreateDateString (DateTime.Now);
@@ -168,7 +137,7 @@ namespace HomeCatalog.Android
 				Directory.CreateDirectory (reportsDirectory);
 			}
 
-			var filepath = System.IO.Path.Combine (reportsDirectory,filename);
+			var filepath = System.IO.Path.Combine (reportsDirectory, filename);
 
 			String extension = ".csv";
 			String filestring;

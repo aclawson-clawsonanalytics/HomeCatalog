@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.clawsonanalytics.home-catalog">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.clawsonanalytics.home_catalog">
 	<uses-sdk android:minSdkVersion="12" android:targetSdkVersion="19" />
 	<application android:label="Home Catalog" android:icon="@drawable/icon" android:theme="@android:style/Theme.Holo.Light"></application>
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.clawsonanalytics.fileprovider" android:exported="false" android:grantUriPermissions="true">
+	<provider android:name="android.support.v4.content.FileProvider" 
+				android:authorities="com.clawsonanalytics.home_catalog.fileprovider" 
+				android:exported="false" android:grantUriPermissions="true">
 		<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
 
 	</provider>
