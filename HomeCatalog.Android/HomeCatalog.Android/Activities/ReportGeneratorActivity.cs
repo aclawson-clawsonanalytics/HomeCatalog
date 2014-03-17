@@ -77,7 +77,10 @@ namespace HomeCatalog.Android
 					exporter.ConstructOutput (filename);
 					//var file = new Java.IO.File (filename);
 					//var uri = FileProvider.GetUriForFile (this, "com.clawsonanalytics.home_catalog.fileprovider", file);
-					var uri = global::Android.Net.Uri.Parse ("content://com.clawsonanalytics.home_catalog.fileprovider/my_reports" + Path.GetFileName (filename));
+
+					var uri = global::Android.Net.Uri.Parse ("content://com.clawsonanalytics.home_catalog.fileprovider/my_reports/" + Path.GetFileName (filename));
+
+
 					Intent sendIntent = new Intent ();
 					sendIntent.SetAction (Intent.ActionSend);
 					sendIntent.PutExtra (Intent.ExtraStream, uri);
