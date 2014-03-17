@@ -43,7 +43,9 @@
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Data.Sqlite" />
-    <Reference Include="Mono.Android.Support.v4" />
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\Components\xamandroidsupportv4-18-4.19.0.1\lib\android\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -187,5 +189,18 @@
     <Folder Include="Fragments\" />
     <Folder Include="Core\ExportLayer\" />
     <Folder Include="Resources\xml\" />
+    <Folder Include="libs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidEmbeddedJavaLibrary Include="Adapters\android-support-v4.jar">
+      <DependentUpon>ImageAdapter.cs</DependentUpon>
+    </AndroidEmbeddedJavaLibrary>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="xamandroidsupportv4-18">
+      <InstallationInProgress>True</InstallationInProgress>
+      <Version>4.19.0.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>
