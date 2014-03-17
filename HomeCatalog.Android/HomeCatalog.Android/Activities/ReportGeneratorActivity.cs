@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V4.Content;
+using Android.Content.PM;
 using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
