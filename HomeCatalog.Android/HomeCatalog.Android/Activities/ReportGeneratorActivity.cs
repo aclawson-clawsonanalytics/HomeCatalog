@@ -81,9 +81,8 @@ namespace HomeCatalog.Android
 					Intent sendIntent = new Intent ();
 					sendIntent.SetAction (Intent.ActionSend);
 					sendIntent.PutExtra (Intent.ExtraStream, uri);
-					sendIntent.SetData (uri);
 					sendIntent.SetType ("text/csv");
-					StartActivity (sendIntent);
+					StartActivity (Intent.CreateChooser(sendIntent, "Open File"));
 				} else {
 
 				}
