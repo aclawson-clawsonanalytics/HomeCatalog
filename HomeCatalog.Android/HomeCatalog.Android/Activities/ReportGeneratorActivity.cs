@@ -79,9 +79,17 @@ namespace HomeCatalog.Android
 					var file = new Java.IO.File (filename);
 					var uri = FileProvider.GetUriForFile (this, "com.clawsonanalytics.home_catalog.fileprovider", file);
 					Intent sendIntent = new Intent ();
-					sendIntent.SetAction (Intent.ActionView);
-					//sendIntent.PutExtra (Intent.ExtraStream, uri);
-					sendIntent.SetDataAndType(uri, "text/csv");
+					// For Send
+					sendIntent.SetAction (Intent.ActionSend); 
+					sendIntent.PutExtra (Intent.ExtraStream, uri); 
+					sendIntent.SetType ("text/csv"); 
+					// For View
+					//sendIntent.SetAction (Intent.ActionView);
+					//sendIntent.SetDataAndType(uri, "text/csv");
+//					sendIntent.SetFlags(ActivityFlags.ClearWhenTaskReset|
+//						ActivityFlags.ForwardResult|
+//						ActivityFlags.GrantReadUriPermission|
+//						ActivityFlags.PreviousIsTop);
 
 					StartActivity (Intent.CreateChooser(sendIntent, "Open File"));
 				} else {
