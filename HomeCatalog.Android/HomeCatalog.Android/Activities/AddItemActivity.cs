@@ -182,7 +182,7 @@ namespace HomeCatalog.Android
 			itemNameField.Text = Item.ItemName;
 			//purchaseDateField.Text = Item.PurchaseDate.ToString ();
 
-			if (Item.PurchaseDate.Day == 1 && Item.PurchaseDate.Month == 1 && Item.PurchaseDate.Year == 0001) {
+			if (Item.PurchaseDate == DateTime.MinValue) {
 				purchaseDateDisplay.Text = "None";
 			}
 			else
@@ -190,7 +190,7 @@ namespace HomeCatalog.Android
 			purchaseDateDisplay.Text = Item.PurchaseDate.ToShortDateString ();
 			}
 
-			if (Item.AppraisalDate.Day == 1 && Item.AppraisalDate.Month == 1 && Item.AppraisalDate.Year == 0001) {
+			if (Item.AppraisalDate == DateTime.MinValue) {
 				appraisalDateDisplay.Text = "None";
 			}
 			else{
