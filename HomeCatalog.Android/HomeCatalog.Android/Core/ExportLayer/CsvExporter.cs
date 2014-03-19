@@ -16,14 +16,13 @@ namespace HomeCatalog.Android
 	class CsvExporter
 	{
 		private IEnumerable<Item> DisplayItems { get; set; }
+
 		private int fileNumberCount { get; set; }
 
 		public CsvExporter (IEnumerable<Item> itemsToDisplay)
 		{
 			DisplayItems = itemsToDisplay;
 		}
-
-	
 
 		public String ConstructOutput (String filepath)
 		{
@@ -38,40 +37,48 @@ namespace HomeCatalog.Android
 
 
 			
-			var outputFile = new StreamWriter (filepath,false);
+			var outputFile = new StreamWriter (filepath, false);
 			var heading = "Name,Purchase Date,Purchase Value,Appraisal Date,Appraisal Value,Model Number,Serial Number";
 			outputFile.WriteLine (heading);
 			//Console.WriteLine (heading);
-			foreach (Item itemToDisplay in DisplayItems)
-			{
+			foreach (Item itemToDisplay in DisplayItems) {
 
 
 				//System.IO.File csvFile = new System.IO.File ();
 
 				var escapedName = itemToDisplay.ItemName.Replace ("\"", "\"\"");
-				var escapedPurchaseDate = itemToDisplay.PurchaseDate.ToShortDateString ().Replace ("\"","\"\"");
-				var escapedPurchaseValue = itemToDisplay.PurchaseValue.ToString ().Replace ("\"","\"\"");
-				var escapedAppraisalDate = itemToDisplay.AppraisalDate.ToShortDateString ().Replace ("\"","\"\"");
-				var escapedAppraisalValue = itemToDisplay.AppraisalValue.ToString ().Replace ("\"","\"\"");
-				var escapedModelNumber = itemToDisplay.ModelNumber.ToString ().Replace ("\"","\"\"");
-				var escapedSerialNumber = itemToDisplay.SerialNumber.ToString ().Replace ("\"","\"\"");
-				string record = "\"" + escapedName + "\"" + ',' + "\"" + escapedPurchaseDate + "\"" + ',' + "\"" +
-					escapedAppraisalDate + "\"" + escapedAppraisalValue + "\"" + ',' + "\"" + escapedModelNumber + "\"" + ',' +
-					"\"" + escapedSerialNumber + "\"";
+				string escapedPurchaseDate;
+				string escapedAppraisalDate;
+
+				if (itemToDisplay.PurchaseDate == DateTime.MinValue) {
+					escapedPurchaseDate = itemToDisplay.PurchaseDate.ToShortDateString ().Replace ("\"", "\"\"");
+				} else {
+					escapedPurchaseDate = "None";
+				}
+
+				var escapedPurchaseValue = itemToDisplay.PurchaseValue.ToString ().Replace ("\"", "\"\"");
+
+				if (itemToDisplay.AppraisalDate == DateTime.MinValue) {
+					escapedAppraisalDate = itemToDisplay.AppraisalDate.ToShortDateString ().Replace ("\"", "\"\"");
+				} else {
+					escapedAppraisalDate = "None";
+				}
+
+				var escapedAppraisalValue = itemToDisplay.AppraisalValue.ToString ().Replace ("\"", "\"\"");
+				var escapedModelNumber = itemToDisplay.ModelNumber.ToString ().Replace ("\"", "\"\"");
+				var escapedSerialNumber = itemToDisplay.SerialNumber.ToString ().Replace ("\"", "\"\"");
+				string record = "\"" + escapedName + "\"" + ',' + "\"" + escapedPurchaseDate + "\"" + ',' + "\"" + escapedPurchaseValue + "\"" + "," + "\"" +
+				                escapedAppraisalDate + "\"" + escapedAppraisalValue + "\"" + ',' + "\"" + escapedModelNumber + "\"" + ',' +
+				                "\"" + escapedSerialNumber + "\"";
 				//Console.WriteLine (record);
 				outputFile.WriteLine (record);
 				//Console.WriteLine (itemToDisplay.ItemName);
 			}
 			outputFile.Close ();
-			Console.Write (File.ReadAllText(filepath));
+			Console.Write (File.ReadAllText (filepath));
 			//Console.WriteLine (filepath);
 			return (null);
 		}
-
-
-
 	}
-
-
 }
 
