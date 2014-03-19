@@ -142,7 +142,7 @@ namespace HomeCatalog.Android
 			String extension = ".csv";
 			String filestring;
 			filestring = filepath + extension;
-			//Console.WriteLine (filestring);
+			Console.WriteLine (filestring);
 			return (filestring);
 		}
 	}

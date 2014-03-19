@@ -56,7 +56,7 @@ namespace HomeCatalog.Android
 				var escapedModelNumber = itemToDisplay.ModelNumber.ToString ().Replace ("\"","\"\"");
 				var escapedSerialNumber = itemToDisplay.SerialNumber.ToString ().Replace ("\"","\"\"");
 				string record = "\"" + escapedName + "\"" + ',' + "\"" + escapedPurchaseDate + "\"" + ',' + "\"" +
-					escapedAppraisalDate + "\"" + ',' + "\"" + ',' + "\"" + escapedModelNumber + "\"" + ',' +
+					escapedAppraisalDate + "\"" + escapedAppraisalValue + "\"" + ',' + "\"" + escapedModelNumber + "\"" + ',' +
 					"\"" + escapedSerialNumber + "\"";
 				//Console.WriteLine (record);
 				outputFile.WriteLine (record);
