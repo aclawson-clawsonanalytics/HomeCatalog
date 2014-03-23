@@ -116,8 +116,6 @@
     <Compile Include="Adapters\RoomSpinnerAdapter.cs" />
     <Compile Include="Adapters\RoomListAdapter.cs" />
     <Compile Include="Adapters\CategorySpinnerAdapter.cs" />
-    <Compile Include="Activities\FullImageActivity.cs" />
-    <Compile Include="Activities\AddPhotoActivity.cs" />
     <Compile Include="Fragments\PhotoDialogFragment.cs" />
     <Compile Include="Activities\PhotoBrowserActivity.cs" />
     <Compile Include="Fragments\PropertyDialogFragment.cs" />
@@ -141,7 +139,6 @@
     <Compile Include="Activities\ReportGeneratorActivity.cs" />
     <Compile Include="Core\ExportLayer\CsvExporter.cs" />
     <Compile Include="Activities\StandardActivity.cs" />
-    <Compile Include="Activities\TestCSV.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
