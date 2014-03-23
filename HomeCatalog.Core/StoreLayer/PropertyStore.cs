@@ -18,23 +18,35 @@ namespace HomeCatalog.Core
 			set;
 		}
 
+		public string BasePath { get; private set; }
+		public string DBPath { get; private set; }
+
 		public static PropertyStore NewPropertyStoreInDirectory (String dbDirectory)
 		{
 			string propertyID = Guid.NewGuid ().ToString ();
-			var documentRoot = Path.Combine (dbDirectory, propertyID);
-			Directory.CreateDirectory (documentRoot);
-			string dbPath = Path.Combine (documentRoot, "data.sqlite");
+			var newBasePath = Path.Combine (dbDirectory, propertyID);
+			return NewPropertyStoreAtPath (newBasePath);
+		}
+
+		// This function is exposed mostly for testing purposes
+		public static PropertyStore NewPropertyStoreAtPath (String aBasePath)
+		{
+			Directory.CreateDirectory (aBasePath);
+			var propertyID = Path.GetFileName (aBasePath);
+
 			// Preload the store with the id so that its intialized only once
-			PropertyStore tempStore = new PropertyStore (dbPath);
+			PropertyStore tempStore = new PropertyStore (aBasePath);
 			tempStore.Property.PropertyID = propertyID;
 			tempStore.SaveProperty ();
 			tempStore.Dispose ();
-			return new PropertyStore (dbPath);
+			return new PropertyStore (aBasePath);
 		}
 
-		public PropertyStore (String aDBpath)
+		public PropertyStore (String aBasePath)
 		{
-			DB = new SQLiteConnection (aDBpath);
+			BasePath = aBasePath;
+			DBPath = Path.Combine (BasePath, "data.sqlite");
+			DB = new SQLiteConnection (DBPath);
 			DB.CreateTable<Property> ();
 			DB.CreateTable<Room> ();
 			DB.CreateTable<Category> ();

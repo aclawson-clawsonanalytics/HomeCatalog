@@ -47,8 +47,7 @@ namespace HomeCatalog.Core
 			var files = Directory.EnumerateDirectories (_directory);
 			List<PropertyPath> paths = new List<PropertyPath> ();
 			foreach (var file in files) {
-				var dataPath = Path.Combine (file, "data.sqlite");
-				PropertyPath path = new PropertyPath (dataPath);
+				PropertyPath path = new PropertyPath (file);
 				paths.Add (path);
 			}
 			PropertyPaths = paths.AsReadOnly ();
@@ -64,7 +63,7 @@ namespace HomeCatalog.Core
 		public void RemovePropertyStoreWithID (string id)
 		{
 			PropertyPath p = FindPathWithID (id);
-			File.Delete (p.Path);
+			Directory.Delete (p.BasePath, recursive:true);
 			RefreshCollection ();
 		}
 
@@ -82,7 +81,7 @@ namespace HomeCatalog.Core
 		{
 			foreach (PropertyPath prop in PropertyPaths) {
 				if (prop.ID == SearchId) {
-					return new PropertyStore (prop.Path);
+					return new PropertyStore (prop.BasePath);
 				} 
 			}
 			return null;

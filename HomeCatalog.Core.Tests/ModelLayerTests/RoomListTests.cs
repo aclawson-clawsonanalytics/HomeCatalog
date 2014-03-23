@@ -22,7 +22,7 @@ namespace HomeCatalog.Core.Tests
 			TempDirectory = Path.Combine (Path.GetTempPath (), Path.GetRandomFileName ());
 			Directory.CreateDirectory (TempDirectory);
 			TempDBPath = Path.Combine (TempDirectory, Path.GetRandomFileName ());
-			Store = new PropertyStore (TempDBPath);
+			Store = PropertyStore.NewPropertyStoreAtPath (TempDBPath);
 			SUT = Store.Property.RoomList;
 		}
 
@@ -30,8 +30,7 @@ namespace HomeCatalog.Core.Tests
 		public void Teardown ()
 		{
 			Store.Dispose ();
-			File.Delete (TempDBPath);
-			Directory.Delete (TempDirectory);
+			Directory.Delete (TempDirectory, recursive:true);
 		}
 
 		[Test()]

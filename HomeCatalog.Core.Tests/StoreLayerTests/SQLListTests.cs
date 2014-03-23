@@ -31,8 +31,7 @@ namespace HomeCatalog.Core.Tests
 		public void Teardown ()
 		{
 			Store.Dispose ();
-			File.Delete (TempDBPath);
-			Directory.Delete (TempDirectory);
+			Directory.Delete (TempDirectory, recursive:true);
 		}
 
 		[Test()]
@@ -68,8 +67,9 @@ namespace HomeCatalog.Core.Tests
 
 			Store.Dispose ();
 
-			PropertyStore newStore = new PropertyStore (TempDBPath);
-			Assert.That (newStore.Property.RoomList.AllItems ().First ().Label == "ARoom");
+			var newStore = new SQLiteConnection (TempDBPath);
+			var newList = new SQLList<Room> (newStore.Table<Room> ());
+			Assert.That (newList.AllItems ().First ().Label == "ARoom");
 			newStore.Dispose ();
 		}
 
