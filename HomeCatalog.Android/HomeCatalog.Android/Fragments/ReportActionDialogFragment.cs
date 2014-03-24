@@ -21,7 +21,7 @@ namespace HomeCatalog.Android
 
 		public override Dialog OnCreateDialog(Bundle savedInstanceState)
 		{
-			optionList = new string[] {"View","Email"};
+			optionList = new string[] {"E-mail","View"};
 
 			var builder = new AlertDialog.Builder (Activity);
 			builder.SetTitle ("Options");
