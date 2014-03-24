@@ -50,7 +50,7 @@ namespace HomeCatalog.Android
 				string escapedPurchaseDate;
 				string escapedAppraisalDate;
 
-				if (itemToDisplay.PurchaseDate == DateTime.MinValue) {
+				if (itemToDisplay.PurchaseDate != DateTime.MinValue) {
 					escapedPurchaseDate = itemToDisplay.PurchaseDate.ToShortDateString ().Replace ("\"", "\"\"");
 				} else {
 					escapedPurchaseDate = "None";
@@ -58,7 +58,7 @@ namespace HomeCatalog.Android
 
 				var escapedPurchaseValue = itemToDisplay.PurchaseValue.ToString ().Replace ("\"", "\"\"");
 
-				if (itemToDisplay.AppraisalDate == DateTime.MinValue) {
+				if (itemToDisplay.AppraisalDate != DateTime.MinValue) {
 					escapedAppraisalDate = itemToDisplay.AppraisalDate.ToShortDateString ().Replace ("\"", "\"\"");
 				} else {
 					escapedAppraisalDate = "None";
