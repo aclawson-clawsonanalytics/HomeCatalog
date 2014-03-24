@@ -73,12 +73,16 @@ namespace HomeCatalog.Android
 				}
 
 				if (exportMethodSpinner.SelectedItemPosition == 0) {
+
 					CsvExporter exporter = new CsvExporter (exportItems);
 					String filename = FilePathFromDate ();
 					exporter.ConstructOutput (filename);
 					var file = new Java.IO.File (filename);
 					var uri = FileProvider.GetUriForFile (this, "com.clawsonanalytics.home_catalog.fileprovider", file);
 					Intent sendIntent = new Intent ();
+
+					var transaction = FragmentManager.BeginTransaction();
+
 					// For Send
 					sendIntent.SetAction (Intent.ActionSend); 
 					sendIntent.PutExtra (Intent.ExtraStream, uri); 
