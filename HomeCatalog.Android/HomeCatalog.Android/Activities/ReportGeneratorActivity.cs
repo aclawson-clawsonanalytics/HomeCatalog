@@ -72,19 +72,52 @@ namespace HomeCatalog.Android
 						Property.ItemList.InternalTable.Where (item => item.CategoryID == catID && item.RoomID == roomID);
 				}
 
+				// .csv format is selected
 				if (exportMethodSpinner.SelectedItemPosition == 0) {
+
 					CsvExporter exporter = new CsvExporter (exportItems);
 					String filename = FilePathFromDate ();
 					exporter.ConstructOutput (filename);
 					var file = new Java.IO.File (filename);
 					var uri = FileProvider.GetUriForFile (this, "com.clawsonanalytics.home_catalog.fileprovider", file);
 					Intent sendIntent = new Intent ();
-					sendIntent.SetAction (Intent.ActionView);
-					//sendIntent.PutExtra (Intent.ExtraStream, uri);
-					sendIntent.SetDataAndType(uri, "text/csv");
+					sendIntent.SetAction (Intent.ActionSend); 
+					sendIntent.PutExtra (Intent.ExtraStream, uri); 
+					sendIntent.SetType ("text/csv"); 
+					var transaction = FragmentManager.BeginTransaction();
+					ReportActionDialogFragment actionDialog = new ReportActionDialogFragment ();
+					actionDialog.Show(transaction, "actionDialog");
+					actionDialog.OnItemSelected += (DialogClickEventArgs a) =>{
+					// For Send
+						switch(a.Which)
+						{
+						case 0:
+							sendIntent.SetAction (Intent.ActionSend); 
+							sendIntent.PutExtra (Intent.ExtraStream, uri); 
+							sendIntent.SetType ("text/csv"); 
+							StartActivity (Intent.CreateChooser(sendIntent, "Open File"));
 
-					StartActivity (Intent.CreateChooser(sendIntent, "Open File"));
-				} else {
+							break;
+						
+						
+						case 1:
+							sendIntent.SetAction (Intent.ActionView);
+							sendIntent.SetDataAndType(uri, "text/csv");
+												sendIntent.SetFlags(ActivityFlags.ClearWhenTaskReset|
+													ActivityFlags.ForwardResult|
+													ActivityFlags.GrantReadUriPermission|
+													ActivityFlags.PreviousIsTop);
+							StartActivity (Intent.CreateChooser(sendIntent, "Open File"));
+
+							break;
+						
+						default :
+							break;
+						}
+					};
+					
+
+					} else {
 
 				}
 			};

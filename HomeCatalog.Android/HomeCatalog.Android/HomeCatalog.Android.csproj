@@ -141,6 +141,7 @@
     <Compile Include="Activities\StandardActivity.cs" />
     <Compile Include="Activities\PhotoPagerActivity.cs" />
     <Compile Include="Adapters\PhotoPagerAdapter.cs" />
+    <Compile Include="Fragments\ReportActionDialogFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
