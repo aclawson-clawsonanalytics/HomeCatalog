@@ -139,6 +139,8 @@
     <Compile Include="Activities\ReportGeneratorActivity.cs" />
     <Compile Include="Core\ExportLayer\CsvExporter.cs" />
     <Compile Include="Activities\StandardActivity.cs" />
+    <Compile Include="Activities\PhotoPagerActivity.cs" />
+    <Compile Include="Adapters\PhotoPagerAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -176,6 +178,8 @@
     <AndroidResource Include="Resources\layout\ReportGeneratorView.axml" />
     <AndroidResource Include="Resources\xml\file_paths.xml" />
     <AndroidResource Include="Resources\layout\GenericSpinnerItem.axml" />
+    <AndroidResource Include="Resources\layout\PhotoFullImageView.axml" />
+    <AndroidResource Include="Resources\layout\PhotoPagerLayout.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

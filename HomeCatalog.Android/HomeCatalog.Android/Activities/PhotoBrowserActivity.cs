@@ -11,6 +11,7 @@ using Android.Media;
 using HomeCatalog.Core;
 using Android.Content.PM;
 using System.IO;
+using System.Linq;
 using Java.IO;
 
 namespace HomeCatalog.Android
@@ -42,6 +43,7 @@ namespace HomeCatalog.Android
 
 			photoBrowserGridView.Adapter = GridViewAdapter;
 
+			// Add Photo Button
 			Button addPhotoButton = FindViewById<Button> (Resource.Id.addPhotoButton);
 			addPhotoButton.Click += (sender, e) => {
 				var transaction = FragmentManager.BeginTransaction ();
@@ -50,14 +52,16 @@ namespace HomeCatalog.Android
 				_photoDialog.Show (transaction, "photoDialog");
 			};
 
-//			photoBrowserGridView.ItemClick += (sender, e) => 
-//			{
-//				// This is not correct.  We are not requesting an item or moving
-//				// to the ItemsDetailActivity
-//				var ItemRequest = new Intent (this,typeof(FullImageActivity));
-//				ItemRequest.PutExtra (Item.ItemIDKey,GridViewAdapter[e.Position].ID);
-//				StartActivity (ItemRequest);
-//			};
+			// Item Click
+			photoBrowserGridView.ItemClick += (sender, e) => {
+				var ItemRequest = new Intent (this, typeof(PhotoPagerActivity));
+				ItemRequest.PutExtra (PhotoPagerActivity.ItemTitleKey, this.Item.ItemName);
+				ItemRequest.PutExtra (PhotoPagerActivity.PositionKey, e.Position);
+				ItemRequest.PutStringArrayListExtra (
+					PhotoPagerActivity.PhotoAssetIDListKey,
+					GridViewAdapter.Photos.Select (photo => photo.AssetID).ToArray());
+				StartActivity (ItemRequest);
+			};
 		}
 
 		private PhotoDialogFragment _photoDialog { get; set; }
@@ -68,7 +72,7 @@ namespace HomeCatalog.Android
 			// result code cancelled
 
 			if (resultCode == Result.Ok) {
-				var destinationAsset = Property.Store.Assets.NewEmptyAsset ();
+				var destinationAsset = Property.Store.Assets.NewEmptyAsset () + ".jpg";
 				var destinationPath = Property.Store.Assets.PathForEmptyAsset (destinationAsset);
 				var input = new FileStream (_photoDialog.File.ToString (), FileMode.Open, FileAccess.Read);
 				var output = new FileStream (destinationPath, FileMode.CreateNew, FileAccess.Write);
@@ -86,12 +90,11 @@ namespace HomeCatalog.Android
 			base.OnActivityResult (requestCode, resultCode, data);
 		}
 
-		private static void CopyStream(System.IO.Stream input, System.IO.Stream output)
+		private static void CopyStream (System.IO.Stream input, System.IO.Stream output)
 		{
 			byte[] buffer = new byte[32768];
 			int read;
-			while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
-			{
+			while ((read = input.Read (buffer, 0, buffer.Length)) > 0) {
 				output.Write (buffer, 0, read);
 			}
 		}

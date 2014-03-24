@@ -16,7 +16,7 @@ namespace HomeCatalog.Android
 {
 	class PhotoBrowserAdapter : BaseAdapter<Photo>
 	{
-		IList<Photo> Photos;
+		public IList<Photo> Photos { get; set; }
 		Item _Item;
 		Activity Context;
 		AssetStore Assets;
