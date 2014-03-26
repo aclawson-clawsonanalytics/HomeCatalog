@@ -43,15 +43,16 @@ namespace HomeCatalog.Android
 			//Console.WriteLine (heading);
 			foreach (Item itemToDisplay in DisplayItems) {
 
-
 				//System.IO.File csvFile = new System.IO.File ();
 
-				var escapedName = itemToDisplay.ItemName.Replace ("\"", "\"\"");
+				//var escapedName = itemToDisplay.ItemName.Replace ("\"", "\"\"");
+				var escapedName = EscapedString (itemToDisplay.ItemName);
 				string escapedPurchaseDate;
 				string escapedAppraisalDate;
 
 				if (itemToDisplay.PurchaseDate != DateTime.MinValue) {
-					escapedPurchaseDate = itemToDisplay.PurchaseDate.ToShortDateString ().Replace ("\"", "\"\"");
+					//escapedPurchaseDate = itemToDisplay.PurchaseDate.ToShortDateString ().Replace ("\"", "\"\"");
+					escapedPurchaseDate = EscapedString (itemToDisplay.PurchaseDate.ToShortDateString());
 				} else {
 					escapedPurchaseDate = "None";
 				}
@@ -59,16 +60,20 @@ namespace HomeCatalog.Android
 				var escapedPurchaseValue = itemToDisplay.PurchaseValue.ToString ().Replace ("\"", "\"\"");
 
 				if (itemToDisplay.AppraisalDate != DateTime.MinValue) {
-					escapedAppraisalDate = itemToDisplay.AppraisalDate.ToShortDateString ().Replace ("\"", "\"\"");
+					//escapedAppraisalDate = itemToDisplay.AppraisalDate.ToShortDateString ().Replace ("\"", "\"\"");
+					escapedAppraisalDate = EscapedString (itemToDisplay.AppraisalDate.ToShortDateString ());
 				} else {
 					escapedAppraisalDate = "None";
 				}
 
-				var escapedAppraisalValue = itemToDisplay.AppraisalValue.ToString ().Replace ("\"", "\"\"");
-				var escapedModelNumber = itemToDisplay.ModelNumber.ToString ().Replace ("\"", "\"\"");
-				var escapedSerialNumber = itemToDisplay.SerialNumber.ToString ().Replace ("\"", "\"\"");
+				//var escapedAppraisalValue = itemToDisplay.AppraisalValue.ToString ().Replace ("\"", "\"\"");
+				var escapedAppraisalValue = EscapedString (itemToDisplay.AppraisalValue.ToString ());
+				//var escapedModelNumber = itemToDisplay.ModelNumber.ToString ().Replace ("\"", "\"\"");
+				var escapedModelNumber = EscapedString (itemToDisplay.ModelNumber.ToString ());
+				//var escapedSerialNumber = itemToDisplay.SerialNumber.ToString ().Replace ("\"", "\"\"");
+				var escapedSerialNumber = EscapedString (itemToDisplay.SerialNumber.ToString ());
 				string record = "\"" + escapedName + "\"" + ',' + "\"" + escapedPurchaseDate + "\"" + ',' + "\"" + escapedPurchaseValue + "\"" + "," + "\"" +
-				                escapedAppraisalDate + "\"" + escapedAppraisalValue + "\"" + ',' + "\"" + escapedModelNumber + "\"" + ',' +
+					escapedAppraisalDate + "\"" + ',' + "\"" + escapedAppraisalValue + "\"" + ',' + "\"" + escapedModelNumber + "\"" + ',' +
 				                "\"" + escapedSerialNumber + "\"";
 				//Console.WriteLine (record);
 				outputFile.WriteLine (record);
@@ -78,6 +83,11 @@ namespace HomeCatalog.Android
 			Console.Write (File.ReadAllText (filepath));
 			//Console.WriteLine (filepath);
 			return (null);
+		}
+
+		private String EscapedString(String aString){
+			String escapedString = aString.Replace ("\"", "\"\"");
+			return (escapedString);
 		}
 	}
 }
