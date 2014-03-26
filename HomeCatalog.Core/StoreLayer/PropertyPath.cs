@@ -11,7 +11,7 @@ namespace HomeCatalog.Core
 			BasePath = path;
 			DataPath = System.IO.Path.Combine (path, "data.sqlite");
 			if (!File.Exists (DataPath)) {
-				throw new FileNotFoundException ();
+				throw new FileLoadException ("No data at path" + DataPath);
 			}
 		}
 
@@ -52,6 +52,7 @@ namespace HomeCatalog.Core
 		}
 
 		public string BasePath { get; private set; }
+
 		public string DataPath { get; private set; }
 	}
 }

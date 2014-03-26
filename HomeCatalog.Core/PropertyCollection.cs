@@ -47,8 +47,13 @@ namespace HomeCatalog.Core
 			var files = Directory.EnumerateDirectories (_directory);
 			List<PropertyPath> paths = new List<PropertyPath> ();
 			foreach (var file in files) {
-				PropertyPath path = new PropertyPath (file);
-				paths.Add (path);
+				try {
+					PropertyPath path = new PropertyPath (file);
+					paths.Add (path);
+				}
+				catch (FileLoadException e){
+					Console.WriteLine ("ERROR opening file! " + e.Message);
+				}
 			}
 			PropertyPaths = paths.AsReadOnly ();
 		}
