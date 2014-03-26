@@ -22,11 +22,14 @@ namespace HomeCatalog.Core
 			base.Remove (item);
 		}
 
-//		public ReadOnlyCollection<Item> AllItemsByRoomLabel (bool asc){
-//			if (asc) {
-//				return (from item in InternalTable orderby 
-//			}
-//		}
+		public ReadOnlyCollection<Item> AllItemsByRoomLabel (bool asc){
+			if (asc) {
+				//return (from item in InternalTable orderby item.RoomID select item).ToList ().AsReadOnly();
+
+			} else{
+				return (from item in InternalTable orderby item.RoomID descending select item).ToList ().AsReadOnly();
+			}
+		}
 	}
 }
 

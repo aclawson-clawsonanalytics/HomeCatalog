@@ -21,7 +21,7 @@ namespace HomeCatalog.Android
 		public ItemListAdapter(Activity context,Property aProperty) : base() {
 			Property = aProperty;
 			this.context = context;
-			this.items = Property.ItemList.AllItems ();
+			this.items = Property.ItemList.AllItemsByRoomLabel (true);
 		}
 
 		public override long GetItemId(int position)
