@@ -3,26 +3,26 @@ using System;
 
 namespace HomeCatalog.Core.Tests
 {
-	[TestFixture()]
+	[TestFixture ()]
 	public class PropertyTests
 	{
-		private Property sut = new Property();
+		private Property sut = new Property ();
 
-		[SetUp()]
+		[SetUp ()]
 		public void SetUp ()
 		{
 			sut = new Property ();
 		}
 
-		[Test()]
-		public void PropertyNameIsCorrect()
+		[Test ()]
+		public void PropertyNameIsCorrect ()
 		{
 			sut.PropertyName = "Name";
 			Assert.That (sut.PropertyName == "Name");
 		}
 
 		[Test]
-		public void PropertyHasID()
+		public void PropertyHasID ()
 		{
 			Assert.That (sut.PropertyID != null);
 		}
@@ -34,32 +34,33 @@ namespace HomeCatalog.Core.Tests
 			Assert.That (sut.Address == "19859 E. Garden Pl");
 		}
 
-		[Test()]
+		[Test ()]
 		public void PropertyCityIsCorrect ()
 		{
 			sut.City = "Centennial";
 			Assert.That (sut.City == "Centennial");
 		}
 
-		[Test()]
-		public void PropertyStateIsCorrect()
+		[Test ()]
+		public void PropertyStateIsCorrect ()
 		{
 			sut.State = "Colorado";
-			Assert.That (sut.State== "Colorado");
+			Assert.That (sut.State == "Colorado");
 		}
 
-		[Test()]
-		public void PropertyZipIsCorrect()
+		[Test ()]
+		public void PropertyZipIsCorrect ()
 		{
 			sut.ZipCode = "80015";
 			Assert.That (sut.ZipCode == "80015");
 		}
 
-		[Test()]
-		public void PropertyCountryIsCorrect()
+		[Test ()]
+		public void PropertyCountryIsCorrect ()
 		{
 			sut.Country = "USA";
-			Assert.That (sut.Country == "USA")
+			Assert.That (sut.Country == "USA");
 		}
+	}
 }
 

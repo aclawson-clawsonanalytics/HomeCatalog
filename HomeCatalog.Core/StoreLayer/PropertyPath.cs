@@ -8,16 +8,17 @@ namespace HomeCatalog.Core
 	{
 		public PropertyPath (string path)
 		{
-			if (!File.Exists (path)) {
+			BasePath = path;
+			DataPath = System.IO.Path.Combine (path, "data.sqlite");
+			if (!File.Exists (DataPath)) {
 				throw new FileNotFoundException ();
 			}
-			Path = path;
 		}
 
 		public string ID { 
 			get {
 				string id = null;
-				SQLiteConnection conn = new SQLiteConnection (Path);
+				SQLiteConnection conn = new SQLiteConnection (DataPath);
 				try {
 					Property property = conn.Table<Property> ().FirstOrDefault ();
 					if (property != null) {
@@ -35,7 +36,7 @@ namespace HomeCatalog.Core
 		public string Name {
 			get {
 				string name = null;
-				SQLiteConnection conn = new SQLiteConnection (Path);
+				SQLiteConnection conn = new SQLiteConnection (DataPath);
 				try {
 					Property property = conn.Table<Property> ().FirstOrDefault ();
 					if (property != null) {
@@ -50,7 +51,8 @@ namespace HomeCatalog.Core
 			}
 		}
 
-		public string Path { get; private set; }
+		public string BasePath { get; private set; }
+		public string DataPath { get; private set; }
 	}
 }
 

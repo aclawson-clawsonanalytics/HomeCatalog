@@ -20,15 +20,14 @@ namespace HomeCatalog.Core.Tests
 			TempDirectory = Path.Combine (Path.GetTempPath (), Path.GetRandomFileName ());
 			Directory.CreateDirectory (TempDirectory);
 			TempDBPath = Path.Combine (TempDirectory, Path.GetRandomFileName ());
-			SUT = new PropertyStore (TempDBPath);
+			SUT = PropertyStore.NewPropertyStoreAtPath (TempDBPath);
 		}
 
 		[TearDown()]
 		public void Teardown ()
 		{
 			SUT.Dispose ();
-			File.Delete (TempDBPath);
-			Directory.Delete (TempDirectory);
+			Directory.Delete (TempDirectory, recursive:true);
 		}
 
 		[Test()]

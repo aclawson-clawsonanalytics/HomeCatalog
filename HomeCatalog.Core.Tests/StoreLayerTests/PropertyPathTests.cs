@@ -22,8 +22,7 @@ namespace HomeCatalog.Core.Tests
 		[TearDown()]
 		public void Teardown ()
 		{
-			File.Delete (TempDBPath);
-			Directory.Delete (TempDirectory);
+			Directory.Delete (TempDirectory, recursive:true);
 		}
 
 		[Test()]
@@ -35,7 +34,7 @@ namespace HomeCatalog.Core.Tests
 		[Test()]
 		public void ItReadsThePropertyID ()
 		{
-			PropertyStore store = new PropertyStore (TempDBPath);
+			PropertyStore store = PropertyStore.NewPropertyStoreAtPath (TempDBPath);
 			string id = store.Property.PropertyID;
 
 			PropertyPath path = new PropertyPath (TempDBPath);
@@ -45,7 +44,7 @@ namespace HomeCatalog.Core.Tests
 		[Test()]
 		public void ItReadsThePropertyName ()
 		{
-			PropertyStore store = new PropertyStore (TempDBPath);
+			PropertyStore store = PropertyStore.NewPropertyStoreAtPath (TempDBPath);
 			store.Property.PropertyName = "Test";
 			store.SaveProperty ();
 			
@@ -56,7 +55,8 @@ namespace HomeCatalog.Core.Tests
 		[Test()]
 		public void ItToleratesUninitializedFiles ()
 		{
-			File.Create(TempDBPath).Dispose();
+			Directory.CreateDirectory (TempDBPath);
+			File.Create(Path.Combine(TempDBPath, "data.sqlite")).Dispose();
 			Assert.DoesNotThrow (delegate { new PropertyPath (TempDBPath); });
 		}
 	}

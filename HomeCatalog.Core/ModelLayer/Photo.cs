@@ -29,9 +29,9 @@ namespace HomeCatalog.Core
 
 		}
 
-		public Photo (int anItemID)
+		public Photo (string anAssetID)
 		{
-			ItemID = anItemID;
+			AssetID = anAssetID;
 		}
 	}
 }
