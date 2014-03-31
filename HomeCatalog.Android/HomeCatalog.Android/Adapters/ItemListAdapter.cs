@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Android.App;
@@ -21,7 +22,7 @@ namespace HomeCatalog.Android
 		public ItemListAdapter(Activity context,Property aProperty) : base() {
 			Property = aProperty;
 			this.context = context;
-			this.items = Property.ItemList.AllItemsByRoomLabel (true);
+			this.items = Property.ItemList.AllItems();
 		}
 
 		public override long GetItemId(int position)
@@ -49,6 +50,23 @@ namespace HomeCatalog.Android
 			base.NotifyDataSetChanged ();
 		}
 
+//		public ReadOnlyCollection<Item> OrderItemsByRoomLabel (){
+//			items = Property.ItemList.AllItems ();
+//			IList<Room> sortedRooms= Property.RoomList.AllRoomsByLabel (true);
+//			IList<Item> sortedItems = new List<Item>();
+//
+//			foreach (Room room in sortedRooms){
+//				foreach (Item item in items) {
+//					if (Property.RoomList (item.RoomID) == "None")
+//					if (item.RoomID == room.ID) {
+//						sortedItems.Add (item);
+//					}
+//				}
+//
+//			}
+//			ReadOnlyCollection<Item> SortedReadOnly = new ReadOnlyCollection<Item> (sortedItems);
+//			return (SortedReadOnly);
+//		}
 	}
 }
 
