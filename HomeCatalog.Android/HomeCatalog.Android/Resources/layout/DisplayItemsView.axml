@@ -19,18 +19,17 @@
         android:layout_alignParentLeft="true"
         android:text="Add Item"
         android:textSize="15dp" />
-    <Button
-        android:text="Back"
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/backButton3"
+        android:id="@+id/sortSpinner"
         android:layout_alignParentRight="true"
         android:layout_below="@id/addItemButton"
         android:textSize="15dp" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"
-        android:layout_below="@id/backButton3"
+        android:layout_below="@id/sortSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/itemsList"

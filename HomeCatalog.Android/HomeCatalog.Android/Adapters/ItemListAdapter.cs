@@ -50,6 +50,7 @@ namespace HomeCatalog.Android
 			view.FindViewById<TextView> (Resource.Id.itemListText).Text = items[position].ItemName;
 			return view;
 		}
+
 		public override void NotifyDataSetChanged ()
 		{
 			items = Property.ItemList.AllItems ();
