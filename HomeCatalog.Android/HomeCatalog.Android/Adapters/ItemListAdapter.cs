@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using HomeCatalog.Core;
+using HomeCatalog.Android;
 
 namespace HomeCatalog.Android
 {
@@ -18,11 +19,17 @@ namespace HomeCatalog.Android
 		IList<Item> items;
 		private Property Property {get;set;}
 		Activity context;
+		int SORT_FLAG;
 
-		public ItemListAdapter(Activity context,Property aProperty) : base() {
+		public ItemListAdapter(Activity context,Property aProperty,int SORT_FLAG) : base() {
 			Property = aProperty;
 			this.context = context;
-			this.items = Property.ItemList.AllItems();
+			//this.items = Property.ItemList.AllItems();
+			if (SORT_FLAG == 0) {
+				this.items = OrderItemsByRoomLabel ();
+			} else {
+				this.items = OrderItemsByCategoryLabel ();
+			}
 		}
 
 		public override long GetItemId(int position)
@@ -50,23 +57,61 @@ namespace HomeCatalog.Android
 			base.NotifyDataSetChanged ();
 		}
 
-//		public ReadOnlyCollection<Item> OrderItemsByRoomLabel (){
-//			items = Property.ItemList.AllItems ();
-//			IList<Room> sortedRooms= Property.RoomList.AllRoomsByLabel (true);
-//			IList<Item> sortedItems = new List<Item>();
-//
-//			foreach (Room room in sortedRooms){
-//				foreach (Item item in items) {
-//					if (Property.RoomList (item.RoomID) == "None")
-//					if (item.RoomID == room.ID) {
-//						sortedItems.Add (item);
-//					}
-//				}
-//
-//			}
-//			ReadOnlyCollection<Item> SortedReadOnly = new ReadOnlyCollection<Item> (sortedItems);
-//			return (SortedReadOnly);
-//		}
+		public ReadOnlyCollection<Item> OrderItemsByRoomLabel (){
+			items = Property.ItemList.AllItems ();
+
+			IList<Room> sortedRooms= Property.RoomList.AllRoomsByLabel (true);
+			IList<Item> sortedItems = new List<Item>();
+
+			// Add rooms that have "None" as the label
+			foreach (Item item in items) {
+				if (item.RoomID == 0) {
+					sortedItems.Add (item);
+				}
+			}
+
+			foreach (Room room in sortedRooms){
+
+				foreach (Item item in items) {
+					
+					if (item.RoomID == room.ID) {
+						sortedItems.Add (item);
+					}
+				}
+
+			}
+			ReadOnlyCollection<Item> SortedReadOnly = new ReadOnlyCollection<Item> (sortedItems);
+			return (SortedReadOnly);
+		}
+
+		public ReadOnlyCollection<Item> OrderItemsByCategoryLabel (){
+
+			items = Property.ItemList.AllItems ();
+
+			IList<Room> sortedCategories= Property.CategoryList.AllCategoriesByLabel (true);
+			IList<Item> sortedItems = new List<Item>();
+
+			// Add rooms that have "None" as the label
+			foreach (Item item in items) {
+				if (item.CategoryID == 0) {
+					sortedItems.Add (item);
+				}
+			}
+
+			// Look through all other rooms
+			foreach (Category cat in sortedCategories){
+
+				foreach (Item item in items) {
+
+					if (item.CategoryID == cat.ID) {
+						sortedItems.Add (item);
+					}
+				}
+
+			}
+			ReadOnlyCollection<Item> SortedReadOnly = new ReadOnlyCollection<Item> (sortedItems);
+			return (SortedReadOnly);
+		}
 	}
 }
 
