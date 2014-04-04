@@ -36,8 +36,15 @@ namespace HomeCatalog.Android
 			{
 				StartActivityForResult (typeof(AddItemActivity),0);
 			};
+
 			Spinner sortSpinner = FindViewById<Spinner> (Resource.Id.sortSpinner);
-			sortSpinner.Adapter = new SortItemSpinnerAdapter
+			sortSpinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs> (sortSpinner.ItemSelected);
+			var adapter = ArrayAdapter.CreateFromResource (
+				              this, Resource.Array.SortOptions, Android.Resource.Layout.GenericSpinnerItem);
+
+			adapter.SetDropDownViewResource (Android.Resource.Layout.GenericSpinnerItem);
+
+			sortSpinner.Adapter = new SortItemSpinnerAdapter (this, Property);
 
 			listView.ItemClick += (sender, e) => 
 			{

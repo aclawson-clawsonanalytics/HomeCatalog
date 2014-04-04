@@ -22,17 +22,17 @@ namespace HomeCatalog.Android
 
 		String NoSelectionText;
 
-		public SortItemSpinnerAdapter (Activity context, Property aProperty) : this (context, aProperty, "No Room")
+		public SortItemSpinnerAdapter (Activity context, Property aProperty)
 		{
 
 		}
 
-		public SortItemSpinnerAdapter (Activity context, Property aProperty, String noSelectionText) : base()
+		public SortItemSpinnerAdapter (Activity context) : base()
 		{
-			NoSelectionText = noSelectionText;
-			Property = aProperty;
+			//NoSelectionText = noSelectionText;
+			//Property = aProperty;
 			Context = context;
-			Options = ["No Sort","Sort by room","Sort by category"];
+			SortOptions = ["No Sort","Sort by room","Sort by category"];
 		}
 
 		public override long GetItemId (int position)
