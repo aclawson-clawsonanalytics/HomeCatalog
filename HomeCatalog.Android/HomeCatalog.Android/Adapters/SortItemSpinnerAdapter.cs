@@ -12,7 +12,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	class SortItemSpinnerAdapter : BaseAdapter<Room>
+	class SortItemSpinnerAdapter : BaseAdapter<Item>
 	{
 		public IList<Room> Rooms;
 
@@ -22,17 +22,17 @@ namespace HomeCatalog.Android
 
 		String NoSelectionText;
 
-		public SortItemSpinnerAdapter (Activity context, Property aProperty) : this (context, aProperty, "No Room")
+		public SortItemSpinnerAdapter (Activity context, Property aProperty)
 		{
 
 		}
 
-		public SortItemSpinnerAdapter (Activity context, Property aProperty, String noSelectionText) : base()
+		public SortItemSpinnerAdapter (Activity context) : base()
 		{
-			NoSelectionText = noSelectionText;
-			Property = aProperty;
+			//NoSelectionText = noSelectionText;
+			//Property = aProperty;
 			Context = context;
-			Options = ["No Sort","Sort by room","Sort by category"];
+			SortOptions = ["No Sort","Sort by room","Sort by category"];
 		}
 
 		public override long GetItemId (int position)
@@ -40,14 +40,14 @@ namespace HomeCatalog.Android
 			return position;
 		}
 
-		public override String this [int position] {  
-			get {
-				if (position == 0) {
-					return null;
-				}
-				return SortOptions [position - 1];
-			}
-		}
+//		public override String this [int position] {  
+//			get {
+//				if (position == 0) {
+//					return null;
+//				}
+//				return SortOptions [position - 1];
+//			}
+//		}
 
 		public override int Count {
 			get { return SortOptions.Count + 1; }

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Android.App;
 using Android.Content;
 using Android.Runtime;
@@ -25,9 +27,9 @@ namespace HomeCatalog.Android
 
 			SetContentView (Resource.Layout.DisplayItemsView);
 
-			ListView listView = FindViewById<ListView> (Resource.Id.itemsList);
-			ListAdapter = new ItemListAdapter (this,Property);
-			listView.Adapter = ListAdapter;
+//			ListView listView = FindViewById<ListView> (Resource.Id.itemsList);
+//			ListAdapter = new ItemListAdapter (this,Property);
+//			listView.Adapter = ListAdapter;
 
 
 
@@ -36,8 +38,22 @@ namespace HomeCatalog.Android
 			{
 				StartActivityForResult (typeof(AddItemActivity),0);
 			};
+
 			Spinner sortSpinner = FindViewById<Spinner> (Resource.Id.sortSpinner);
-			sortSpinner.Adapter = new SortItemSpinnerAdapter
+			ListView listView = FindViewById<ListView> (Resource.Id.itemsList);
+			var adapter = ArrayAdapter.CreateFromResource (
+				this, Resource.Array.SortOptions, Android.Resource.Layout.GenericSpinnerItem);
+			sortSpinner.Adapter = adapter;
+			sortSpinner.ItemSelected += (sender, e) => {
+
+				ListAdapter = new ItemListAdapter (this,Property,e.Position);
+				listView.Adapter = ListAdapter;
+			};
+
+
+			//adapter.SetDropDownViewResource (Android.Resource.Layout.GenericSpinnerItem);
+
+			//sortSpinner.Adapter = new SortItemSpinnerAdapter (this, Property);
 
 			listView.ItemClick += (sender, e) => 
 			{
@@ -102,6 +118,9 @@ namespace HomeCatalog.Android
 			ListAdapter.NotifyDataSetChanged ();
 
 		}
+
+
+
 
 	}
 }

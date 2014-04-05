@@ -26,6 +26,9 @@ namespace HomeCatalog.Android
 			this.context = context;
 			//this.items = Property.ItemList.AllItems();
 			if (SORT_FLAG == 0) {
+				this.items = Property.ItemList.AllItems ();
+			}
+			if (SORT_FLAG == 1) {
 				this.items = OrderItemsByRoomLabel ();
 			} else {
 				this.items = OrderItemsByCategoryLabel ();
@@ -89,7 +92,7 @@ namespace HomeCatalog.Android
 
 			items = Property.ItemList.AllItems ();
 
-			IList<Room> sortedCategories= Property.CategoryList.AllCategoriesByLabel (true);
+			IList<Category> sortedCategories= Property.CategoryList.AllCategoriesByLabel (true);
 			IList<Item> sortedItems = new List<Item>();
 
 			// Add rooms that have "None" as the label

@@ -142,7 +142,6 @@
     <Compile Include="Activities\PhotoPagerActivity.cs" />
     <Compile Include="Adapters\PhotoPagerAdapter.cs" />
     <Compile Include="Fragments\ReportActionDialogFragment.cs" />
-    <Compile Include="Adapters\SortItemSpinnerAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -151,6 +150,7 @@
     <None Include="Resources\layout\CameraView.axml" />
     <None Include="Activities\CameraActivity.cs" />
     <None Include="Core\ExportLayer\PdfExporter.cs" />
+    <None Include="Adapters\SortItemSpinnerAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
