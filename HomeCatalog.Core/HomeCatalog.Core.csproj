@@ -47,6 +47,7 @@
     <Compile Include="StoreLayer\AssetStore.cs" />
     <Compile Include="ModelLayer\Photo.cs" />
     <Compile Include="ModelLayer\PhotoList.cs" />
+    <Compile Include="IRunnable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="StoreLayer\" />

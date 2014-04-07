@@ -96,12 +96,9 @@
     <Compile Include="ModelLayerTests\RoomListTests.cs" />
     <Compile Include="ModelLayerTests\PhotoListTests.cs" />
     <Compile Include="ModelLayerTests\ItemListTests.cs" />
+    <Compile Include="..\HomeCatalog.Core\IRunnable.cs">
+      <Link>IRunnable.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="StoreLayer\" />
-    <Folder Include="StoreLayerTests\" />
-    <Folder Include="ModelLayer\" />
-    <Folder Include="ModelLayerTests\" />
-  </ItemGroup>
 </Project>
