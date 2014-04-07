@@ -143,6 +143,7 @@
     <Compile Include="Adapters\PhotoPagerAdapter.cs" />
     <Compile Include="Fragments\ReportActionDialogFragment.cs" />
     <Compile Include="Adapters\SortItemSpinnerAdapter.cs" />
+    <Compile Include="Fragments\FieldValidationDialogFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />

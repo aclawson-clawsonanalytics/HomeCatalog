@@ -234,6 +234,12 @@ namespace HomeCatalog.Android
 
 		}
 
+		private void ValidateForm()
+		{
+			if (itemNameField.Text == "") {
+
+			}
+		}
 		private void SaveItemInfo()
 		{
 			if (Item == null)
