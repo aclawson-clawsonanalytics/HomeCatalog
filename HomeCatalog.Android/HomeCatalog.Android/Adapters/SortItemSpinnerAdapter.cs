@@ -12,7 +12,7 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	class SortItemSpinnerAdapter : BaseAdapter<Room>
+	class SortItemSpinnerAdapter : BaseAdapter<Item>
 	{
 		public IList<Room> Rooms;
 

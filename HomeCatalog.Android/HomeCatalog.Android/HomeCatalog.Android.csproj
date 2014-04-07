@@ -142,7 +142,6 @@
     <Compile Include="Activities\PhotoPagerActivity.cs" />
     <Compile Include="Adapters\PhotoPagerAdapter.cs" />
     <Compile Include="Fragments\ReportActionDialogFragment.cs" />
-    <Compile Include="Adapters\SortItemSpinnerAdapter.cs" />
     <Compile Include="Fragments\FieldValidationDialogFragment.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +151,7 @@
     <None Include="Resources\layout\CameraView.axml" />
     <None Include="Activities\CameraActivity.cs" />
     <None Include="Core\ExportLayer\PdfExporter.cs" />
+    <None Include="Adapters\SortItemSpinnerAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -183,6 +183,7 @@
     <AndroidResource Include="Resources\layout\GenericSpinnerItem.axml" />
     <AndroidResource Include="Resources\layout\PhotoFullImageView.axml" />
     <AndroidResource Include="Resources\layout\PhotoPagerLayout.axml" />
+    <AndroidResource Include="Resources\layout\ValidationDialogLayout.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

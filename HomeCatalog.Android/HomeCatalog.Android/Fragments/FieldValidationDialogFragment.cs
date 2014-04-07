@@ -13,32 +13,36 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	public class ValidationDialogFragment : DialogFragment
+	public class FieldValidationDialogFragment : DialogFragment
 	{
-		private string[] optionList;
-		private Property Property { get; set; }
-		private string field { get; set; }
+
 		private string message { get; set; }
-		private bool unique { get; set; }
-		public delegate void OnItemSelectedDelegate (DialogClickEventArgs e);
-		public OnItemSelectedDelegate OnItemSelected {get; set;}
+		//public delegate void OnItemSelectedDelegate (DialogClickEventArgs e);
+		//public OnItemSelectedDelegate OnItemSelected {get; set;}
 
-		public override Dialog OnCreateDialog(Bundle savedInstanceState, string _aFieldTitle, bool UNIQUE_FLAG)
+		public FieldValidationDialogFragment (string aMessage)
 		{
-			optionList = new string[] {"Delete"};
-			Property = PropertyStore.CurrentStore.Property;
-			field = _aFieldTitle;
+			message = aMessage;
+		}
 
-			var builder = new AlertDialog.Builder (Activity);
-			builder.SetTitle ("Delete");
 
-			if (unique) {
-				message = "Please enter a unique " + field + ".";
-			} else {
-				message = "Please enter a " + field + ".";
-			}
+		public override Dialog OnCreateDialog(Bundle savedInstanceState)
+		{
 
-			builder.SetMessage (message);
+			var builder = new AlertDialog.Builder (Activity)
+				.SetTitle ("Form Attention!!")
+				.SetMessage (message)
+				.SetPositiveButton ("Ok", (sender, e) => {
+
+			});
+//			IDialogInterfaceOnClickListener listener = new IDialogInterfaceOnClickListener ();
+//			;
+//			builder.SetPositiveButton ("Ok", (sender, e) => {
+//				this.Dismiss ();
+//			});
+			
+			
+
 
 			return builder.Create ();
 		}
