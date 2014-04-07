@@ -64,5 +64,11 @@
 		<item>Wisconsin</item>
 		<item>Wyoming</item>
 	</string-array>
+
+	<string-array name="SortOptions">
+		<item>No Sorting</item>
+		<item>Sort by Room</item>
+		<item>Sort by Category</item>
+	</string-array>
 </resources>
 

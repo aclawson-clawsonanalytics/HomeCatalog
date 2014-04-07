@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using HomeCatalog.Core;
 
+
 namespace HomeCatalog.Android
 {
 	class CsvExporter
@@ -18,6 +19,7 @@ namespace HomeCatalog.Android
 		private IEnumerable<Item> DisplayItems { get; set; }
 
 		private int fileNumberCount { get; set; }
+		private Property Property = PropertyStore.CurrentStore.Property;
 
 		public CsvExporter (IEnumerable<Item> itemsToDisplay)
 		{
@@ -26,58 +28,63 @@ namespace HomeCatalog.Android
 
 		public String ConstructOutput (String filepath)
 		{
-			//var directory = System.Environment.GetFolderPath (System.Environment.SpecialFolder.MyDocuments);
-
-			//var filestring = directory + ".csv";
-
-			//var filepath = System.IO.Path.Combine (directory, filename);
-
-			// Change file name if filepath exists
-
-
-
-			
 			var outputFile = new StreamWriter (filepath, false);
-			var heading = "Name,Purchase Date,Purchase Value,Appraisal Date,Appraisal Value,Model Number,Serial Number";
+			var heading = "Name,Room,Category,Purchase Date,Purchase Value,Appraisal Date,Appraisal Value,Model Number,Serial Number";
 			outputFile.WriteLine (heading);
-			//Console.WriteLine (heading);
 			foreach (Item itemToDisplay in DisplayItems) {
-
-
-				//System.IO.File csvFile = new System.IO.File ();
-
-				var escapedName = itemToDisplay.ItemName.Replace ("\"", "\"\"");
-				string escapedPurchaseDate;
-				string escapedAppraisalDate;
-
-				if (itemToDisplay.PurchaseDate == DateTime.MinValue) {
-					escapedPurchaseDate = itemToDisplay.PurchaseDate.ToShortDateString ().Replace ("\"", "\"\"");
-				} else {
-					escapedPurchaseDate = "None";
-				}
-
-				var escapedPurchaseValue = itemToDisplay.PurchaseValue.ToString ().Replace ("\"", "\"\"");
-
-				if (itemToDisplay.AppraisalDate == DateTime.MinValue) {
-					escapedAppraisalDate = itemToDisplay.AppraisalDate.ToShortDateString ().Replace ("\"", "\"\"");
-				} else {
-					escapedAppraisalDate = "None";
-				}
-
-				var escapedAppraisalValue = itemToDisplay.AppraisalValue.ToString ().Replace ("\"", "\"\"");
-				var escapedModelNumber = itemToDisplay.ModelNumber.ToString ().Replace ("\"", "\"\"");
-				var escapedSerialNumber = itemToDisplay.SerialNumber.ToString ().Replace ("\"", "\"\"");
-				string record = "\"" + escapedName + "\"" + ',' + "\"" + escapedPurchaseDate + "\"" + ',' + "\"" + escapedPurchaseValue + "\"" + "," + "\"" +
-				                escapedAppraisalDate + "\"" + escapedAppraisalValue + "\"" + ',' + "\"" + escapedModelNumber + "\"" + ',' +
-				                "\"" + escapedSerialNumber + "\"";
-				//Console.WriteLine (record);
+				String record = GenerateRecord (itemToDisplay);
 				outputFile.WriteLine (record);
-				//Console.WriteLine (itemToDisplay.ItemName);
 			}
 			outputFile.Close ();
 			Console.Write (File.ReadAllText (filepath));
-			//Console.WriteLine (filepath);
 			return (null);
+		}
+
+		private String EscapedString(String aString){
+			String escapedString = aString.Replace ("\"", "\"\"");
+			return (escapedString);
+		}
+
+		private String GenerateRecord (Item itemToWrite){
+			var escapedName = EscapedString (itemToWrite.ItemName);
+			String escapedRoomLabel;
+			String escapedCategoryLabel;
+			if (Property.RoomList.RoomWithID(itemToWrite.RoomID) == null){
+				escapedRoomLabel = "None";
+			}else{
+				escapedRoomLabel = EscapedString (Property.RoomList.RoomWithID(itemToWrite.RoomID).Label);
+			}
+
+			if (Property.CategoryList.CategoryByID (itemToWrite.CategoryID) == null) {	
+				escapedCategoryLabel = "None";
+			} else {
+				escapedCategoryLabel = EscapedString (Property.CategoryList.CategoryByID (itemToWrite.CategoryID).Label);
+
+			}
+			string escapedPurchaseDate;
+			string escapedAppraisalDate;
+
+			if (itemToWrite.PurchaseDate != DateTime.MinValue) {
+				escapedPurchaseDate = EscapedString (itemToWrite.PurchaseDate.ToShortDateString());
+			} else {
+				escapedPurchaseDate = "None";
+			}
+
+			var escapedPurchaseValue = itemToWrite.PurchaseValue.ToString ().Replace ("\"", "\"\"");
+
+			if (itemToWrite.AppraisalDate != DateTime.MinValue) {
+				escapedAppraisalDate = EscapedString (itemToWrite.AppraisalDate.ToShortDateString ());
+			} else {
+				escapedAppraisalDate = "None";
+			}
+			var escapedAppraisalValue = EscapedString (itemToWrite.AppraisalValue.ToString ());
+			var escapedModelNumber = EscapedString (itemToWrite.ModelNumber.ToString ());
+			var escapedSerialNumber = EscapedString (itemToWrite.SerialNumber.ToString ());
+			string record = "\"" + escapedName + "\"" + ',' + "\"" + escapedRoomLabel + "\"" + ',' +
+				"\"" + escapedCategoryLabel + "\"" + ',' + "\"" + escapedPurchaseDate + "\"" + ',' + "\"" + escapedPurchaseValue + "\"" + "," + "\"" +
+				escapedAppraisalDate + "\"" + ',' + "\"" + escapedAppraisalValue + "\"" + ',' + "\"" + escapedModelNumber + "\"" + ',' +
+				"\"" + escapedSerialNumber + "\"";
+			return (record);
 		}
 	}
 }

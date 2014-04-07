@@ -16,7 +16,7 @@ namespace HomeCatalog.Android
 		private ItemListAdapter ListAdapter { get; set; }
 		private Property Property { get; set; }
 		private int selectedItem { get; set; }
-
+		private Spinner sortSpinner { get; set; }
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -30,17 +30,21 @@ namespace HomeCatalog.Android
 			listView.Adapter = ListAdapter;
 
 
+
 			Button additemButton = FindViewById<Button> (Resource.Id.addItemButton);
 			additemButton.Click += (sender, e) => 
 			{
 				StartActivityForResult (typeof(AddItemActivity),0);
 			};
-			Button backButton3 = FindViewById<Button> (Resource.Id.backButton3);
-			backButton3.Click += (sender, e) => 
-			{
-				SetResult (Result.Canceled);
-				Finish ();
-			};
+
+			Spinner sortSpinner = FindViewById<Spinner> (Resource.Id.sortSpinner);
+			sortSpinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs> (sortSpinner.ItemSelected);
+			var adapter = ArrayAdapter.CreateFromResource (
+				              this, Resource.Array.SortOptions, Android.Resource.Layout.GenericSpinnerItem);
+
+			adapter.SetDropDownViewResource (Android.Resource.Layout.GenericSpinnerItem);
+
+			sortSpinner.Adapter = new SortItemSpinnerAdapter (this, Property);
 
 			listView.ItemClick += (sender, e) => 
 			{
