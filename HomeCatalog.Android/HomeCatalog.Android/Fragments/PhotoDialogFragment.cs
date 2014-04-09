@@ -20,6 +20,8 @@ namespace HomeCatalog.Android
 
 		public Java.IO.File File { get; set; }
 
+		public PhotoFileHolder Photo { get; set; }
+
 		public override Dialog OnCreateDialog (Bundle savedInstanceState)
 		{
 			if (IsThereAnAppToTakePictures ()) {
@@ -60,7 +62,7 @@ namespace HomeCatalog.Android
 			Intent intent = new Intent (MediaStore.ActionImageCapture);
 			File = GetTempFile ();
 			intent.PutExtra (MediaStore.ExtraOutput, Uri.FromFile (File));
-
+			Photo.Path = File.ToString ();
 			Activity.StartActivityForResult (intent, 1);
 		}
 

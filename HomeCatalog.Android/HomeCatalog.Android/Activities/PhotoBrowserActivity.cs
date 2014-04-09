@@ -25,6 +25,8 @@ namespace HomeCatalog.Android
 
 		private Item Item { get; set; }
 
+		PhotoFileHolder Photo;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -50,6 +52,8 @@ namespace HomeCatalog.Android
 				_photoDialog = new PhotoDialogFragment ();
 				_photoDialog.ItemID = Item.ID;
 				_photoDialog.Show (transaction, "photoDialog");
+				Photo = new PhotoFileHolder ();
+				_photoDialog.Photo = Photo;
 			};
 
 			// Item Click
@@ -74,7 +78,9 @@ namespace HomeCatalog.Android
 			if (resultCode == Result.Ok) {
 				var destinationAsset = Property.Store.Assets.NewEmptyAsset () + ".jpg";
 				var destinationPath = Property.Store.Assets.PathForEmptyAsset (destinationAsset);
-				var input = new FileStream (_photoDialog.File.ToString (), FileMode.Open, FileAccess.Read);
+				// TODO: On the device the Photo Path is null occasionally. Possibly garbage collected with the fragment?
+				// Probably best to move the picture taking code out of the fragment and make the fragment just a dialog
+				var input = new FileStream (Photo.Path, FileMode.Open, FileAccess.Read);
 				var output = new FileStream (destinationPath, FileMode.CreateNew, FileAccess.Write);
 				CopyStream (input, output);
 				input.Close ();

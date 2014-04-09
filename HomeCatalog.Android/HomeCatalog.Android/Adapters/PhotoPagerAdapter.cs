@@ -7,6 +7,7 @@ using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
+using Android.Graphics;
 using Android.Widget;
 using Android.Support.V4.View;
 using Android.Webkit;
@@ -41,12 +42,14 @@ namespace HomeCatalog.Android
 			var layout = inflatorservice.Inflate(Resource.Layout.PhotoFullImageView, container, false);
 			var textView = layout.FindViewById<TextView> (Resource.Id.assetID);
 			textView.Text = _AssetIDs [position];
-			WebView view = layout.FindViewById<WebView>(Resource.Id.webView); 
-			view.Settings.DefaultZoom = WebSettings.ZoomDensity.Far;
-			view.Settings.SetSupportZoom(true); 
-			view.Settings.BuiltInZoomControls = true; 
+			PhotoFullImageView imgDisplay = layout.FindViewById<PhotoFullImageView>(Resource.Id.imgDisplay); 
 
-			view.LoadUrl("file://" + PropertyStore.CurrentStore.Assets.PathForAsset(_AssetIDs [position]));
+			BitmapFactory.Options options = new BitmapFactory.Options();
+			options.InSampleSize = 4;
+			options.InPreferredConfig = Bitmap.Config.Argb8888;
+			Bitmap bitmap = BitmapFactory.DecodeFile(PropertyStore.CurrentStore.Assets.PathForAsset(_AssetIDs [position]), options);
+			imgDisplay.SetImageBitmap(bitmap);
+
 			container.AddView(layout);
 			return layout;
 		}
