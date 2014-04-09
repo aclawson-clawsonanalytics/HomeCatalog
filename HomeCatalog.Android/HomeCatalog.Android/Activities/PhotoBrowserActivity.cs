@@ -52,6 +52,20 @@ namespace HomeCatalog.Android
 				_photoDialog = new PhotoDialogFragment ();
 				_photoDialog.ItemID = Item.ID;
 				_photoDialog.Show (transaction, "photoDialog");
+				_photoDialog.OnPhotoOptionSelected (delegate(object addSender, DialogClickEventArgs addEvent) {
+					if (PictureGrabber.IsThereAnAppToTakePictures ()) {
+						switch (addEvent.Which) {
+						case 0:
+							PictureGrabber.TakePhoto ();
+							break;
+						case 1:
+							PictureGrabber.GrabFromGallery ();
+							break;
+						}
+					} else {
+						PictureGrabber.GrabFromGallery ();
+					}
+				});
 				Photo = new PhotoFileHolder ();
 				_photoDialog.Photo = Photo;
 			};

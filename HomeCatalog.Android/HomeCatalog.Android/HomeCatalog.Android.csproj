@@ -147,7 +147,7 @@
       <Link>Core\IRunnable.cs</Link>
     </Compile>
     <Compile Include="Activities\PhotoFileHolder.cs" />
-    <Compile Include="Adapters\SortItemSpinnerAdapter.cs" />
+    <Compile Include="Helpers\PictureGrabber.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -156,6 +156,7 @@
     <None Include="Resources\layout\CameraView.axml" />
     <None Include="Activities\CameraActivity.cs" />
     <None Include="Core\ExportLayer\PdfExporter.cs" />
+    <None Include="Adapters\SortItemSpinnerAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -198,5 +199,6 @@
   <ItemGroup>
     <Folder Include="Core\ModelLayer\" />
     <Folder Include="Core\StoreLayer\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>
