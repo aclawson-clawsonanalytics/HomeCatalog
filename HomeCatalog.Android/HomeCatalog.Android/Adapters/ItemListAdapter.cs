@@ -21,13 +21,16 @@ namespace HomeCatalog.Android
 		Activity context;
 		int SORT_FLAG;
 
-		public ItemListAdapter(Activity context,Property aProperty,int SORT_FLAG) : base() {
+		public ItemListAdapter(Activity context,Property aProperty,int sortFlag) : base() {
 			Property = aProperty;
+			SORT_FLAG = sortFlag;
 			this.context = context;
 			//this.items = Property.ItemList.AllItems();
 			if (SORT_FLAG == 0) {
+				this.items = Property.ItemList.AllItems ();
+			}else if (SORT_FLAG == 1) {
 				this.items = OrderItemsByRoomLabel ();
-			} else {
+			} else if (SORT_FLAG == 2) {
 				this.items = OrderItemsByCategoryLabel ();
 			}
 		}
@@ -89,7 +92,7 @@ namespace HomeCatalog.Android
 
 			items = Property.ItemList.AllItems ();
 
-			IList<Room> sortedCategories= Property.CategoryList.AllCategoriesByLabel (true);
+			IList<Category> sortedCategories= Property.CategoryList.AllCategoriesByLabel (true);
 			IList<Item> sortedItems = new List<Item>();
 
 			// Add rooms that have "None" as the label

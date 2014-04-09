@@ -142,6 +142,7 @@
     <Compile Include="Activities\PhotoPagerActivity.cs" />
     <Compile Include="Adapters\PhotoPagerAdapter.cs" />
     <Compile Include="Fragments\ReportActionDialogFragment.cs" />
+    <Compile Include="Fragments\FieldValidationDialogFragment.cs" />
     <Compile Include="views\PhotoFullImageView.cs" />
     <Compile Include="..\..\HomeCatalog.Core\IRunnable.cs">
       <Link>Core\IRunnable.cs</Link>
@@ -188,6 +189,7 @@
     <AndroidResource Include="Resources\layout\GenericSpinnerItem.axml" />
     <AndroidResource Include="Resources\layout\PhotoFullImageView.axml" />
     <AndroidResource Include="Resources\layout\PhotoPagerLayout.axml" />
+    <AndroidResource Include="Resources\layout\ValidationDialogLayout.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
