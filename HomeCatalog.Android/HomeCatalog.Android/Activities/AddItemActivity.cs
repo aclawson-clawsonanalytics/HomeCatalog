@@ -138,14 +138,7 @@ namespace HomeCatalog.Android
 			Button saveAddItemButton = FindViewById<Button> (Resource.Id.saveAddItemButton);
 			saveAddItemButton.Click += (sender, e) => 
 			{
-				if (FormIsValid () == false){
-					string message = "Please enter a name for the item.";
-					ShowValidationDialog (message);
-				}else{
-					SaveItemInfo ();
-					SetResult (Result.Ok);
-					Finish ();
-				}
+				SaveItemInfo ();
 			};
 
 			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);
@@ -251,7 +244,7 @@ namespace HomeCatalog.Android
 
 		private void ShowValidationDialog (string aMessage){
 			var transaction = FragmentManager.BeginTransaction ();
-			FieldValidationDialogFragment fieldValidator = new FieldValidationDialogFragment (aMessage);
+			ValidationDialogFragment fieldValidator = new ValidationDialogFragment (aMessage);
 
 			fieldValidator.Show (transaction, "formDialog");
 		}
@@ -261,8 +254,6 @@ namespace HomeCatalog.Android
 			if (Item == null)
 			{
 				Item = new Item ();
-				Property.ItemList.Add (Item);
-				Property.ItemList.Save (Item);
 			}
 
 			Item.ItemName = itemNameField.Text;
@@ -309,7 +300,19 @@ namespace HomeCatalog.Android
 			{
 			Item.CategoryID = ((CategorySpinnerAdapter)categoryLabelSpinner.Adapter) [categoryLabelSpinner.SelectedItemPosition].ID;
 			}
-			Property.ItemList.Save (Item);
+
+			if (Item.GetValidationErrors () != null){
+				ValidationDialogFragment.DisplayDialogForObject (Item, this);
+
+			}else{
+				if (Item.ID == 0) {
+					Property.ItemList.Add (Item);
+				}
+				Property.ItemList.Save (Item);
+				SetResult (Result.Ok);
+				Finish ();
+			}
+
 		}
 
 		private void UpdatePurchaseDateDisplay()

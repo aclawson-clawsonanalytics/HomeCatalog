@@ -142,12 +142,13 @@
     <Compile Include="Activities\PhotoPagerActivity.cs" />
     <Compile Include="Adapters\PhotoPagerAdapter.cs" />
     <Compile Include="Fragments\ReportActionDialogFragment.cs" />
-    <Compile Include="Fragments\FieldValidationDialogFragment.cs" />
     <Compile Include="views\PhotoFullImageView.cs" />
     <Compile Include="..\..\HomeCatalog.Core\IRunnable.cs">
       <Link>Core\IRunnable.cs</Link>
     </Compile>
     <Compile Include="Activities\PhotoFileHolder.cs" />
+    <Compile Include="Core\ModelLayer\IValidatable.cs" />
+    <Compile Include="Fragments\ValidationDialogFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -196,9 +197,5 @@
       <Version>4.19.0.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\ModelLayer\" />
-    <Folder Include="Core\StoreLayer\" />
   </ItemGroup>
 </Project>

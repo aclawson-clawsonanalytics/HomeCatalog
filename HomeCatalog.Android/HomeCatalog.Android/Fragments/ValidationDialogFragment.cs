@@ -13,14 +13,21 @@ using HomeCatalog.Core;
 
 namespace HomeCatalog.Android
 {
-	public class FieldValidationDialogFragment : DialogFragment
+	public class ValidationDialogFragment : DialogFragment
 	{
-
+		public static void DisplayDialogForObject (IValidatable anObject, Activity context){
+			var errorList = anObject.GetValidationErrors ();
+			if (errorList != null) {
+				var dialog = new ValidationDialogFragment (errorList[0]);
+				var transaction = context.FragmentManager.BeginTransaction ();
+				dialog.Show (transaction, "validationDialog");
+			}
+		}
 		private string message { get; set; }
 		//public delegate void OnItemSelectedDelegate (DialogClickEventArgs e);
 		//public OnItemSelectedDelegate OnItemSelected {get; set;}
 
-		public FieldValidationDialogFragment (string aMessage)
+		public ValidationDialogFragment (string aMessage)
 		{
 			message = aMessage;
 		}
