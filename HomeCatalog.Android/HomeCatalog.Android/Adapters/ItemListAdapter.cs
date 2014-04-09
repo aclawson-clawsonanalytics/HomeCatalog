@@ -21,8 +21,9 @@ namespace HomeCatalog.Android
 		Activity context;
 		int SORT_FLAG;
 
-		public ItemListAdapter(Activity context,Property aProperty,int SORT_FLAG) : base() {
+		public ItemListAdapter(Activity context,Property aProperty,int sortFlag) : base() {
 			Property = aProperty;
+			SORT_FLAG = sortFlag;
 			this.context = context;
 			//this.items = Property.ItemList.AllItems();
 			if (SORT_FLAG == 0) {
