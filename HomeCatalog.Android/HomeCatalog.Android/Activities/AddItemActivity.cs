@@ -138,10 +138,14 @@ namespace HomeCatalog.Android
 			Button saveAddItemButton = FindViewById<Button> (Resource.Id.saveAddItemButton);
 			saveAddItemButton.Click += (sender, e) => 
 			{
-
-				SaveItemInfo ();
-				SetResult (Result.Ok);
-				Finish ();
+				if (FormIsValid () == false){
+					string message = "Please enter a name for the item.";
+					ShowValidationDialog (message);
+				}else{
+					SaveItemInfo ();
+					SetResult (Result.Ok);
+					Finish ();
+				}
 			};
 
 			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);
@@ -235,20 +239,25 @@ namespace HomeCatalog.Android
 
 		}
 
-		private void ValidateForm()
+		private bool FormIsValid()
 		{
 			if (itemNameField.Text == "") {
-				var transaction = FragmentManager.BeginTransaction ();
-				string formMessage = "Please enter a name for the item!";
-				FieldValidationDialogFragment fieldValidator = new FieldValidationDialogFragment (formMessage);
-
-				fieldValidator.Show (transaction, "formDialog");
+				return false;
+			} else {
+				return true;
 			}
+
+		}
+
+		private void ShowValidationDialog (string aMessage){
+			var transaction = FragmentManager.BeginTransaction ();
+			FieldValidationDialogFragment fieldValidator = new FieldValidationDialogFragment (aMessage);
+
+			fieldValidator.Show (transaction, "formDialog");
 		}
 
 		private void SaveItemInfo()
 		{
-			ValidateForm ();
 			if (Item == null)
 			{
 				Item = new Item ();

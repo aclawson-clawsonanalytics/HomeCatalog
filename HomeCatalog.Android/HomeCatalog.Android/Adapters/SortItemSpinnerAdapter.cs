@@ -40,7 +40,7 @@ namespace HomeCatalog.Android
 			return position;
 		}
 
-		public override String this [int position] {  
+		public override Item this [int position] {  
 			get {
 				if (position == 0) {
 					return null;

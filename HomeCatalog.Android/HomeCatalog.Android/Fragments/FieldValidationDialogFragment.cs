@@ -29,10 +29,11 @@ namespace HomeCatalog.Android
 		public override Dialog OnCreateDialog(Bundle savedInstanceState)
 		{
 
-			var builder = new AlertDialog.Builder (Activity)
-				.SetTitle ("Form Attention!!")
-				.SetMessage (message)
-				.SetPositiveButton ("Ok", (sender, e) => {
+			var builder = new AlertDialog.Builder (Activity);
+			builder.SetTitle ("Form Attention!!");
+			builder.SetMessage (message);
+
+			builder.SetPositiveButton ("Ok", (sender, args) => {
 
 			});
 //			IDialogInterfaceOnClickListener listener = new IDialogInterfaceOnClickListener ();

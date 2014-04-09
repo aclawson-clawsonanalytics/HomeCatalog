@@ -148,7 +148,6 @@
       <Link>Core\IRunnable.cs</Link>
     </Compile>
     <Compile Include="Activities\PhotoFileHolder.cs" />
-    <Compile Include="Adapters\SortItemSpinnerAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
