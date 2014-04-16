@@ -160,6 +160,7 @@ namespace HomeCatalog.Android
 
 		private void SaveRooms()
 		{
+
 			SaveRoomFromCheckBox ("Kitchen", KitchenCheckBox);
 			SaveRoomFromCheckBox ("Living Room", LivingCheckBox);
 			SaveRoomFromCheckBox ("Storage", StorageCheckBox);

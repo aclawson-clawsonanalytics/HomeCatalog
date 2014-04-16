@@ -16,7 +16,7 @@ namespace HomeCatalog.Core
 		public List<string> GetValidationErrors (){
 			List<string> ValidationErrors = new List<string> ();
 			if (Label == null) {
-				ValidationErrors.Add ("Room must have a Label assigned to it.");
+				ValidationErrors.Add ("Room must have a label.");
 			}
 			foreach (Room room in PropertyStore.CurrentStore) {
 				if (Label == room.Label && ID != room.ID) {
