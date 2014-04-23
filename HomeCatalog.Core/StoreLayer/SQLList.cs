@@ -43,6 +43,14 @@ namespace HomeCatalog.Core
 			return (from item in InternalTable select item).ToList ().AsReadOnly ();
 		}
 
+
+
+	}
+
+	public class InvalidObjectException : System.Exception {
+		public InvalidObjectException (string message, List<string> validationErrorList) : base (message) {
+
+		}
 	}
 }
 

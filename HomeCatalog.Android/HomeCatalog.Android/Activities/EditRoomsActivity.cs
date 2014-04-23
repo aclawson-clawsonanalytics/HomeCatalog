@@ -160,6 +160,7 @@ namespace HomeCatalog.Android
 
 		private void SaveRooms()
 		{
+
 			SaveRoomFromCheckBox ("Kitchen", KitchenCheckBox);
 			SaveRoomFromCheckBox ("Living Room", LivingCheckBox);
 			SaveRoomFromCheckBox ("Storage", StorageCheckBox);
@@ -275,6 +276,13 @@ namespace HomeCatalog.Android
 
 			file.Close ();
 
+		}
+
+		private void ShowValidationDialog (string aMessage){
+			var transaction = FragmentManager.BeginTransaction ();
+			ValidationDialogFragment fieldValidator = new ValidationDialogFragment (aMessage);
+
+			fieldValidator.Show (transaction, "formDialog");
 		}
 		
 	}

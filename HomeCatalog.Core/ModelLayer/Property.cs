@@ -49,6 +49,31 @@ namespace HomeCatalog.Core
 
 			return cat;
 		}
+
+		public List<string> GetValidationErrors ()
+		{
+			List<string> ErrorList = new List<string> ();
+			// Check that PropertyName is not empty
+			if (String.IsNullOrWhiteSpace (PropertyName)) {
+				ErrorList.Add ("Property name cannot be empyt");
+			}
+
+			// Check that property name is unique
+			foreach (Property property in PropertyStore) {
+				if (property.PropertyName == PropertyName) {
+					ErrorList.Add ("Property name must be unique");
+				}
+			}
+
+			if (ErrorList.Count > 0) {
+				return ErrorList;
+			} else {
+				return null;
+			}
+
+
+
+		}
 	}
 }
 

@@ -44,7 +44,13 @@ namespace HomeCatalog.Android
 				room = Property.RoomList.RoomWithID (roomID);
 				room.Label = roomLabelField.Text;
 
-				Property.RoomList.Save (room);
+				try {
+					Property.RoomList.Save (room);
+				}
+				catch (InvalidObjectException error) {
+					// - CODE FOR DIALOG GOES HERE
+
+				}
 				//Intent returnIntent = new Intent ();
 				SetResult (Result.Ok);     
 				Finish ();

@@ -1,9 +1,10 @@
 using System;
 using SQLite;
+using System.Collections.Generic;
 
 namespace HomeCatalog.Core
 {
-	public class Item : ISQLListItem
+	public class Item : ISQLListItem, IValidatable
 	{
 
 		public Item ()
@@ -41,6 +42,17 @@ namespace HomeCatalog.Core
 				return _PhotoList;
 			}
 		}
+
+		public List<string> GetValidationErrors (){
+			List<string> ErrorList = new List<string> ();
+			if (String.IsNullOrWhiteSpace (ItemName)) {
+				ErrorList.Add("Item name cannot be empty");
+				return ErrorList;
+			}else{
+				return null;
+			}
+		}
+
 	}
 
 
