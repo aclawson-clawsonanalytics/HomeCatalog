@@ -277,6 +277,13 @@ namespace HomeCatalog.Android
 			file.Close ();
 
 		}
+
+		private void ShowValidationDialog (string aMessage){
+			var transaction = FragmentManager.BeginTransaction ();
+			ValidationDialogFragment fieldValidator = new ValidationDialogFragment (aMessage);
+
+			fieldValidator.Show (transaction, "formDialog");
+		}
 		
 	}
 }
