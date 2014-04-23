@@ -104,14 +104,11 @@ namespace HomeCatalog.Android
 
 			// Look through all other rooms
 			foreach (Category cat in sortedCategories){
-
 				foreach (Item item in items) {
-
 					if (item.CategoryID == cat.ID) {
 						sortedItems.Add (item);
 					}
 				}
-
 			}
 			ReadOnlyCollection<Item> SortedReadOnly = new ReadOnlyCollection<Item> (sortedItems);
 			return (SortedReadOnly);

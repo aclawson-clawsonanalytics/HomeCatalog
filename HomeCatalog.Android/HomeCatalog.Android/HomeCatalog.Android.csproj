@@ -147,8 +147,7 @@
     <Compile Include="..\..\HomeCatalog.Core\IRunnable.cs">
       <Link>Core\IRunnable.cs</Link>
     </Compile>
-    <Compile Include="Activities\PhotoFileHolder.cs" />
-    <Compile Include="Helpers\PictureGrabber.cs" />
+    <Compile Include="Helpers\PictureGrabberActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />

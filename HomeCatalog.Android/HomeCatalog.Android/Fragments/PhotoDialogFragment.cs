@@ -20,14 +20,11 @@ namespace HomeCatalog.Android
 
 		public Java.IO.File File { get; set; }
 
-		public PhotoFileHolder Photo { get; set; }
-
-		public delegate void OnPhotoOptionSelectedDelegate (DialogClickEventArgs e);
-		public OnPhotoOptionSelectedDelegate OnPhotoOptionSelected {get; set;}
+		public System.EventHandler<DialogClickEventArgs> OnPhotoOptionSelected {get; set;}
 
 		public override Dialog OnCreateDialog (Bundle savedInstanceState)
 		{
-			if (PictureGrabber.IsThereAnAppToTakePictures ()) {
+			if (PictureGrabberActivity.IsThereAnAppToTakePictures (Activity)) {
 				optionList = new string[] { "From Camera", "From Gallery" };
 			} else {
 				optionList = new string[] { "From Gallery" };
