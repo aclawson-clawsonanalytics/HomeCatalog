@@ -44,9 +44,11 @@ namespace HomeCatalog.Core
 		}
 
 		public List<string> GetValidationErrors (){
+			List<string> ErrorList = new List<string> ();
 			if (String.IsNullOrWhiteSpace (ItemName)) {
-				return new List<string> () { "Item name cannot be empty" };
-			} else {
+				ErrorList.Add("Item name cannot be empty");
+				return ErrorList;
+			}else{
 				return null;
 			}
 		}

@@ -1,9 +1,10 @@
 using System;
 using SQLite;
+using System.Collections.Generic;
 
 namespace HomeCatalog.Core
 {
-	public class Category : ISQLListItem
+	public class Category : ISQLListItem, IValidatable;
 	{
 		public Category ()
 		{
@@ -13,6 +14,8 @@ namespace HomeCatalog.Core
 		public int ID {get;set;}
 		public string Label{ get; set;}
 	}
+
+	public List<string> GetValidationErrors
 
 
 }
