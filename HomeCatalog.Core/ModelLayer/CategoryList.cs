@@ -31,6 +31,28 @@ namespace HomeCatalog.Core
 		{
 			return InternalTable.FirstOrDefault (category => category.ID == ID);
 		}
+
+		public override void Save (Category aCategory){
+			List<string> ValidationErrors = new List<string> ();
+			if (aCategory.GetValidationErrors != null) {
+				ValidationErrors.AddRange (aCategory.GetValidationErrors ());
+			}
+
+			// - Check that category label doesn't match any existing and is not checking itself.
+			foreach (Category category in AllCategoriesByLabel ()) {
+				if (aCategory.Label == category.Label && aCategory.ID != category.ID){
+					ValidationErrors.Add ("Category is not unique");
+				}
+			}
+
+			if (ValidationErrors.Count () > 0) {
+				throw new InvalidObjectException ("Invalid category", ValidationErrors);
+			} else {
+				base.Save (aCategory);
+			}
+
+
+		}
 	}
 }
 

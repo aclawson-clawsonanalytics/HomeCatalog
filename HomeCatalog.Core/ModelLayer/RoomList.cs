@@ -32,10 +32,10 @@ namespace HomeCatalog.Core
 			return InternalTable.FirstOrDefault (room => room.ID == ID);
 		}
 
-		public override void Save (Room aRoom){
+		public override void Save (Room aRoom) {
 			List<string> ValidationErrors = new List<string> ();
 			if (aRoom.GetValidationErrors != null) {
-				ValidationErrors.AddRange (aRoom.GetValidationErrors);
+				ValidationErrors.AddRange (aRoom.GetValidationErrors ());
 			}
 			foreach (Room room in AllRoomsByLabel()) {
 				// - Test that room label doesn't match any in the RoomList and that it is not testing itself
@@ -48,6 +48,8 @@ namespace HomeCatalog.Core
 			// - Check count of Validation Errors
 			if (ValidationErrors.Count > 0) {
 				throw new InvalidObjectException ("Invalid Room", ValidationErrors);
+			} else {
+				base.Save (aRoom);
 			}
 		}
 	}

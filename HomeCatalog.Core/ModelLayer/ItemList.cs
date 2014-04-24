@@ -33,6 +33,27 @@ namespace HomeCatalog.Core
 //				return (from item in InternalTable orderby item.RoomID descending select item).ToList ().AsReadOnly();
 //			}
 //		}
+
+		public override void Save(Item anItem){
+			List<string> ValidationErrors = new List<string> ();
+
+			if (anItem.GetValidationErrors != null) {
+				ValidationErrors.AddRange (anItem.GetValidationErrors ());
+			}
+
+			foreach (Item item in AllItems ()) {
+				if (anItem.ItemName == item.ItemName && anItem.ID != item.ID) {
+					ValidationErrors.Add ("Item is not unique");
+				}
+			}
+
+			if (ValidationErrors.Count () > 0) {
+				throw new InvalidObjectException ("Invalid item", ValidationErrors)
+			} else{
+				base.Save (anItem);
+			}
+
+		}
 	}
 }
 

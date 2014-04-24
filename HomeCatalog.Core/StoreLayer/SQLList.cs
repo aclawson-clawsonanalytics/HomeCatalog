@@ -48,8 +48,10 @@ namespace HomeCatalog.Core
 	}
 
 	public class InvalidObjectException : System.Exception {
-		public InvalidObjectException (string message, List<string> validationErrorList) : base (message) {
+		public List<string> validationErrors { get; set;}
 
+		public InvalidObjectException (string message, List<string> validationErrorList) : base (message) {
+			validationErrors = validationErrorList;
 		}
 	}
 }

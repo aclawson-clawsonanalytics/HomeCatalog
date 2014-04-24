@@ -49,6 +49,7 @@ namespace HomeCatalog.Android
 				}
 				catch (InvalidObjectException error) {
 					// - CODE FOR DIALOG GOES HERE
+					ValidationDialogFragment.DisplayDialogForObject (Item, this);
 
 				}
 				//Intent returnIntent = new Intent ();
