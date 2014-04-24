@@ -305,17 +305,23 @@ namespace HomeCatalog.Android
 			Item.CategoryID = ((CategorySpinnerAdapter)categoryLabelSpinner.Adapter) [categoryLabelSpinner.SelectedItemPosition].ID;
 			}
 
-			if (Item.GetValidationErrors () != null){
-				ValidationDialogFragment.DisplayDialogForObject (Item, this);
-
-			}else{
-				if (Item.ID == 0) {
-					Property.ItemList.Add (Item);
-				}
-				Property.ItemList.Save (Item);
-				SetResult (Result.Ok);
-				Finish ();
+			try {
+				Property.ItemList.Save(Item);
 			}
+			catch (InvalidObjectException error) {
+				ValidationDialogFragment.DisplayDialogForObject (Item, this);
+			}
+//			if (Item.GetValidationErrors () != null){
+//				ValidationDialogFragment.DisplayDialogForObject (Item, this);
+//
+//			}else{
+//				if (Item.ID == 0) {
+//					Property.ItemList.Add (Item);
+//				}
+//				Property.ItemList.Save (Item);
+//				SetResult (Result.Ok);
+//				Finish ();
+//			}
 
 		}
 
