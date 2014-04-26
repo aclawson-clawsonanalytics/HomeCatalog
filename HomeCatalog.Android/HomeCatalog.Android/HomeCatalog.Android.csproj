@@ -146,6 +146,7 @@
     <Compile Include="..\..\HomeCatalog.Core\IRunnable.cs">
       <Link>Core\IRunnable.cs</Link>
     </Compile>
+    <Compile Include="Helpers\PictureGrabberActivity.cs" />
     <Compile Include="Activities\PhotoFileHolder.cs" />
     <Compile Include="Core\ModelLayer\IValidatable.cs" />
     <Compile Include="Fragments\ValidationDialogFragment.cs" />
@@ -197,5 +198,10 @@
       <Version>4.19.0.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\ModelLayer\" />
+    <Folder Include="Core\StoreLayer\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>

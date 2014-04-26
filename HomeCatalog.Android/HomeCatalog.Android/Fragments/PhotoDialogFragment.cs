@@ -20,11 +20,11 @@ namespace HomeCatalog.Android
 
 		public Java.IO.File File { get; set; }
 
-		public PhotoFileHolder Photo { get; set; }
+		public System.EventHandler<DialogClickEventArgs> OnPhotoOptionSelected {get; set;}
 
 		public override Dialog OnCreateDialog (Bundle savedInstanceState)
 		{
-			if (IsThereAnAppToTakePictures ()) {
+			if (PictureGrabberActivity.IsThereAnAppToTakePictures (Activity)) {
 				optionList = new string[] { "From Camera", "From Gallery" };
 			} else {
 				optionList = new string[] { "From Gallery" };
@@ -32,55 +32,9 @@ namespace HomeCatalog.Android
 
 			var builder = new AlertDialog.Builder (Activity);
 			builder.SetTitle ("How to add the photo: ");
-			builder.SetItems (optionList, delegate(object sender, DialogClickEventArgs e) {
-				if (IsThereAnAppToTakePictures ()) {
-					switch (e.Which) {
-					case 0:
-						TakePhoto ();
-						break;
-					case 1:
-						OpenGallery ();
-						break;
-					}
-				} else {
-					OpenGallery ();
-				}
-			});
+			builder.SetItems (optionList, OnPhotoOptionSelected);
 
 			return builder.Create ();
-		}
-
-		private bool IsThereAnAppToTakePictures ()
-		{
-			Intent intent = new Intent (MediaStore.ActionImageCapture);
-			IList<ResolveInfo> availableActivities = Activity.PackageManager.QueryIntentActivities (intent, PackageInfoFlags.MatchDefaultOnly);
-			return availableActivities != null && availableActivities.Count > 0;
-		}
-
-		private void TakePhoto ()
-		{
-			Intent intent = new Intent (MediaStore.ActionImageCapture);
-			File = GetTempFile ();
-			intent.PutExtra (MediaStore.ExtraOutput, Uri.FromFile (File));
-			Photo.Path = File.ToString ();
-			Activity.StartActivityForResult (intent, 1);
-		}
-
-		private void OpenGallery ()
-		{
-			var imageIntent = new Intent ();
-			imageIntent.SetType ("image/*");
-			imageIntent.SetAction (Intent.ActionGetContent);
-			Activity.StartActivityForResult (Intent.CreateChooser (imageIntent, "Select Photo"), 0);
-		}
-
-		private Java.IO.File GetTempFile ()
-		{
-			File path = new File (Environment.GetExternalStoragePublicDirectory (Environment.DirectoryPictures), Activity.PackageName);
-			if (!path.Exists ()) {
-				path.Mkdirs ();
-			}
-			return new File (path, "image.tmp");
 		}
 	}
 }

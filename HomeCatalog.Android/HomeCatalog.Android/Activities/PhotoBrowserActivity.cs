@@ -25,7 +25,7 @@ namespace HomeCatalog.Android
 
 		private Item Item { get; set; }
 
-		PhotoFileHolder Photo;
+		string _DestinationAsset;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -48,12 +48,12 @@ namespace HomeCatalog.Android
 			// Add Photo Button
 			Button addPhotoButton = FindViewById<Button> (Resource.Id.addPhotoButton);
 			addPhotoButton.Click += (sender, e) => {
-				var transaction = FragmentManager.BeginTransaction ();
-				_photoDialog = new PhotoDialogFragment ();
-				_photoDialog.ItemID = Item.ID;
-				_photoDialog.Show (transaction, "photoDialog");
-				Photo = new PhotoFileHolder ();
-				_photoDialog.Photo = Photo;
+				var property = PropertyStore.CurrentStore.Property;
+				_DestinationAsset = property.Store.Assets.NewEmptyAsset () + ".jpg";
+				var destinationPath = property.Store.Assets.PathForEmptyAsset (_DestinationAsset);
+				var grabIntent = new Intent (this, typeof(PictureGrabberActivity));
+				grabIntent.PutExtra (PictureGrabberActivity.DestinationPathKey, destinationPath);
+				StartActivityForResult (grabIntent, 0);
 			};
 
 			// Item Click
@@ -63,7 +63,7 @@ namespace HomeCatalog.Android
 				ItemRequest.PutExtra (PhotoPagerActivity.PositionKey, e.Position);
 				ItemRequest.PutStringArrayListExtra (
 					PhotoPagerActivity.PhotoAssetIDListKey,
-					GridViewAdapter.Photos.Select (photo => photo.AssetID).ToArray());
+					GridViewAdapter.Photos.Select (photo => photo.AssetID).ToArray ());
 				StartActivity (ItemRequest);
 			};
 		}
@@ -72,36 +72,14 @@ namespace HomeCatalog.Android
 
 		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
 		{
-			// result code ok 
-			// result code cancelled
-
 			if (resultCode == Result.Ok) {
-				var destinationAsset = Property.Store.Assets.NewEmptyAsset () + ".jpg";
-				var destinationPath = Property.Store.Assets.PathForEmptyAsset (destinationAsset);
-				// TODO: On the device the Photo Path is null occasionally. Possibly garbage collected with the fragment?
-				// Probably best to move the picture taking code out of the fragment and make the fragment just a dialog
-				var input = new FileStream (Photo.Path, FileMode.Open, FileAccess.Read);
-				var output = new FileStream (destinationPath, FileMode.CreateNew, FileAccess.Write);
-				CopyStream (input, output);
-				input.Close ();
-				output.Close ();
 				var photo = new Photo ();
-				photo.AssetID = destinationAsset;
+				photo.AssetID = _DestinationAsset;
 				photo.DateAdded = System.DateTime.Now;
 				Item.PhotoList.Add (photo);
 				Item.PhotoList.Save (photo);
 				GridViewAdapter.NotifyDataSetChanged ();
-			}
-
-			base.OnActivityResult (requestCode, resultCode, data);
-		}
-
-		private static void CopyStream (System.IO.Stream input, System.IO.Stream output)
-		{
-			byte[] buffer = new byte[32768];
-			int read;
-			while ((read = input.Read (buffer, 0, buffer.Length)) > 0) {
-				output.Write (buffer, 0, read);
+				base.OnActivityResult (requestCode, resultCode, data);
 			}
 		}
 	}

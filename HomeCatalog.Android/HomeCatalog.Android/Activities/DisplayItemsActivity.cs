@@ -7,16 +7,19 @@ using Android.Widget;
 using Android.OS;
 using HomeCatalog.Core;
 
-
 namespace HomeCatalog.Android
 {
 	[Activity (Label = "View Items")]
 	public class DisplayItemsActivity : StandardActivity
 	{
 		private ItemListAdapter ListAdapter { get; set; }
+
 		private Property Property { get; set; }
+
 		private int selectedItem { get; set; }
+
 		private Spinner sortSpinner { get; set; }
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -32,9 +35,8 @@ namespace HomeCatalog.Android
 
 
 			Button additemButton = FindViewById<Button> (Resource.Id.addItemButton);
-			additemButton.Click += (sender, e) => 
-			{
-				StartActivityForResult (typeof(AddItemActivity),0);
+			additemButton.Click += (sender, e) => {
+				StartActivityForResult (typeof(AddItemActivity), 0);
 			};
 
 			Spinner sortSpinner = FindViewById<Spinner> (Resource.Id.sortSpinner);
@@ -50,60 +52,17 @@ namespace HomeCatalog.Android
 				listView.Adapter = ListAdapter;
 			};
 
-			listView.ItemClick += (sender, e) => 
-			{
-				var ItemRequest = new Intent (this,typeof(AddItemActivity));
-				ItemRequest.PutExtra (Item.ItemIDKey,ListAdapter[e.Position].ID);
-				StartActivityForResult (ItemRequest,0);
+			listView.ItemClick += (sender, e) => {
+				var ItemRequest = new Intent (this, typeof(AddItemActivity));
+				ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
+				StartActivityForResult (ItemRequest, 0);
 			};
+		}
 
-//			listView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) =>
-//			{
-//
-//
-////				var transaction = FragmentManager.BeginTransaction ();
-////				OptionDialogFragment optionDialog = new OptionDialogFragment ();
-////				optionDialog.Show (transaction, "optionDialog");
-////				optionDialog.OnItemSelected += (DialogClickEventArgs a) =>
-////				{
-////					switch (a.Which) {
-////					case 0:
-////					{
-////						//var ItemRequest = new Intent (this, typeof(ItemsDetailActivity));
-////						var ItemRequest = new Intent (this,typeof(AddItemActivity));
-////						ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
-////						StartActivityForResult (ItemRequest,0);
-////						break;
-////					}
-////					case 1:
-////					{
-////						var ItemRequest = new Intent (this, typeof(AddItemActivity));
-////						ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
-////						StartActivityForResult (ItemRequest,0);
-////						break;
-////					}
-////
-////					case 2:
-////					{
-////						Property.ItemList.Remove (ListAdapter [e.Position]);
-////						ListAdapter.NotifyDataSetChanged ();
-////						break;
-////					}
-////					};
-//
-//
-//
-//				};
-
-
-
-
-			}
-
-		public void showItem(AdapterView.ItemClickEventArgs e)
+		public void showItem (AdapterView.ItemClickEventArgs e)
 		{
-			var ItemRequest = new Intent (this,typeof(ItemsDetailActivity));
-			ItemRequest.PutExtra (Item.ItemIDKey,ListAdapter[e.Position].ID);
+			var ItemRequest = new Intent (this, typeof(ItemsDetailActivity));
+			ItemRequest.PutExtra (Item.ItemIDKey, ListAdapter [e.Position].ID);
 			StartActivity (ItemRequest);
 		}
 
@@ -113,7 +72,6 @@ namespace HomeCatalog.Android
 			ListAdapter.NotifyDataSetChanged ();
 
 		}
-
 	}
 }
 
