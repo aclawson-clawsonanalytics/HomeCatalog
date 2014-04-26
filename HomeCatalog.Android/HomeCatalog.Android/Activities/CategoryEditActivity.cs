@@ -43,7 +43,12 @@ namespace HomeCatalog.Android
 				//Finish ();
 				category = Property.CategoryList.CategoryByID (categoryID);
 				category.Label = categoryLabelField.Text;
-				Property.CategoryList.Save (category);
+				try {
+					Property.CategoryList.Save (category);
+				}
+				catch (InvalidObjectException error){
+					ValidationDialogFragment.DisplayDialogForObject(Category,this);
+				}
 				SetResult (Result.Ok);
 				Finish ();
 			};
