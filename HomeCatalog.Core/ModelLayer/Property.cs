@@ -58,12 +58,12 @@ namespace HomeCatalog.Core
 				ErrorList.Add ("Property name cannot be empyt");
 			}
 
-			// Check that property name is unique
-			foreach (Property property in PropertyStore) {
-				if (property.PropertyName == PropertyName) {
-					ErrorList.Add ("Property name must be unique");
-				}
-			}
+//			// Check that property name is unique
+//			foreach (Property property in PropertyStore) {
+//				if (property.PropertyName == PropertyName) {
+//					ErrorList.Add ("Property name must be unique");
+//				}
+//			}
 
 			if (ErrorList.Count > 0) {
 				return ErrorList;

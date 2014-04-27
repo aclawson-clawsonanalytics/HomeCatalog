@@ -46,8 +46,8 @@ namespace HomeCatalog.Android
 				try {
 					Property.CategoryList.Save (category);
 				}
-				catch (InvalidObjectException error){
-					ValidationDialogFragment.DisplayDialogForObject(Category,this);
+				catch (InvalidObjectException){
+					ValidationDialogFragment.DisplayDialogForObject(category,this);
 				}
 				SetResult (Result.Ok);
 				Finish ();

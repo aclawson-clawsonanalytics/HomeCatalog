@@ -34,12 +34,12 @@ namespace HomeCatalog.Core
 
 		public override void Save (Category aCategory){
 			List<string> ValidationErrors = new List<string> ();
-			if (aCategory.GetValidationErrors != null) {
+			if (aCategory.GetValidationErrors () != null) {
 				ValidationErrors.AddRange (aCategory.GetValidationErrors ());
 			}
 
 			// - Check that category label doesn't match any existing and is not checking itself.
-			foreach (Category category in AllCategoriesByLabel ()) {
+			foreach (Category category in AllCategoriesByLabel (true)) {
 				if (aCategory.Label == category.Label && aCategory.ID != category.ID){
 					ValidationErrors.Add ("Category is not unique");
 				}
