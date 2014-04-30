@@ -34,10 +34,10 @@ namespace HomeCatalog.Core
 
 		public override void Save (Room aRoom) {
 			List<string> ValidationErrors = new List<string> ();
-			if (aRoom.GetValidationErrors != null) {
+			if (aRoom.GetValidationErrors () != null) {
 				ValidationErrors.AddRange (aRoom.GetValidationErrors ());
 			}
-			foreach (Room room in AllRoomsByLabel()) {
+			foreach (Room room in AllRoomsByLabel(true)) {
 				// - Test that room label doesn't match any in the RoomList and that it is not testing itself
 				// - since a room must be added to a list before persisting.
 				if (aRoom.Label == room.Label && aRoom.ID != room.ID) {

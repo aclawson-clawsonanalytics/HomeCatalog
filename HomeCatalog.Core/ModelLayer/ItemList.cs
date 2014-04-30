@@ -37,7 +37,7 @@ namespace HomeCatalog.Core
 		public override void Save(Item anItem){
 			List<string> ValidationErrors = new List<string> ();
 
-			if (anItem.GetValidationErrors != null) {
+			if (anItem.GetValidationErrors () != null) {
 				ValidationErrors.AddRange (anItem.GetValidationErrors ());
 			}
 
@@ -48,7 +48,7 @@ namespace HomeCatalog.Core
 			}
 
 			if (ValidationErrors.Count () > 0) {
-				throw new InvalidObjectException ("Invalid item", ValidationErrors)
+				throw new InvalidObjectException ("Invalid item", ValidationErrors);
 			} else{
 				base.Save (anItem);
 			}

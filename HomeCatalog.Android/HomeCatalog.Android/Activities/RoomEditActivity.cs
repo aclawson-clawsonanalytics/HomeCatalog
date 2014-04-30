@@ -47,9 +47,13 @@ namespace HomeCatalog.Android
 				try {
 					Property.RoomList.Save (room);
 				}
-				catch (InvalidObjectException error) {
+				catch (InvalidObjectException) {
 					// - CODE FOR DIALOG GOES HERE
+<<<<<<< HEAD
 					ValidationDialogFragment.DisplayDialogForObject (Room, this);
+=======
+					ValidationDialogFragment.DisplayDialogForObject (room, this);
+>>>>>>> 3418508defe91911a5e2f92ec8d7cee548014771
 
 				}
 				//Intent returnIntent = new Intent ();

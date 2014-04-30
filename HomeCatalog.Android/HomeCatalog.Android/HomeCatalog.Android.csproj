@@ -147,7 +147,6 @@
       <Link>Core\IRunnable.cs</Link>
     </Compile>
     <Compile Include="Helpers\PictureGrabberActivity.cs" />
-    <Compile Include="Activities\PhotoFileHolder.cs" />
     <Compile Include="Core\ModelLayer\IValidatable.cs" />
     <Compile Include="Fragments\ValidationDialogFragment.cs" />
   </ItemGroup>

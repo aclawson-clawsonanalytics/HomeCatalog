@@ -308,7 +308,7 @@ namespace HomeCatalog.Android
 			try {
 				Property.ItemList.Save(Item);
 			}
-			catch (InvalidObjectException error) {
+			catch (InvalidObjectException) {
 				ValidationDialogFragment.DisplayDialogForObject (Item, this);
 			}
 //			if (Item.GetValidationErrors () != null){
