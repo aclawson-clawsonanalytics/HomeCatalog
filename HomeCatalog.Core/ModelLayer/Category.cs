@@ -15,10 +15,10 @@ namespace HomeCatalog.Core
 		public string Label{ get; set;}
 
 		public List<string> GetValidationErrors (){
-			List<string> errorList = new List<string> ();
+			List<string> ErrorList = new List<string> ();
 			// - Check that the room name is not null or whitespace
 			if (String.IsNullOrWhiteSpace(Label)){
-				errorList.Add("Category must have a label");
+				ErrorList.Add("Category must have a label");
 			}
 
 //			// - Check that category label is unique
@@ -28,7 +28,7 @@ namespace HomeCatalog.Core
 //				}
 //			}
 
-			return errorList;
+			return ErrorList;
 		}
 	}
 
