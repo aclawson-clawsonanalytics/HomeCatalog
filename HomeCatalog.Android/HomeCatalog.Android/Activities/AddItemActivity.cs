@@ -141,7 +141,7 @@ namespace HomeCatalog.Android
 
 				SaveItemInfo ();
 				SetResult(Result.Ok);
-				Finish ();
+
 			};
 
 			Button deleteItemButton = FindViewById<Button> (Resource.Id.deleteItemButton);
