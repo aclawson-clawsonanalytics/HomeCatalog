@@ -72,6 +72,12 @@ namespace HomeCatalog.Android
 						Room newRoom = new Room();
 						newRoom.Label = "Attic";
 						Property.RoomList.Add (newRoom);
+						try {
+							Property.RoomList.Save(newRoom);
+						}
+						catch (InvalidObjectException){
+							ValidationDialogFragment.DisplayDialogForObject(newRoom, this);
+						}
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
@@ -80,6 +86,12 @@ namespace HomeCatalog.Android
 						Room newRoom = new Room();
 						newRoom.Label = "Basement";
 						Property.RoomList.Add (newRoom);
+						try {
+							Property.RoomList.Save(newRoom);
+						}
+						catch (InvalidObjectException) {
+							ValidationDialogFragment.DisplayDialogForObject (newRoom, this);
+						}
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
@@ -88,6 +100,12 @@ namespace HomeCatalog.Android
 						Room newRoom = new Room ();
 						newRoom.Label = "Garage";
 						Property.RoomList.Add (newRoom);
+							try {
+								Property.RoomList.Save(newRoom);
+							}
+							catch (InvalidObjectException) {
+								ValidationDialogFragment.DisplayDialogForObject (newRoom, this);
+							}
 						ListAdapter.NotifyDataSetChanged();
 						break;
 					}
@@ -96,6 +114,12 @@ namespace HomeCatalog.Android
 						Room newRoom = new Room ();
 						newRoom.Label = "Kitchen";
 						Property.RoomList.Add (newRoom);
+						try {
+							Property.RoomList.Save (newRoom);
+						}
+						catch (InvalidObjectException) {
+							ValidationDialogFragment.DisplayDialogForObject(newRoom, this);
+						}
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
@@ -104,6 +128,12 @@ namespace HomeCatalog.Android
 						Room newRoom = new Room ();
 						newRoom.Label = "Living Room";
 						Property.RoomList.Add (newRoom);
+							try {
+								Property.RoomList.Save (newRoom);
+							}
+							catch (InvalidObjectException){
+								ValidationDialogFragment.DisplayDialogForObject (newRoom, this);
+							}
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
@@ -111,7 +141,13 @@ namespace HomeCatalog.Android
 					{
 						Room newRoom = new Room ();
 						newRoom.Label = "Office";
-						Property.RoomList.Add (newRoom);
+						
+							try {
+								Property.RoomList.Save (newRoom);
+							}
+							catch (InvalidObjectException){
+								ValidationDialogFragment.DisplayDialogForObject (newRoom, this);
+							}
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
@@ -120,6 +156,12 @@ namespace HomeCatalog.Android
 						Room newRoom = new Room ();
 						newRoom.Label = "Storage";
 						Property.RoomList.Add (newRoom);
+							try {
+								Property.RoomList.Save (newRoom);
+							}
+							catch (InvalidObjectException){
+								ValidationDialogFragment.DisplayDialogForObject (newRoom, this);
+							}
 						ListAdapter.NotifyDataSetChanged ();
 						break;
 					}
@@ -130,7 +172,12 @@ namespace HomeCatalog.Android
 						newRoom.Label = "Custom";
 
 						Property.RoomList.Add (newRoom);
-						Property.RoomList.Save (newRoom);
+							try {
+								Property.RoomList.Save (newRoom);
+							}
+							catch (InvalidObjectException){
+								ValidationDialogFragment.DisplayDialogForObject (newRoom, this);
+							}
 						Intent createCustomRoom = new Intent(this,typeof(RoomEditActivity));
 						createCustomRoom.PutExtra ("roomID",newRoom.ID);
 						StartActivityForResult (createCustomRoom,0);

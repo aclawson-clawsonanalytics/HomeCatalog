@@ -53,7 +53,7 @@ namespace HomeCatalog.Android
 				}
 				//Intent returnIntent = new Intent ();
 				SetResult (Result.Ok);     
-				Finish ();
+
 
 			};
 

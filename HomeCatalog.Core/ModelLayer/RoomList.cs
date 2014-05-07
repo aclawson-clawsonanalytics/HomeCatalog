@@ -32,25 +32,42 @@ namespace HomeCatalog.Core
 			return InternalTable.FirstOrDefault (room => room.ID == ID);
 		}
 
+		public override void Add (Room aRoom) {
+			ThrowIfInvalid (aRoom);
+			base.Add (aRoom);
+		}
 		public override void Save (Room aRoom) {
+			ThrowIfInvalid(aRoom);
+			base.Save(aRoom);
+		}
+
+		private void ThrowIfInvalid (Room aRoom) {
 			List<string> ValidationErrors = new List<string> ();
 			if (aRoom.GetValidationErrors () != null) {
 				ValidationErrors.AddRange (aRoom.GetValidationErrors ());
 			}
-			foreach (Room room in AllRoomsByLabel(true)) {
-				// - Test that room label doesn't match any in the RoomList and that it is not testing itself
-				// - since a room must be added to a list before persisting.
-				if (aRoom.Label == room.Label && aRoom.ID != room.ID) {
-					ValidationErrors.Add("Room is not unique");
-				}
+
+			if (ObjectIsUnique(aRoom)){
+				ValidationErrors.Add("Room is not unique");
 			}
 
 			// - Check count of Validation Errors
 			if (ValidationErrors.Count > 0) {
 				throw new InvalidObjectException ("Invalid Room", ValidationErrors);
-			} else {
-				base.Save (aRoom);
 			}
+		}
+
+		private bool ObjectIsUnique (Room aRoom){
+			foreach (Room room in AllRoomsByLabel(true)) {
+				// - Test that room label doesn't match any in the RoomList and that it is not testing itself
+				// - since a room must be added to a list before persisting.
+				if (aRoom.Label == room.Label && aRoom.ID != room.ID) {
+					return false;
+				}
+			}
+
+			return true;
+
 		}
 	}
 }
