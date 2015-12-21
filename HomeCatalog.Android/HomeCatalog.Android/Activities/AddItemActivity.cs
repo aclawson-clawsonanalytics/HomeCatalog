@@ -304,12 +304,18 @@ namespace HomeCatalog.Android
 			Item.CategoryID = ((CategorySpinnerAdapter)categoryLabelSpinner.Adapter) [categoryLabelSpinner.SelectedItemPosition].ID;
 			}
 
+			if (Item.ID == 0) {
+				
+			}
 			try {
 				Property.ItemList.Save(Item);
 			}
 			catch (InvalidObjectException) {
 				ValidationDialogFragment.DisplayDialogForObject (Item, this);
 			}
+			Intent PassPropertyID = new Intent(this,typeof(DisplayItemsActivity));
+			PassPropertyID.PutExtra (Property.PropertyIDKey,Property.PropertyID);
+			StartActivity (PassPropertyID);
 //			if (Item.GetValidationErrors () != null){
 //				ValidationDialogFragment.DisplayDialogForObject (Item, this);
 //

@@ -19,7 +19,7 @@ namespace HomeCatalog.Android
 	[Activity (Label = "Edit Rooms")]			
 	public class EditRoomsActivity : StandardActivity
 	{
-		private Property Property { get;set;}
+		private HomeCatalog.Core.Property Property { get;set;}
 
 		private int numberBath {get;set;}
 		private int numberBeds { get; set; }

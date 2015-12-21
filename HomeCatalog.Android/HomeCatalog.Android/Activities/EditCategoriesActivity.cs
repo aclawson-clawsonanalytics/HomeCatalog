@@ -18,7 +18,7 @@ namespace HomeCatalog.Android
 	[Activity (Label = "Edit Categories")]			
 	public class EditCategoriesActivity : StandardActivity
 	{
-		private Property Property {get;set;}
+		private HomeCatalog.Core.Property Property {get;set;}
 
 		private EditText CustomCategoryField {get;set;}
 

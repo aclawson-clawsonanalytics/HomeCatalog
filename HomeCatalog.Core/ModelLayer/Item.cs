@@ -34,7 +34,9 @@ namespace HomeCatalog.Core
 		public PhotoList PhotoList {
 			get {
 				if (ID == 0) {
-					throw new InvalidOperationException ("You need to add the item to a list first");
+					//throw new InvalidOperationException ("You need to add the item to a list first");
+					Property property = PropertyStore.CurrentStore.Property;
+					property.ItemList.Add (this);
 				}
 				if (_PhotoList == null) {
 					_PhotoList = new PhotoList (PropertyStore.CurrentStore.DB.Table<Photo> (), this.ID);

@@ -23,16 +23,15 @@ namespace HomeCatalog.Core
 			base.Remove (item);
 		}
 
-//		public ReadOnlyCollection<Item> AllItemsByRoomLabel (bool asc){
-//			if (asc) {
-//				Property property = PropertyStore.CurrentStore.Property;
-//
-//				//return (from item in InternalTable orderby property.RoomList select item).ToList ().AsReadOnly();
-//
-//			} else{
-//				return (from item in InternalTable orderby item.RoomID descending select item).ToList ().AsReadOnly();
-//			}
-//		}
+		public ReadOnlyCollection<Item> AllItemsByRoomID (bool asc){
+			if (asc) {
+				//Property property = PropertyStore.CurrentStore.Property;
+				//return (from item in InternalTable orderby property.RoomList select item).ToList ().AsReadOnly();
+				return (from item in InternalTable orderby item.ItemName select item).ToList ().AsReadOnly ();
+			} else{
+				return (from item in InternalTable orderby item.ItemName descending select item).ToList ().AsReadOnly();
+			}
+		}
 
 		public override void Save(Item anItem){
 			List<string> ValidationErrors = new List<string> ();
@@ -41,7 +40,7 @@ namespace HomeCatalog.Core
 				ValidationErrors.AddRange (anItem.GetValidationErrors ());
 			}
 
-			foreach (Item item in AllItems ()) {
+			foreach (Item item in this.AllItems ()) {
 				if (anItem.ItemName == item.ItemName && anItem.ID != item.ID) {
 					ValidationErrors.Add ("Item is not unique");
 				}
@@ -54,6 +53,8 @@ namespace HomeCatalog.Core
 			}
 
 		}
+
+	
 	}
 }
 

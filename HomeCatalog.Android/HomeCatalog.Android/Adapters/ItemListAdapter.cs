@@ -50,7 +50,26 @@ namespace HomeCatalog.Android
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
 				view = context.LayoutInflater.Inflate(Resource.Layout.ItemListItem, null);
-			view.FindViewById<TextView> (Resource.Id.itemListText).Text = items[position].ItemName + " ID:" + items[position].ID;
+			String displayText;
+			Room itemRoom = Property.RoomList.RoomWithID (items[position].RoomID);
+			Category itemCategory = Property.CategoryList.ItemWithID (items [position].CategoryID);
+			String roomText;
+			String categoryText;
+			if (itemRoom != null) {
+				roomText = itemRoom.Label;
+			} else {
+				roomText = "No Room";
+			}
+
+			if (itemCategory != null) {
+				categoryText = itemCategory.Label;
+			} else {
+				categoryText = "No Category";
+			}
+				
+			displayText = items[position].ItemName + " " + roomText + " / " + categoryText;
+
+			view.FindViewById<TextView> (Resource.Id.itemListText).Text = displayText;
 			return view;
 		}
 

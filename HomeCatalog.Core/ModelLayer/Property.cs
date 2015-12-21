@@ -7,7 +7,8 @@ namespace HomeCatalog.Core
 {
 	public class Property
 	{
-		public static string PropertyIDKey = "PropertyID";
+		//public static string PropertyIDKey = "PropertyID";
+		public string PropertyIDKey = "PropertyID";
 		public Property ()
 		{
 			PropertyID = Guid.NewGuid ().ToString ();
@@ -36,14 +37,14 @@ namespace HomeCatalog.Core
 		[Ignore]
 		public PropertyStore Store { get; set; }
 
-		public static Room CreateRoom(Room room, string label)
+		public Room CreateRoom(Room room, string label)
 		{
 			room.Label = label;
 
 			return room;
 		}
 
-		public static Category CreateCategory(Category cat, string label)
+		public Category CreateCategory(Category cat, string label)
 		{
 			cat.Label = label;
 
