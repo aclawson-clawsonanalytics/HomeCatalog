@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCatalog.Core", "..\Home
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCatalog.Core.Tests", "..\HomeCatalog.Core.Tests\HomeCatalog.Core.Tests.csproj", "{9AACFFC8-D36B-4A88-8399-08AF6D5082F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCatalog.iOS", "..\..\..\..\..\..\..\Volumes\Storage\ClawsonAnalytics\Development Projects\HomeCatalog\HomeCatalog.iOS\HomeCatalog.iOS\HomeCatalog.iOS.csproj", "{DB954639-8958-46C1-9C0B-32C6B5190002}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCatalog.iOS", "..\HomeCatalog.iOS\HomeCatalog.iOS\HomeCatalog.iOS.csproj", "{DB954639-8958-46C1-9C0B-32C6B5190002}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
