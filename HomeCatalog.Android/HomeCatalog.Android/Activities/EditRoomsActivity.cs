@@ -106,15 +106,15 @@ namespace HomeCatalog.Android
 			{
 				SaveRooms ();
 
-				foreach (Room room in Property.RoomList.AllItems ())
-				{
-					Console.WriteLine (room.Label);
-					string tag = "RoomCheck";
-					string message = room.Label+" is in RoomList";
-					Log.Info (tag,message);
-				}
-				Intent returnIntent = new Intent ();
-				SetResult (Result.Ok, returnIntent);     
+//				foreach (Room room in Property.RoomList.AllItems ())
+//				{
+//					Console.WriteLine (room.Label);
+//					string tag = "RoomCheck";
+//					string message = room.Label+" is in RoomList";
+//					Log.Info (tag,message);
+//				}
+				//Intent returnIntent = new Intent ();
+				//SetResult (Result.Ok, returnIntent);     
 				Finish ();
 			};
 

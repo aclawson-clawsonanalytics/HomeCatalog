@@ -52,7 +52,8 @@ namespace HomeCatalog.Android
 					ValidationDialogFragment.DisplayDialogForObject (room, this);
 				}
 				//Intent returnIntent = new Intent ();
-				SetResult (Result.Ok);     
+				SetResult (Result.Ok);
+				Finish ();
 
 
 			};

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using SQLite;
-using HomeCatalog.Android;
+//using HomeCatalog.Android;
 
 namespace HomeCatalog.Core
 {

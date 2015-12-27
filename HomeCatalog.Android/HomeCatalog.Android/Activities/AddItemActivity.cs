@@ -138,7 +138,7 @@ namespace HomeCatalog.Android
 			Button saveAddItemButton = FindViewById<Button> (Resource.Id.saveAddItemButton);
 			saveAddItemButton.Click += (sender, e) => 
 			{
-
+				
 				SaveItemInfo ();
 				SetResult(Result.Ok);
 
@@ -308,6 +308,7 @@ namespace HomeCatalog.Android
 				
 			}
 			try {
+				Property.ItemList.Add(Item);
 				Property.ItemList.Save(Item);
 			}
 			catch (InvalidObjectException) {

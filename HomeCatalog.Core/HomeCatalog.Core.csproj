@@ -48,6 +48,7 @@
     <Compile Include="ModelLayer\Photo.cs" />
     <Compile Include="ModelLayer\PhotoList.cs" />
     <Compile Include="IRunnable.cs" />
+    <Compile Include="ModelLayer\IValidatable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="StoreLayer\" />
