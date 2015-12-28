@@ -38,7 +38,7 @@
         android:text="PropertyStateHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/CityLabel"
+        android:layout_toRightOf="@id/CityLabel"
         android:id="@+id/StateLabel"
         android:layout_centerHorizontal="true" />
     <TextView

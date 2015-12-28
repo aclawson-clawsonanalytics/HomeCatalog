@@ -99,6 +99,9 @@
     <Compile Include="..\HomeCatalog.Core\IRunnable.cs">
       <Link>IRunnable.cs</Link>
     </Compile>
+    <Compile Include="..\HomeCatalog.Android\HomeCatalog.Android\Core\ModelLayer\IValidatable.cs">
+      <Link>ModelLayer\IValidatable.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

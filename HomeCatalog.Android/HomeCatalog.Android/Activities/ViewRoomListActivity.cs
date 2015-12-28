@@ -141,7 +141,7 @@ namespace HomeCatalog.Android
 					{
 						Room newRoom = new Room ();
 						newRoom.Label = "Office";
-						
+							Property.RoomList.Add(newRoom);
 							try {
 								Property.RoomList.Save (newRoom);
 							}

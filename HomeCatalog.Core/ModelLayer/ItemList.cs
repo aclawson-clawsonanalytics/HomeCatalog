@@ -3,7 +3,7 @@ using SQLite;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using HomeCatalog.Android;
+//using HomeCatalog.Android;
 using HomeCatalog.Core;
 
 namespace HomeCatalog.Core
