@@ -22,11 +22,12 @@ namespace HomeCatalog.Android
 
 		public override Dialog OnCreateDialog(Bundle savedInstanceState)
 		{
-			optionList = new string[] {"Delete"};
+			optionList = new string[] {"O.K.","Nevermind"};
 			Property = PropertyStore.CurrentStore.Property;
 
 			var builder = new AlertDialog.Builder (Activity);
-			builder.SetTitle ("Delete");
+			builder.SetTitle ("Delete?");
+			builder.SetMessage ("Deleting will permanently delete data.");
 			builder.SetItems (optionList,delegate(object sender, DialogClickEventArgs e)
 			{
 				OnItemSelected(e);
