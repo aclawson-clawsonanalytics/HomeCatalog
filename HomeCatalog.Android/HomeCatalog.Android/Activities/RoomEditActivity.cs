@@ -72,10 +72,12 @@ namespace HomeCatalog.Android
 						{
 							Property.RoomList.Remove (Property.RoomList.RoomWithID (roomID));
 							Finish ();
+							break;
 						}
 					case 1:
 						{
 							
+							break;
 						}
 					}
 				};
