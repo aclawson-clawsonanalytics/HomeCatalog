@@ -27,6 +27,7 @@ namespace HomeCatalog.Android
 
 			var builder = new AlertDialog.Builder (Activity);
 			builder.SetTitle ("Deleting will permanently delete data!");
+
 			//builder.SetMessage ("Deleting will permanently delete data.");
 
 			builder.SetItems (optionList,delegate(object sender, DialogClickEventArgs e)
