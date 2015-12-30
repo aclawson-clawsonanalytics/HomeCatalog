@@ -5,7 +5,7 @@ using SQLite;
 
 namespace HomeCatalog.Core
 {
-	public class Property
+	public class Property : IValidatable
 	{
 		//public static string PropertyIDKey = "PropertyID";
 		public string PropertyIDKey = "PropertyID";
@@ -85,9 +85,6 @@ namespace HomeCatalog.Core
 			} else {
 				return null;
 			}
-
-
-
 		}
 	}
 }
