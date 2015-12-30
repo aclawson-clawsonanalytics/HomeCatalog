@@ -56,8 +56,27 @@ namespace HomeCatalog.Android
 			Button deleteButton = FindViewById<Button> (Resource.Id.deleteCategoryButton);
 			deleteButton.Click += (sender, e) => 
 			{
-				Property.CategoryList.Remove (Property.CategoryList.CategoryByID (categoryID));
-				Finish ();
+
+				var transaction = FragmentManager.BeginTransaction();
+				DeleteDialogFragment deleteDialog = new DeleteDialogFragment();
+				deleteDialog.Show(transaction,"deleteDialog");
+				deleteDialog.OnItemSelected += (DialogClickEventArgs a) =>
+				{
+					switch (a.Which)
+					{
+					case 0:
+						{
+							Property.CategoryList.Remove (Property.CategoryList.CategoryByID (categoryID));
+							Finish ();
+							break;
+						}
+					case 1:
+						{
+							break;
+						}
+					}
+				};
+
 			};
 
 
