@@ -89,28 +89,32 @@ namespace HomeCatalog.Android
 		private void SaveProperty() 
 		{
 			// Set Property Attributes by the text in each EditText field
-			Property.PropertyName = PropNameField.Text;
+			if (PropNameField.Text != "") {
+				Property.PropertyName = PropNameField.Text;
+			}
 			Property.Address = PropAddressField.Text;
 			Property.City = PropCityField.Text;
 			Property.State = PropStateField.Text;
 			Property.ZipCode = PropZipField.Text;
 			Property.Country = PropCountryField.Text;
 
-			try {
+			if (Property.GetValidationErrors() == null){
 				PropertyStore.CurrentStore.SaveProperty ();
-			}
-			catch (InvalidObjectException) {
-				ValidationDialogFragment.DisplayDialogForObject (Property, this);
+			} else {
+				// Dialog fragment goes here.
+				throw new InvalidObjectException("Invalid Property",Property.GetValidationErrors());
 			}
 		}
 
 		private void DisplayPropertyInField ()
 		{
-			PropNameField.Text = Property.PropertyName;
-			PropAddressField.Text = Property.Address;
-			PropCityField.Text = Property.City;
-			PropStateField.Text = Property.State;
-			PropZipField.Text = Property.ZipCode;
+			if (Property != null) {
+				PropNameField.Text = Property.PropertyName;
+				PropAddressField.Text = Property.Address;
+				PropCityField.Text = Property.City;
+				PropStateField.Text = Property.State;
+				PropZipField.Text = Property.ZipCode;
+			}
 		}
 	}
 
