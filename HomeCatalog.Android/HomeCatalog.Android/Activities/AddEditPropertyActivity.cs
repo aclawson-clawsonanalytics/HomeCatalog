@@ -96,6 +96,7 @@ namespace HomeCatalog.Android
 			Property.State = PropStateField.Text;
 			Property.ZipCode = PropZipField.Text;
 			Property.Country = PropCountryField.Text;
+
 			PropertyStore.CurrentStore.SaveProperty ();
 		}
 
