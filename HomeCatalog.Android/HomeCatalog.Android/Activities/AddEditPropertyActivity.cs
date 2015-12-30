@@ -27,7 +27,7 @@ namespace HomeCatalog.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
+			Property = PropertyStore.CurrentStore.Property;
 
 			SetContentView (Resource.Layout.PropertyAddEditView);
 
