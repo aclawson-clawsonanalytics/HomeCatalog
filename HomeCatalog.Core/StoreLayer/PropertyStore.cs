@@ -73,7 +73,13 @@ namespace HomeCatalog.Core
 		private void AddListsToProperty ()
 		{
 			Property.RoomList = new RoomList (DB.Table<Room> ());
+			Room nullRoom = new Room ();
+			nullRoom.Label = "No Room";
+			Property.RoomList.Add (nullRoom);
 			Property.CategoryList = new CategoryList (DB.Table<Category> ());
+			Category nullCategory = new Category ();
+			nullCategory.Label = "No Category";
+			Property.CategoryList.Add (nullCategory);
 			Property.ItemList = new ItemList (DB.Table<Item> ());
 		}
 

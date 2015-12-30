@@ -66,11 +66,19 @@ namespace HomeCatalog.Android
 				deleteDialog.Show(transaction,"deleteDialog");
 				deleteDialog.OnItemSelected += (DialogClickEventArgs a) =>
 				{
+					Room nullRoom = Property.RoomList.RoomWithName("No Room");
 					switch (a.Which)
 					{
 					case 0:
 						{
-							Property.RoomList.Remove (Property.RoomList.RoomWithID (roomID));
+							foreach (Item item in Property.ItemList.AllItems())
+							{
+								if (item.RoomID == roomID)
+								{
+									item.RoomID = nullRoom.ID;
+								}
+							}
+							Property.RoomList.Remove (room);
 							Finish ();
 							break;
 						}
