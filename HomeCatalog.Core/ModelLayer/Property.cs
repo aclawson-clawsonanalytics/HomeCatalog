@@ -12,6 +12,8 @@ namespace HomeCatalog.Core
 		public Property ()
 		{
 			PropertyID = Guid.NewGuid ().ToString ();
+			//SetupNullRoomAndCategories ();
+
 		}
 
 		// Define Metadata elements
@@ -49,6 +51,18 @@ namespace HomeCatalog.Core
 			cat.Label = label;
 
 			return cat;
+		}
+
+		public void SetupNullRoomAndCategories()
+		{
+			//Property aProperty = PropertyCollection.SharedCollection.FindPropertyStoreWithID (PropertyID);
+			Room nullRoom = new Room ();
+			nullRoom.Label = "No Room";
+			RoomList.Add (nullRoom);
+			Category nullCategory = new Category ();
+			nullCategory.Label = "No Category";
+			CategoryList.Add (nullCategory);
+
 		}
 
 		public List<string> GetValidationErrors ()

@@ -28,7 +28,6 @@ namespace HomeCatalog.Android
 		{
 			base.OnCreate (bundle);
 
-			Property = PropertyStore.CurrentStore.Property;
 
 			SetContentView (Resource.Layout.PropertyAddEditView);
 
