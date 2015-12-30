@@ -149,6 +149,7 @@
     <Compile Include="Helpers\PictureGrabberActivity.cs" />
     <Compile Include="Core\ModelLayer\IValidatable.cs" />
     <Compile Include="Fragments\ValidationDialogFragment.cs" />
+    <Compile Include="Adapters\ErrorListAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />

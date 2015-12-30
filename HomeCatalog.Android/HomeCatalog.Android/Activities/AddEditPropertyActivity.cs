@@ -95,8 +95,12 @@ namespace HomeCatalog.Android
 			Property.State = PropStateField.Text;
 			Property.ZipCode = PropZipField.Text;
 			Property.Country = PropCountryField.Text;
+			if (Property.GetValidationErrors () == null) {
+				PropertyStore.CurrentStore.SaveProperty ();
+			} else {
+				ValidationDialogFragment.DisplayDialogForObject (Property, this);
 
-			PropertyStore.CurrentStore.SaveProperty ();
+			}
 		}
 
 		private void DisplayPropertyInField ()

@@ -14,25 +14,20 @@ using HomeCatalog.Android;
 
 namespace HomeCatalog.Android
 {
-	class ItemListAdapter : BaseAdapter<Item>
+	class ErrorListAdapter : BaseAdapter<Item>
 	{
-		IList<Item> items;
+		IList<Item> errors;
 		private Property Property {get;set;}
+
 		Activity context;
 		int SORT_FLAG;
 
-		public ItemListAdapter(Activity context,Property aProperty,int sortFlag) : base() {
+		public ErrorListAdapter(Activity context,Property aProperty,int sortFlag) : base() {
 			Property = aProperty;
 			SORT_FLAG = sortFlag;
 			this.context = context;
 			//this.items = Property.ItemList.AllItems();
-			if (SORT_FLAG == 0) {
-				this.items = Property.ItemList.AllItems ();
-			}else if (SORT_FLAG == 1) {
-				this.items = OrderItemsByRoomLabel ();
-			} else if (SORT_FLAG == 2) {
-				this.items = OrderItemsByCategoryLabel ();
-			}
+			this.errors = Property.GetValidationErrors();
 		}
 
 		public override long GetItemId(int position)
@@ -40,34 +35,17 @@ namespace HomeCatalog.Android
 			return position;
 		}
 		public override Item this[int position] {  
-			get { return items[position]; }
+			get { return errors[position]; }
 		}
 		public override int Count {
-			get { return items.Count; }
+			get { return errors.Count; }
 		}
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
 			View view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
 				view = context.LayoutInflater.Inflate(Resource.Layout.ItemListItem, null);
-			String displayText;
-			Room itemRoom = Property.RoomList.RoomWithID (items[position].RoomID);
-			Category itemCategory = Property.CategoryList.ItemWithID (items [position].CategoryID);
-			String roomText;
-			String categoryText;
-			if (itemRoom != null) {
-				roomText = itemRoom.Label;
-			} else {
-				roomText = "No Room";
-			}
-
-			if (itemCategory != null) {
-				categoryText = itemCategory.Label;
-			} else {
-				categoryText = "No Category";
-			}
-				
-			displayText = items[position].ItemName + " " + roomText + " / " + categoryText;
+			String displayText = errors[position];
 
 			view.FindViewById<TextView> (Resource.Id.itemListText).Text = displayText;
 			return view;
@@ -75,63 +53,63 @@ namespace HomeCatalog.Android
 
 		public override void NotifyDataSetChanged ()
 		{
-			items = Property.ItemList.AllItems ();
+			errors = Property.GetValidationErrors();
 
 			base.NotifyDataSetChanged ();
 		}
 
-		public ReadOnlyCollection<Item> OrderItemsByRoomLabel (){
-			items = Property.ItemList.AllItems ();
-
-			IList<Room> sortedRooms= Property.RoomList.AllRoomsByLabel (true);
-			IList<Item> sortedItems = new List<Item>();
-
-			// Add rooms that have "None" as the label
-			foreach (Item item in items) {
-				if (item.RoomID == 0) {
-					sortedItems.Add (item);
-				}
-			}
-
-			foreach (Room room in sortedRooms){
-
-				foreach (Item item in items) {
-					
-					if (item.RoomID == room.ID) {
-						sortedItems.Add (item);
-					}
-				}
-
-			}
-			ReadOnlyCollection<Item> SortedReadOnly = new ReadOnlyCollection<Item> (sortedItems);
-			return (SortedReadOnly);
-		}
-
-		public ReadOnlyCollection<Item> OrderItemsByCategoryLabel (){
-
-			items = Property.ItemList.AllItems ();
-
-			IList<Category> sortedCategories= Property.CategoryList.AllCategoriesByLabel (true);
-			IList<Item> sortedItems = new List<Item>();
-
-			// Add rooms that have "None" as the label
-			foreach (Item item in items) {
-				if (item.CategoryID == 0) {
-					sortedItems.Add (item);
-				}
-			}
-
-			// Look through all other rooms
-			foreach (Category cat in sortedCategories){
-				foreach (Item item in items) {
-					if (item.CategoryID == cat.ID) {
-						sortedItems.Add (item);
-					}
-				}
-			}
-			ReadOnlyCollection<Item> SortedReadOnly = new ReadOnlyCollection<Item> (sortedItems);
-			return (SortedReadOnly);
-		}
+//		public ReadOnlyCollection<Item> OrderItemsByRoomLabel (){
+//			errors = Property.ItemList.AllItems ();
+//
+//			IList<Room> sortedRooms= Property.RoomList.AllRoomsByLabel (true);
+//			IList<Item> sortedItems = new List<Item>();
+//
+//			// Add rooms that have "None" as the label
+//			foreach (String error in errors) {
+//				if (item.RoomID == 0) {
+//					sortedItems.Add (item);
+//				}
+//			}
+//
+//			foreach (Room room in sortedRooms){
+//
+//				foreach (Item item in items) {
+//					
+//					if (item.RoomID == room.ID) {
+//						sortedItems.Add (item);
+//					}
+//				}
+//
+//			}
+//			ReadOnlyCollection<Item> SortedReadOnly = new ReadOnlyCollection<Item> (sortedItems);
+//			return (SortedReadOnly);
+//		}
+//
+//		public ReadOnlyCollection<Item> OrderItemsByCategoryLabel (){
+//
+//			items = Property.ItemList.AllItems ();
+//
+//			IList<Category> sortedCategories= Property.CategoryList.AllCategoriesByLabel (true);
+//			IList<Item> sortedItems = new List<Item>();
+//
+//			// Add rooms that have "None" as the label
+//			foreach (Item item in items) {
+//				if (item.CategoryID == 0) {
+//					sortedItems.Add (item);
+//				}
+//			}
+//
+//			// Look through all other rooms
+//			foreach (Category cat in sortedCategories){
+//				foreach (Item item in items) {
+//					if (item.CategoryID == cat.ID) {
+//						sortedItems.Add (item);
+//					}
+//				}
+//			}
+//			ReadOnlyCollection<Item> SortedReadOnly = new ReadOnlyCollection<Item> (sortedItems);
+//			return (SortedReadOnly);
+//		}
 	}
 }
 
